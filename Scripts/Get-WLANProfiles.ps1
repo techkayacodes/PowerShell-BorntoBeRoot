@@ -2,8 +2,8 @@
 # Language     :  PowerShell 5.0
 # Script Name  :  Get-WLANProfiles.ps1
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
-# Description  :  Script which returns all WLAN-Profiles, include password in plain text
-# Repository   :  https://github.com/BornToBeRoot/PowerShell-Script-Collection
+# Description  :  Script which returns all WLAN-Profiles, include password as SecureString or as plain text
+# Repository   :  https://github.com/BornToBeRoot/PowerShell_Get-WLANProfiles
 ###############################################################################################################
 
 <#
@@ -11,7 +11,7 @@
     Script which returns all WLAN-Profiles on you local system, include password as SecureString or as plain text
    
    .DESCRIPTION
-    This script returns all WLAN profiles, on your local system, as custom powershell object, include SSID, 
+    This script returns all WLAN profiles, on your local system, as custom PowerShell-Object, include SSID, 
 	Authentication, Name and Password as secure string or plain text. You don't need an additional application, 
     which is full of advertising. And for learning purposes it shows, how easy it is to find out the WLAN 
     password, if you have physical/remote access to the computer.
@@ -27,7 +27,7 @@
        
     .LINK
     Github Profil:         https://github.com/BornToBeRoot
-    Github Repository:     https://github.com/BornToBeRoot/PowerShell-Script-Collection
+    Github Repository:     https://github.com/BornToBeRoot/PowerShell_Get-WLANProfiles
 #>
 
 [CmdletBinding()]
