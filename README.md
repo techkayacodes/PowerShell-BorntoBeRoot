@@ -16,11 +16,11 @@ _In Windows 7 there was a graphical interface in the network settings, where you
 ## Example
 
 ```powershell
-.\Get-WLANProfiles.ps1 #As SecureString
+.\Get-WLANProfiles.ps1                                          # As SecureString
 ```
 
 ```powershell
-.\Get-WLANProfiles.ps1 -ShowPassword -Search "MyHomeNetwork*" # As plain text
+.\Get-WLANProfiles.ps1 -ShowPassword -Search "MyHomeNetwork*"   # As plain text
 ```
 
 ## Output
