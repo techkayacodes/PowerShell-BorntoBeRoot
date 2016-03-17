@@ -48,13 +48,6 @@ This script uses the Network Shell (`netsh.exe`) from Windows.
 * [Netsh Command Reference - Technet](https://technet.microsoft.com/en-us/library/cc754516(v=ws.10).aspx)
 * [Netsh Commands for WLAN - Technet](https://technet.microsoft.com/en-US/library/cc755301(v=ws.10).aspx)
 
-## Disclaimer
-
-**TO ALL SCRIPT KIDDIES... I WILL NOT ANSWER ANY QUESTIONS ABOUT "HACKING". 
-THIS SCRIPT IS ONLY FOR PEOPLE WHO FORGOT THERE WLAN PASSWORD OR FOR LEARNING PURPOSES (IF YOU WANT TO SEE HOW EASY IT IS TO GET WLAN PASSWORDS ON YOUR LOCAL SYSTEM). 
-USE THIS SCRIPT ONLY ON SYSTEMS WHICH BELONG TO YOU. 
-BE AWARE THAT YOU ARE RESPONSIBLE FOR YOUR ACTIONS.**
-
 ## Inspired by
 
 * [PoshCode](http://poshcode.org/4520)
