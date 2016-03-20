@@ -11,7 +11,7 @@
     Script which returns all WLAN-Profiles on you local system, include password as SecureString or as plain text
    
    .DESCRIPTION
-    This script returns all WLAN profiles, on your local system, as custom PowerShell-Object, include SSID, 
+    This script returns all WLAN-Profiles, on your local system, as custom PowerShell-Object, include SSID, 
 	Authentication, Name and Password as secure string or plain text. You don't need an additional application, 
     which is full of advertising. And for learning purposes it shows, how easy it is to find out the WLAN 
     password, if you have physical/remote access to the computer.
@@ -34,17 +34,17 @@
 param(
     [Parameter(
         Position=0,
-        HelpMessage="Indicates that the password appears in plain text")]
+        HelpMessage='Indicates that the password appears in plain text')]
     [Switch]$ShowPassword,
     
     [Parameter(
         Position=1,
-        HelpMessage="Filter WLAN-Profiles by Name or SSID")]
+        HelpMessage='Filter WLAN-Profiles by Name or SSID')]
     [String]$Search,
 
     [Parameter(
         Position=2,
-        HelpMessage="Excat match, when filter WLAN-Profiles by Name or SSID")]
+        HelpMessage='Excat match, when filter WLAN-Profiles by Name or SSID')]
     [Switch]$ExactMatch
 )
 
