@@ -1,6 +1,6 @@
 ﻿###############################################################################################################
 # Language     :  PowerShell 5.0
-# Script Name  :  Get-WLANProfiles.ps1
+# Filename     :  Get-WLANProfiles.ps1
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
 # Description  :  Script which returns all WLAN-Profiles, include password as SecureString or as plain text
 # Repository   :  https://github.com/BornToBeRoot/PowerShell_Get-WLANProfiles
