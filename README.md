@@ -45,7 +45,7 @@ MyHomeNetwork02   MyHomenetwork5G    WPA2-Personal       MyPassword987654321
 
 ## How does it works?
 
-This script uses the Network Shell (`netsh.exe`) from Windows.
+This script uses the Windows Network Shell (`netsh.exe`).
 
 * [Netsh Command Reference - Technet](https://technet.microsoft.com/en-us/library/cc754516(v=ws.10).aspx)
 * [Netsh Commands for WLAN - Technet](https://technet.microsoft.com/en-US/library/cc755301(v=ws.10).aspx)
