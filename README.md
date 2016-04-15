@@ -13,7 +13,7 @@ Make your admin life easier :coffee:
 
 Download the folder [Module/LazyAdmin](Module/LazyAdmin) and save it under C:\Users\%username%\Documents\WindowsPowerShell\Modules. Then run the command `Import-Module LazyAdmin`
 
-Functions:
+Available Functions:
 
 * [Get-InstalledSoftware](Module/LazyAdmin/Get-InstalledSoftware.ps1) - Get all installed software with DisplayName, Publisher and UninstallString ([view Doku](Module/LazyAdmin/Get-InstalledSoftware.README.md))
 * [New-RandomPassword](Module/LazyAdmin/New-RandomPassword.ps1) - Generate a random password with a freely definable number of chracters ([view Doku](Module/LazyAdmin/New-RandomPassword.README.md))
