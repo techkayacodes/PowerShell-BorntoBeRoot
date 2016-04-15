@@ -5,9 +5,9 @@ Collection of useful PowerShell modules, scripts, snippets and templates
 
 Make your admin life easier :coffee:
 
-## Module
+>Some functions are also available in the module and as script
 
->Some functions are also available as script
+## Module
 
 ### LazyAdmin
 
