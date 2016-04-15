@@ -3,7 +3,7 @@
 # Filename     :  Get-WLANProfiles.ps1
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
 # Description  :  Script which returns all WLAN-Profiles, include password as SecureString or as plain text
-# Repository   :  https://github.com/BornToBeRoot/PowerShell_Get-WLANProfiles
+# Repository   :  https://github.com/BornToBeRoot/PowerShell
 ###############################################################################################################
 
 <#
@@ -27,7 +27,7 @@
        
     .LINK
     Github Profil:         https://github.com/BornToBeRoot
-    Github Repository:     https://github.com/BornToBeRoot/PowerShell_Get-WLANProfiles
+    Github Repository:     https://github.com/BornToBeRoot/PowerShell
 #>
 
 [CmdletBinding()]

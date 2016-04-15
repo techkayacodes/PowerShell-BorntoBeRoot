@@ -1,4 +1,4 @@
-# Get-WLANProfiles.ps1
+# Get-WLANProfile.ps1
 Script to get all WLAN-Profiles on your **local system**, include password as SecureString or as plain text
 
 * [view script](Get-WLANProfiles.ps1)
@@ -7,24 +7,24 @@ Script to get all WLAN-Profiles on your **local system**, include password as Se
 
 This script returns all WLAN-Profiles on your local system, as custom PowerShell-Object, include SSID, Authentication, Name and Password as SecureString or plain text. You don't need an additional application, which is full of advertising. And for learning purposes it shows, how easy it is to find out the WLAN-Password, if you have physical/remote access to the computer.
 
-![Screenshot of the results](https://github.com/BornToBeRoot/PowerShell_Get-WLANProfiles/blob/master/Doku_Images/Get-WLANProfiles_Results.png?raw=true)
+![Screenshot of the results](https://github.com/BornToBeRoot/PowerShell/blob/master/Doku_Images/Get-WLANProfile_Results.png?raw=true)
 
 _In Windows 7 there was a graphical interface in the network settings, where you could get the wlan password in plain text. In Windows 8, 8.1 and 10 this function is hidden or difficult to find._
 
 ## Syntax
 
 ```powershell
-.\ScanNetworkAsync.ps1 [[-ShowPassword]] [[-Search] <String>] [[-ExactMatch]] [<CommonParameters>]
+Get-WLANProfile.ps1 [[-ShowPassword]] [[-Search] <String>] [[-ExactMatch]] [<CommonParameters>]
 ```
 
 ## Example
 
 ```powershell
-.\Get-WLANProfiles.ps1                                          # As SecureString
+.\Get-WLANProfile.ps1                                          # As SecureString
 ```
 
 ```powershell
-.\Get-WLANProfiles.ps1 -ShowPassword -Search "MyHomeNetwork*"   # As plain text
+.\Get-WLANProfile.ps1 -ShowPassword -Search "MyHomeNetwork*"   # As plain text
 ```
 
 ## Output
