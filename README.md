@@ -16,7 +16,7 @@ Download the folder [Module/LazyAdmin](Module/LazyAdmin) and save it under C:\Us
 Available Functions:
 
 * [Get-InstalledSoftware](Module/LazyAdmin/Get-InstalledSoftware.ps1) - Get all installed software with DisplayName, Publisher and UninstallString ([view Doku](Module/LazyAdmin/Get-InstalledSoftware.README.md))
-* [Get-WLANProfile](Module/LazyAdmin/Get-WLANProfile) - Get all WLAN-Profiles on your **local system**, include password ([view Doku](Module/LazyAdmin/Get-WLANProfile.README.md))
+* [Get-WLANProfile](Module/LazyAdmin/Get-WLANProfile.ps1) - Get all WLAN-Profiles on your **local system**, include password ([view Doku](Module/LazyAdmin/Get-WLANProfile.README.md))
 * [New-RandomPassword](Module/LazyAdmin/New-RandomPassword.ps1) - Generate a random password with a freely definable number of chracters ([view Doku](Module/LazyAdmin/New-RandomPassword.README.md))
 * [New-RandomPIN](Module/LazyAdmin/New-RandomPIN.ps1) - Generate a random PIN with a freely definable number of numbers ([view Doku](Module/LazyAdmin/New-RandomPIN.README.md))
 
