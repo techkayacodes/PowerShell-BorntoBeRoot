@@ -3,7 +3,7 @@
 # Filename     :  
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
 # Description  :  
-# Repository   :  https://github.com/BornToBeRoot/
+# Repository   :  https://github.com/BornToBeRoot/--ENTERNAMEHERE--
 ###############################################################################################################
 
 <#
@@ -20,7 +20,7 @@
     
     .LINK
     Github Profil:         https://github.com/BornToBeRoot
-    Github Repository:     https://github.com/BornToBeRoot/
+    Github Repository:     https://github.com/BornToBeRoot/--ENTERNAMEHERE--
 #>
 
 [CmdletBinding()]
