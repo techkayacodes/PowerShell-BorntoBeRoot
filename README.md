@@ -12,7 +12,7 @@ _In Windows 7 there was a graphical interface in the network settings, where you
 ## Syntax
 
 ```powershell
-.\ScanNetworkAsync.ps1 [[-ShowPassword]] [[-Search] <String>] [[-ExactMatch]] [<CommonParameters>]
+.\Get-WLANProfiles.ps1 [[-ShowPassword]] [[-Search] <String>] [[-ExactMatch]] [<CommonParameters>]
 ```
 
 ## Example
