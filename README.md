@@ -1,4 +1,4 @@
-# PowerShell scripts,  snippets and templates
+# PowerShell module, scripts, snippets and templates
 Collection of useful PowerShell modules, scripts, snippets and templates
 
 ## Description
