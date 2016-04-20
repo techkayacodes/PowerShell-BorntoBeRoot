@@ -24,6 +24,7 @@ Available Functions:
 
 * [Get-InstalledSoftware.ps1](Scripts/Get-InstalledSoftware.ps1) - Get all installed software with DisplayName, Publisher and UninstallString ([view Doku](Scripts/Get-InstalledSoftware.README.md))
 * [Get-WLANProfile.ps1](Scripts/Get-WLANProfile.ps1) - Get all WLAN-Profiles on your **local system**, include password ([view Doku](Scripts/Get-WLANProfile.README.md))
+* [Test-IsFileBinary.ps1](Scripts/Test-IsFileBinary.ps1) - Test if a file is binary or just a text file ([view Doku](Scripts/Test-IsFileBinary.README.md))
 
 ## Snippets
 
