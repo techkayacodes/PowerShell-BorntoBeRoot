@@ -1,4 +1,4 @@
-# Test-IsFileBinary.ps1 | Test-IsFileBinary 
+# Test-IsFileBinary.ps1 / Test-IsFileBinary 
 
 Script/Function to check if a file is binary 
 
