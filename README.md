@@ -11,7 +11,7 @@ Make your admin life easier to have more time for :coffee:
 
 ### LazyAdmin
 
-Download the folder [Module/LazyAdmin](Module/LazyAdmin) and save it under C:\Users\%username%\Documents\WindowsPowerShell\Modules. Then run the command `Import-Module LazyAdmin`
+Download the folder [Module/LazyAdmin](Module/LazyAdmin) and save it under `C:\Users\%username%\Documents\WindowsPowerShell\Modules`. Then run the command `Import-Module LazyAdmin`
 
 Available Functions:
 
