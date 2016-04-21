@@ -1,4 +1,4 @@
-# New-RandomPIN.ps1 | New-RandomPIN
+# New-RandomPIN.ps1 / New-RandomPIN
 
 Function to generate PINs with a freely definable number of numbers
 
