@@ -2,7 +2,7 @@
 # Language     :  PowerShell 5.0
 # Filename     :  New-RandomPIN.ps1
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
-# Description  :  Script to generate PINs with a freely definable number of numbers
+# Description  :  Function to generate PINs with a freely definable number of numbers
 # Repository   :  https://github.com/BornToBeRoot/PowerShell
 ###############################################################################################################
 
@@ -18,7 +18,7 @@
     the links below.
                 
     .EXAMPLE
-    New-RandomPIN.ps1 -Length 6
+    New-RandomPIN -Length 6
 
     .LINK
     Github Profil:         https://github.com/BornToBeRoot

@@ -11,18 +11,30 @@ Script/Function to get all installed software with DisplayName, Publisher and Un
 
 ## Syntax 
 
+### Module
+
+```powershell
+Get-InstalledSoftware [[-Search] <String>] [<CommonParameters>]
+```
+
+### Script
+
 ```powershell
 .\Get-InstalledSoftware.ps1 [[-Search] <String>] [<CommonParameters>]
-
-Get-InstalledSoftware [[-Search] <String>] [<CommonParameters>]
 ```
 
 ## Example
 
-```powershell
-.\Get-InstalledSoftware.ps1 -Search "*visual studio*"
+### Module
 
+```powershell
 Get-InstalledSoftware -Search "*visual studio*"
+```
+
+### Script
+
+```
+.\Get-InstalledSoftware.ps1 -Search "*visual studio*"
 ```
 
 ## Output

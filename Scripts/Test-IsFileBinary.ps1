@@ -15,7 +15,10 @@
 
 	I found this code snippet on Stackoverflow: 
 	https://stackoverflow.com/questions/1077634/powershell-search-script-that-ignores-binary-files
-                                 
+         
+	If you found a bug or have some ideas to improve this function... Let me know. You find my Github profile in 
+	the links below.
+	                        
     .EXAMPLE
     .\Test-IsFileBinary.ps1 -Path "C:\Scripts\FolderWithFiles\Test.zip"
        

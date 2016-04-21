@@ -25,6 +25,8 @@ Available Functions:
 
 * [Get-InstalledSoftware.ps1](Scripts/Get-InstalledSoftware.ps1) - Get all installed software with DisplayName, Publisher and UninstallString ([view Doku](Doku/Get-InstalledSoftware.README.md))
 * [Get-WLANProfile.ps1](Scripts/Get-WLANProfile.ps1) - Get all WLAN-Profiles on your **local system**, include password ([view Doku](Doku/Get-WLANProfile.README.md))
+* [New-RandomPassword.ps1](Scripts/New-RandomPassword.ps1) - Generate a random password with a freely definable number of chracters ([view Doku](Doku/New-RandomPassword.README.md))
+* [New-RandomPIN.ps1](Scripts/LazyAdmin/New-RandomPIN.ps1) - Generate a random PIN with a freely definable number of numbers ([view Doku](Doku/New-RandomPIN.README.md))
 * [Test-IsFileBinary.ps1](Scripts/Test-IsFileBinary.ps1) - Test if a file is binary or just a text file ([view Doku](Doku/Test-IsFileBinary.README.md))
 
 ## Snippets

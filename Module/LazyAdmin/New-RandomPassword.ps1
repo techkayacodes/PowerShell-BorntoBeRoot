@@ -18,7 +18,7 @@
     the links below.
                 
     .EXAMPLE
-    New-RandomPassword.ps1 -Length 10 -SpecialChars:$false
+    New-RandomPassword -Length 10 -SpecialChars:$false
 
     .LINK
     Github Profil:         https://github.com/BornToBeRoot

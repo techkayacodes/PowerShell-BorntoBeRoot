@@ -13,7 +13,10 @@
     .DESCRIPTION         
     Script to get all installed software with DisplayName, Publisher and UninstallString. It also returns the InstallLocation
     and InstallDate property. With the parameter "-Search" you can filter the results.
-                                 
+	
+	If you found a bug or have some ideas to improve this function... Let me know. You find my Github profile in 
+	the links below.
+	                     
     .EXAMPLE
     .\Get-InstalledSoftware.ps1
        
