@@ -1,4 +1,4 @@
-# Get-InstalledSoftware.ps1 | Get-InstalledSoftware
+# Get-InstalledSoftware.ps1 / Get-InstalledSoftware
 
 Script/Function to get all installed software with DisplayName, Publisher and UninstallString
 
