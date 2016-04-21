@@ -1,4 +1,4 @@
-# Get-WLANProfile.ps1 | Get-WLANProfile
+# Get-WLANProfile.ps1 / Get-WLANProfile
 
 Script/Function to get all WLAN-Profiles on your **local system**, include password as SecureString or as plain text
 
