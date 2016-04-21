@@ -1,23 +1,28 @@
-# Get-InstalledSoftware.ps1
+# Get-InstalledSoftware.ps1 | Get-InstalledSoftware
 
-Script to get all installed software with DisplayName, Publisher and UninstallString
+Script/Function to get all installed software with DisplayName, Publisher and UninstallString
 
-* [view script](Get-InstalledSoftware.ps1)
+* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Get-InstalledSoftware.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Get-InstalledSoftware.ps1)
 
 ## Description
 
-Script to get all installed software with DisplayName, Publisher and UninstallString. It also returns the InstallLocation and InstallDate property. With the parameter "-Search" you can filter the results.
+Script/Function to get all installed software with DisplayName, Publisher and UninstallString. It also returns the InstallLocation and InstallDate property. With the parameter "-Search" you can filter the results.
 
 ## Syntax 
 
 ```powershell
 .\Get-InstalledSoftware.ps1 [[-Search] <String>] [<CommonParameters>]
+
+Get-InstalledSoftware [[-Search] <String>] [<CommonParameters>]
 ```
 
 ## Example
 
 ```powershell
 .\Get-InstalledSoftware.ps1 -Search "*visual studio*"
+
+Get-InstalledSoftware -Search "*visual studio*"
 ```
 
 ## Output

@@ -2,7 +2,7 @@
 
 Function to generate a random PIN with a freely definable number of characters
 
-* [view function](New-RandomPassword.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/New-RandomPassword.ps1)
 
 ## Syntax 
 

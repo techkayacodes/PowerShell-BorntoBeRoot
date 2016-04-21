@@ -2,7 +2,7 @@
 
 Function to generate PINs with a freely definable number of numbers
 
-* [view function](New-RandomPIN.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/New-RandomPIN.ps1)
 
 ## Syntax 
 
