@@ -1,4 +1,4 @@
-# New-RandomPassword | New-RandomPassword.ps1
+# New-RandomPassword.ps1 | New-RandomPassword
 
 Script/Function to generate a random PIN with a freely definable number of characters
 
