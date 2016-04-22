@@ -7,30 +7,30 @@ Script/Function to generate a random PIN with a freely definable number of chara
 
 ## Syntax 
 
-### Module
-
-```powershell
-New-RandomPassword.ps1 [[-Length] <Int32>] [[-LowerCase]] [[-UpperCase]] [[-Numbers]] [[-SpecialChars]] [[-CopyToClipboard]] [<CommonParameters>]
-```
-
 ### Script
 
 ```powershell
 .\New-RandomPassword.ps1 [[-Length] <Int32>] [[-LowerCase]] [[-UpperCase]] [[-Numbers]] [[-SpecialChars]] [[-CopyToClipboard]] [<CommonParameters>]
 ```
 
-## Example
-
-### Module
+### Function
 
 ```powershell
-New-RandomPassword -Length 10 -SpecialChars:$false
+New-RandomPassword.ps1 [[-Length] <Int32>] [[-LowerCase]] [[-UpperCase]] [[-Numbers]] [[-SpecialChars]] [[-CopyToClipboard]] [<CommonParameters>]
 ```
+
+## Example
 
 ### Script 
 
 ```powershell
 .\New-RandomPassword.ps1 -Length 10 -SpecialChars:$false
+```
+
+### Function
+
+```powershell
+New-RandomPassword -Length 10 -SpecialChars:$false
 ```
 
 ## Output

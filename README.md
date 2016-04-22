@@ -15,6 +15,8 @@ Download the folder [Module/LazyAdmin](Module/LazyAdmin) and save it under `C:\U
 
 Available Functions:
 
+* [Edit-StringInFiles](Module/LazyAdmin/Edit-StringInFiles.ps1) - Replace a string in one or multiple files ([view Doku](Doku/Edit-StringInFiles.README.md))
+* [Find-StringInFiles](Module/LazyAdmin/Find-StringInFiles.ps1) - Find a string in one or multiple files ([view Doku](Doku/Find-StringInFiles.README.md))
 * [Get-InstalledSoftware](Module/LazyAdmin/Get-InstalledSoftware.ps1) - Get all installed software with DisplayName, Publisher and UninstallString ([view Doku](Doku/Get-InstalledSoftware.README.md))
 * [Get-WLANProfile](Module/LazyAdmin/Get-WLANProfile.ps1) - Get all WLAN-Profiles on your **local system**, include password ([view Doku](Doku/Get-WLANProfile.README.md))
 * [New-RandomPassword](Module/LazyAdmin/New-RandomPassword.ps1) - Generate a random password with a freely definable number of chracters ([view Doku](Doku/New-RandomPassword.README.md))
@@ -23,6 +25,8 @@ Available Functions:
 
 ## Scripts
 
+* [Edit-StringInFiles](Scripts/Edit-StringInFiles.ps1) - Replace a string in one or multiple files ([view Doku](Doku/Edit-StringInFiles.README.md))
+* [Find-StringInFiles](Scripts/Find-StringInFiles.ps1) - Find a string in one or multiple files ([view Doku](Doku/Find-StringInFiles.README.md))
 * [Get-InstalledSoftware.ps1](Scripts/Get-InstalledSoftware.ps1) - Get all installed software with DisplayName, Publisher and UninstallString ([view Doku](Doku/Get-InstalledSoftware.README.md))
 * [Get-WLANProfile.ps1](Scripts/Get-WLANProfile.ps1) - Get all WLAN-Profiles on your **local system**, include password ([view Doku](Doku/Get-WLANProfile.README.md))
 * [New-RandomPassword.ps1](Scripts/New-RandomPassword.ps1) - Generate a random password with a freely definable number of chracters ([view Doku](Doku/New-RandomPassword.README.md))

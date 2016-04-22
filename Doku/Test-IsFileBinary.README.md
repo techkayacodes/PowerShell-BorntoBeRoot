@@ -13,28 +13,28 @@ This code is not from me. I found this code snippet on [Stackoverflow](https://s
 
 ## Syntax
 
-### Module
-
-```powershell
-Test-IsFileBinary [-Path] <String> [<CommonParameters>]
-```
-
 ### Script
 
 ```powershell
 .\Test-IsFileBinary.ps1 [-Path] <String> [<CommonParameters>]
+```
+
+### Function
+
+```powershell
+Test-IsFileBinary [-Path] <String> [<CommonParameters>]
 ``` 
 
 ## Example
-
-### Module
-
-```powershell
-Test-IsFileBinary -Path "C:\Scripts\FolderWithFiles\Test.zip"
-```
 
 ### Script
 
 ```powershell
 .\Test-IsFileBinary.ps1 -Path "C:\Scripts\FolderWithFiles\Test.zip"
+```
+
+### Function
+
+```powershell
+Test-IsFileBinary -Path "C:\Scripts\FolderWithFiles\Test.zip"
 ```

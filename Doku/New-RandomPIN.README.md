@@ -7,30 +7,30 @@ Function to generate PINs with a freely definable number of numbers
 
 ## Syntax 
 
-### Module
-
-```powershell
-New-RandomPIN [[-Length] <Int32>] [[-Minimum] <Int32>] [[-Maximum] <Int32>] [[-CopyToClipboard]] [<CommonParameters>]
-```
-
 ### Script
 
 ```powershell
 .\New-RandomPIN.ps1 [[-Length] <Int32>] [[-Minimum] <Int32>] [[-Maximum] <Int32>] [[-CopyToClipboard]] [<CommonParameters>]
 ```
 
-## Example
-
-### Module
+### Function
 
 ```powershell
-New-RandomPIN -Length 6
+New-RandomPIN [[-Length] <Int32>] [[-Minimum] <Int32>] [[-Maximum] <Int32>] [[-CopyToClipboard]] [<CommonParameters>]
 ```
+
+## Example
 
 ### Script
 
 ```powershell
 .\New-RandomPIN.ps1 -Length 6
+```
+
+### Function
+
+```powershell
+New-RandomPIN -Length 6
 ```
 
 ## Output

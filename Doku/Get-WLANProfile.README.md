@@ -15,29 +15,19 @@ _In Windows 7 there was a graphical interface in the network settings, where you
 
 ## Syntax
 
-### Module
-
-```powershell
-Get-WLANProfile [[-ShowPassword]] [[-Search] <String>] [[-ExactMatch]] [<CommonParameters>]
-```
-
 ### Script
 
 ```powershell
 .\Get-WLANProfile.ps1 [[-ShowPassword]] [[-Search] <String>] [[-ExactMatch]] [<CommonParameters>] 
 ```
 
+### Function
+
+```powershell
+Get-WLANProfile [[-ShowPassword]] [[-Search] <String>] [[-ExactMatch]] [<CommonParameters>]
+```
+
 ## Example
-
-### Module
-
-```powershell
-Get-WLANProfile													# As SecureString
-```
-
-```powershell
-Get-WLANProfile  -ShowPassword -Search "MyHomeNetwork*"			# As plain text
-```
 
 ### Script
 
@@ -47,6 +37,16 @@ Get-WLANProfile  -ShowPassword -Search "MyHomeNetwork*"			# As plain text
 
 ```powershell
 .\Get-WLANProfile.ps1  -ShowPassword -Search "MyHomeNetwork*"   # As plain text
+```
+
+### Function
+
+```powershell
+Get-WLANProfile													# As SecureString
+```
+
+```powershell
+Get-WLANProfile  -ShowPassword -Search "MyHomeNetwork*"			# As plain text
 ```
 
 ## Output
