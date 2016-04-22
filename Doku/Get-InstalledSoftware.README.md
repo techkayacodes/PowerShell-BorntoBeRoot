@@ -33,7 +33,7 @@ Get-InstalledSoftware -Search "*visual studio*"
 
 ### Script
 
-```
+```powershell
 .\Get-InstalledSoftware.ps1 -Search "*visual studio*"
 ```
 
