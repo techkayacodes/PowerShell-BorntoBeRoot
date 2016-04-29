@@ -35,10 +35,11 @@ Available Functions:
 
 ## Snippets
 
-* [ConsoleColors](Snippets/ConsoleColors.ps1) - List all foreground and background console colors with preview
-* [CustomPSObject](Snippets/CustomPSObject.ps1) - Built custom PSObject to process or return as result
-* [PressAnyKeyToContinue.ps1](Snippets/PressAnyKeyToContinue.ps1) - Wait for user interaction e.g. at the end of a script
-* [SendMailMessage](Snippets/SendMailMessage.ps1) - Send a mail message via PowerShell
+* [console_colors.ps1](Snippets/console_colors.ps1) - List all foreground and background console colors with preview
+* [custom_PSObject.ps1](Snippets/custom_PSObject.ps1) - Built custom PSObject to process or return as result
+* [press_any_key_to_continue.ps1](snippets/Press_any_key_to_continue.ps1) - Wait for user interaction e.g. at the end of a script
+* [self_elevate.ps1](Snippets/self_elevate.ps1) - Self elevate a PowerShell script/console with parameter 
+* [send_mail_message.ps1](Snippets/sendMailMessage.ps1) - Send a mail message via PowerShell
 
 ## Templates
 
