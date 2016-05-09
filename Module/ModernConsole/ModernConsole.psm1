@@ -5,8 +5,8 @@
 # Check if console was started as admin
 if(([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] “Administrator”))
 {
-	$Admin = "**Admin** "
-	$AdminTitle = "Administrator: "
+	$AdminTitle = "(Admin) "
+	$IsAdmin = $true
 }
 
 # Get IPv4 Address
@@ -29,7 +29,7 @@ $Shell.WindowTitle = $AdminTitle + "Modern PowerShell by BornToBeRoot"
 
 $Size = $Shell.WindowSize
 $Size.width=120
-$Size.height=35
+$Size.height=40
 $Shell.WindowSize = $Size
 
 $Size = $Shell.BufferSize
@@ -44,30 +44,36 @@ $Shell.ForegroundColor = "Gray"
 ### Console Startup / Clear-Host text
 ##################################################################################################################  
 function Write-Startup {
+
 	$EmptyConsoleText = @"
-+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=+
-|                                    ____                 _____     ____       ____             _     |
-|    SS                             | __ )  ___  _ __ _ _|_   _|__ | __ )  ___|  _ \ ___   ___ | |_   |
-|    SSSSS                          |  _ \ / _ \| '__| '_ \| |/ _ \|  _ \ / _ \ |_) / _ \ / _ \| __|  |
-|    SSSSSSSS                       | |_) | (_) | |  | | | | | (_) | |_) |  __/  _ < (_) | (_) | |_   |
-|    SSSSSSSSSSS                    |____/ \___/|_|  |_| |_|_|\___/|____/ \___|_| \_\___/ \___/ \__|  |
-|       SSSSSSSSSSS                                                                                   |
-|          SSSSSSSSSSS              +=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=+
++=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=+
+|                                    ____                 _____     ____       ____             _       |
+|    SS                             | __ )  ___  _ __ _ _|_   _|__ | __ )  ___|  _ \ ___   ___ | |_     |
+|    SSSSS                          |  _ \ / _ \| '__| '_ \| |/ _ \|  _ \ / _ \ |_) / _ \ / _ \| __|    |
+|    SSSSSSSS                       | |_) | (_) | |  | | | | | (_) | |_) |  __/  _ < (_) | (_) | |_     |
+|    SSSSSSSSSSS                    |____/ \___/|_|  |_| |_|_|\___/|____/ \___|_| \_\___/ \___/ \__|    |
+|       SSSSSSSSSSS                                                                                     |
+|          SSSSSSSSSSS              +=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=+
 |             SSSSSSSSSSS           |  
-|              SSSSSSSSSS           |   Domain\Username    :    $env:USERDOMAIN\$env:USERNAME
-|             SSSSSSSSSSS           |   ComputerName       :    $env:COMPUTERNAME
-|          SSSSSSSSSSS              |   IPv4-Address       :    $ModernConsole_IPv4Address  
-|       SSSSSSSSSSS                 |   PSVersion          :    $($PSVersionTable.PSVersion.Major).$($PSVersionTable.PSVersion.Minor)
-|    SSSSSSSSSSS                    |   Date & Time        :    $(Get-Date -Format g)  
+|              SSSSSSSSSS           |    Domain\Username    :    $env:USERDOMAIN\$env:USERNAME
+|             SSSSSSSSSSS           |    Hostname           :    $env:COMPUTERNAME.$($env:USERDNSDOMAIN.ToLower())
+|          SSSSSSSSSSS              |    IPv4-Address       :    $ModernConsole_IPv4Address
+|       SSSSSSSSSSS                 |    PSVersion          :    $($PSVersionTable.PSVersion.Major).$($PSVersionTable.PSVersion.Minor).$($PSVersionTable.PSVersion.Build).$($PSVersionTable.PSVersion.Revision)
+|    SSSSSSSSSSS                    |    Date & Time        :    $(Get-Date -Format F)  
 |    SSSSSSSS                       |
-|    SSSSS      SSSSSSSSSSSSSSS     +=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=+
-|    SS      SSSSSSSSSSSSSSS                                              Follow me on GitHub         |
-|                                                                  [https://GitHub.com/BornToBeRoot]  |
-+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=+
+|    SSSSS      SSSSSSSSSSSSSSS     +=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=+
+|    SS      SSSSSSSSSSSSSSS                                              Follow me on GitHub           |
+|                                                                  [https://GitHub.com/BornToBeRoot]    |
++=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=+
 
 "@
 
 	Write-Host $EmptyConsoleText
+
+	if($IsAdmin)
+	{		
+		Write-Host "                    +++ This console is running with administrative privileges! +++`n" -ForegroundColor Red
+	}
 }
 
 ##################################################################################################################
@@ -122,11 +128,18 @@ function prompt {
     }
     
 	
-	Write-Host "$Admin" -NoNewline -ForegroundColor Red
 	Write-Host "[" -NoNewline -ForegroundColor Gray
     Write-Host "$RootPath" -NoNewline -ForegroundColor Green
     Write-Host "] " -NoNewline -ForegroundColor Gray
     Write-Host "$Folder" -NoNewline -ForegroundColor Yellow
+	
+	if($IsAdmin)
+	{
+		Write-Host " (" -NoNewline -ForegroundColor Gray
+		Write-Host "Admin" -NoNewline -ForegroundColor Red
+		Write-Host ")" -NoNewline -ForegroundColor Gray
+	}
+
     Write-Host " ~#" -NoNewline -ForegroundColor Gray
 	return " "
 }
