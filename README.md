@@ -45,5 +45,5 @@ Available Functions:
 ## Templates
 
 * [Default.ps1](Templates/Default.ps1) - Default template for all new scripts
-* [Default.README.md](Templates/Default.README.md] - Default template for script/function documentation on GitHub
+* [Default.README.md](Templates/Default.README.md) - Default template for script/function documentation on GitHub
 * [RunspacePool.ps1](Templates/RunspacePool.ps1) - Run code async with RunspacePool
