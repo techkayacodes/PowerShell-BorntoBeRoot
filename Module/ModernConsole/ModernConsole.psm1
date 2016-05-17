@@ -56,7 +56,7 @@ function Write-Startup {
 |          SSSSSSSSSSS              +=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=+
 |             SSSSSSSSSSS           |  
 |              SSSSSSSSSS           |   Domain\Username   :   $env:USERDOMAIN\$env:USERNAME
-|             SSSSSSSSSSS           |   Hostname          :   $env:COMPUTERNAME.$($env:USERDNSDOMAIN.ToLower())
+|             SSSSSSSSSSS           |   Hostname          :   $([System.Net.Dns]::GetHostEntry([string]$env:computername).HostName)
 |          SSSSSSSSSSS              |   IPv4-Address      :   $ModernConsole_IPv4Address
 |       SSSSSSSSSSS                 |   PSVersion         :   $($PSVersionTable.PSVersion.Major).$($PSVersionTable.PSVersion.Minor).$($PSVersionTable.PSVersion.Build).$($PSVersionTable.PSVersion.Revision)
 |    SSSSSSSSSSS                    |   Date & Time       :   $(Get-Date -Format F)  
