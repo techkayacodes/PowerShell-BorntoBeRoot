@@ -25,7 +25,7 @@ foreach($ip in $ipaddress.AddressList)
 ##################################################################################################################
 
 $Shell = $Host.UI.RawUI
-$Shell.WindowTitle = $AdminTitle + "Modern PowerShell by BornToBeRoot"
+$Shell.WindowTitle = $AdminTitle + "Windows PowerShell $($PSVersionTable.PSVersion.Major).$($PSVersionTable.PSVersion.Minor) improved by BornToBeRoot"
 
 $Size = $Shell.WindowSize
 $Size.width=135
