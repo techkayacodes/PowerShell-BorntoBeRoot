@@ -23,6 +23,14 @@ Available Functions:
 * [New-RandomPIN](Module/LazyAdmin/New-RandomPIN.ps1) - Generate a random PIN with a freely definable number of numbers ([view documentation](Documentation/New-RandomPIN.README.md))
 * [Test-IsFileBinary](Module/LazyAdmin/Test-IsFileBinary.ps1) - Test if a file is binary or just a text file ([view documentation](Documentation/Test-IsFileBinary.README.md))
 
+### ModernConsole 
+
+Tired of long paths when switch between directories? Let your console look better...
+
+Download the folder [Module/ModernConsole](Module/ModernConsole) and save it under `C:\Users\%username%\Documents\WindowsPowerShell\Modules`. Then run the command `Import-Module ModernConsole`
+
+![Screenshot](/Documentation/ModernConsole.png?raw=true)
+
 ## Scripts
 
 * [Edit-StringInFiles](Scripts/Edit-StringInFiles.ps1) - Replace a string in one or multiple files ([view documentation](Documentation/Edit-StringInFiles.README.md))
