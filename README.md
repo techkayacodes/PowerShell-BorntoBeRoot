@@ -52,7 +52,7 @@ Available Functions:
 * [press_any_key_to_continue.ps1](Snippets/press_any_key_to_continue.ps1) - Wait for user interaction e.g. at the end of a script
 * [self_elevating_script.ps1](Snippets/self_elevating_script.ps1) - Self elevate a PowerShell script/console with parameter 
 * [send_mail_message.ps1](Snippets/send_mail_message.ps1) - Send a mail message via PowerShell
-* [use_exchange_2010_management_shell.ps1](Snippets/use_exchange_2010_management_shell.ps1) - Use Exchange 2010 Management Shell in script to execute exchange commands
+* [use_exchange_2010_management_shell.ps1](Snippets/use_exchange_2010_management_shell.ps1) - Use Exchange 2010 Management Shell in script
 
 ## Templates
 
