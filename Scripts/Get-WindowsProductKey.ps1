@@ -9,7 +9,7 @@
 <#
     .SYNOPSIS
     
-    Get the Windows Product Key and some usefull informations about the system
+    Get the Windows product key and some usefull informations about the system
 
     .DESCRIPTION
     
