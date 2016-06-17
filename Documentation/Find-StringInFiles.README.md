@@ -10,7 +10,7 @@ Script/Function to find a string in one or multiple files
 ### Script
 
 ```powershell
-\Find-StringInFiles.ps1 [-Path] <String> [-Find] <String> [[-CaseSensitive]] [<CommonParameters>]
+.\Find-StringInFiles.ps1 [-Path] <String> [-Find] <String> [[-CaseSensitive]] [<CommonParameters>]
 ```
 
 ### Function
