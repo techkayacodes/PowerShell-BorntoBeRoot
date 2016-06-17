@@ -25,12 +25,14 @@ Available Functions:
 
 ### ModernConsole 
 
-Tired of long paths when switch between directories? Let your console look better...
+Let your console look better...
 
 Download the folder [Module/ModernConsole](Module/ModernConsole) and save it under `C:\Users\%username%\Documents\WindowsPowerShell\Modules`. Then run the command `Import-Module ModernConsole`
 
 ![Screenshot](/Documentation/ModernConsole.png?raw=true)
 
+* Startscreen with Informations about the User and Computer (overwrites `Clear-Console`)
+* Short paths, onyl shows drive/network share and the current folder (overwrites `prompt`)
 ## Scripts
 
 * [Edit-StringInFiles](Scripts/Edit-StringInFiles.ps1) - Replace a string in one or multiple files ([view documentation](Documentation/Edit-StringInFiles.README.md))
