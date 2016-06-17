@@ -3,9 +3,7 @@ Collection of useful PowerShell modules, scripts, snippets and templates
 
 ## Description
 
-Make your admin life easier to have more time for :coffee:
-
->Some functions are also available in the module and as script
+Automate all the things and drink :coffee:
 
 ## Module
 
@@ -29,10 +27,13 @@ Let your console look better...
 
 Download the folder [Module/ModernConsole](Module/ModernConsole) and save it under `C:\Users\%username%\Documents\WindowsPowerShell\Modules`. Then run the command `Import-Module ModernConsole`
 
-![Screenshot](/Documentation/ModernConsole.png?raw=true)
+Available Functions:
 
 * Startscreen with Informations about the User and Computer (overwrites `Clear-Console`)
 * Short paths, onyl shows drive/network share and the current folder (overwrites `prompt`)
+
+![Screenshot](/Documentation/ModernConsole.png?raw=true)
+
 ## Scripts
 
 * [Edit-StringInFiles](Scripts/Edit-StringInFiles.ps1) - Replace a string in one or multiple files ([view documentation](Documentation/Edit-StringInFiles.README.md))
