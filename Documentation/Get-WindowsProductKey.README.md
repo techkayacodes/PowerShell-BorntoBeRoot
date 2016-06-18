@@ -42,6 +42,11 @@ Get-WindowsProductKey -ComputerName TEST-PC-01
 
 ## Output
 ```
-
- 
+ComputerName   : TEST-PC-01
+WindowsVersion : Microsoft Windows 10 Pro
+CSDVersion     :
+BitVersion     : 64-bit
+BuildNumber    : 10586
+ProductID      : 00000-00000-00000-00000
+ProductKey     : XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
 ```
