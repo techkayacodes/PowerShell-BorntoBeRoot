@@ -1,4 +1,4 @@
-# Get-InstalledSoftware.ps1 / Get-InstalledSoftware
+# Get-WindowsProductKey.ps1 / Get-WindowsProductKey
 
 Script/Function to get the Windows product key and some informations about the system
 
@@ -7,7 +7,7 @@ Script/Function to get the Windows product key and some informations about the s
 
 ## Description
 
-Script/Function to get the Windows product key and some informations about the system like Serialnumber, Windows version, Bit-Version etc. from one or more computers. Remote computers need WinRM enabled. To do this use `winrm quickconfig`. Both computer must be a member of the domain to authentificate each other.
+Script/Function to  get the Windows product key from a local or remote system and some informations like Serialnumber, Windows version, Bit-Version etc. from one or more computers. Remote Computers need WinRM enabled. To do this use "winrm quickconfig".
 
 ## Syntax 
 
