@@ -52,15 +52,21 @@ Param(
 )
 
 Begin{
-		
+     $LocalAddress = @("127.0.0.1","localhost",".","$($env:COMPUTERNAME)")
+
+    [System.Management.Automation.ScriptBlock]$ScriptBlock_ProductKey = {
+        return (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").digitalproductid[0x34..0x42]
+    }
+
+    [System.Management.Automation.ScriptBlock]$ScriptBlock_Wmi = {
+        return Get-WmiObject -Class Win32_OperatingSystem
+    }
 }
 
-Process{
-	$Results = @()
+Process{   
+	$Results = @()	
 
-	$LocalAddress = @("127.0.0.1","localhost",".","$($env:COMPUTERNAME)")
-
-	foreach($ComputerName2 in $ComputerName) 
+    foreach($ComputerName2 in $ComputerName) 
 	{              
 		$Chars="BCDFGHJKMPQRTVWXY2346789" 
 
@@ -68,8 +74,8 @@ Process{
 		if($LocalAddress -contains $ComputerName2)
 		{
             $ComputerName2 = $env:COMPUTERNAME
-			$ProductKeyValue =  (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").digitalproductid[0x34..0x42]
-            $Wmi_Win32 = Get-WmiObject -Class Win32_OperatingSystem
+			$ProductKeyValue =  Invoke-Command -ScriptBlock $ScriptBlock_ProductKey
+            $Wmi_Win32 = Invoke-Command -ScriptBlock $ScriptBlock_Wmi
 		}
 		else
 		{
@@ -82,13 +88,13 @@ Process{
 			try {
                 if($PSBoundParameters['Credential'] -is [PSCredential])
                 {
-                    $ProductKeyValue = Invoke-Command -ScriptBlock { (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").digitalproductid[0x34..0x42] } -ComputerName $ComputerName2 -Credential $Credential -ErrorAction Stop 
-                    $Wmi_Win32 = Invoke-Command -ScriptBlock { Get-WmiObject -Class Win32_OperatingSystem } -ComputerName $ComputerName2 -Credential $Credential
+                    $ProductKeyValue = Invoke-Command -ScriptBlock $ScriptBlock_ProductKey -ComputerName $ComputerName2 -Credential $Credential -ErrorAction Stop 
+                    $Wmi_Win32 = Invoke-Command -ScriptBlock $ScriptBlock_Wmi -ComputerName $ComputerName2 -Credential $Credential
                 }
                 else
                 {					    
-                    $ProductKeyValue = Invoke-Command -ScriptBlock { (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").digitalproductid[0x34..0x42] } -ComputerName $ComputerName2 -ErrorAction Stop
-                    $Wmi_Win32 = Invoke-Command -ScriptBlock { Get-WmiObject -Class Win32_OperatingSystem } -ComputerName $ComputerName2
+                    $ProductKeyValue = Invoke-Command -ScriptBlock $ScriptBlock_ProductKey -ComputerName $ComputerName2 -ErrorAction Stop
+                    $Wmi_Win32 = Invoke-Command -ScriptBlock $ScriptBlock_Wmi -ComputerName $ComputerName2
                 }
 			}
 			catch {
@@ -128,11 +134,9 @@ Process{
 		Add-Member -InputObject $Result -MemberType NoteProperty -Name SerialNumber $Wmi_Win32.SerialNumber
 		Add-Member -InputObject $Result -MemberType NoteProperty -Name ProductKey -Value $ProductKey
 		$Results += $Result       
-	}
-	   
-	return $Results   
+	}   
 }
 
 End{
-
+    return $Results
 }

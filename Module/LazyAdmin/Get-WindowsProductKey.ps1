@@ -53,54 +53,60 @@ function Get-WindowsProductKey
 	)
 
 	Begin{
-		
-	}
+        $LocalAddress = @("127.0.0.1","localhost",".","$($env:COMPUTERNAME)")
 
-	Process{
-		$Results = @()
+        [System.Management.Automation.ScriptBlock]$ScriptBlock_ProductKey = {
+            return (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").digitalproductid[0x34..0x42]
+        }
 
-		$LocalAddress = @("127.0.0.1","localhost",".","$($env:COMPUTERNAME)")
+        [System.Management.Automation.ScriptBlock]$ScriptBlock_Wmi = {
+            return Get-WmiObject -Class Win32_OperatingSystem
+        }
+    }
 
-		foreach($ComputerName2 in $ComputerName) 
-		{              
-			$Chars="BCDFGHJKMPQRTVWXY2346789" 
+    Process{   
+	    $Results = @()	
 
-			# Don't use Invoke-Command on local machine. Prevent errors if WinRM is not configured
-			if($LocalAddress -contains $ComputerName2)
-			{
+        foreach($ComputerName2 in $ComputerName) 
+	    {              
+		    $Chars="BCDFGHJKMPQRTVWXY2346789" 
+
+		    # Don't use Invoke-Command on local machine. Prevent errors if WinRM is not configured
+		    if($LocalAddress -contains $ComputerName2)
+		    {
                 $ComputerName2 = $env:COMPUTERNAME
-				$ProductKeyValue =  (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").digitalproductid[0x34..0x42]
-                $Wmi_Win32 = Get-WmiObject -Class Win32_OperatingSystem
-			}
-			else
-			{
+			    $ProductKeyValue =  Invoke-Command -ScriptBlock $ScriptBlock_ProductKey
+                $Wmi_Win32 = Invoke-Command -ScriptBlock $ScriptBlock_Wmi
+		    }
+		    else
+		    {
                 if(-not(Test-Connection -ComputerName $ComputerName2 -Count 2 -Quiet))
                 {
                     Write-Host "$ComputerName2 is not reachable!" -ForegroundColor Red
                     continue
                 }
 
-				try {
+			    try {
                     if($PSBoundParameters['Credential'] -is [PSCredential])
                     {
-                        $ProductKeyValue = Invoke-Command -ScriptBlock { (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").digitalproductid[0x34..0x42] } -ComputerName $ComputerName2 -Credential $Credential -ErrorAction Stop 
-                        $Wmi_Win32 = Invoke-Command -ScriptBlock { Get-WmiObject -Class Win32_OperatingSystem } -ComputerName $ComputerName2 -Credential $Credential
+                        $ProductKeyValue = Invoke-Command -ScriptBlock $ScriptBlock_ProductKey -ComputerName $ComputerName2 -Credential $Credential -ErrorAction Stop 
+                        $Wmi_Win32 = Invoke-Command -ScriptBlock $ScriptBlock_Wmi -ComputerName $ComputerName2 -Credential $Credential
                     }
                     else
                     {					    
-                        $ProductKeyValue = Invoke-Command -ScriptBlock { (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").digitalproductid[0x34..0x42] } -ComputerName $ComputerName2 -ErrorAction Stop
-                        $Wmi_Win32 = Invoke-Command -ScriptBlock { Get-WmiObject -Class Win32_OperatingSystem } -ComputerName $ComputerName2
+                        $ProductKeyValue = Invoke-Command -ScriptBlock $ScriptBlock_ProductKey -ComputerName $ComputerName2 -ErrorAction Stop
+                        $Wmi_Win32 = Invoke-Command -ScriptBlock $ScriptBlock_Wmi -ComputerName $ComputerName2
                     }
-				}
-				catch {
-					Write-Host "Error while connecting to $ComputerName2`n$($_.Exception.Message)" -ForegroundColor Red
-					continue
-				}
-			}
+			    }
+			    catch {
+				    Write-Host "Error while connecting to $ComputerName2`n$($_.Exception.Message)" -ForegroundColor Red
+				    continue
+			    }
+		    }
 	   
-			$ProductKey = ""
+		    $ProductKey = ""
 	   
-			for($i = 24; $i -ge 0; $i--) 
+		    for($i = 24; $i -ge 0; $i--) 
             { 
 			    $r = 0 
 
@@ -117,24 +123,22 @@ function Get-WindowsProductKey
                 { 
 				    $ProductKey = "-" + $ProductKey 
 			    } 
-			} 
+		    } 
 
-			$Result = New-Object -TypeName PSObject
-			Add-Member -InputObject $Result -MemberType NoteProperty -Name ComputerName -Value $ComputerName2
+		    $Result = New-Object -TypeName PSObject
+		    Add-Member -InputObject $Result -MemberType NoteProperty -Name ComputerName -Value $ComputerName2
             Add-Member -InputObject $Result -MemberType NoteProperty -Name Caption -Value $Wmi_Win32.Caption
             Add-Member -InputObject $Result -MemberType NoteProperty -Name CSDVersion $Wmi_Win32.CSDVersion
             Add-Member -InputObject $Result -MemberType NoteProperty -Name WindowsVersion $Wmi_Win32.Version
-			Add-Member -InputObject $Result -MemberType NoteProperty -Name OSArchitecture $Wmi_Win32.OSArchitecture
-			Add-Member -InputObject $Result -MemberType NoteProperty -Name BuildNumber $Wmi_Win32.BuildNumber
-			Add-Member -InputObject $Result -MemberType NoteProperty -Name SerialNumber $Wmi_Win32.SerialNumber
-			Add-Member -InputObject $Result -MemberType NoteProperty -Name ProductKey -Value $ProductKey
-			$Results += $Result       
-		}
-	   
-		return $Results   
-	}
+		    Add-Member -InputObject $Result -MemberType NoteProperty -Name OSArchitecture $Wmi_Win32.OSArchitecture
+		    Add-Member -InputObject $Result -MemberType NoteProperty -Name BuildNumber $Wmi_Win32.BuildNumber
+		    Add-Member -InputObject $Result -MemberType NoteProperty -Name SerialNumber $Wmi_Win32.SerialNumber
+		    Add-Member -InputObject $Result -MemberType NoteProperty -Name ProductKey -Value $ProductKey
+		    $Results += $Result       
+	    }   
+    }
 
-	End{
-
-	}
+    End{
+        return $Results
+    }
 }
