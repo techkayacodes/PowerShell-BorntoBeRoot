@@ -13,6 +13,7 @@ Download the folder [Module/LazyAdmin](Module/LazyAdmin) and save it under `C:\U
 
 Available Functions:
 
+* [Convert-Subnetmask](Module/LazyAdmin/Convert-Subnetmask.ps1) - Convert a subnetmask to CIDR and vise versa ([view documentation](Documentation/Convert-Subnetmask.README.md)) 
 * [Find-StringInFiles](Module/LazyAdmin/Find-StringInFiles.ps1) - Find a string in one or multiple files ([view documentation](Documentation/Find-StringInFiles.README.md))
 * [Get-InstalledSoftware](Module/LazyAdmin/Get-InstalledSoftware.ps1) - Get all installed software with DisplayName, Publisher and UninstallString ([view documentation](Documentation/Get-InstalledSoftware.README.md))
 * [Get-WindowsProductKey](Module/LazyAdmin/Get-WindowsProductKey.ps1) - Get the Windows product key and some informations about the system ([view documentation](Documentation/Get-WindowsProductKey.README.md))
@@ -37,6 +38,7 @@ Available Functions:
 
 ## Scripts
 
+* [Convert-Subnetmask](Scripts/Convert-Subnetmask.ps1) - Convert a subnetmask to CIDR and vise versa ([view documentation](Documentation/Convert-Subnetmask.README.md))
 * [Find-StringInFiles](Scripts/Find-StringInFiles.ps1) - Find a string in one or multiple files ([view documentation](Documentation/Find-StringInFiles.README.md))
 * [Get-InstalledSoftware.ps1](Scripts/Get-InstalledSoftware.ps1) - Get all installed software with DisplayName, Publisher and UninstallString ([view documentation](Documentation/Get-InstalledSoftware.README.md))
 * [Get-WindowsProductKey.ps1](Scripts/Get-WindowsProductKey.ps1) - Get the Windows product key and some informations about the system ([view documentation](Documentation/Get-WindowsProductKey.README.md))
