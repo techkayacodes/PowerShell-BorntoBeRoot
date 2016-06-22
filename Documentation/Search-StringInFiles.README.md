@@ -1,22 +1,22 @@
-# Find-StringInFiles.ps1 / Find-StringInFiles
+# Search-StringInFiles.ps1 / Search-StringInFiles
 
 Script/Function to find a string in one or multiple files
 
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Find-StringInFiles.ps1)
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Find-StringInFiles.ps1)
+* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Search-StringInFiles.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Search-StringInFiles.ps1)
 
 ## Syntax
 
 ### Script
 
 ```powershell
-.\Find-StringInFiles.ps1 [-Path] <String> [-Find] <String> [[-CaseSensitive]] [<CommonParameters>]
+.\Search-StringInFiles.ps1 [-Path] <String> [-Find] <String> [[-CaseSensitive]] [<CommonParameters>]
 ```
 
 ### Function
 
 ```powershell
-Find-StringInFiles [-Path] <String> [-Find] <String> [[-CaseSensitive]] [<CommonParameters>]
+Search-StringInFiles [-Path] <String> [-Find] <String> [[-CaseSensitive]] [<CommonParameters>]
 ``` 
 
 ## Example
@@ -24,7 +24,7 @@ Find-StringInFiles [-Path] <String> [-Find] <String> [[-CaseSensitive]] [<Common
 ### Script
 
 ```powershell
-PS> .\Find-StringInFiles.ps1 -Path "C:\Scripts\FolderWithFiles\" -Find "Computer"
+PS> .\Search-StringInFiles.ps1 -Path "C:\Scripts\FolderWithFiles\" -Find "Computer"
 
 Filename      Path                                     LineNumber Matches
 --------      ----                                     ---------- -------
@@ -39,7 +39,7 @@ PC_List_4.txt C:\Scripts\FolderWithFiles\PC_List_4.txt          6 {Computer}
 ### Function
 
 ```powershell
-PS> Find-StringInFiles -Path "C:\Scripts\FolderWithFiles\" -Find "Computer"
+PS> Search-StringInFiles -Path "C:\Scripts\FolderWithFiles\" -Find "Computer"
 
 Filename      Path                                     LineNumber Matches
 --------      ----                                     ---------- -------

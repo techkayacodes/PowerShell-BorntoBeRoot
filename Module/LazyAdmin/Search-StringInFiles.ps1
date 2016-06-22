@@ -1,6 +1,6 @@
-﻿###############################################################################################################
+###############################################################################################################
 # Language     :  PowerShell 4.0
-# Filename     :  Find-StringInFiles.ps1
+# Filename     :  Search-StringInFiles.ps1
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
 # Description  :  Script to find a string in multiple files
 # Repository   :  https://github.com/BornToBeRoot/PowerShell
@@ -14,7 +14,7 @@
     Script to find a string in one or multiple files
                                  
     .EXAMPLE
-    .\Find-StringInFiles.ps1 -Path "C:\Scripts\FolderWithFiles" -Find "Computer" -CaseSensitive
+    .\Search-StringInFiles.ps1 -Path "C:\Scripts\FolderWithFiles" -Find "Computer" -CaseSensitive
 	
 	Filename      Path                                     LineNumber Matches
 	--------      ----                                     ---------- -------
@@ -30,21 +30,20 @@
     Github Repository:     https://github.com/BornToBeRoot/PowerShell
 #>
 
-function Find-StringInFiles
+function Search-StringInFiles
 {
 	[CmdletBinding()]
 	Param(
-		[Parameter(
+        [Parameter(
 			Position=0,
-			Mandatory=$true,
-			HelpMessage="Folder where the files are stored (will search recursive)")]
-		[String]$Path,
-
-		[Parameter(
-			Position=1,
 			Mandatory=$true,
 			HelpMessage="String to find")]
 		[String]$Find,
+
+        [Parameter(
+			Position=1,
+			HelpMessage="Folder where the files are stored (will search recursive)")]
+		[String]$Path = (Get-Location),
 	
 		[Parameter(
 			Position=2,
