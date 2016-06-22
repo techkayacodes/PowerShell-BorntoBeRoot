@@ -25,7 +25,7 @@ foreach($ip in $ipaddress.AddressList)
 ##################################################################################################################
 
 $Shell = $Host.UI.RawUI
-$Shell.WindowTitle = $AdminTitle + "Windows PowerShell $($PSVersionTable.PSVersion.Major).$($PSVersionTable.PSVersion.Minor) improved by BornToBeRoot"
+$Shell.WindowTitle = $AdminTitle + "Windows PowerShell $($PSVersionTable.PSVersion.Major).$($PSVersionTable.PSVersion.Minor)"
 
 $Size = $Shell.WindowSize
 $Size.width=135
@@ -69,11 +69,6 @@ function Write-Startup {
 "@
 
 	Write-Host $EmptyConsoleText
-
-	if($IsAdmin)
-	{		
-		Write-Host "                    +++ This console is running with administrative privileges! +++`n" -ForegroundColor Red
-	}
 }
 
 ##################################################################################################################
