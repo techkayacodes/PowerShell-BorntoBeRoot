@@ -1,6 +1,6 @@
 ﻿###############################################################################################################
 # Language     :  PowerShell 4.0
-# Filename     :  Edit-StringInFiles.ps1
+# Filename     :  Replace-StringInFiles.ps1
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
 # Description  :  Script to replace a string in multiple files
 # Repository   :  https://github.com/BornToBeRoot/PowerShell
@@ -15,7 +15,7 @@
     Binary files (*.zip, *.exe, etc.) are not touched by this script     
 	                         
     .EXAMPLE
-    .\Edit-StringInFiles.ps1 -Path "C:\Scripts\FolderWithFiles" -Find "Computer" -ReplaceWith "Notebook" -CaseSensitive
+    .\Replace-StringInFiles.ps1 -Path "C:\Scripts\FolderWithFiles" -Find "Computer" -ReplaceWith "Notebook" -CaseSensitive
        
     .LINK
     Github Profil:         https://github.com/BornToBeRoot
