@@ -60,7 +60,7 @@ function Update-StringInFiles
 	Process{
 		Write-Verbose "Binary files like (*.zip, *.exe, etc...) are ignored"
 
-		$Files = Get-ChildItem -Path $Path -Recurse | Where-Object { (Test-IsFileBinary -Path $_.FullName) -eq $false } | Select-String -Pattern ([regex]::Escape($Find)) -CaseSensitive:$CaseSensitive | Group-Object Path 
+		$Files = Get-ChildItem -Path $Path -Recurse | Where-Object { ($_.PSIsContainer -eq $false) -and ((Test-IsFileBinary -Path $_.FullName) -eq $false) } | Select-String -Pattern ([regex]::Escape($Find)) -CaseSensitive:$CaseSensitive | Group-Object Path 
 		
 		Write-Verbose "Files with string found: $($Files.Count)"
 

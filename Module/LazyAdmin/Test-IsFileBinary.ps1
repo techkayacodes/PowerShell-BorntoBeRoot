@@ -39,6 +39,13 @@ function Test-IsFileBinary
 
 	Begin{}
 	Process{
+        # Check if Path is a directory
+        if((Get-Item $Path) -is [System.IO.DirectoryInfo])
+        {
+            Write-Host "Cannot check a directory ($Path)" -ForegroundColor Yellow
+            return
+        }
+
 		# encoding variable
 		$encoding = ""
 
