@@ -24,17 +24,15 @@ New-RandomPIN [[-Length] <Int32>] [[-Minimum] <Int32>] [[-Maximum] <Int32>] [[-C
 ### Script
 
 ```powershell
-.\New-RandomPIN.ps1 -Length 6
+PS> .\New-RandomPIN.ps1 -Length 6
+
+698577
 ```
 
 ### Function
 
 ```powershell
-New-RandomPIN -Length 6
-```
+PS> New-RandomPIN -Length 6
 
-## Output
-
-```powershell 
 698577
-``` 
+```

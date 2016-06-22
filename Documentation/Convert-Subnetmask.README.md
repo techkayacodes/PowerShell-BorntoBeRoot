@@ -1,4 +1,4 @@
-# Scriptname.ps1 / Functioname
+# Convert-Subnetmask.ps1 / Convert-Subnetmask
 
 Convert a subnetmask (XXX.XXX.XXX.XXX) to CIDR (/XX) or vise versa
 

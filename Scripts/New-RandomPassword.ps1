@@ -20,6 +20,8 @@
     .EXAMPLE
     .\New-RandomPassword.ps1 -Length 10 -SpecialChars:$false
 
+	7UZE6pyyGM
+	
     .LINK
     Github Profil:         https://github.com/BornToBeRoot
     Github Repository:     https://github.com/BornToBeRoot/PowerShell

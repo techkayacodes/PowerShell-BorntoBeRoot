@@ -30,11 +30,15 @@ Test-IsFileBinary [-Path] <String> [<CommonParameters>]
 ### Script
 
 ```powershell
-.\Test-IsFileBinary.ps1 -Path "C:\Scripts\FolderWithFiles\Test.zip"
+PS> .\Test-IsFileBinary.ps1 -Path "C:\Scripts\FolderWithFiles\Test.zip"
+
+True
 ```
 
 ### Function
 
 ```powershell
-Test-IsFileBinary -Path "C:\Scripts\FolderWithFiles\Test.zip"
+PS> Test-IsFileBinary -Path "C:\Scripts\FolderWithFiles\Test.zip"
+
+True
 ```

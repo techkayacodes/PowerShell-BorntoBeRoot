@@ -32,35 +32,19 @@ Get-WLANProfile [[-ShowPassword]] [[-Search] <String>] [[-ExactMatch]] [<CommonP
 ### Script
 
 ```powershell
-.\Get-WLANProfile.ps1											# As SecureString
-```
+PS> .\Get-WLANProfile.ps1											
 
-```powershell
-.\Get-WLANProfile.ps1  -ShowPassword -Search "MyHomeNetwork*"   # As plain text
-```
-
-### Function
-
-```powershell
-Get-WLANProfile													# As SecureString
-```
-
-```powershell
-Get-WLANProfile  -ShowPassword -Search "MyHomeNetwork*"			# As plain text
-```
-
-## Output
-
-```powershell
 Name              SSID               Authentification    Password
 ----              ----               ---------------     ------
 MyHomeNetwork01   MyHomeNetwork      WPA2-Personal       System.Security.SecureString
 MyHomeNetwork02   MyHomenetwork5G    WPA2-Personal       System.Security.SecureString
 ```
 
-or
+### Function
 
 ```powershell
+PS> Get-WLANProfile  -ShowPassword -Search "MyHomeNetwork*"			
+
 Name              SSID               Authentification    Password
 ----              ----               ---------------     ------
 MyHomeNetwork01   MyHomeNetwork      WPA2-Personal       MyPassword123456789

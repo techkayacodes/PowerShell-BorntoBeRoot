@@ -21,7 +21,9 @@
 	                        
     .EXAMPLE
     .\Test-IsFileBinary.ps1 -Path "C:\Scripts\FolderWithFiles\Test.zip"
-       
+      
+	True
+	  
     .LINK
     Github Profil:         https://github.com/BornToBeRoot
     Github Repository:     https://github.com/BornToBeRoot/PowerShell

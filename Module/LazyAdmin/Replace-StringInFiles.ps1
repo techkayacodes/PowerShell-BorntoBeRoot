@@ -17,6 +17,13 @@
     .EXAMPLE
     Replace-StringInFiles -Path "C:\Scripts\FolderWithFiles" -Find "Computer" -ReplaceWith "Notebook" -CaseSensitive
        
+	VERBOSE: Binary files like (*.zip, *.exe, etc...) are ignored
+	VERBOSE: Files with string found: 2
+	VERBOSE: File: C:\Scripts\FolderWithFiles\PC_List_1.txt
+	VERBOSE: Count: 3
+	VERBOSE: File: C:\Scripts\FolderWithFiles\PC_List_4.txt
+	VERBOSE: Count: 3   
+	   
     .LINK
     Github Profil:         https://github.com/BornToBeRoot
     Github Repository:     https://github.com/BornToBeRoot/PowerShell

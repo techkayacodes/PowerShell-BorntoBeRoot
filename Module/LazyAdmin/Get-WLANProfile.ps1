@@ -19,9 +19,19 @@
     .EXAMPLE
     Get-WLANProfile
 
+	Name              SSID               Authentification    Password
+	----              ----               ---------------     ------
+	MyHomeNetwork01   MyHomeNetwork      WPA2-Personal       System.Security.SecureString
+	MyHomeNetwork02   MyHomenetwork5G    WPA2-Personal       System.Security.SecureString
+	
     .EXAMPLE
     Get-WLANProfile -ShowPassword
        
+	Name              SSID               Authentification    Password
+	----              ----               ---------------     ------
+	MyHomeNetwork01   MyHomeNetwork      WPA2-Personal       MyPassword123456789
+	MyHomeNetwork02   MyHomenetwork5G    WPA2-Personal       MyPassword987654321   
+	   
     .LINK
     Github Profil:         https://github.com/BornToBeRoot
     Github Repository:     https://github.com/BornToBeRoot/PowerShell

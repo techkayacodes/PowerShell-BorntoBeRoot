@@ -26,9 +26,33 @@
         
     .\Get-WindowsProductKey.ps1
 
+	ComputerName   : TEST-PC-01
+	WindowsVersion : Microsoft Windows 10 Pro
+	CSDVersion     :
+	BitVersion     : 64-bit
+	BuildNumber    : 10586
+	ProductID      : 00000-00000-00000-00000
+	ProductKey     : XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
+	
     .EXAMPLE
 
-    .\Get-WindowsProductKey.ps1 -ComputerName TEST-SERVER-01,localhost
+    .\Get-WindowsProductKey.ps1 -ComputerName TEST-PC-01,TEST-PC-02
+	
+	ComputerName   : TEST-PC-01
+	WindowsVersion : Microsoft Windows 10 Pro
+	CSDVersion     :
+	BitVersion     : 64-bit
+	BuildNumber    : 10586
+	ProductID      : 00000-00000-00000-00000
+	ProductKey     : XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
+
+	ComputerName   : TEST-PC-02
+	WindowsVersion : Microsoft Windows 10 Pro
+	CSDVersion     :
+	BitVersion     : 64-bit
+	BuildNumber    : 10586
+	ProductID      : 00000-00000-00000-00000
+	ProductKey     : XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
 
     .LINK
     Github Profil:         https://github.com/BornToBeRoot

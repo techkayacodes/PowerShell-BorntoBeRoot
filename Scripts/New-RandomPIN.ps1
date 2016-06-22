@@ -19,7 +19,9 @@
                 
     .EXAMPLE
     .\New-RandomPIN.ps1 -Length 6
-
+	
+	698577
+	
     .LINK
     Github Profil:         https://github.com/BornToBeRoot
     Github Repository:     https://github.com/BornToBeRoot/PowerShell

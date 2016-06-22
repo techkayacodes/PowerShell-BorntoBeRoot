@@ -7,12 +7,10 @@
 ###############################################################################################################
 
 <#
-    .SYNOPSIS
-    
+    .SYNOPSIS    
     Get the Windows product key and some usefull informations about the system
 
-    .DESCRIPTION
-    
+    .DESCRIPTION    
     Get the Windows product key from a local or remote system and some informations like Serialnumber, 
     Windows version, Bit-Version etc. from one or more computers. Remote computers need WinRM enabled.
     To do this use "winrm quickconfig".
@@ -22,13 +20,35 @@
           
     Basic Logic found on: http://powershell.com/cs/blogs/tips/archive/2012/04/30/getting-windows-product-key.aspx          
                 
-    .EXAMPLE
-        
+    .EXAMPLE        
     Get-WindowsProductKey
 
+	ComputerName   : TEST-PC-01
+	WindowsVersion : Microsoft Windows 10 Pro
+	CSDVersion     :
+	BitVersion     : 64-bit
+	BuildNumber    : 10586
+	ProductID      : 00000-00000-00000-00000
+	ProductKey     : XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
+	
     .EXAMPLE
+    Get-WindowsProductKey -ComputerName TEST-PC-01,TEST-PC-02
+	
+	ComputerName   : TEST-PC-01
+	WindowsVersion : Microsoft Windows 10 Pro
+	CSDVersion     :
+	BitVersion     : 64-bit
+	BuildNumber    : 10586
+	ProductID      : 00000-00000-00000-00000
+	ProductKey     : XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
 
-    Get-WindowsProductKey -ComputerName TEST-SERVER-01,localhost
+	ComputerName   : TEST-PC-02
+	WindowsVersion : Microsoft Windows 10 Pro
+	CSDVersion     :
+	BitVersion     : 64-bit
+	BuildNumber    : 10586
+	ProductID      : 00000-00000-00000-00000
+	ProductKey     : XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
 
     .LINK
     Github Profil:         https://github.com/BornToBeRoot

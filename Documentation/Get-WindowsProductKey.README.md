@@ -28,20 +28,31 @@ Get-WindowsProductKey [[-ComputerName] <String[]>] [[-Credentials] <PSCredential
 ### Script
 
 ```powershell
-.\Get-WindowsProductKey.ps1
+PS> $Creds = Get-Credentials
+PS> .\Get-WindowsProductKey.ps1 -ComputerName TEST-PC-01,TEST-PC-02 -Credentials $Creds
 
-$Creds = Get-Credentials
-.\Get-WindowsProductKey.ps1 -ComputerName TEST-PC-01,TEST-PC-02 -Credentials $Creds
+ComputerName   : TEST-PC-01
+WindowsVersion : Microsoft Windows 10 Pro
+CSDVersion     :
+BitVersion     : 64-bit
+BuildNumber    : 10586
+ProductID      : 00000-00000-00000-00000
+ProductKey     : XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
+
+ComputerName   : TEST-PC-02
+WindowsVersion : Microsoft Windows 10 Pro
+CSDVersion     :
+BitVersion     : 64-bit
+BuildNumber    : 10586
+ProductID      : 00000-00000-00000-00000
+ProductKey     : XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
 ```
 
 ### Function
 
 ```powershell
-Get-WindowsProductKey -ComputerName TEST-PC-01
-```
+PS> Get-WindowsProductKey -ComputerName TEST-PC-01
 
-## Output
-```
 ComputerName   : TEST-PC-01
 WindowsVersion : Microsoft Windows 10 Pro
 CSDVersion     :

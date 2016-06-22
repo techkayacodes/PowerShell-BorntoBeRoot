@@ -30,18 +30,21 @@ Replace-StringInFiles [-Path] <String> [-Find] <String> [-ReplaceWith] <String> 
 ### Script
 
 ```powershell
-.\Replace-StringInFiles.ps1 -Path "C:\Scripts\FolderWithFiles\" -Find "Computer" -ReplaceWith "Notebook" -CaseSensitive -Verbose
+PS> .\Replace-StringInFiles.ps1 -Path "C:\Scripts\FolderWithFiles\" -Find "Computer" -ReplaceWith "Notebook" -CaseSensitive -Verbose
+
+VERBOSE: Binary files like (*.zip, *.exe, etc...) are ignored
+VERBOSE: Files with string found: 2
+VERBOSE: File: C:\Scripts\FolderWithFiles\PC_List_1.txt
+VERBOSE: Count: 3
+VERBOSE: File: C:\Scripts\FolderWithFiles\PC_List_4.txt
+VERBOSE: Count: 3
 ```
 
 ### Function
 
 ```powershell
-Replace-StringInFiles -Path "C:\Scripts\FolderWithFiles\" -Find "Computer" -ReplaceWith "Notebook" -CaseSensitive -Verbose
-```
+PS> Replace-StringInFiles -Path "C:\Scripts\FolderWithFiles\" -Find "Computer" -ReplaceWith "Notebook" -CaseSensitive -Verbose
 
-## Output
-
-```
 VERBOSE: Binary files like (*.zip, *.exe, etc...) are ignored
 VERBOSE: Files with string found: 2
 VERBOSE: File: C:\Scripts\FolderWithFiles\PC_List_1.txt

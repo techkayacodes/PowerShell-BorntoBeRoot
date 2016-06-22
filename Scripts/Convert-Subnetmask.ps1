@@ -20,7 +20,7 @@
                 
     .EXAMPLE
     
-    PS> .\Convert-Subnetmask.ps1 -CIDR 24
+    .\Convert-Subnetmask.ps1 -CIDR 24
 
     Mask          CIDR
     ----          ----
@@ -28,7 +28,7 @@
 
     .EXAMPLE
   
-    PS> .\Convert-Subnetmask.ps1 -Mask 255.255.0.0
+    .\Convert-Subnetmask.ps1 -Mask 255.255.0.0
 
     Mask        CIDR
     ----        ----

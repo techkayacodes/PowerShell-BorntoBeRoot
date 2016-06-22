@@ -24,17 +24,15 @@ New-RandomPassword.ps1 [[-Length] <Int32>] [[-LowerCase]] [[-UpperCase]] [[-Numb
 ### Script 
 
 ```powershell
-.\New-RandomPassword.ps1 -Length 10 -SpecialChars:$false
+PS> .\New-RandomPassword.ps1 -Length 10 -SpecialChars:$false
+
+7UZE6pyyGM
 ```
 
 ### Function
 
 ```powershell
-New-RandomPassword -Length 10 -SpecialChars:$false
-```
+PS> New-RandomPassword -Length 10 -SpecialChars:$false
 
-## Output
-
-```powershell 
 7UZE6pyyGM
-``` 
+```
