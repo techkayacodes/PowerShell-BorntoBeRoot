@@ -38,15 +38,15 @@ Available Functions:
 
 ## Scripts
 
-* [Convert-Subnetmask](Scripts/Convert-Subnetmask.ps1) - Convert a subnetmask to CIDR and vise versa ([view documentation](Documentation/Convert-Subnetmask.README.md))
+* [Convert-Subnetmask.ps1](Scripts/Convert-Subnetmask.ps1) - Convert a subnetmask to CIDR and vise versa ([view documentation](Documentation/Convert-Subnetmask.README.md))
 * [Get-InstalledSoftware.ps1](Scripts/Get-InstalledSoftware.ps1) - Get all installed software with DisplayName, Publisher and UninstallString ([view documentation](Documentation/Get-InstalledSoftware.README.md))
 * [Get-WindowsProductKey.ps1](Scripts/Get-WindowsProductKey.ps1) - Get the Windows product key and some informations about the system ([view documentation](Documentation/Get-WindowsProductKey.README.md))
 * [Get-WLANProfile.ps1](Scripts/Get-WLANProfile.ps1) - Get all WLAN-Profiles on your **local system**, include password ([view documentation](Documentation/Get-WLANProfile.README.md))
 * [New-RandomPassword.ps1](Scripts/New-RandomPassword.ps1) - Generate a random password with a freely definable number of chracters ([view documentation](Documentation/New-RandomPassword.README.md))
 * [New-RandomPIN.ps1](Scripts/New-RandomPIN.ps1) - Generate a random PIN with a freely definable number of numbers ([view documentation](Documentation/New-RandomPIN.README.md))
-* [Search-StringInFiles](Scripts/Search-StringInFiles.ps1) - Find a string in one or multiple files ([view documentation](Documentation/Search-StringInFiles.README.md))
+* [Search-StringInFiles.ps1](Scripts/Search-StringInFiles.ps1) - Find a string in one or multiple files ([view documentation](Documentation/Search-StringInFiles.README.md))
 * [Test-IsFileBinary.ps1](Scripts/Test-IsFileBinary.ps1) - Test if a file is binary or just a text file ([view documentation](Documentation/Test-IsFileBinary.README.md))
-* [Update-StringInFiles](Scripts/Update-StringInFiles.ps1) - Replace a string in one or multiple files ([view documentation](Documentation/Update-StringInFiles.README.md))
+* [Update-StringInFiles.ps1](Scripts/Update-StringInFiles.ps1) - Replace a string in one or multiple files ([view documentation](Documentation/Update-StringInFiles.README.md))
 
 ## Snippets
 
