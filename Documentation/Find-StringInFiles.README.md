@@ -24,18 +24,23 @@ Find-StringInFiles [-Path] <String> [-Find] <String> [[-CaseSensitive]] [<Common
 ### Script
 
 ```powershell
-.\Find-StringInFiles.ps1 -Path "C:\Scripts\FolderWithFiles\" -Find "Computer"
+PS> .\Find-StringInFiles.ps1 -Path "C:\Scripts\FolderWithFiles\" -Find "Computer"
+
+Filename      Path                                     LineNumber Matches
+--------      ----                                     ---------- -------
+PC_List_1.txt C:\Scripts\FolderWithFiles\PC_List_1.txt          1 {Computer}
+PC_List_1.txt C:\Scripts\FolderWithFiles\PC_List_1.txt          3 {Computer}
+PC_List_1.txt C:\Scripts\FolderWithFiles\PC_List_1.txt          6 {Computer}
+PC_List_4.txt C:\Scripts\FolderWithFiles\PC_List_4.txt          1 {Computer}
+PC_List_4.txt C:\Scripts\FolderWithFiles\PC_List_4.txt          3 {Computer}
+PC_List_4.txt C:\Scripts\FolderWithFiles\PC_List_4.txt          6 {Computer}
 ```
 
 ### Function
 
 ```powershell
-Find-StringInFiles -Path "C:\Scripts\FolderWithFiles\" -Find "Computer"
-```
+PS> Find-StringInFiles -Path "C:\Scripts\FolderWithFiles\" -Find "Computer"
 
-## Output
-
-```
 Filename      Path                                     LineNumber Matches
 --------      ----                                     ---------- -------
 PC_List_1.txt C:\Scripts\FolderWithFiles\PC_List_1.txt          1 {Computer}
