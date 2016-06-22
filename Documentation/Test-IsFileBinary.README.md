@@ -38,7 +38,7 @@ True
 ### Function
 
 ```powershell
-PS> Test-IsFileBinary -Path "C:\Scripts\FolderWithFiles\Test.zip"
+PS> Test-IsFileBinary -Path "C:\Scripts\FolderWithFiles\Test.txt"
 
-True
+False
 ```
