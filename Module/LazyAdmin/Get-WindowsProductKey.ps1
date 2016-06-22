@@ -24,11 +24,11 @@
                 
     .EXAMPLE
         
-    .\Get-WindowsProductKey.ps1
+    Get-WindowsProductKey
 
     .EXAMPLE
 
-    .\Get-WindowsProductKey.ps1 -ComputerName TEST-SERVER-01,localhost
+    Get-WindowsProductKey -ComputerName TEST-SERVER-01,localhost
 
     .LINK
     Github Profil:         https://github.com/BornToBeRoot
