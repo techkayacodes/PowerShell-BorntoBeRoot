@@ -1,9 +1,9 @@
-# Replace-StringInFiles.ps1 / Replace-StringInFiles
+# Update-StringInFiles.ps1 / Update-StringInFiles
 
 Script/Function to replace a string in one or multiple files
 
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Replace-StringInFiles.ps1)
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Replace-StringInFiles.ps1)
+* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Update-StringInFiles.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Update-StringInFiles.ps1)
 
 ## Description
 
@@ -16,13 +16,13 @@ Binary files (*.zip, *.exe, etc.) are not touched by this script to avoid errors
 ### Script
 
 ```powershell
-.\Replace-StringInFiles.ps1 [-Path] <String> [-Find] <String> [-ReplaceWith] <String> [[-CaseSensitive]] [<CommonParameters>]
+.\Update-StringInFiles.ps1 [-Path] <String> [-Find] <String> [-ReplaceWith] <String> [[-CaseSensitive]] [<CommonParameters>]
 ``` 
 
 ### Function
 
 ```powershell
-Replace-StringInFiles [-Path] <String> [-Find] <String> [-ReplaceWith] <String> [[-CaseSensitive]] [<CommonParameters>]
+Update-StringInFiles [-Path] <String> [-Find] <String> [-ReplaceWith] <String> [[-CaseSensitive]] [<CommonParameters>]
 ```
 
 ## Example
@@ -30,7 +30,7 @@ Replace-StringInFiles [-Path] <String> [-Find] <String> [-ReplaceWith] <String> 
 ### Script
 
 ```powershell
-PS> .\Replace-StringInFiles.ps1 -Path "C:\Scripts\FolderWithFiles\" -Find "Computer" -ReplaceWith "Notebook" -CaseSensitive -Verbose
+PS> .\Update-StringInFiles.ps1 -Path "C:\Scripts\FolderWithFiles\" -Find "Computer" -ReplaceWith "Notebook" -CaseSensitive -Verbose
 
 VERBOSE: Binary files like (*.zip, *.exe, etc...) are ignored
 VERBOSE: Files with string found: 2
@@ -43,7 +43,7 @@ VERBOSE: Count: 3
 ### Function
 
 ```powershell
-PS> Replace-StringInFiles -Path "C:\Scripts\FolderWithFiles\" -Find "Computer" -ReplaceWith "Notebook" -CaseSensitive -Verbose
+PS> Update-StringInFiles -Path "C:\Scripts\FolderWithFiles\" -Find "Computer" -ReplaceWith "Notebook" -CaseSensitive -Verbose
 
 VERBOSE: Binary files like (*.zip, *.exe, etc...) are ignored
 VERBOSE: Files with string found: 2

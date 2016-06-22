@@ -1,6 +1,6 @@
-﻿###############################################################################################################
+###############################################################################################################
 # Language     :  PowerShell 4.0
-# Filename     :  Replace-StringInFiles.ps1
+# Filename     :  Update-StringInFiles.ps1
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
 # Description  :  Script to replace a string in multiple files
 # Repository   :  https://github.com/BornToBeRoot/PowerShell
@@ -15,7 +15,7 @@
     Binary files (*.zip, *.exe, etc.) are not touched by this script     
 	                         
     .EXAMPLE
-    .\Replace-StringInFiles.ps1 -Path "C:\Scripts\FolderWithFiles" -Find "Computer" -ReplaceWith "Notebook" -CaseSensitive
+    .\Update-StringInFiles.ps1 -Path "C:\Scripts\FolderWithFiles" -Find "Computer" -ReplaceWith "Notebook" -CaseSensitive
        
 	VERBOSE: Binary files like (*.zip, *.exe, etc...) are ignored
 	VERBOSE: Files with string found: 2
@@ -34,22 +34,21 @@ Param(
 	[Parameter(
 		Position=0,
 		Mandatory=$true,
-		HelpMessage="Folder where the files are stored (will search recursive)")]
-	[String]$Path,
-
-	[Parameter(
-		Position=1,
-		Mandatory=$true,
 		HelpMessage="String to find")]
 	[String]$Find,
 	
 	[Parameter(
-		Position=2,
+		Position=1,
 		Mandatory=$true,
 		HelpMessage="String to replace")]
 	[String]$ReplaceWith,
 
-	[Parameter(
+    [Parameter(
+		Position=2,
+		HelpMessage="Folder where the files are stored (will search recursive)")]
+	[String]$Path = (Get-Location),
+	
+    [Parameter(
 		Position=3,
 		HelpMessage="String must be case sensitive (Default=false)")]
 	[switch]$CaseSensitive=$false
