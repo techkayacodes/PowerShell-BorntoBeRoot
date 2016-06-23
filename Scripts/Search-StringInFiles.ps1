@@ -14,7 +14,7 @@
     Script to find a string in one ormultiple files
                                  
     .EXAMPLE
-    .\Search-StringInFiles.ps1 -Path "C:\Scripts\FolderWithFiles" -Find "Computer" -CaseSensitive
+    .\Search-StringInFiles.ps1 -Path "C:\Scripts\FolderWithFiles" -Search "Computer" -CaseSensitive
        
 	Filename      Path                                     LineNumber Matches
 	--------      ----                                     ---------- -------
@@ -36,7 +36,7 @@ Param(
 		Position=0,
 		Mandatory=$true,
 		HelpMessage="String to find")]
-	[String]$Find,
+	[String]$Search,
 
     [Parameter(
 		Position=1,
@@ -52,7 +52,7 @@ Param(
 Begin{}
 Process{
 	# Files with string to find
-	$Strings = Get-ChildItem -Path $Path -Recurse | Select-String -Pattern ([regex]::Escape($Find)) -CaseSensitive:$CaseSensitive | Group-Object Path 
+	$Strings = Get-ChildItem -Path $Path -Recurse | Select-String -Pattern ([regex]::Escape($Search)) -CaseSensitive:$CaseSensitive | Group-Object Path 
 	
 	$Results = @()
 

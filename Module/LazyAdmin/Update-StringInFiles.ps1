@@ -15,7 +15,7 @@
     Binary files (*.zip, *.exe, etc.) are not touched by this script     
 	                         
     .EXAMPLE
-    Update-StringInFiles -Path "C:\Scripts\FolderWithFiles" -Find "Computer" -ReplaceWith "Notebook" -CaseSensitive
+    Update-StringInFiles -Path "C:\Scripts\FolderWithFiles" -Search "Computer" -ReplaceWith "Notebook" -CaseSensitive
        
 	VERBOSE: Binary files like (*.zip, *.exe, etc...) are ignored
 	VERBOSE: Files with string found: 2
@@ -37,7 +37,7 @@ function Update-StringInFiles
 			Position=0,
 			Mandatory=$true,
 			HelpMessage="String to find")]
-		[String]$Find,
+		[String]$Search,
 	
 		[Parameter(
 			Position=1,
@@ -60,7 +60,7 @@ function Update-StringInFiles
 	Process{
 		Write-Verbose "Binary files like (*.zip, *.exe, etc...) are ignored"
 
-		$Files = Get-ChildItem -Path $Path -Recurse | Where-Object { ($_.PSIsContainer -eq $false) -and ((Test-IsFileBinary -Path $_.FullName) -eq $false) } | Select-String -Pattern ([regex]::Escape($Find)) -CaseSensitive:$CaseSensitive | Group-Object Path 
+		$Files = Get-ChildItem -Path $Path -Recurse | Where-Object { ($_.PSIsContainer -eq $false) -and ((Test-IsFileBinary -Path $_.FullName) -eq $false) } | Select-String -Pattern ([regex]::Escape($Search)) -CaseSensitive:$CaseSensitive | Group-Object Path 
 		
 		Write-Verbose "Files with string found: $($Files.Count)"
 
@@ -75,11 +75,11 @@ function Update-StringInFiles
 				# Replace string
 				if($CaseSensitive)
 				{
-					(Get-Content -Path $File.Name) -creplace [regex]::Escape($Find), $ReplaceWith | Set-Content -Path $File.Name -Force
+					(Get-Content -Path $File.Name) -creplace [regex]::Escape($Search), $ReplaceWith | Set-Content -Path $File.Name -Force
 				}
 				else
 				{
-					(Get-Content -Path $File.Name) -replace [regex]::Escape($Find), $ReplaceWith | Set-Content -Path $File.Name -Force
+					(Get-Content -Path $File.Name) -replace [regex]::Escape($Search), $ReplaceWith | Set-Content -Path $File.Name -Force
 				}
 			}
 			catch

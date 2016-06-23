@@ -16,13 +16,13 @@ Binary files (*.zip, *.exe, etc.) are not touched by this script to avoid errors
 ### Script
 
 ```powershell
-.\Update-StringInFiles.ps1 [-Path] <String> [-Find] <String> [-ReplaceWith] <String> [[-CaseSensitive]] [<CommonParameters>]
+.\Update-StringInFiles.ps1 [-Path] <String> [-Search] <String> [-ReplaceWith] <String> [[-CaseSensitive]] [<CommonParameters>]
 ``` 
 
 ### Function
 
 ```powershell
-Update-StringInFiles [-Path] <String> [-Find] <String> [-ReplaceWith] <String> [[-CaseSensitive]] [<CommonParameters>]
+Update-StringInFiles [-Path] <String> [-Search] <String> [-ReplaceWith] <String> [[-CaseSensitive]] [<CommonParameters>]
 ```
 
 ## Example
@@ -30,7 +30,7 @@ Update-StringInFiles [-Path] <String> [-Find] <String> [-ReplaceWith] <String> [
 ### Script
 
 ```powershell
-PS> .\Update-StringInFiles.ps1 -Path "C:\Scripts\FolderWithFiles\" -Find "Computer" -ReplaceWith "Notebook" -CaseSensitive -Verbose
+PS> .\Update-StringInFiles.ps1 -Path "C:\Scripts\FolderWithFiles\" -Search "Computer" -ReplaceWith "Notebook" -CaseSensitive -Verbose
 
 VERBOSE: Binary files like (*.zip, *.exe, etc...) are ignored
 VERBOSE: Files with string found: 2
@@ -43,7 +43,7 @@ VERBOSE: Count: 3
 ### Function
 
 ```powershell
-PS> Update-StringInFiles -Path "C:\Scripts\FolderWithFiles\" -Find "Computer" -ReplaceWith "Notebook" -CaseSensitive -Verbose
+PS> Update-StringInFiles -Path "C:\Scripts\FolderWithFiles\" -Search "Computer" -ReplaceWith "Notebook" -CaseSensitive -Verbose
 
 VERBOSE: Binary files like (*.zip, *.exe, etc...) are ignored
 VERBOSE: Files with string found: 2

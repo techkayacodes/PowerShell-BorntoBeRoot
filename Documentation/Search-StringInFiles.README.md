@@ -10,13 +10,13 @@ Script/Function to find a string in one or multiple files
 ### Script
 
 ```powershell
-.\Search-StringInFiles.ps1 [-Path] <String> [-Find] <String> [[-CaseSensitive]] [<CommonParameters>]
+.\Search-StringInFiles.ps1 [-Path] <String> [-Search] <String> [[-CaseSensitive]] [<CommonParameters>]
 ```
 
 ### Function
 
 ```powershell
-Search-StringInFiles [-Path] <String> [-Find] <String> [[-CaseSensitive]] [<CommonParameters>]
+Search-StringInFiles [-Path] <String> [-Search] <String> [[-CaseSensitive]] [<CommonParameters>]
 ``` 
 
 ## Example
@@ -24,7 +24,7 @@ Search-StringInFiles [-Path] <String> [-Find] <String> [[-CaseSensitive]] [<Comm
 ### Script
 
 ```powershell
-PS> .\Search-StringInFiles.ps1 -Path "C:\Scripts\FolderWithFiles\" -Find "Computer"
+PS> .\Search-StringInFiles.ps1 -Path "C:\Scripts\FolderWithFiles\" -Search "Computer"
 
 Filename      Path                                     LineNumber Matches
 --------      ----                                     ---------- -------
@@ -39,7 +39,7 @@ PC_List_4.txt C:\Scripts\FolderWithFiles\PC_List_4.txt          6 {Computer}
 ### Function
 
 ```powershell
-PS> Search-StringInFiles -Path "C:\Scripts\FolderWithFiles\" -Find "Computer"
+PS> Search-StringInFiles -Path "C:\Scripts\FolderWithFiles\" -Search "Computer"
 
 Filename      Path                                     LineNumber Matches
 --------      ----                                     ---------- -------
