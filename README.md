@@ -3,7 +3,7 @@ Collection of useful PowerShell modules, scripts, snippets and templates
 
 ## Description
 
-Automate all the things and drink :coffee:
+Automate all the things
 
 ## Module
 
@@ -24,8 +24,6 @@ Available Functions:
 * [Update-StringInFiles](Module/LazyAdmin/Update-StringInFiles.ps1) - Replace a string in one or multiple files ([view documentation](Documentation/Update-StringInFiles.README.md))
 
 ### ModernConsole 
-
-Let your console look better...
 
 Download the folder [Module/ModernConsole](Module/ModernConsole) and save it under `C:\Users\%username%\Documents\WindowsPowerShell\Modules`. Then run the command `Import-Module ModernConsole`
 
