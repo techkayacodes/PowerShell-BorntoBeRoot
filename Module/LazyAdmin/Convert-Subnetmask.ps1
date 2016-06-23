@@ -8,18 +8,15 @@
 
 <#
     .SYNOPSIS
-    
     Convert a subnetmask (XXX.XXX.XXX.XXX) to CIDR (/XX) or vise versa
 
     .DESCRIPTION
-    
     Convert a subnetmask (XXX.XXX.XXX.XXX) to CIDR (/XX) or vise versa
         
     If you found a bug or have some ideas to improve this script... Let me know. You find my Github profile in 
     the links below.
                 
     .EXAMPLE
-    
     PS> Convert-Subnetmask -CIDR 24
 
     Mask          CIDR
@@ -27,7 +24,6 @@
     255.255.255.0   24
 
     .EXAMPLE
-  
     PS> Convert-Subnetmask -Mask 255.255.0.0
 
     Mask        CIDR
