@@ -36,7 +36,7 @@ PS> Convert-Subnetmask -CIDR 24
 
 Mask           CIDR
 ----           ----
-255.255.255.0  24
+255.255.255.0    24
 ```
 
 ### Script
