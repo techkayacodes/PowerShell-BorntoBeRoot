@@ -1,6 +1,6 @@
 ﻿###############################################################################################################
 # Language     :  PowerShell 4.0
-# Filename     :  Convert-Subnetmask
+# Filename     :  Convert-Subnetmask.ps1
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
 # Description  :  Convert a subnetmask from CIDR and vise versa
 # Repository   :  https://github.com/BornToBeRoot/PowerShell
