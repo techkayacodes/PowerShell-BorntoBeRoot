@@ -2,8 +2,8 @@
 
 Script/Function to calculate a subnet based on an IP-Address within the subnet and the subnetmask/CIDR.
 
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Scriptname.ps1)
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functioname.ps1)
+* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/New-IPv4Subnet.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/New-IPv4Subnet.ps1)
 
 ## Description
 
