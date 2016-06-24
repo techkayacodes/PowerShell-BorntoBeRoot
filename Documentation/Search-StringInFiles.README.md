@@ -5,6 +5,12 @@ Script/Function to find a string in one or multiple files
 * [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Search-StringInFiles.ps1)
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Search-StringInFiles.ps1)
 
+# Description
+
+Script/Function to find a string in one or multiple files
+
+![Screenshot](Get-WindowsProductKey.png?raw=true)
+
 ## Syntax
 
 ### Script

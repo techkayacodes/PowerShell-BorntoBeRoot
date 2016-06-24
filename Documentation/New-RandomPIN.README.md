@@ -5,6 +5,12 @@ Function to generate PINs with a freely definable number of numbers
 * [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/New-RandomPIN.ps1)
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/New-RandomPIN.ps1)
 
+# Description
+
+Function to generate PINs with a freely definable number of numbers
+
+![Screenshot](New-RandomPIN.png?raw=true)
+
 ## Syntax 
 
 ### Script

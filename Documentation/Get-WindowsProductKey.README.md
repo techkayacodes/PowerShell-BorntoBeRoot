@@ -7,7 +7,9 @@ Script/Function to get the Windows product key and some informations about the s
 
 ## Description
 
-Script/Function to  get the Windows product key from a local or remote system and some informations like Serialnumber, Windows version, Bit-Version etc. from one or more computers. Remote Computers need WinRM enabled. To do this use "winrm quickconfig".
+Script/Function to  get the Windows product key from a local or remote system and some informations like Serialnumber, Windows version, Bit-Version etc. from one or more computers. Remote computers need WinRM enabled. To do this use "winrm quickconfig".
+
+![Screenshot](Get-WindowsProductKey.png?raw=true)
 
 ## Syntax 
 

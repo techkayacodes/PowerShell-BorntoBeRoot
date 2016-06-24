@@ -9,6 +9,8 @@ Convert a subnetmask (XXX.XXX.XXX.XXX) to CIDR (/XX) or vise versa
 
 Convert a subnetmask (XXX.XXX.XXX.XXX) to CIDR (/XX) or vise versa
 
+![Screenshot](Convert-Subnetmask.png?raw=true)
+
 ## Syntax
 
 ### Module

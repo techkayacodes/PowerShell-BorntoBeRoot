@@ -9,6 +9,8 @@ Script/Function to get all installed software with DisplayName, Publisher and Un
 
 Script/Function to get all installed software with DisplayName, Publisher and UninstallString. It also returns the InstallLocation and InstallDate property. With the parameter "-Search" you can filter the results.
 
+![Screenshot](Get-InstalledSoftware.png?raw=true)
+
 ## Syntax 
 
 ### Script

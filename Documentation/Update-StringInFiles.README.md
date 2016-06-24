@@ -11,6 +11,8 @@ Script/Function to replace a string in one or multiple files.
 
 Binary files (*.zip, *.exe, etc.) are not touched by this script to avoid errors 
 
+![Screenshot](Update-StringInFiles.png?raw=true)
+
 ## Syntax
 
 ### Script

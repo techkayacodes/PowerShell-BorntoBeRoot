@@ -5,6 +5,12 @@ Script/Function to generate a random PIN with a freely definable number of chara
 * [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Get-InstalledSoftware.ps1)
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/New-RandomPassword.ps1)
 
+## Description
+
+Script/Function to generate a random PIN with a freely definable number of characters
+
+![Screenshot](New-RandomPassword.png?raw=true)
+
 ## Syntax 
 
 ### Script
