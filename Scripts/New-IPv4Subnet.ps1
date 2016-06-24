@@ -24,7 +24,12 @@
     192.168.24.96 192.168.24.127  32    30
             
     .EXAMPLE
-    
+    .\New-IPv4Subnet.ps1 -IPv4Address 192.168.1.0 -Mask 255.255.255.0
+
+    NetworkID   Broadcast     IPs Hosts
+    ---------   ---------     --- -----
+    192.168.1.0 192.168.1.255 256   254
+
     .LINK
     Github Profil:         https://github.com/BornToBeRoot
     Github Repository:     https://github.com/BornToBeRoot/PowerShell
@@ -34,12 +39,14 @@
 param(
     [Parameter(
         Position=0,
+        Mandatory=$true,
         HelpMessage='IPv4 Address which is in the subnet')]
     [IPAddress]$IPv4Address,
 
     [Parameter(
         ParameterSetName='CIDR',
         Position=1,
+        Mandatory=$true,
         HelpMessage='CIDR like /24 without "/"')]
     [ValidateRange(0,32)]
     [Int32]$CIDR,
@@ -47,6 +54,7 @@ param(
     [Parameter(
         ParameterSetName='Mask',
         Position=1,
+        Mandatory=$true,
         Helpmessage='Subnetmask like 255.255.255.0')]
     [IPAddress]$Mask
 )
