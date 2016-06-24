@@ -42,6 +42,7 @@ function Convert-Subnetmask
         [Parameter( 
             ParameterSetName='CIDR',       
             Position=0,
+            Mandatory=$true,
             HelpMessage='CIDR like /24 without "/"')]
         [ValidateRange(0,32)]
         [Int32]$CIDR,
@@ -49,6 +50,7 @@ function Convert-Subnetmask
         [Parameter(
             ParameterSetName='Mask',
             Position=0,
+            Mandatory=$true,
             HelpMessage='Subnetmask like 255.255.255.0')]
         [IPAddress]$Mask 
     )
