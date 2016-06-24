@@ -9,7 +9,7 @@ Script/Function to calculate a subnet based on an IP-Address within the subnet a
 
 Script/Function to calculate a subnet based on an IP-Address within the subnet and the subnetmask/CIDR.
 
-The result will contain the NetworkIP, Broadcast, total IPs and the available host IPs 
+The result will contain the NetworkIP, Broadcast, total IPs and the available host IPs.
 
 ![Screenshot](New-IPv4Subnet.png?raw=true)
 
