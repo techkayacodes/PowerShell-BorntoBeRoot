@@ -1,6 +1,6 @@
 ﻿###############################################################################################################
 # Language     :  PowerShell 4.0
-# Filename     :  New-CalculatedIPv4Subnet.ps1
+# Filename     :  New-IPv4Subnet.ps1
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
 # Description  :  Calculate a subnet based on an IP-Address within the subnet and the subnetmask/CIDR
 # Repository   :  https://github.com/BornToBeRoot/PowerShell
@@ -17,11 +17,11 @@
     the links below.
                 
     .EXAMPLE
-    .\New-CalculatedSubnet.ps1 -IPv4Address 192.168.1.112 -CIDR 27
+    .\New-IPv4Subnet.ps1 -IPv4Address 192.168.24.96 -CIDR 27
     
-    NetworkAddress Broadcast     IPs Hosts
-    -------------- ---------     --- -----
-    192.168.1.96   192.168.1.127  32    30
+    NetworkID     Broadcast      IPs Hosts
+    ---------     ---------      --- -----
+    192.168.24.96 192.168.24.127  32    30
             
     .EXAMPLE
     
@@ -64,11 +64,11 @@ Begin{
      
         $Octets = $IPAddr.split(".") 
         return [long]([long]$Octets[0]*16777216 + [long]$Octets[1]*65536 + [long]$Octets[2]*256 + [long]$Octets[3]) 
-    } 
+    }        
 }
 
 Process{
-    # Convert Mask or CDIR - because we need both
+    # Convert Mask or CDIR - because we need both in the code below
     switch($PSCmdlet.ParameterSetName)
     {
         "CIDR" {       
@@ -126,6 +126,7 @@ Process{
         [byte]$IP_Octet_Byte = [Convert]::ToByte($IP_Octets[$i])
         [byte]$Mask_Octet_Byte = [Convert]::ToByte($Mask_Octets[$i])
 
+        # bitwise operator to compare octet (-band --> Bitwise AND)
         $NetworkAddress_Octets += ($IP_Octet_Byte -band $Mask_Octet_Byte).ToString()
     }
     
@@ -135,7 +136,7 @@ Process{
     # calculate broadcast address
     $HostBits = [string]::Empty
     
-    # Get HostBits based on SubnetBits (CDIR)
+    # Get HostBits based on SubnetBits (CDIR) // Hostbits (32 - /24 = 8 -> 00000000000000000000000011111111) 
     for($j = 32; $j -gt 0; $j--)
     {
         if($j -gt (32 - $CIDR))
@@ -165,7 +166,7 @@ Process{
         
     # Build custom PSObject
     $Result = New-Object -TypeName PSObject
-    Add-Member -InputObject $Result -MemberType NoteProperty -Name NetworkAddress -Value $NetworkAddress
+    Add-Member -InputObject $Result -MemberType NoteProperty -Name NetworkID -Value $NetworkAddress
     Add-Member -InputObject $Result -MemberType NoteProperty -Name Broadcast -Value $BroadcastAddress
     Add-Member -InPutObject $Result -MemberType NoteProperty -Name IPs -Value $AvailableIPs
     Add-Member -InPutObject $Result -MemberType NoteProperty -Name Hosts -Value $Hosts
