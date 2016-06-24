@@ -36,7 +36,7 @@ New-IPv4Subnet [[-IPv4Address] <IPAddress>] [[-Mask] <IPAddress>] [<CommonParame
 ### Module
 
 ```powershell
-New-IPv4Subnet -IPv4Address 192.168.24.96 -CIDR 27
+PS> New-IPv4Subnet -IPv4Address 192.168.24.96 -CIDR 27
 
 NetworkID     Broadcast      IPs Hosts
 ---------     ---------      --- -----
@@ -46,7 +46,7 @@ NetworkID     Broadcast      IPs Hosts
 ### Script
 
 ```powershell
-.\New-IPv4Subnet.ps1 -IPv4Address 192.168.1.0 -Mask 255.255.255.0
+PS> .\New-IPv4Subnet.ps1 -IPv4Address 192.168.1.0 -Mask 255.255.255.0
 
 NetworkID   Broadcast     IPs Hosts
 ---------   ---------     --- -----
