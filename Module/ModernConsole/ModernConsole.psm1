@@ -43,28 +43,27 @@ $Shell.ForegroundColor = "Gray"
 ##################################################################################################################
 ### Console Startup / Clear-Host text
 ##################################################################################################################  
-function Write-Startup {
+function Write-StartScreen {
 
 	$EmptyConsoleText = @"
-+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=+
-|                                        ____                 _____     ____       ____             _       |
-|    SS                                 | __ )  ___  _ __ _ _|_   _|__ | __ )  ___|  _ \ ___   ___ | |_     |
-|    SSSSS                              |  _ \ / _ \| '__| '_ \| |/ _ \|  _ \ / _ \ |_) / _ \ / _ \| __|    |
-|    SSSSSSSS                           | |_) | (_) | |  | | | | | (_) | |_) |  __/  _ < (_) | (_) | |_     |
-|    SSSSSSSSSSS                        |____/ \___/|_|  |_| |_|_|\___/|____/ \___|_| \_\___/ \___/ \__|    |
-|       SSSSSSSSSSS                                                                                         |
-|          SSSSSSSSSSS              +=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=+
-|             SSSSSSSSSSS           |  
-|              SSSSSSSSSS           |   Domain\Username   :   $env:USERDOMAIN\$env:USERNAME
-|             SSSSSSSSSSS           |   Hostname          :   $([System.Net.Dns]::GetHostEntry([string]$env:computername).HostName)
-|          SSSSSSSSSSS              |   IPv4-Address      :   $ModernConsole_IPv4Address
-|       SSSSSSSSSSS                 |   PSVersion         :   $($PSVersionTable.PSVersion.Major).$($PSVersionTable.PSVersion.Minor).$($PSVersionTable.PSVersion.Build).$($PSVersionTable.PSVersion.Revision)
-|    SSSSSSSSSSS                    |   Date & Time       :   $(Get-Date -Format F)  
-|    SSSSSSSS                       |
-|    SSSSS      SSSSSSSSSSSSSSS     +=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=+
-|    SS      SSSSSSSSSSSSSSS                                                  Follow me on GitHub           |
-|                                                                      [https://GitHub.com/BornToBeRoot]    |
-+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=+
+         
+                                                   ____                        ____  _          _ _     
+        SS                                        |  _ \ _____      _____ _ __/ ___|| |__   ___| | |    
+        SSSSS                                     | |_) / _ \ \ /\ / / _ \ '__\___ \| '_ \ / _ \ | |    
+        SSSSSSSS                                  |  __/ (_) \ V  V /  __/ |   ___) | | | |  __/ | |    
+        SSSSSSSSSSS                               |_|   \___/ \_/\_/ \___|_|  |____/|_| |_|\___|_|_|    
+            SSSSSSSSSSS                                                                               
+              SSSSSSSSSSS                 +=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=+
+                 SSSSSSSSSSS              |
+                  SSSSSSSSSS              |   Domain\Username  :  $env:USERDOMAIN\$env:USERNAME     
+                 SSSSSSSSSSS              |   Hostname         :  $([System.Net.Dns]::GetHostEntry([string]$env:computername).HostName)
+              SSSSSSSSSSS                 |   IPv4-Address     :  $ModernConsole_IPv4Address
+           SSSSSSSSSSS                    |   PSVersion        :  $($PSVersionTable.PSVersion.Major).$($PSVersionTable.PSVersion.Minor).$($PSVersionTable.PSVersion.Build).$($PSVersionTable.PSVersion.Revision)
+        SSSSSSSSSSS                       |   Date & Time      :  $(Get-Date -Format F) 
+        SSSSSSSS                          |                   
+        SSSSS      SSSSSSSSSSSSSSS        +=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=+
+        SS      SSSSSSSSSSSSSSS                                             [https://GitHub.com/BornToBeRoot] 
+                                                                                
 
 "@
 
@@ -85,7 +84,7 @@ function Clear-Host {
 	$Host.UI.RawUI.CursorPosition = $origin
 	$Host.UI.RawUI.SetBufferContents($rect, $space)
 
-	Write-Startup
+	Write-StartScreen
 }
 
 Clear-Host
