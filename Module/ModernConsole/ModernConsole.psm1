@@ -28,12 +28,12 @@ $Shell = $Host.UI.RawUI
 $Shell.WindowTitle = $AdminTitle + "Windows PowerShell $($PSVersionTable.PSVersion.Major).$($PSVersionTable.PSVersion.Minor)"
 
 $Size = $Shell.WindowSize
-$Size.width=135
-$Size.height=40
+$Size.width=120
+$Size.height=35
 $Shell.WindowSize = $Size
 
 $Size = $Shell.BufferSize
-$Size.width=135
+$Size.width=120
 $Size.height=5000
 $Shell.BufferSize = $Size
 
