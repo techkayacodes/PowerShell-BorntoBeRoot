@@ -9,7 +9,7 @@ Automate all the things
 
 ### LazyAdmin
 
-Download the folder [Module/LazyAdmin](Module/LazyAdmin) and save it under `C:\Users\%username%\Documents\WindowsPowerShell\Modules`. Then run the command `Import-Module LazyAdmin`
+Download the [latest Release](https://github.com/BornToBeRoot/PowerShell/releases/latest) and copy the folder [Module/LazyAdmin](Module/LazyAdmin) to `C:\Users\%username%\Documents\WindowsPowerShell\Modules\`. Then run the command `Import-Module LazyAdmin`
 
 | Function | Description | Documentation | 
 | :--- | :--- | :---: |
@@ -26,7 +26,7 @@ Download the folder [Module/LazyAdmin](Module/LazyAdmin) and save it under `C:\U
 
 ### ModernConsole 
 
-Download the folder [Module/ModernConsole](Module/ModernConsole) and save it under `C:\Users\%username%\Documents\WindowsPowerShell\Modules`. Then run the command `Import-Module ModernConsole`
+Download [latest Release](https://github.com/BornToBeRoot/PowerShell/releases/latest) and copy the folder [Module/ModernConsole](Module/ModernConsole) to `C:\Users\%username%\Documents\WindowsPowerShell\Modules\`. Then run the command `Import-Module ModernConsole`
 
 Available Functions:
 
@@ -51,7 +51,7 @@ Available Functions:
 
 ## Snippets
 
-| Script | Description | 
+| Snippet | Description | 
 | :--- | :--- | :---: |
 | [custom_psobject.ps1](Snippets/custom_psobject.ps1) | Built custom PSObject to process or return as result |
 | [get_console_colors.ps1](Snippets/get_console_colors.ps1) | List all foreground and background console colors with preview |
@@ -63,7 +63,7 @@ Available Functions:
 
 ## Templates
 
-| Script/File | Description |
+| Template | Description |
 | :--- | :--- |
 | [Default.ps1](Templates/Default.ps1) | Default template for all new scripts |
 | [Default.README.md](Templates/Default.README.md) | Default template for script/function documentation on GitHub |
