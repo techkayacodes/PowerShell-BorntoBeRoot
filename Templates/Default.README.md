@@ -1,17 +1,19 @@
-# Scriptname.ps1 / Functioname
+# Title
 
-Script/Function to ....
+Shot description...
 
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Scriptname.ps1)
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functioname.ps1)
+* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Scriptname.ps1)
 
 ## Description
 
-Script/Function to ...
+Description...
+
+![Screenshot](FILENAME.png?raw=true)
 
 ## Syntax
 
-### Module
+### Function
 
 ```powershell
 
@@ -25,7 +27,7 @@ Script/Function to ...
 
 ## Example
 
-### Module
+### Function
 
 ```powershell
 
