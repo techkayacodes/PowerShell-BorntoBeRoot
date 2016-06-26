@@ -70,7 +70,7 @@ Begin{
      
         $Octets = $IPAddr.split(".") 
         return [long]([long]$Octets[0]*16777216 + [long]$Octets[1]*65536 + [long]$Octets[2]*256 + [long]$Octets[3]) 
-    }        
+    }   
 }
 
 Process{
@@ -80,14 +80,15 @@ Process{
         "CIDR" {                          
             # Make a string of bits (24 to 11111111111111111111111100000000)
             $CIDR_Bits = ('1' * $CIDR).PadRight(32, "0")
+
             # Split into groups of 8 bits, convert to Ints, join up into a string
             $Octets = $CIDR_Bits -split '(.{8})' -ne ''
-            $Mask = ($Octets | foreach { [Convert]::ToInt32($_, 2) }) -join '.'
+            $Mask = ($Octets | foreach { [System.Convert]::ToInt32($_, 2) }) -join '.'
         }
 
         "Mask" {
             # Convert the numbers into 8 bit blocks, join them all together, count the 1
-            $Octets = $Mask.ToString().Split('.') | foreach {[Convert]::ToString($_, 2)}
+            $Octets = $Mask.ToString().Split('.') | foreach {[System.Convert]::ToString($_, 2)}
             $CIDR_Bits = ($Octets -join "").TrimEnd("0")
 
             # /16 -> 1111111111111111 (if there is a 0 inside... it`s not valid)
@@ -102,37 +103,24 @@ Process{
             }
         }              
     }
-    
-    # Calculate the networt address
-    [string[]]$IP_Octets = $IPv4Address.ToString().Split(".")
-    [string[]]$Mask_Octets = $Mask.ToString().Split(".")
+     
+    # Get CIDR Address by parsing it into an IP-Address
+    $CIDRAddress = [System.Net.IPAddress]::Parse([System.Convert]::ToUInt64(("1"* $CIDR).PadRight(32, "0"), 2))
+  
+    # Binary AND ... this is how subnets work.
+    $NetworkID_bAND = $IPv4Address.Address -band $CIDRAddress.Address
 
-    [string[]] $NetworkID_Octets = @()
-
-    # Go through each octet and compare...
-    for($i = 0; $i -lt 4; $i++)
-    {
-        [byte]$IP_Octet_Byte = [Convert]::ToByte($IP_Octets[$i])
-        [byte]$Mask_Octet_Byte = [Convert]::ToByte($Mask_Octets[$i])
-
-        # Bitwise operator to compare octet (-band --> Bitwise AND)
-        $NetworkID_Octets += ($IP_Octet_Byte -band $Mask_Octet_Byte).ToString()
-    }
-    
-    # Create IP-Address
-    $NetworkID = [string]::Join(".", $NetworkID_Octets)
+    # Return an array of bytes. Then join them.
+    $NetworkID = [System.Net.IPAddress]::Parse([System.BitConverter]::GetBytes([UInt32]$NetworkID_bAND) -join ("."))
     
     # Get HostBits based on SubnetBits (CDIR) // Hostbits (32 - /24 = 8 -> 00000000000000000000000011111111)
     $HostBits = ('1' * (32 - $CIDR)).PadLeft(32, "0")
     
     # Convert Bits to Int64
     $AvailableIPs = [Convert]::ToInt64($HostBits,2)
-      
-    # Convert IP to Int64
-    $NetworkID_Int64 = IPtoInt64($NetworkID)
 
-    # Add IPs to Network Address to get Broadcast Address
-    $Broadcast = Int64toIP($NetworkID_Int64 + $AvailableIPs)
+    # Convert NetworkID to Int64, add available IPs, parse into IPAddress
+    $Broadcast = [System.Net.IPAddress]::Parse((Int64toIP((IPtoInt64($NetworkID.ToString())) + $AvailableIPs)))
 
     # Change useroutput ==> (/27 = 0..31 IPs -> AvailableIPs 32)
     $AvailableIPs += 1
