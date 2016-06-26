@@ -2,13 +2,13 @@
 # Language     :  PowerShell 4.0
 # Filename     :  New-IPv4Subnet.ps1
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
-# Description  :  Calculate a subnet based on an IP-Address within the subnet and the subnetmask or CIDR
+# Description  :  Calculate a subnet based on an IP-Address and the subnetmask or CIDR
 # Repository   :  https://github.com/BornToBeRoot/PowerShell
 ###############################################################################################################
 
 <#
     .SYNOPSIS
-    Calculate a subnet based on an IP-Address within the subnet and the subnetmask or CIDR
+    Calculate a subnet based on an IP-Address and the subnetmask or CIDR
 
     .DESCRIPTION
     Calculate a subnet based on an IP-Address within the subnet and the subnetmask or CIDR.
