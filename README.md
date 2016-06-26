@@ -12,7 +12,7 @@ Automate all the things
 1. Download the [latest Release](https://github.com/BornToBeRoot/PowerShell/releases/latest)
 2. Copy the folder [Module/LazyAdmin](Module/LazyAdmin) to `C:\Users\%username%\Documents\WindowsPowerShell\Modules\`
 3. Open up a PowerShell as an admin and set the execution policy: `Set-ExecutionPolicy RemoteSigned`
-4. Import the "LazyAdmin"-Module with the command `Import-Module LazyAdmin`
+4. Import the Module with the command `Import-Module LazyAdmin` (Maybe add this command to your PowerShell profile) 
 
 | Function&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Description | Documentation | 
 | :--- | :--- | :---: |
@@ -32,7 +32,7 @@ Automate all the things
 1. Download the [latest Release](https://github.com/BornToBeRoot/PowerShell/releases/latest) 
 2. Copy the folder [Module/ModernConsole](Module/ModernConsole) to `C:\Users\%username%\Documents\WindowsPowerShell\Modules\`
 3. Open up a PowerShell as an admin and set the execution policy: `Set-ExecutionPolicy RemoteSigned`
-4. Import the "ModernConsole"-Module with the command `Import-Module ModernConsole`
+4. Import the Module with the command `Import-Module ModernConsole`  (Maybe add this command to your PowerShell profile)
 
 Available functions:
 
