@@ -9,8 +9,9 @@ Automate all the things
 
 ### LazyAdmin
 
-Download the [latest Release](https://github.com/BornToBeRoot/PowerShell/releases/latest) and copy the folder [Module/LazyAdmin](Module/LazyAdmin) to `C:\Users\%username%\Documents\WindowsPowerShell\Modules\`.
-Then run the command `Import-Module LazyAdmin`
+1. Download the [latest Release](https://github.com/BornToBeRoot/PowerShell/releases/latest)
+2. Copy the folder [Module/LazyAdmin](Module/LazyAdmin) to `C:\Users\%username%\Documents\WindowsPowerShell\Modules\`
+3. Run the command `Import-Module LazyAdmin`
 
 | Function | Description | Documentation | 
 | :--- | :--- | :---: |
@@ -27,10 +28,11 @@ Then run the command `Import-Module LazyAdmin`
 
 ### ModernConsole 
 
-Download [latest Release](https://github.com/BornToBeRoot/PowerShell/releases/latest) and copy the folder [Module/ModernConsole](Module/ModernConsole) to `C:\Users\%username%\Documents\WindowsPowerShell\Modules\`.
-Then run the command `Import-Module ModernConsole`
+1. Download the [latest Release](https://github.com/BornToBeRoot/PowerShell/releases/latest) 
+2. Copy the folder [Module/ModernConsole](Module/ModernConsole) to `C:\Users\%username%\Documents\WindowsPowerShell\Modules\`
+3. Run the command `Import-Module ModernConsole`
 
-Available Functions:
+Available functions:
 
 * Startscreen with informations about the user and computer (overwrites `Clear-Console`)
 * Short paths - shows drive/network share and the current folder (overwrites `prompt`)
