@@ -9,7 +9,7 @@ Generate a PIN with a freely definable number of numbers.
 
 Generate a PIN with a freely definable number of numbers. You can also set the smallest and greatest possible number. 
 
-![Screenshot](New-RandomPIN.png?raw=true)
+![Screenshot](Images/New-RandomPIN.png?raw=true)
 
 ## Syntax 
 

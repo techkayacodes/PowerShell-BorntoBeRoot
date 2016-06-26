@@ -10,7 +10,7 @@ Calculate a subnet based on an IP-Address within the subnet and the subnetmask o
 Calculate a subnet based on an IP-Address within the subnet and the subnetmask or CIDR. 
 The result includes the NetworkID, Broadcast, total available IPs and usable IPs for hosts.
 
-![Screenshot](New-IPv4Subnet.png?raw=true)
+![Screenshot](Images/New-IPv4Subnet.png?raw=true)
 
 ## Syntax
 

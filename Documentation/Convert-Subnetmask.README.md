@@ -9,7 +9,7 @@ Convert a subnetmask to CIDR and vise versa.
 
 Convert a subnetmask like 255.255.255 to CIDR (/24) and vise versa.
 
-![Screenshot](Convert-Subnetmask.png?raw=true)
+![Screenshot](Images/Convert-Subnetmask.png?raw=true)
 
 ## Syntax
 

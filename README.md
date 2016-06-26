@@ -39,7 +39,7 @@ Available functions:
 * Startscreen with informations about the user and computer (overwrites `Clear-Console`)
 * Short paths - shows drive/network share and the current folder (overwrites `prompt`)
 
-![Screenshot](/Documentation/ModernConsole.png?raw=true)
+![Screenshot](/Documentation/Images/ModernConsole.png?raw=true)
 
 ## Scripts
 

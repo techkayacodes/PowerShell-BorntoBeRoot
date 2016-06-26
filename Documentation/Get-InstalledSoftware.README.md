@@ -9,7 +9,7 @@ Get all installed software with DisplayName, Publisher and UninstallString.
 
  Get all installed software with DisplayName, Publisher and UninstallString. The result will also include the InstallLocation and the InstallDate. To reduce the results, you can use the parameter "-Search *PRODUCTNAME*".
 
-![Screenshot](Get-InstalledSoftware.png?raw=true)
+![Screenshot](Images/Get-InstalledSoftware.png?raw=true)
 
 ## Syntax 
 

@@ -10,7 +10,7 @@ Replace a string in one or multiple files.
  Replace a string in one or multiple files.
  Binary files (*.zip, *.exe, etc.) are not touched by this script. 
 
-![Screenshot](Update-StringInFiles.png?raw=true)
+![Screenshot](Images/Update-StringInFiles.png?raw=true)
 
 ## Syntax
 
