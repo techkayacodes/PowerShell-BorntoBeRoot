@@ -1,9 +1,10 @@
 # PowerShell
-Collection of useful PowerShell modules, scripts, snippets and templates
+
+My collection of useful modules, scripts, snippets and templates written by myself.
 
 ## Description
 
-Automate all the things
+Automate all the things!
 
 ## Module
 
@@ -14,13 +15,13 @@ Automate all the things
 3. Open up a PowerShell as an admin and set the execution policy: `Set-ExecutionPolicy RemoteSigned`
 4. Import the Module with the command `Import-Module LazyAdmin` (Maybe add this command to your PowerShell profile) 
 
-| Function | Description | Help | 
+| Function&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Description | Help | 
 | :--- | :--- | :---: |
 | [Convert-Subnetmask](Module/LazyAdmin/Convert-Subnetmask.ps1) | Convert a subnetmask to CIDR and vise versa | [:book:](Documentation/Convert-Subnetmask.README.md) |
 | [Get-InstalledSoftware](Module/LazyAdmin/Get-InstalledSoftware.ps1) | Get all installed software with DisplayName, Publisher and UninstallString | [:book:](Documentation/Get-InstalledSoftware.README.md) |
 | [Get-WindowsProductKey](Module/LazyAdmin/Get-WindowsProductKey.ps1) | Get the Windows product key and some usefull informations about the system | [:book:](Documentation/Get-WindowsProductKey.README.md) |
 | [Get-WLANProfile](Module/LazyAdmin/Get-WLANProfile.ps1) | Get WLAN profiles, include password as SecureString or as plain text | [:book:](Documentation/Get-WLANProfile.README.md) |
-| [New-IPv4Subnet](Module/LazyAdmin/New-IPv4Subnet.ps1) | Calculate a subnet based on an IP-Address within the subnet and the subnetmask or CIDR | [:book:](Documentation/New-IPv4Subnet.README.md) |
+| [New-IPv4Subnet](Module/LazyAdmin/New-IPv4Subnet.ps1) | Calculate a subnet based on an IP-Address and the subnetmask or CIDR | [:book:](Documentation/New-IPv4Subnet.README.md) |
 | [New-RandomPassword](Module/LazyAdmin/New-RandomPassword.ps1) | Generate passwords with a freely definable number of characters | [:book:](Documentation/New-RandomPassword.README.md) |
 | [New-RandomPIN](Module/LazyAdmin/New-RandomPIN.ps1) | Generate a PIN with a freely definable number of numbers | [:book:](Documentation/New-RandomPIN.README.md) |
 | [Search-StringInFiles](Module/LazyAdmin/Search-StringInFiles.ps1) | Find a string in one or multiple files | [:book:](Documentation/Search-StringInFiles.README.md) |
@@ -43,13 +44,13 @@ Available functions:
 
 ## Scripts
 
-| Script | Description | Help | 
+| Script&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Description | Help | 
 | :--- | :--- | :---: |
 | [Convert-Subnetmask.ps1](Scripts/Convert-Subnetmask.ps1) | Convert a subnetmask to CIDR and vise versa | [:book:](Documentation/Convert-Subnetmask.README.md) |
 | [Get-InstalledSoftware.ps1](Scripts/Get-InstalledSoftware.ps1) | Get all installed software with DisplayName, Publisher and UninstallString | [:book:](Documentation/Get-InstalledSoftware.README.md) |
 | [Get-WindowsProductKey.ps1](Scripts/Get-WindowsProductKey.ps1) | Get the Windows product key and some usefull informations about the system | [:book:](Documentation/Get-WindowsProductKey.README.md) |
 | [Get-WLANProfile.ps1](Scripts/Get-WLANProfile.ps1) | Get WLAN profiles, include password as SecureString or as plain text | [:book:](Documentation/Get-WLANProfile.README.md)
-| [New-IPv4Subnet](Scripts/New-IPv4Subnet.ps1) | Calculate a subnet based on an IP-Address within the subnet and the subnetmask or CIDR | [:book:](Documentation/New-IPv4Subnet.README.md) |
+| [New-IPv4Subnet](Scripts/New-IPv4Subnet.ps1) | Calculate a subnet based on an IP-Address and the subnetmask or CIDR | [:book:](Documentation/New-IPv4Subnet.README.md) |
 | [New-RandomPassword.ps1](Scripts/New-RandomPassword.ps1) | Generate passwords with a freely definable number of characters | [:book:](Documentation/New-RandomPassword.README.md)
 | [New-RandomPIN.ps1](Scripts/New-RandomPIN.ps1) | Generate a PIN with a freely definable number of numbers | [:book:](Documentation/New-RandomPIN.README.md) |
 | [Search-StringInFiles.ps1](Scripts/Search-StringInFiles.ps1) | Find a string in one or multiple files | [:book:](Documentation/Search-StringInFiles.README.md) |
