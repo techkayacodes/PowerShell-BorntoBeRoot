@@ -14,18 +14,18 @@ Automate all the things
 3. Open up a PowerShell as an admin and set the execution policy: `Set-ExecutionPolicy RemoteSigned`
 4. Import the Module with the command `Import-Module LazyAdmin` (Maybe add this command to your PowerShell profile) 
 
-| Function | Description | Documentation | 
+| Function | Description | Help | 
 | :--- | :--- | :---: |
-| [Convert-Subnetmask](Module/LazyAdmin/Convert-Subnetmask.ps1) | Convert a subnetmask to CIDR and vise versa | [view](Documentation/Convert-Subnetmask.README.md) |
-| [Get-InstalledSoftware](Module/LazyAdmin/Get-InstalledSoftware.ps1) | Get all installed software with DisplayName, Publisher and UninstallString | [view](Documentation/Get-InstalledSoftware.README.md) |
-| [Get-WindowsProductKey](Module/LazyAdmin/Get-WindowsProductKey.ps1) | Get the Windows product key and some usefull informations about the system | [view](Documentation/Get-WindowsProductKey.README.md) |
-| [Get-WLANProfile](Module/LazyAdmin/Get-WLANProfile.ps1) | Get WLAN profiles, include password as SecureString or as plain text | [view ](Documentation/Get-WLANProfile.README.md) |
-| [New-IPv4Subnet](Module/LazyAdmin/New-IPv4Subnet.ps1) | Calculate a subnet based on an IP-Address within the subnet and the subnetmask or CIDR | [view](Documentation/New-IPv4Subnet.README.md) |
-| [New-RandomPassword](Module/LazyAdmin/New-RandomPassword.ps1) | Generate passwords with a freely definable number of characters | [view](Documentation/New-RandomPassword.README.md) |
-| [New-RandomPIN](Module/LazyAdmin/New-RandomPIN.ps1) | Generate a PIN with a freely definable number of numbers | [view ](Documentation/New-RandomPIN.README.md) |
-| [Search-StringInFiles](Module/LazyAdmin/Search-StringInFiles.ps1) | Find a string in one or multiple files | [view ](Documentation/Search-StringInFiles.README.md) |
-| [Test-IsFileBinary](Module/LazyAdmin/Test-IsFileBinary.ps1) | Test if a file is binary | [view ](Documentation/Test-IsFileBinary.README.md) |
-| [Update-StringInFiles](Module/LazyAdmin/Update-StringInFiles.ps1) | Replace a string in one or multiple files | [view ](Documentation/Update-StringInFiles.README.md)
+| [Convert-Subnetmask](Module/LazyAdmin/Convert-Subnetmask.ps1) | Convert a subnetmask to CIDR and vise versa | [:book:](Documentation/Convert-Subnetmask.README.md) |
+| [Get-InstalledSoftware](Module/LazyAdmin/Get-InstalledSoftware.ps1) | Get all installed software with DisplayName, Publisher and UninstallString | [:book:](Documentation/Get-InstalledSoftware.README.md) |
+| [Get-WindowsProductKey](Module/LazyAdmin/Get-WindowsProductKey.ps1) | Get the Windows product key and some usefull informations about the system | [:book:](Documentation/Get-WindowsProductKey.README.md) |
+| [Get-WLANProfile](Module/LazyAdmin/Get-WLANProfile.ps1) | Get WLAN profiles, include password as SecureString or as plain text | [:book:](Documentation/Get-WLANProfile.README.md) |
+| [New-IPv4Subnet](Module/LazyAdmin/New-IPv4Subnet.ps1) | Calculate a subnet based on an IP-Address within the subnet and the subnetmask or CIDR | [:book:](Documentation/New-IPv4Subnet.README.md) |
+| [New-RandomPassword](Module/LazyAdmin/New-RandomPassword.ps1) | Generate passwords with a freely definable number of characters | [:book:](Documentation/New-RandomPassword.README.md) |
+| [New-RandomPIN](Module/LazyAdmin/New-RandomPIN.ps1) | Generate a PIN with a freely definable number of numbers | [:book:](Documentation/New-RandomPIN.README.md) |
+| [Search-StringInFiles](Module/LazyAdmin/Search-StringInFiles.ps1) | Find a string in one or multiple files | [:book:](Documentation/Search-StringInFiles.README.md) |
+| [Test-IsFileBinary](Module/LazyAdmin/Test-IsFileBinary.ps1) | Test if a file is binary | [:book:](Documentation/Test-IsFileBinary.README.md) |
+| [Update-StringInFiles](Module/LazyAdmin/Update-StringInFiles.ps1) | Replace a string in one or multiple files | [:book:](Documentation/Update-StringInFiles.README.md)
 
 ### ModernConsole 
 
@@ -43,18 +43,18 @@ Available functions:
 
 ## Scripts
 
-| Script | Description | Documentation | 
+| Script | Description | Help | 
 | :--- | :--- | :---: |
-| [Convert-Subnetmask.ps1](Scripts/Convert-Subnetmask.ps1) | Convert a subnetmask to CIDR and vise versa | [view ](Documentation/Convert-Subnetmask.README.md) |
-| [Get-InstalledSoftware.ps1](Scripts/Get-InstalledSoftware.ps1) | Get all installed software with DisplayName, Publisher and UninstallString | [view](Documentation/Get-InstalledSoftware.README.md) |
-| [Get-WindowsProductKey.ps1](Scripts/Get-WindowsProductKey.ps1) | Get the Windows product key and some usefull informations about the system | [view](Documentation/Get-WindowsProductKey.README.md) |
-| [Get-WLANProfile.ps1](Scripts/Get-WLANProfile.ps1) | Get WLAN profiles, include password as SecureString or as plain text | [view ](Documentation/Get-WLANProfile.README.md)
-| [New-IPv4Subnet](Scripts/New-IPv4Subnet.ps1) | Calculate a subnet based on an IP-Address within the subnet and the subnetmask or CIDR | [view](Documentation/New-IPv4Subnet.README.md) |
-| [New-RandomPassword.ps1](Scripts/New-RandomPassword.ps1) | Generate passwords with a freely definable number of characters | [view](Documentation/New-RandomPassword.README.md)
-| [New-RandomPIN.ps1](Scripts/New-RandomPIN.ps1) | Generate a PIN with a freely definable number of numbers | [view ](Documentation/New-RandomPIN.README.md) |
-| [Search-StringInFiles.ps1](Scripts/Search-StringInFiles.ps1) | Find a string in one or multiple files | [view ](Documentation/Search-StringInFiles.README.md) |
-| [Test-IsFileBinary.ps1](Scripts/Test-IsFileBinary.ps1) | Test if a file is binary | [view ](Documentation/Test-IsFileBinary.README.md) |
-| [Update-StringInFiles.ps1](Scripts/Update-StringInFiles.ps1) | Replace a string in one or multiple files | [view ](Documentation/Update-StringInFiles.README.md) |
+| [Convert-Subnetmask.ps1](Scripts/Convert-Subnetmask.ps1) | Convert a subnetmask to CIDR and vise versa | [:book:](Documentation/Convert-Subnetmask.README.md) |
+| [Get-InstalledSoftware.ps1](Scripts/Get-InstalledSoftware.ps1) | Get all installed software with DisplayName, Publisher and UninstallString | [:book:](Documentation/Get-InstalledSoftware.README.md) |
+| [Get-WindowsProductKey.ps1](Scripts/Get-WindowsProductKey.ps1) | Get the Windows product key and some usefull informations about the system | [:book:](Documentation/Get-WindowsProductKey.README.md) |
+| [Get-WLANProfile.ps1](Scripts/Get-WLANProfile.ps1) | Get WLAN profiles, include password as SecureString or as plain text | [:book:](Documentation/Get-WLANProfile.README.md)
+| [New-IPv4Subnet](Scripts/New-IPv4Subnet.ps1) | Calculate a subnet based on an IP-Address within the subnet and the subnetmask or CIDR | [:book:](Documentation/New-IPv4Subnet.README.md) |
+| [New-RandomPassword.ps1](Scripts/New-RandomPassword.ps1) | Generate passwords with a freely definable number of characters | [:book:](Documentation/New-RandomPassword.README.md)
+| [New-RandomPIN.ps1](Scripts/New-RandomPIN.ps1) | Generate a PIN with a freely definable number of numbers | [:book:](Documentation/New-RandomPIN.README.md) |
+| [Search-StringInFiles.ps1](Scripts/Search-StringInFiles.ps1) | Find a string in one or multiple files | [:book:](Documentation/Search-StringInFiles.README.md) |
+| [Test-IsFileBinary.ps1](Scripts/Test-IsFileBinary.ps1) | Test if a file is binary | [:book:](Documentation/Test-IsFileBinary.README.md) |
+| [Update-StringInFiles.ps1](Scripts/Update-StringInFiles.ps1) | Replace a string in one or multiple files | [:book:](Documentation/Update-StringInFiles.README.md) |
 
 ## Snippets
 
