@@ -1,23 +1,17 @@
-# New-RandomPassword.ps1 / New-RandomPassword
+# New-RandomPassword
 
-Script/Function to generate a random PIN with a freely definable number of characters
+Generate passwords with a freely definable number of characters.
 
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Get-InstalledSoftware.ps1)
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/New-RandomPassword.ps1)
+* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/New-RandomPassword.ps1)
 
 ## Description
 
-Script/Function to generate a random PIN with a freely definable number of characters
+Generate passwords with a freely definable number of characters. You can also select which chars you want to use (upper case, lower case, numbers and special chars).
 
 ![Screenshot](New-RandomPassword.png?raw=true)
 
 ## Syntax 
-
-### Script
-
-```powershell
-.\New-RandomPassword.ps1 [[-Length] <Int32>] [[-LowerCase]] [[-UpperCase]] [[-Numbers]] [[-SpecialChars]] [[-CopyToClipboard]] [<CommonParameters>]
-```
 
 ### Function
 
@@ -25,20 +19,26 @@ Script/Function to generate a random PIN with a freely definable number of chara
 New-RandomPassword.ps1 [[-Length] <Int32>] [[-LowerCase]] [[-UpperCase]] [[-Numbers]] [[-SpecialChars]] [[-CopyToClipboard]] [<CommonParameters>]
 ```
 
+### Script
+
+```powershell
+.\New-RandomPassword.ps1 [[-Length] <Int32>] [[-LowerCase]] [[-UpperCase]] [[-Numbers]] [[-SpecialChars]] [[-CopyToClipboard]] [<CommonParameters>]
+```
+
 ## Example
 
-### Script 
+### Function 
+
+```powershell
+PS> New-RandomPassword -Length 8
+
+NX58m2B$
+```
+
+### Script
 
 ```powershell
 PS> .\New-RandomPassword.ps1 -Length 10 -SpecialChars:$false
-
-7UZE6pyyGM
-```
-
-### Function
-
-```powershell
-PS> New-RandomPassword -Length 10 -SpecialChars:$false
 
 7UZE6pyyGM
 ```

@@ -2,31 +2,31 @@
 # Language     :  PowerShell 4.0
 # Filename     :  Update-StringInFiles.ps1
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
-# Description  :  Function to replace a string in multiple files
+# Description  :  Replace a string in multiple files
 # Repository   :  https://github.com/BornToBeRoot/PowerShell
 ###############################################################################################################
 
 <#
     .SYNOPSIS
-    Function to replace a string in one or multiple files
+    Replace a string in one or multiple files
                  
     .DESCRIPTION         
-    Function to replace a string in one or multiple files
-    Binary files (*.zip, *.exe, etc.) are not touched by this script     
+    Replace a string in one or multiple files.
+    Binary files (*.zip, *.exe, etc.) are not touched by this script.
 	                         
     .EXAMPLE
-    Update-StringInFiles -Path "C:\Scripts\FolderWithFiles" -Search "Computer" -ReplaceWith "Notebook" -CaseSensitive
+    Update-StringInFiles -Path E:\Temp\Files\ -Search "Test01" -ReplaceWith "Test02" -Verbose
        
 	VERBOSE: Binary files like (*.zip, *.exe, etc...) are ignored
-	VERBOSE: Files with string found: 2
-	VERBOSE: File: C:\Scripts\FolderWithFiles\PC_List_1.txt
-	VERBOSE: Count: 3
-	VERBOSE: File: C:\Scripts\FolderWithFiles\PC_List_4.txt
-	VERBOSE: Count: 3   
+	VERBOSE: Files with string found: 3
+	VERBOSE: File: E:\Temp\Files\File_01.txt
+	VERBOSE: Count: 1
+	VERBOSE: File: E:\Temp\Files\File_02.txt
+	VERBOSE: Count: 1
+	VERBOSE: File: E:\Temp\Files\File_03.txt
 	   
     .LINK
-    Github Profil:         https://github.com/BornToBeRoot
-    Github Repository:     https://github.com/BornToBeRoot/PowerShell
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Update-StringInFiles.README.md
 #>
 
 function Update-StringInFiles
@@ -56,7 +56,10 @@ function Update-StringInFiles
 		[switch]$CaseSensitive=$false
 	)
 
-	Begin{}
+	Begin{
+
+	}
+
 	Process{
 		Write-Verbose "Binary files like (*.zip, *.exe, etc...) are ignored"
 
@@ -88,5 +91,8 @@ function Update-StringInFiles
 			}
 		}
 	}
-	End{}
+
+	End{
+
+	}
 }

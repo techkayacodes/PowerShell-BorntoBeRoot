@@ -1,13 +1,14 @@
-# Get-WLANProfile.ps1 / Get-WLANProfile
+# Get-WLANProfile
 
-Script/Function to get all WLAN-Profiles on your **local system**, include password as SecureString or as plain text
+Get WLAN profiles, include password as SecureString or as plain text.
 
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Get-WLANProfile.ps1)
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Get-WLANProfile.ps1)
+* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Get-WLANProfile.ps1)
 
 ## Description
 
-Script/Function to return all WLAN-Profiles on your local system, as custom PowerShell-Object, include SSID, Authentication, Name and Password as SecureString or plain text. You don't need an additional application, which is full of advertising. And for learning purposes it shows, how easy it is to find out the WLAN-Password, if you have physical/remote access to the computer.
+Get WLAN profiles on your local system, include Name, SSID, Authentication and Password as secure string or plain text. You don't need an additional application, which is full of advertising. And for learning purposes it shows, how easy it is to find out the WLAN password, if you have physical/remote access to the computer. 
+All this just by parsing the netsh.exe output which can be called without admin permissions.   
 
 ![Screenshot](Get-WLANProfile.png?raw=true)
 
@@ -15,24 +16,24 @@ _In Windows 7 there was a graphical interface in the network settings, where you
 
 ## Syntax
 
-### Script
-
-```powershell
-.\Get-WLANProfile.ps1 [[-ShowPassword]] [[-Search] <String>] [[-ExactMatch]] [<CommonParameters>] 
-```
-
 ### Function
 
 ```powershell
 Get-WLANProfile [[-ShowPassword]] [[-Search] <String>] [[-ExactMatch]] [<CommonParameters>]
 ```
 
-## Example
-
 ### Script
 
 ```powershell
-PS> .\Get-WLANProfile.ps1											
+.\Get-WLANProfile.ps1 [[-ShowPassword]] [[-Search] <String>] [[-ExactMatch]] [<CommonParameters>] 
+```
+
+## Example
+
+### Function
+
+```powershell
+PS> Get-WLANProfile											
 
 Name              SSID               Authentification    Password
 ----              ----               ---------------     ------
@@ -40,10 +41,10 @@ MyHomeNetwork01   MyHomeNetwork      WPA2-Personal       System.Security.SecureS
 MyHomeNetwork02   MyHomenetwork5G    WPA2-Personal       System.Security.SecureString
 ```
 
-### Function
+### Script
 
 ```powershell
-PS> Get-WLANProfile  -ShowPassword -Search "MyHomeNetwork*"			
+PS> .\Get-WLANProfile.ps1  -ShowPassword -Search "MyHomeNetwork*"			
 
 Name              SSID               Authentification    Password
 ----              ----               ---------------     ------

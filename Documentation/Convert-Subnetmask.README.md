@@ -1,19 +1,19 @@
-# Convert-Subnetmask.ps1 / Convert-Subnetmask
+# Convert-Subnetmask
 
-Convert a subnetmask (XXX.XXX.XXX.XXX) to CIDR (/XX) or vise versa
+Convert a subnetmask to CIDR and vise versa.
 
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Convert-Subnetmask.ps1)
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Convert-Subnetmask.ps1)
+* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Convert-Subnetmask.ps1)
 
 ## Description
 
-Convert a subnetmask (XXX.XXX.XXX.XXX) to CIDR (/XX) or vise versa
+Convert a subnetmask like 255.255.255 to CIDR (/24) and vise versa.
 
 ![Screenshot](Convert-Subnetmask.png?raw=true)
 
 ## Syntax
 
-### Module
+### Function
 
 ```powershell
 Convert-Subnetmask [[-CIDR] <Int32>] [<CommonParameters>]
@@ -31,7 +31,7 @@ Convert-Subnetmask [[-Mask] <IPAddress>] [<CommonParameters>]
 
 ## Example
 
-### Module
+### Function
 
 ```powershell
 PS> Convert-Subnetmask -CIDR 24

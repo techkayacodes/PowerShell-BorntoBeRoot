@@ -1,25 +1,19 @@
-# Test-IsFileBinary.ps1 / Test-IsFileBinary 
+# Test-IsFileBinary 
 
-Script/Function to check if a file is binary 
+Test if a file is binary.
 
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Test-IsFileBinary.ps1)
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Test-IsFileBinary.ps1)
+* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Test-IsFileBinary.ps1)
 
 ## Description
 
-Script/Function to check if a file is binary. Returns true for binary or false for text files.
+Test if a file is binary like .exe or .zip.
 
 ![Screenshot](Test-IsFileBinary.png?raw=true)
 
-This code is not from me. I found this code snippet on [Stackoverflow](https://stackoverflow.com/questions/1077634/powershell-search-script-that-ignores-binary-files).
+I found this code snippet on Stackoverflow: https://stackoverflow.com/questions/1077634/powershell-search-script-that-ignores-binary-files
 
 ## Syntax
-
-### Script
-
-```powershell
-.\Test-IsFileBinary.ps1 [-Path] <String> [<CommonParameters>]
-```
 
 ### Function
 
@@ -27,20 +21,26 @@ This code is not from me. I found this code snippet on [Stackoverflow](https://s
 Test-IsFileBinary [-Path] <String> [<CommonParameters>]
 ``` 
 
-## Example
-
 ### Script
 
 ```powershell
-PS> .\Test-IsFileBinary.ps1 -Path "C:\Scripts\FolderWithFiles\Test.zip"
-
-True
+.\Test-IsFileBinary.ps1 [-Path] <String> [<CommonParameters>]
 ```
+
+## Example
 
 ### Function
 
 ```powershell
-PS> Test-IsFileBinary -Path "C:\Scripts\FolderWithFiles\Test.txt"
+Test-IsFileBinary -Path "E:\Temp\Files\File_04.zip"
+
+True
+```
+
+### Script
+
+```powershell
+Test-IsFileBinary -Path "E:\Temp\Files\File_01.txt"
 
 False
 ```

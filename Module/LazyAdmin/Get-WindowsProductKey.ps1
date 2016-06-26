@@ -2,7 +2,7 @@
 # Language     :  PowerShell 4.0
 # Filename     :  Get-WindowsProductKey.ps1
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
-# Description  :  Get Windows Product Key
+# Description  :  Get the Windows product key and some usefull informations about the system
 # Repository   :  https://github.com/BornToBeRoot/PowerShell
 ###############################################################################################################
 
@@ -15,9 +15,6 @@
     Windows version, Bit-Version etc. from one or more computers. Remote computers need WinRM enabled.
     To do this use "winrm quickconfig".
         
-    If you found a bug or have some ideas to improve this script... Let me know. You find my Github profile in 
-    the links below.
-          
     Basic Logic found on: http://powershell.com/cs/blogs/tips/archive/2012/04/30/getting-windows-product-key.aspx          
                 
     .EXAMPLE        
@@ -51,8 +48,7 @@
 	ProductKey     : XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
 
     .LINK
-    Github Profil:         https://github.com/BornToBeRoot
-    Github Repository:     https://github.com/BornToBeRoot/PowerShell
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Get-WindowsProductKey.README.md
 #>
 
 function Get-WindowsProductKey
@@ -155,10 +151,12 @@ function Get-WindowsProductKey
 		    Add-Member -InputObject $Result -MemberType NoteProperty -Name SerialNumber $Wmi_Win32.SerialNumber
 		    Add-Member -InputObject $Result -MemberType NoteProperty -Name ProductKey -Value $ProductKey
 		    $Results += $Result       
-	    }   
+	    }
+
+		return $Results   
     }
 
     End{
-        return $Results
-    }
+		
+	}
 }

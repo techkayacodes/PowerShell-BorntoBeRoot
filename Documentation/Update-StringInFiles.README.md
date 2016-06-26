@@ -1,25 +1,18 @@
-# Update-StringInFiles.ps1 / Update-StringInFiles
+# Update-StringInFiles
 
-Script/Function to replace a string in one or multiple files
+Replace a string in one or multiple files.
 
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Update-StringInFiles.ps1)
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Update-StringInFiles.ps1)
+* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Update-StringInFiles.ps1)
 
 ## Description
 
-Script/Function to replace a string in one or multiple files.
-
-Binary files (*.zip, *.exe, etc.) are not touched by this script to avoid errors 
+ Replace a string in one or multiple files.
+ Binary files (*.zip, *.exe, etc.) are not touched by this script. 
 
 ![Screenshot](Update-StringInFiles.png?raw=true)
 
 ## Syntax
-
-### Script
-
-```powershell
-.\Update-StringInFiles.ps1 [-Path] <String> [-Search] <String> [-ReplaceWith] <String> [[-CaseSensitive]] [<CommonParameters>]
-``` 
 
 ### Function
 
@@ -27,30 +20,38 @@ Binary files (*.zip, *.exe, etc.) are not touched by this script to avoid errors
 Update-StringInFiles [-Path] <String> [-Search] <String> [-ReplaceWith] <String> [[-CaseSensitive]] [<CommonParameters>]
 ```
 
-## Example
-
 ### Script
 
 ```powershell
-PS> .\Update-StringInFiles.ps1 -Path "C:\Scripts\FolderWithFiles\" -Search "Computer" -ReplaceWith "Notebook" -CaseSensitive -Verbose
+.\Update-StringInFiles.ps1 [-Path] <String> [-Search] <String> [-ReplaceWith] <String> [[-CaseSensitive]] [<CommonParameters>]
+``` 
 
-VERBOSE: Binary files like (*.zip, *.exe, etc...) are ignored
-VERBOSE: Files with string found: 2
-VERBOSE: File: C:\Scripts\FolderWithFiles\PC_List_1.txt
-VERBOSE: Count: 3
-VERBOSE: File: C:\Scripts\FolderWithFiles\PC_List_4.txt
-VERBOSE: Count: 3
-```
+## Example
 
 ### Function
 
 ```powershell
-PS> Update-StringInFiles -Path "C:\Scripts\FolderWithFiles\" -Search "Computer" -ReplaceWith "Notebook" -CaseSensitive -Verbose
-
+PS> Update-StringInFiles -Path E:\Temp\Files\ -Search "Test01" -ReplaceWith "Test02" -Verbose
+       
 VERBOSE: Binary files like (*.zip, *.exe, etc...) are ignored
-VERBOSE: Files with string found: 2
-VERBOSE: File: C:\Scripts\FolderWithFiles\PC_List_1.txt
-VERBOSE: Count: 3
-VERBOSE: File: C:\Scripts\FolderWithFiles\PC_List_4.txt
-VERBOSE: Count: 3
+VERBOSE: Files with string found: 3
+VERBOSE: File: E:\Temp\Files\File_01.txt
+VERBOSE: Count: 1
+VERBOSE: File: E:\Temp\Files\File_02.txt
+VERBOSE: Count: 1
+VERBOSE: File: E:\Temp\Files\File_03.txt
+```
+
+### Script
+
+```powershell
+PS> .\Update-StringInFiles.ps1 -Path E:\Temp\Files\ -Search "Test01" -ReplaceWith "Test02" -Verbose
+       
+VERBOSE: Binary files like (*.zip, *.exe, etc...) are ignored
+VERBOSE: Files with string found: 3
+VERBOSE: File: E:\Temp\Files\File_01.txt
+VERBOSE: Count: 1
+VERBOSE: File: E:\Temp\Files\File_02.txt
+VERBOSE: Count: 1
+VERBOSE: File: E:\Temp\Files\File_03.txt
 ```

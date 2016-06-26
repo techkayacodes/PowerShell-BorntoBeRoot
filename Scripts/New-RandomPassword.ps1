@@ -2,29 +2,30 @@
 # Language     :  PowerShell 4.0
 # Filename     :  New-RandomPassword.ps1
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
-# Description  :  Script to generate PINs with a freely definable number of numbers
+# Description  :  Generate passwords with a freely definable number of characters
 # Repository   :  https://github.com/BornToBeRoot/PowerShell
 ###############################################################################################################
 
 <#
     .SYNOPSIS
-    Script to generate passwords with a freely definable number of characters
+    Generate passwords with a freely definable number of characters
 
     .DESCRIPTION
-	Script to generate passwords with a freely definable number of characters. You can also select which chars
+	Generate passwords with a freely definable number of characters. You can also select which chars
 	you want to use (upper case, lower case, numbers and special chars).
 
-    If you found a bug or have some ideas to improve this function... Let me know. You find my Github profile in 
-    the links below.
-                
+	.EXAMPLE
+	New-RandomPassword -Length 8
+
+	NX58m2B$
+
     .EXAMPLE
     .\New-RandomPassword.ps1 -Length 10 -SpecialChars:$false
 
 	7UZE6pyyGM
-	
+		
     .LINK
-    Github Profil:         https://github.com/BornToBeRoot
-    Github Repository:     https://github.com/BornToBeRoot/PowerShell
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/New-RandomPassword.README.md
 #>
 
 [CmdletBinding()]
@@ -56,11 +57,14 @@ Param(
 
 	[Parameter(
 		Position=5,
-		HelpMessage='Copy passwprd to clipboard')]
+		HelpMessage='Copy password to clipboard')]
 	[switch]$CopyToClipboard
 )
 
-Begin{}
+Begin{
+
+}
+
 Process{
 	if($Length -eq 0)
 	{
@@ -71,7 +75,7 @@ Process{
 	$Character_LowerCase = "abcdefghiklmnprstuvwxyz"
 	$Character_UpperCase = "ABCDEFGHKLMNPRSTUVWXYZ"
 	$Character_Numbers = "0123456789"
-	$Character_SpecialChars = "§$%&/()=?+*#[]{}-_@"
+	$Character_SpecialChars = "ï¿½$%&/()=?+*#[]{}-_@"
 
 	$Characters = [String]::Empty
 		
@@ -123,4 +127,7 @@ Process{
 	# Return result
 	return $Password
 }
-End{}
+
+End{
+	
+}

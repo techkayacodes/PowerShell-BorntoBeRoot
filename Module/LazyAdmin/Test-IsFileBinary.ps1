@@ -2,28 +2,32 @@
 # Language     :  PowerShell 4.0
 # Filename     :  Test-IsFileBinary.ps1
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
-# Description  :  Function to check if a file is binary 
+# Description  :  Test if a file is binary 
 # Repository   :  https://github.com/BornToBeRoot/PowerShell
 ###############################################################################################################
 
 <#
     .SYNOPSIS
-    Function to check if a file is binary 
+    Test if a file is binary 
                  
     .DESCRIPTION         
-    Function to check if a file is binary. Returns true for binary or false for text files.
-
+    Test if a file is binary like .exe or .zip.
+	
 	I found this code snippet on Stackoverflow: 
 	https://stackoverflow.com/questions/1077634/powershell-search-script-that-ignores-binary-files
                                  
     .EXAMPLE
-    Test-IsFileBinary -Path "C:\Scripts\FolderWithFiles\Test.zip"
+    Test-IsFileBinary -Path "E:\Temp\Files\File_01.txt"
+       
+	False
+	
+	.EXAMPLE
+	Test-IsFileBinary -Path "E:\Temp\Files\File_04.zip"
        
 	True
-	
+
     .LINK
-    Github Profil:         https://github.com/BornToBeRoot
-    Github Repository:     https://github.com/BornToBeRoot/PowerShell
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Test-IsFileBinary.README.md
 #>
 
 function Test-IsFileBinary
@@ -38,15 +42,16 @@ function Test-IsFileBinary
 	)
 
 	Begin{}
+
 	Process{
-        # Check if Path is a directory
+        # Check if path is a directory
         if((Get-Item $Path) -is [System.IO.DirectoryInfo])
         {
-            Write-Host "Cannot check a directory ($Path)" -ForegroundColor Yellow
+            Write-Host "Checking a directory is not supported ($Path)" -ForegroundColor Yellow
             return
         }
 
-		# encoding variable
+		# Encoding variable
 		$encoding = ""
 
 		# Get the first 1024 bytes from the file
@@ -101,5 +106,8 @@ function Test-IsFileBinary
 
 		return $false
 	}
-	End{}
+
+	End{
+		
+	}
 }

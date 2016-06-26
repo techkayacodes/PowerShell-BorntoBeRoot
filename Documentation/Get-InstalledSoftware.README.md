@@ -1,23 +1,17 @@
-# Get-InstalledSoftware.ps1 / Get-InstalledSoftware
+# Get-InstalledSoftware
 
-Script/Function to get all installed software with DisplayName, Publisher and UninstallString
+Get all installed software with DisplayName, Publisher and UninstallString.
 
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Get-InstalledSoftware.ps1)
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Get-InstalledSoftware.ps1)
+* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Get-InstalledSoftware.ps1)
 
 ## Description
 
-Script/Function to get all installed software with DisplayName, Publisher and UninstallString. It also returns the InstallLocation and InstallDate property. With the parameter "-Search" you can filter the results.
+ Get all installed software with DisplayName, Publisher and UninstallString. The result will also include the InstallLocation and the InstallDate. To reduce the results, you can use the parameter "-Search *PRODUCTNAME*".
 
 ![Screenshot](Get-InstalledSoftware.png?raw=true)
 
 ## Syntax 
-
-### Script
-
-```powershell
-.\Get-InstalledSoftware.ps1 [[-Search] <String>] [<CommonParameters>]
-```
 
 ### Function
 
@@ -25,22 +19,30 @@ Script/Function to get all installed software with DisplayName, Publisher and Un
 Get-InstalledSoftware [[-Search] <String>] [<CommonParameters>]
 ```
 
-## Example
-
 ### Script
 
 ```powershell
-PS> .\Get-InstalledSoftware.ps1 -Search "*chrome*"
-
-DisplayName                        UninstallString                    InstallLocation                    InstallDate
------------                        ---------------                    ---------------                    -----------
-Google Chrome                      "C:\Program Files (x86)\Google\... C:\Program Files (x86)\Google\C... 20150907
+.\Get-InstalledSoftware.ps1 [[-Search] <String>] [<CommonParameters>]
 ```
+
+## Example
 
 ### Function
 
 ```powershell
-PS> Get-InstalledSoftware -Search "*visual studio*"
+PS> Get-InstalledSoftware -Search "*chrome*"
+
+DisplayName     : Google Chrome
+Publisher       : Google Inc.
+UninstallString : "C:\Program Files (x86)\Google\Chrome\Application\51.0.2704.103\Installer\setup.exe" --uninstall --multi-install --chrome --system-level
+InstallLocation : C:\Program Files (x86)\Google\Chrome\Application
+InstallDate     : 20160506
+```
+
+### Script
+
+```powershell
+PS> .\Get-InstalledSoftware.ps1 -Search "*visual studio*"
 
 DisplayName                        UninstallString                    InstallLocation                    InstallDate
 -----------                        ---------------                    ---------------                    -----------

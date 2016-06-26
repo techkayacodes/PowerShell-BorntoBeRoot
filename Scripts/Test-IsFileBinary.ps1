@@ -2,33 +2,33 @@
 # Language     :  PowerShell 4.0
 # Filename     :  Test-IsFileBinary.ps1
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
-# Description  :  Script to check if a file is binary 
+# Description  :  Test if a file is binary 
 # Repository   :  https://github.com/BornToBeRoot/PowerShell
 ###############################################################################################################
 
 <#
     .SYNOPSIS
-    Script to check if a file is binary 
+    Test if a file is binary 
                  
     .DESCRIPTION         
-    Script to check if a file is binary. Returns true for binary or false for text files.
-
+    Test if a file is binary like .exe or .zip.
+	
 	I found this code snippet on Stackoverflow: 
 	https://stackoverflow.com/questions/1077634/powershell-search-script-that-ignores-binary-files
-         
-	If you found a bug or have some ideas to improve this function... Let me know. You find my Github profile in 
-	the links below.
-	                        
+                                 
     .EXAMPLE
-    .\Test-IsFileBinary.ps1 -Path "C:\Scripts\FolderWithFiles\Test.zip"
-      
+    .\Test-IsFileBinary.ps1 -Path "E:\Temp\Files\File_01.txt"
+       
+	False
+	
+	.EXAMPLE
+	.\Test-IsFileBinary.ps1 -Path "E:\Temp\Files\File_04.zip"
+       
 	True
-	  
-    .LINK
-    Github Profil:         https://github.com/BornToBeRoot
-    Github Repository:     https://github.com/BornToBeRoot/PowerShell
-#>
 
+    .LINK
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Test-IsFileBinary.README.md
+#>
 
 [CmdletBinding()]
 Param(
@@ -39,16 +39,19 @@ Param(
 	[String]$Path
 )
 
-Begin{}
+Begin{
+
+}
+
 Process{
-    # Check if Path is a directory
+    # Check if path is a directory
     if((Get-Item $Path) -is [System.IO.DirectoryInfo])
     {
-        Write-Host "Cannot check a directory ($Path)" -ForegroundColor Yellow
+        Write-Host "Checking a directory is not supported ($Path)" -ForegroundColor Yellow
         return
     }
 
-	# encoding variable
+	# Encoding variable
 	$encoding = ""
 
 	# Get the first 1024 bytes from the file
@@ -103,4 +106,7 @@ Process{
 
 	return $false
 }
-End{}
+
+End{
+	
+}

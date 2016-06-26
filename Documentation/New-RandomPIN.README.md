@@ -1,23 +1,17 @@
-# New-RandomPIN.ps1 / New-RandomPIN
+# New-RandomPIN
 
-Function to generate PINs with a freely definable number of numbers
+Generate a PIN with a freely definable number of numbers.
 
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/New-RandomPIN.ps1)
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/New-RandomPIN.ps1)
+* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/New-RandomPIN.ps1)
 
 # Description
 
-Function to generate PINs with a freely definable number of numbers
+Generate a PIN with a freely definable number of numbers. You can also set the smallest and greatest possible number. 
 
 ![Screenshot](New-RandomPIN.png?raw=true)
 
 ## Syntax 
-
-### Script
-
-```powershell
-.\New-RandomPIN.ps1 [[-Length] <Int32>] [[-Minimum] <Int32>] [[-Maximum] <Int32>] [[-CopyToClipboard]] [<CommonParameters>]
-```
 
 ### Function
 
@@ -25,15 +19,13 @@ Function to generate PINs with a freely definable number of numbers
 New-RandomPIN [[-Length] <Int32>] [[-Minimum] <Int32>] [[-Maximum] <Int32>] [[-CopyToClipboard]] [<CommonParameters>]
 ```
 
-## Example
-
 ### Script
 
 ```powershell
-PS> .\New-RandomPIN.ps1 -Length 6
-
-698577
+.\New-RandomPIN.ps1 [[-Length] <Int32>] [[-Minimum] <Int32>] [[-Maximum] <Int32>] [[-CopyToClipboard]] [<CommonParameters>]
 ```
+
+## Example
 
 ### Function
 
@@ -41,4 +33,12 @@ PS> .\New-RandomPIN.ps1 -Length 6
 PS> New-RandomPIN -Length 6
 
 698577
+```
+
+### Script
+
+```powershell
+PS> .\New-RandomPIN.ps1 -Length 8 -Minimum 4 -Maximum 8
+
+56655574
 ```

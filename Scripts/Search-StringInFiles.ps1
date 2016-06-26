@@ -2,32 +2,36 @@
 # Language     :  PowerShell 4.0
 # Filename     :  Search-StringInFiles.ps1
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
-# Description  :  Script to find a string in multiple files
+# Description  :  Find a string in multiple files
 # Repository   :  https://github.com/BornToBeRoot/PowerShell
 ###############################################################################################################
 
 <#
     .SYNOPSIS
-    Script to find a string in one or multiple files
+    Find a string in one or multiple files
                  
     .DESCRIPTION         
-    Script to find a string in one ormultiple files
+    Find a string in one or multiple files. The search is performed recursively from
+	the start folder.
                                  
     .EXAMPLE
-    .\Search-StringInFiles.ps1 -Path "C:\Scripts\FolderWithFiles" -Search "Computer" -CaseSensitive
+    .\Search-StringInFiles.ps1 -Path "C:\Scripts\FolderWithFiles" -Search "Test01"
        
-	Filename      Path                                     LineNumber Matches
-	--------      ----                                     ---------- -------
-	PC_List_1.txt C:\Scripts\FolderWithFiles\PC_List_1.txt          1 {Computer}
-	PC_List_1.txt C:\Scripts\FolderWithFiles\PC_List_1.txt          3 {Computer}
-	PC_List_1.txt C:\Scripts\FolderWithFiles\PC_List_1.txt          6 {Computer}
-	PC_List_4.txt C:\Scripts\FolderWithFiles\PC_List_4.txt          1 {Computer}
-	PC_List_4.txt C:\Scripts\FolderWithFiles\PC_List_4.txt          3 {Computer}
-	PC_List_4.txt C:\Scripts\FolderWithFiles\PC_List_4.txt          6 {Computer}   
-	   
+	Filename    Path                      LineNumber Matches
+	--------    ----                      ---------- -------
+	File_01.txt E:\Temp\Files\File_01.txt          1 {Test01}
+	File_02.txt E:\Temp\Files\File_02.txt          1 {TEST01}
+	File_03.txt E:\Temp\Files\File_03.txt          1 {TeST01}
+
+	.EXAMPLE  
+	.\Search-StringInFiles.ps1 -Path "C:\Scripts\FolderWithFiles" -Search "TEST01" -CaseSensitive
+
+	Filename    Path                      LineNumber Matches
+	--------    ----                      ---------- -------
+	File_02.txt E:\Temp\Files\File_02.txt          1 {TEST01}
+
     .LINK
-    Github Profil:         https://github.com/BornToBeRoot
-    Github Repository:     https://github.com/BornToBeRoot/PowerShell
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Search-StringInFiles.README.md
 #>
 
 [CmdletBinding()]
@@ -40,7 +44,7 @@ Param(
 
     [Parameter(
 		Position=1,
-		HelpMessage="Folder where the files are stored (will search recursive)")]
+		HelpMessage="Folder where the files are stored (search is recursive)")]
 	[String]$Path = (Get-Location),
 	
 	[Parameter(
@@ -49,7 +53,10 @@ Param(
 	[switch]$CaseSensitive=$false
 )
 
-Begin{}
+Begin{
+
+}
+
 Process{
 	# Files with string to find
 	$Strings = Get-ChildItem -Path $Path -Recurse | Select-String -Pattern ([regex]::Escape($Search)) -CaseSensitive:$CaseSensitive | Group-Object Path 
@@ -73,4 +80,7 @@ Process{
 
 	return $Results
 }
-End{}
+
+End{
+	
+}

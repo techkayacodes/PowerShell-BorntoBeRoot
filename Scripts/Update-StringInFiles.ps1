@@ -2,31 +2,31 @@
 # Language     :  PowerShell 4.0
 # Filename     :  Update-StringInFiles.ps1
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
-# Description  :  Script to replace a string in multiple files
+# Description  :  Replace a string in multiple files
 # Repository   :  https://github.com/BornToBeRoot/PowerShell
 ###############################################################################################################
 
 <#
     .SYNOPSIS
-    Script to replace a string in one or multiple files
+    Replace a string in one or multiple files
                  
     .DESCRIPTION         
-    Script to replace a string in one or multiple files
-    Binary files (*.zip, *.exe, etc.) are not touched by this script     
+    Replace a string in one or multiple files.
+    Binary files (*.zip, *.exe, etc.) are not touched by this script.
 	                         
     .EXAMPLE
-    .\Update-StringInFiles.ps1 -Path "C:\Scripts\FolderWithFiles" -Search "Computer" -ReplaceWith "Notebook" -CaseSensitive
+    .\Update-StringInFiles.ps1 -Path E:\Temp\Files\ -Search "Test01" -ReplaceWith "Test02" -Verbose
        
 	VERBOSE: Binary files like (*.zip, *.exe, etc...) are ignored
-	VERBOSE: Files with string found: 2
-	VERBOSE: File: C:\Scripts\FolderWithFiles\PC_List_1.txt
-	VERBOSE: Count: 3
-	VERBOSE: File: C:\Scripts\FolderWithFiles\PC_List_4.txt
-	VERBOSE: Count: 3   
+	VERBOSE: Files with string found: 3
+	VERBOSE: File: E:\Temp\Files\File_01.txt
+	VERBOSE: Count: 1
+	VERBOSE: File: E:\Temp\Files\File_02.txt
+	VERBOSE: Count: 1
+	VERBOSE: File: E:\Temp\Files\File_03.txt
 	   
     .LINK
-    Github Profil:         https://github.com/BornToBeRoot
-    Github Repository:     https://github.com/BornToBeRoot/PowerShell
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Update-StringInFiles.README.md
 #>
 
 [CmdletBinding()]
@@ -67,9 +67,12 @@ Begin{
 			[String]$Path
 		)
 
-		Begin{}
+		Begin{
+
+		}
+
 		Process{  
-			# encoding variable
+			# Encoding variable
 			$encoding = ""
 
 			# Get the first 1024 bytes from the file
@@ -124,9 +127,13 @@ Begin{
 
 			return $false
 		}
-		End{}
+
+		End{
+
+		}
 	}
 }
+
 Process{
 	Write-Verbose "Binary files like (*.zip, *.exe, etc...) are ignored"
 
@@ -158,4 +165,7 @@ Process{
 		}
 	}
 }
-End{}
+
+End{
+	
+}

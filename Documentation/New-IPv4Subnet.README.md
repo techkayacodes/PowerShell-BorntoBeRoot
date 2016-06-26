@@ -1,21 +1,20 @@
-# New-IPv4Subnet.ps1 / New-IPv4Subnet
+# New-IPv4Subnet
 
-Script/Function to calculate a subnet based on an IP-Address within the subnet and the subnetmask/CIDR.
+Calculate a subnet based on an IP-Address within the subnet and the subnetmask or CIDR.
 
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/New-IPv4Subnet.ps1)
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/New-IPv4Subnet.ps1)
+* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/New-IPv4Subnet.ps1)
 
 ## Description
 
-Script/Function to calculate a subnet based on an IP-Address within the subnet and the subnetmask/CIDR.
-
-The result will contain the NetworkIP, Broadcast, total IPs and the available host IPs.
+Calculate a subnet based on an IP-Address within the subnet and the subnetmask or CIDR. 
+The result includes the NetworkID, Broadcast, total available IPs and usable IPs for hosts.
 
 ![Screenshot](New-IPv4Subnet.png?raw=true)
 
 ## Syntax
 
-### Module
+### Function
 
 ```powershell
 New-IPv4Subnet [[-IPv4Address] <IPAddress>] [[-CIDR] <Int32>] [<CommonParameters>]
@@ -33,7 +32,7 @@ New-IPv4Subnet [[-IPv4Address] <IPAddress>] [[-Mask] <IPAddress>] [<CommonParame
 
 ## Example
 
-### Module
+### Function
 
 ```powershell
 PS> New-IPv4Subnet -IPv4Address 192.168.24.96 -CIDR 27

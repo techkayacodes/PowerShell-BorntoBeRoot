@@ -2,35 +2,33 @@
 # Language     :  PowerShell 4.0
 # Filename     :  Get-InstalledSoftware.ps1
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
-# Description  :  Function to get all installed software with uninstall string
+# Description  :  Get all installed software with DisplayName, Publisher and UninstallString
 # Repository   :  https://github.com/BornToBeRoot/PowerShell
 ###############################################################################################################
 
 <#
     .SYNOPSIS
-    Function to get all installed software with DisplayName, Publisher and UninstallString
+    Get all installed software with DisplayName, Publisher and UninstallString
                  
     .DESCRIPTION         
-    Function to get all installed software with DisplayName, Publisher and UninstallString. It also returns the 
-	InstallLocation and InstallDate property. With the parameter "-Search" you can filter the results.
+    Get all installed software with DisplayName, Publisher and UninstallString. The result
+	will also include the InstallLocation and the InstallDate. To reduce the results, you can use 
+    the parameter "-Search *PRODUCTNAME*".
                                  
     .EXAMPLE
     Get-InstalledSoftware
        
     .EXAMPLE
-    Get-InstalledSoftware -Search "*visual studio*"
+    Get-InstalledSoftware -Search "*chrome*"
 
-	DisplayName                        UninstallString                    InstallLocation                    InstallDate
-	-----------                        ---------------                    ---------------                    -----------
-	Microsoft Visual Studio Team Fo... MsiExec.exe /I{04B5C251-079F-31...                                    20151217
-	Visual Studio 2015 Prerequisite... MsiExec.exe /X{447A06BC-E1AC-4D...                                    20151217
-	Microsoft Visual Studio 2015-Le... MsiExec.exe /I{4F4AD505-AAA6-40...                                    20151217
-	Visual Studio 2010 Prerequisite... MsiExec.exe /X{53952792-BF16-30...                                    20150914
-	Microsoft Visual Studio 2015 Vs... MsiExec.exe /I{599702AA-91EB-38...                                    20151217
+	DisplayName     : Google Chrome
+	Publisher       : Google Inc.
+	UninstallString : "C:\Program Files (x86)\Google\Chrome\Application\51.0.2704.103\Installer\setup.exe" --uninstall --multi-install --chrome --system-level
+	InstallLocation : C:\Program Files (x86)\Google\Chrome\Application
+	InstallDate     : 20160506
 	
     .LINK
-    Github Profil:         https://github.com/BornToBeRoot
-    Github Repository:     https://github.com/BornToBeRoot/PowerShell
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Get-InstalledSoftware.README.md
 #>
 
 function Get-InstalledSoftware
@@ -44,15 +42,13 @@ function Get-InstalledSoftware
 	)
 
 	Begin{
-		# where to search for Software/UninstallStrings
+		# Location where all entrys for installed software should be stored
 		$Strings = Get-ChildItem -Path  "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall", "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall" | Get-ItemProperty | Select-Object -Property DisplayName, Publisher, UninstallString, InstallLocation, InstallDate
 	}
 
 	Process{
-		# Array which get returned
 		$Results = @()
-
-		# Process results
+		
 		foreach($String in $Strings)
 		{
 			# Check for each entry if data exists
@@ -84,9 +80,11 @@ function Get-InstalledSoftware
 				}
 			}       
 		}
+
+		return $Results	
 	}
 
 	End{
-		return $Results
+		
 	}
 }
