@@ -13,7 +13,7 @@ Automate all the things
 2. Copy the folder [Module/LazyAdmin](Module/LazyAdmin) to `C:\Users\%username%\Documents\WindowsPowerShell\Modules\`
 3. Run the command `Import-Module LazyAdmin`
 
-| Function | Description | Documentation | 
+| Function&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Description | Documentation | 
 | :--- | :--- | :---: |
 | [Convert-Subnetmask](Module/LazyAdmin/Convert-Subnetmask.ps1) | Convert a subnetmask to CIDR and vise versa | [view](Documentation/Convert-Subnetmask.README.md) |
 | [Get-InstalledSoftware](Module/LazyAdmin/Get-InstalledSoftware.ps1) | Get all installed software with DisplayName, Publisher and UninstallString | [view](Documentation/Get-InstalledSoftware.README.md) |
@@ -40,7 +40,7 @@ Available functions:
 ![Screenshot](/Documentation/ModernConsole.png?raw=true)
 
 ## Scripts
-| Script | Description | Documentation | 
+| Script&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Description | Documentation | 
 | :--- | :--- | :---: |
 | [Convert-Subnetmask.ps1](Scripts/Convert-Subnetmask.ps1) | Convert a subnetmask to CIDR and vise versa | [view ](Documentation/Convert-Subnetmask.README.md) |
 | [Get-InstalledSoftware.ps1](Scripts/Get-InstalledSoftware.ps1) | Get all installed software with DisplayName, Publisher and UninstallString | [view](Documentation/Get-InstalledSoftware.README.md) |
