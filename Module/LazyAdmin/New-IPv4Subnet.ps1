@@ -90,7 +90,18 @@ function New-IPv4Subnet
             "Mask" {
                 # Convert the numbers into 8 bit blocks, join them all together, count the 1
                 $Octets = $Mask.ToString().Split('.') | foreach {[Convert]::ToString($_, 2)}
-                $CIDR = ($Octets -Join "").TrimEnd('0').Length
+                $CIDR_Bits = ($Octets -join "").TrimEnd("0")
+
+                # /16 -> 1111111111111111 (if there is a 0 inside... it`s not valid)
+                if([char[]]$CIDR_Bits -contains "0")
+                {
+                    Write-Host "$Mask is not a valid subnetmask" -ForegroundColor Yellow
+                    return 
+                }
+                else
+                {
+                    $CIDR = $CIDR_Bits.Length 
+                }
             }              
         }
         

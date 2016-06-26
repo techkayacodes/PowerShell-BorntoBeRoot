@@ -46,7 +46,8 @@ param(
         Position=0,
         Mandatory=$true,
         HelpMessage='Subnetmask like 255.255.255.0')]
-    [IPAddress]$Mask 
+    [ValidatePattern("255|254|252|248|240|224|192|128|0+")]
+    [string]$Mask 
 )
 
 Begin {
@@ -59,6 +60,7 @@ Process {
         "CIDR" {                          
             # Make a string of bits (24 to 11111111111111111111111100000000)
             $CIDR_Bits = ('1' * $CIDR).PadRight(32, "0")
+            
             # Split into groups of 8 bits, convert to Ints, join up into a string
             $Octets = $CIDR_Bits -split '(.{8})' -ne ''
             $Mask = ($Octets | foreach { [Convert]::ToInt32($_, 2) }) -join '.'
@@ -66,8 +68,19 @@ Process {
 
         "Mask" {
             # Convert the numbers into 8 bit blocks, join them all together, count the 1
-            $Octets = $Mask.ToString().Split('.') | foreach {[Convert]::ToString($_, 2)}
-            $CIDR = ($Octets -Join "").TrimEnd('0').Length
+            $Octets = $Mask.ToString().Split(".") | foreach {[Convert]::ToString($_, 2)}
+            $CIDR_Bits = ($Octets -join "").TrimEnd("0")
+            
+            # /16 -> 1111111111111111 (if there is a 0 inside... it`s not valid)
+            if([char[]]$CIDR_Bits -contains "0")
+            {
+                Write-Host "$Mask is not a valid subnetmask" -ForegroundColor Yellow
+                return 
+            }
+            else
+            {
+                $CIDR = $CIDR_Bits.Length 
+            }
         }               
     }
 
