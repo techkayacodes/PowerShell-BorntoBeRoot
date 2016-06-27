@@ -28,20 +28,6 @@ Automate all the things!
 | [Test-IsFileBinary](Module/LazyAdmin/Test-IsFileBinary.ps1) | Test if a file is binary | [:book:](Documentation/Test-IsFileBinary.README.md) |
 | [Update-StringInFiles](Module/LazyAdmin/Update-StringInFiles.ps1) | Replace a string in one or multiple files | [:book:](Documentation/Update-StringInFiles.README.md)
 
-### ModernConsole 
-
-1. Download the [latest Release](https://github.com/BornToBeRoot/PowerShell/releases/latest) 
-2. Copy the folder [Module/ModernConsole](Module/ModernConsole) to `C:\Users\%username%\Documents\WindowsPowerShell\Modules\`
-3. Open up a PowerShell as an admin and set the execution policy: `Set-ExecutionPolicy RemoteSigned`
-4. Import the Module with the command `Import-Module ModernConsole`  (Maybe add this command to your PowerShell profile)
-
-Available functions:
-
-* Startscreen with informations about the user and computer (overwrites `Clear-Console`)
-* Short paths - shows drive/network share and the current folder (overwrites `prompt`)
-
-![Screenshot](/Documentation/Images/ModernConsole.png?raw=true)
-
 ## Scripts
 
 | Script&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Description | Help | 
