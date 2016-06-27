@@ -4,14 +4,14 @@ My collection of useful modules, scripts, snippets and templates written by myse
 
 ## Description
 
-Automate all the things!
+Automate all the things! 
 
 ## Module
 
 #### How to install the module?
 
 1. Download the [latest Release](https://github.com/BornToBeRoot/PowerShell/releases/latest)
-2. Copy the folder [Module/LazyAdmin](Module/LazyAdmin) to `C:\Users\%username%\Documents\WindowsPowerShell\Modules\`
+2. Copy the folder [Module\LazyAdmin](Module/LazyAdmin) to `C:\Users\%username%\Documents\WindowsPowerShell\Modules\`
 3. Open up a PowerShell as an admin and set the execution policy: `Set-ExecutionPolicy RemoteSigned`
 4. Import the Module with the command `Import-Module LazyAdmin` (Maybe add this command to your PowerShell profile) 
 
