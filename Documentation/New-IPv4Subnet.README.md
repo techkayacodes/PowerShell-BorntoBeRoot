@@ -1,6 +1,6 @@
 # New-IPv4Subnet
 
-Calculate a subnet based on an IP-Address within the subnet and the subnetmask or CIDR.
+Calculate a subnet based on an IP-Address and the subnetmask or CIDR.
 
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/New-IPv4Subnet.ps1)
 * [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/New-IPv4Subnet.ps1)
