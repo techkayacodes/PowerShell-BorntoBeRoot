@@ -6,7 +6,7 @@ My collection of useful modules, scripts, snippets and templates written by myse
 
 Automate all the things!
 
-## Module (LazyAdmin)
+## Module
 
 #### How to install the module?
 
