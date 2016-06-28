@@ -7,7 +7,7 @@ Convert an IPv4-Address to Int64 and vise versa.
 
 ## Description
 
-Convert an IPv4-Address to Int64 and vise versa. The result will contain the IPv4-Address as string and Tnt64.
+Convert an IPv4-Address to Int64 and vise versa. The result will contain the IPv4-Address as string and Int64.
 
 ![Screenshot](Images/Convert-IPv4Address.png?raw=true "Convert-IPv4Address")
 
