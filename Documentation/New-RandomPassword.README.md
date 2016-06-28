@@ -9,7 +9,7 @@ Generate passwords with a freely definable number of characters.
 
 Generate passwords with a freely definable number of characters. You can also select which chars you want to use (upper case, lower case, numbers and special chars).
 
-![Screenshot](Images/New-RandomPassword.png?raw=true)
+![Screenshot](Images/New-RandomPassword.png?raw=true "New-RandomPassword")
 
 ## Syntax 
 

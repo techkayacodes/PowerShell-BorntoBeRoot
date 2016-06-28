@@ -9,7 +9,7 @@ Test if a file is binary.
 
 Test if a file is binary like .exe or .zip.
 
-![Screenshot](Images/Test-IsFileBinary.png?raw=true)
+![Screenshot](Images/Test-IsFileBinary.png?raw=true "Test-IsFileBinary")
 
 I found this code snippet on Stackoverflow: https://stackoverflow.com/questions/1077634/powershell-search-script-that-ignores-binary-files
 

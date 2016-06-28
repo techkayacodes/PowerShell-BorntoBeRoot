@@ -9,7 +9,7 @@ Find a string in one or multiple files.
 
 Find a string in one or multiple files. The search is performed recursively from the start folder.
 
-![Screenshot](Images/Search-StringInFiles.png?raw=true)
+![Screenshot](Images/Search-StringInFiles.png?raw=true "Search-StringInFiles")
 
 ## Syntax
 

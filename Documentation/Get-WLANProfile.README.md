@@ -10,7 +10,7 @@ Get WLAN profiles, include password as SecureString or as plain text.
 Get WLAN profiles on your local system, include Name, SSID, Authentication and Password as secure string or plain text. You don't need an additional application, which is full of advertising. And for learning purposes it shows, how easy it is to find out the WLAN password, if you have physical/remote access to the computer. 
 All this just by parsing the netsh.exe output which can be called without admin permissions.   
 
-![Screenshot](Images/Get-WLANProfile.png?raw=true)
+![Screenshot](Images/Get-WLANProfile.png?raw=true "Get-WLANProfile")
 
 _In Windows 7 there was a graphical interface in the network settings, where you could get the wlan password in plain text. In Windows 8, 8.1 and 10 this function is hidden or difficult to find._
 

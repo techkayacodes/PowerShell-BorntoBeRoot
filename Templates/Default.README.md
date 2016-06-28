@@ -9,7 +9,7 @@ Shot description...
 
 Description...
 
-![Screenshot](FILENAME.png?raw=true)
+![Screenshot](Images/FILENAME.png?raw=true)
 
 ## Syntax
 
