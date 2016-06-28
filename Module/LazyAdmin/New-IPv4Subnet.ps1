@@ -39,7 +39,7 @@ function New-IPv4Subnet
         [Parameter(
             Position=0,
             Mandatory=$true,
-            HelpMessage='IPv4 Address which is in the subnet')]
+            HelpMessage='IPv4-Address which is in the subnet')]
         [IPAddress]$IPv4Address,
 
         [Parameter(
