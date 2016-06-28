@@ -6,6 +6,8 @@ My collection of useful modules, scripts, snippets and templates written by myse
 
 Automate all the things! 
 
+All Scripts are available in Module `LazyAmin`
+
 ## Module
 
 #### How to install the module?
