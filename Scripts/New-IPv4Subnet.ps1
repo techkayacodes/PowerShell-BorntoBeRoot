@@ -58,14 +58,14 @@ param(
 
 Begin{
     # Convert an Int64 to an IP-Address  
-    function Int64toIP() { 
+    function Int64toIPv4Address() { 
         param ([long]$Int) 
 
         return (([System.Math]::Truncate($Int/16777216)).ToString() + "." + ([System.Math]::Truncate(($Int%16777216)/65536)).tostring() + "." + ([System.Math]::Truncate(($int%65536)/256)).ToString() + "." + ([System.Math]::Truncate($int%256)).ToString())
     }	
 
     # Convert an IP-Address to Int64
-    function IPtoInt64() { 
+    function IPv4AddresstoInt64() { 
         param ($IPAddr) 
      
         $Octets = $IPAddr.split(".") 
@@ -120,7 +120,7 @@ Process{
     $AvailableIPs = [Convert]::ToInt64($HostBits,2)
 
     # Convert NetworkID to Int64, add available IPs, parse into IPAddress
-    $Broadcast = [System.Net.IPAddress]::Parse((Int64toIP((IPtoInt64($NetworkID.ToString())) + $AvailableIPs)))
+    $Broadcast = [System.Net.IPAddress]::Parse((Int64toIPv4Address((IPv4AddresstoInt64($NetworkID.ToString())) + $AvailableIPs)))
 
     # Change useroutput ==> (/27 = 0..31 IPs -> AvailableIPs 32)
     $AvailableIPs += 1
