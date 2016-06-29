@@ -59,20 +59,7 @@ function New-IPv4Subnet
     )
 
     Begin{
-        # Convert an Int64 to an IP-Address  
-        function Int64toIPv4Address() { 
-            param ([long]$Int) 
-
-            return (([System.Math]::Truncate($Int/16777216)).ToString() + "." + ([System.Math]::Truncate(($Int%16777216)/65536)).tostring() + "." + ([System.Math]::Truncate(($int%65536)/256)).ToString() + "." + ([System.Math]::Truncate($int%256)).ToString())
-        }	
-
-        # Convert an IP-Address to Int64
-        function IPv4AddresstoInt64() { 
-            param ($IPAddr) 
-        
-            $Octets = $IPAddr.split(".") 
-            return [long]([long]$Octets[0]*16777216 + [long]$Octets[1]*65536 + [long]$Octets[2]*256 + [long]$Octets[3]) 
-        }   
+      
     }
 
     Process{
@@ -121,9 +108,12 @@ function New-IPv4Subnet
         # Convert Bits to Int64
         $AvailableIPs = [Convert]::ToInt64($HostBits,2)
 
-        # Convert NetworkID to Int64, add available IPs, parse into IPAddress
-        $Broadcast = [System.Net.IPAddress]::Parse((Int64toIPv4Address((IPv4AddresstoInt64($NetworkID.ToString())) + $AvailableIPs)))
+        # Convert Network Address to Int64
+        $NetworkID_Int64 = (Convert-IPv4Address -IPv4Address $NetworkID.ToString()).Int64
 
+        # Convert add available IPs and parse into IPAddress
+        $Broadcast = [System.Net.IPAddress]::Parse((Convert-IPv4Address -Int64 ($NetworkID_Int64 + $AvailableIPs)).IPv4Address)
+        
         # Change useroutput ==> (/27 = 0..31 IPs -> AvailableIPs 32)
         $AvailableIPs += 1
 

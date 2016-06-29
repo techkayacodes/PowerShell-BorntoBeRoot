@@ -57,19 +57,57 @@ param(
 )
 
 Begin{
-    # Convert an Int64 to an IP-Address  
-    function Int64toIPv4Address() { 
-        param ([long]$Int) 
+    # Helper function to convert an IPv4-Address to Int64 and vise versa
+    function Convert-IPv4Address
+    {
+        [CmdletBinding(DefaultParameterSetName='String')]
+        param(
+            [Parameter(
+                ParameterSetName='String',
+                Position=0,
+                Mandatory=$true,
+                HelpMessage='IPv4-Address as string like "192.168.1.1"')]
+            [ValidatePattern("^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$")]
+            [String]$IPv4Address,
 
-        return (([System.Math]::Truncate($Int/16777216)).ToString() + "." + ([System.Math]::Truncate(($Int%16777216)/65536)).tostring() + "." + ([System.Math]::Truncate(($int%65536)/256)).ToString() + "." + ([System.Math]::Truncate($int%256)).ToString())
-    }	
+            [Parameter(
+                    ParameterSetName='Int64',
+                    Position=0,
+                    Mandatory=$true,
+                    HelpMessage='IPv4-Address as Int64 like 2886755428')]
+            [long]$Int64
+        ) 
 
-    # Convert an IP-Address to Int64
-    function IPv4AddresstoInt64() { 
-        param ($IPAddr) 
-     
-        $Octets = $IPAddr.split(".") 
-        return [long]([long]$Octets[0]*16777216 + [long]$Octets[1]*65536 + [long]$Octets[2]*256 + [long]$Octets[3]) 
+        Begin {
+
+        }
+
+        Process {
+
+            switch($PSCmdlet.ParameterSetName)
+            {
+                # Convert IPv4-Address as string into Int64
+                "String" {
+                    $Octets = $IPv4Address.split(".") 
+                    $Int64 = [long]([long]$Octets[0]*16777216 + [long]$Octets[1]*65536 + [long]$Octets[2]*256 + [long]$Octets[3]) 
+                }
+        
+                # Convert IPv4-Address as Int64 into string 
+                "Int64" {            
+                    $IPv4Address = (([System.Math]::Truncate($Int64/16777216)).ToString() + "." + ([System.Math]::Truncate(($Int64%16777216)/65536)).ToString() + "." + ([System.Math]::Truncate(($Int64%65536)/256)).ToString() + "." + ([System.Math]::Truncate($Int64%256)).ToString())
+                }      
+            }
+
+            $Result = New-Object -TypeName PSObject    
+            Add-Member -InputObject $Result -MemberType NoteProperty -Name IPv4Address -Value $IPv4Address
+            Add-Member -InputObject $Result -MemberType NoteProperty -Name Int64 -Value $Int64
+
+            return $Result	
+        }
+
+        End {
+
+        }
     }   
 }
 
@@ -119,8 +157,11 @@ Process{
     # Convert Bits to Int64
     $AvailableIPs = [Convert]::ToInt64($HostBits,2)
 
-    # Convert NetworkID to Int64, add available IPs, parse into IPAddress
-    $Broadcast = [System.Net.IPAddress]::Parse((Int64toIPv4Address((IPv4AddresstoInt64($NetworkID.ToString())) + $AvailableIPs)))
+    # Convert Network Address to Int64
+    $NetworkID_Int64 = (Convert-IPv4Address -IPv4Address $NetworkID.ToString()).Int64
+
+    # Convert add available IPs and parse into IPAddress
+    $Broadcast = [System.Net.IPAddress]::Parse((Convert-IPv4Address -Int64 ($NetworkID_Int64 + $AvailableIPs)).IPv4Address)
 
     # Change useroutput ==> (/27 = 0..31 IPs -> AvailableIPs 32)
     $AvailableIPs += 1
