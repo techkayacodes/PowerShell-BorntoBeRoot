@@ -45,7 +45,7 @@ param(
         Position=1,
         Mandatory=$true,
         HelpMessage='CIDR like /24 without "/"')]
-    [ValidateRange(0,32)]
+    [ValidateRange(0,31)]
     [Int32]$CIDR,
 
     [Parameter(
@@ -53,10 +53,71 @@ param(
         Position=1,
         Mandatory=$true,
         Helpmessage='Subnetmask like 255.255.255.0')]
-    [IPAddress]$Mask
+    [ValidatePattern("^(254|252|248|240|224|192|128).0.0.0$|^255.(254|252|248|240|224|192|128|0).0.0$|^255.255.(254|252|248|240|224|192|128|0).0$|^255.255.255.(254|252|248|240|224|192|128|0)$")]
+    [String]$Mask
 )
 
 Begin{
+    # Helper function to convert a subnetmask
+    function Convert-Subnetmask 
+    {
+        [CmdLetBinding(DefaultParameterSetName='CIDR')]
+        param( 
+            [Parameter( 
+                ParameterSetName='CIDR',       
+                Position=0,
+                Mandatory=$true,
+                HelpMessage='CIDR like /24 without "/"')]
+            [ValidateRange(0,32)]
+            [Int32]$CIDR,
+
+            [Parameter(
+                ParameterSetName='Mask',
+                Position=0,
+                Mandatory=$true,
+                HelpMessage='Subnetmask like 255.255.255.0')]
+            [ValidatePattern("^(254|252|248|240|224|192|128).0.0.0$|^255.(254|252|248|240|224|192|128|0).0.0$|^255.255.(254|252|248|240|224|192|128|0).0$|^255.255.255.(255|254|252|248|240|224|192|128|0)$")]
+            [String]$Mask
+        )
+
+        Begin {
+
+        }
+
+        Process {
+            switch($PSCmdlet.ParameterSetName)
+            {
+                "CIDR" {                          
+                    # Make a string of bits (24 to 11111111111111111111111100000000)
+                    $CIDR_Bits = ('1' * $CIDR).PadRight(32, "0")
+                    
+                    # Split into groups of 8 bits, convert to Ints, join up into a string
+                    $Octets = $CIDR_Bits -split '(.{8})' -ne ''
+                    $Mask = ($Octets | foreach { [Convert]::ToInt32($_, 2) }) -join '.'
+                }
+
+                "Mask" {
+                    # Convert the numbers into 8 bit blocks, join them all together, count the 1
+                    $Octets = $Mask.ToString().Split(".") | foreach {[Convert]::ToString($_, 2)}
+                    $CIDR_Bits = ($Octets -join "").TrimEnd("0")
+
+                    # Count the "1" (111111111111111111111111 --> /24)                     
+                    $CIDR = $CIDR_Bits.Length             
+                }               
+            }
+
+            $Result = New-Object -TypeName PSObject
+            Add-Member -InputObject $Result -MemberType NoteProperty -Name Mask -Value $Mask
+            Add-Member -InputObject $Result -MemberType NoteProperty -Name CIDR -Value $CIDR
+
+            return $Result
+        }
+
+        End {
+            
+        }
+    }
+
     # Helper function to convert an IPv4-Address to Int64 and vise versa
     function Convert-IPv4Address
     {
@@ -83,7 +144,6 @@ Begin{
         }
 
         Process {
-
             switch($PSCmdlet.ParameterSetName)
             {
                 # Convert IPv4-Address as string into Int64
@@ -108,7 +168,7 @@ Begin{
         End {
 
         }
-    }   
+    }    
 }
 
 Process{
@@ -116,29 +176,11 @@ Process{
     switch($PSCmdlet.ParameterSetName)
     {
         "CIDR" {                          
-            # Make a string of bits (24 to 11111111111111111111111100000000)
-            $CIDR_Bits = ('1' * $CIDR).PadRight(32, "0")
-
-            # Split into groups of 8 bits, convert to Ints, join up into a string
-            $Octets = $CIDR_Bits -split '(.{8})' -ne ''
-            $Mask = ($Octets | foreach { [System.Convert]::ToInt32($_, 2) }) -join '.'
+           $Mask = (Convert-Subnetmask -CIDR $CIDR).Mask            
         }
 
         "Mask" {
-            # Convert the numbers into 8 bit blocks, join them all together, count the 1
-            $Octets = $Mask.ToString().Split('.') | foreach {[System.Convert]::ToString($_, 2)}
-            $CIDR_Bits = ($Octets -join "").TrimEnd("0")
-
-            # /16 -> 1111111111111111 (if there is a 0 inside... it`s not valid)
-            if([char[]]$CIDR_Bits -contains "0")
-            {
-                Write-Host "$Mask is not a valid subnetmask" -ForegroundColor Yellow
-                return 
-            }
-            else
-            {
-                $CIDR = $CIDR_Bits.Length 
-            }
+           $CIDR = (Convert-Subnetmask -Mask $Mask).CIDR          
         }              
     }
      
@@ -175,6 +217,7 @@ Process{
     Add-Member -InputObject $Result -MemberType NoteProperty -Name Broadcast -Value $Broadcast
     Add-Member -InPutObject $Result -MemberType NoteProperty -Name IPs -Value $AvailableIPs
     Add-Member -InPutObject $Result -MemberType NoteProperty -Name Hosts -Value $Hosts
+
     return $Result
 }
 

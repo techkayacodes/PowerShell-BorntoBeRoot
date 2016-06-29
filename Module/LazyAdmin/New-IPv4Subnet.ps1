@@ -47,7 +47,7 @@ function New-IPv4Subnet
             Position=1,
             Mandatory=$true,
             HelpMessage='CIDR like /24 without "/"')]
-        [ValidateRange(0,32)]
+        [ValidateRange(0,31)]
         [Int32]$CIDR,
 
         [Parameter(
@@ -55,7 +55,8 @@ function New-IPv4Subnet
             Position=1,
             Mandatory=$true,
             Helpmessage='Subnetmask like 255.255.255.0')]
-        [IPAddress]$Mask
+        [ValidatePattern("^(254|252|248|240|224|192|128).0.0.0$|^255.(254|252|248|240|224|192|128|0).0.0$|^255.255.(254|252|248|240|224|192|128|0).0$|^255.255.255.(254|252|248|240|224|192|128|0)$")]
+        [String]$Mask
     )
 
     Begin{
@@ -67,30 +68,11 @@ function New-IPv4Subnet
         switch($PSCmdlet.ParameterSetName)
         {
             "CIDR" {                          
-                # Make a string of bits (24 to 11111111111111111111111100000000)
-                $CIDR_Bits = ('1' * $CIDR).PadRight(32, "0")
-
-                # Split into groups of 8 bits, convert to Ints, join up into a string
-                $Octets = $CIDR_Bits -split '(.{8})' -ne ''
-                $Mask = ($Octets | foreach { [System.Convert]::ToInt32($_, 2) }) -join '.'
+                $Mask = (Convert-Subnetmask -CIDR $CIDR).Mask            
             }
-
             "Mask" {
-                # Convert the numbers into 8 bit blocks, join them all together, count the 1
-                $Octets = $Mask.ToString().Split('.') | foreach {[System.Convert]::ToString($_, 2)}
-                $CIDR_Bits = ($Octets -join "").TrimEnd("0")
-
-                # /16 -> 1111111111111111 (if there is a 0 inside... it`s not valid)
-                if([char[]]$CIDR_Bits -contains "0")
-                {
-                    Write-Host "$Mask is not a valid subnetmask" -ForegroundColor Yellow
-                    return 
-                }
-                else
-                {
-                    $CIDR = $CIDR_Bits.Length 
-                }
-            }              
+                $CIDR = (Convert-Subnetmask -Mask $Mask).CIDR          
+            }                  
         }
         
         # Get CIDR Address by parsing it into an IP-Address
@@ -126,6 +108,7 @@ function New-IPv4Subnet
         Add-Member -InputObject $Result -MemberType NoteProperty -Name Broadcast -Value $Broadcast
         Add-Member -InPutObject $Result -MemberType NoteProperty -Name IPs -Value $AvailableIPs
         Add-Member -InPutObject $Result -MemberType NoteProperty -Name Hosts -Value $Hosts
+
         return $Result
     }
 
