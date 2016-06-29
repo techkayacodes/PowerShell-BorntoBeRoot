@@ -49,6 +49,7 @@ function Convert-Subnetmask
             Position=0,
             Mandatory=$true,
             HelpMessage='Subnetmask like 255.255.255.0')]
+        [ValidatePattern("^(254|252|248|240|224|192|128).0.0.0$|^255.(254|252|248|240|224|192|128|0).0.0$|^255.255.(254|252|248|240|224|192|128|0).0$|^255.255.255.(254|252|248|240|224|192|128|0)$")]
         [IPAddress]$Mask 
     )
 
@@ -73,16 +74,8 @@ function Convert-Subnetmask
                 $Octets = $Mask.ToString().Split(".") | foreach {[Convert]::ToString($_, 2)}
                 $CIDR_Bits = ($Octets -join "").TrimEnd("0")
 
-                # /16 -> 1111111111111111 (if there is a 0 inside... it`s not valid)
-                if([char[]]$CIDR_Bits -contains "0")
-                {
-                    Write-Host "$Mask is not a valid subnetmask" -ForegroundColor Yellow
-                    return 
-                }
-                else
-                {
-                    $CIDR = $CIDR_Bits.Length 
-                }
+                # Count the "1" (111111111111111111111111 --> /24)                     
+                $CIDR = $CIDR_Bits.Length      
             }               
         }
 
