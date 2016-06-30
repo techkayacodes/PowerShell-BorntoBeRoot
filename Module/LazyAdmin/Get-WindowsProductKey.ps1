@@ -11,9 +11,7 @@
     Get the Windows product key and some usefull informations about the system
 
     .DESCRIPTION    
-    Get the Windows product key from a local or remote system and some informations like Serialnumber, 
-    Windows version, Bit-Version etc. from one or more computers. Remote computers need WinRM enabled.
-    To do this use "winrm quickconfig".
+    Get the Windows product key from a local or remote system and some informations like Serialnumber, Windows version, Bit-Version etc. from one or more computers. Remote computers need WinRM enabled. To do this use "winrm quickconfig".
         
     Basic Logic found on: http://powershell.com/cs/blogs/tips/archive/2012/04/30/getting-windows-product-key.aspx          
                 

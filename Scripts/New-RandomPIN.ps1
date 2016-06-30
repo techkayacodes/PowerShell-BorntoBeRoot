@@ -11,8 +11,7 @@
     Generate a PIN with a freely definable number of numbers
 
     .DESCRIPTION
-	Generate a PIN with a freely definable number of numbers. You can also set the smallest and greatest
-	possible number. 
+	Generate a PIN with a freely definable number of numbers. You can also set the smallest and greatest possible number. 
                 
     .EXAMPLE
     .\New-RandomPIN.ps1 -Length 6

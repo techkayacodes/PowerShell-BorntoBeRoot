@@ -11,8 +11,7 @@
     Find a string in one or multiple files
                  
     .DESCRIPTION         
-    Find a string in one or multiple files. The search is performed recursively from
-	the start folder.
+    Find a string in one or multiple files. The search is performed recursively from the start folder.
                                  
     .EXAMPLE
     .\Search-StringInFiles.ps1 -Path "C:\Scripts\FolderWithFiles" -Search "Test01"

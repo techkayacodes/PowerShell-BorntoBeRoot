@@ -12,6 +12,7 @@
                  
     .DESCRIPTION         
     Replace a string in one or multiple files.
+	
     Binary files (*.zip, *.exe, etc.) are not touched by this script.
 	                         
     .EXAMPLE

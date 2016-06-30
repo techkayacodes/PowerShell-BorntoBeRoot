@@ -11,8 +11,7 @@
     Calculate a subnet based on an IP-Address and the subnetmask or CIDR
 
     .DESCRIPTION
-    Calculate a subnet based on an IP-Address within the subnet and the subnetmask or CIDR.
-    The result includes the NetworkID, Broadcast, total available IPs and usable IPs for hosts.
+    Calculate a subnet based on an IP-Address within the subnet and the subnetmask or CIDR. The result includes the NetworkID, Broadcast, total available IPs and usable IPs for hosts.
                 
     .EXAMPLE
     New-IPv4Subnet -IPv4Address 192.168.24.96 -CIDR 27
@@ -64,7 +63,7 @@ function New-IPv4Subnet
     }
 
     Process{
-        # Convert Mask or CDIR - because we need both in the code below
+        # Convert Mask or CIDR - because we need both in the code below
         switch($PSCmdlet.ParameterSetName)
         {
             "CIDR" {                          
@@ -84,7 +83,7 @@ function New-IPv4Subnet
         # Return an array of bytes. Then join them.
         $NetworkID = [System.Net.IPAddress]::Parse([System.BitConverter]::GetBytes([UInt32]$NetworkID_bAND) -join ("."))
         
-        # Get HostBits based on SubnetBits (CDIR) // Hostbits (32 - /24 = 8 -> 00000000000000000000000011111111)
+        # Get HostBits based on SubnetBits (CIDR) // Hostbits (32 - /24 = 8 -> 00000000000000000000000011111111)
         $HostBits = ('1' * (32 - $CIDR)).PadLeft(32, "0")
         
         # Convert Bits to Int64

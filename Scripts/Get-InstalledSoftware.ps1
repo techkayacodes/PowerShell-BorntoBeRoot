@@ -11,9 +11,7 @@
     Get all installed software with DisplayName, Publisher and UninstallString
                  
     .DESCRIPTION         
-    Get all installed software with DisplayName, Publisher and UninstallString. The result
-	will also include the InstallLocation and the InstallDate. To reduce the results, you can use 
-    the parameter "-Search *PRODUCTNAME*".
+    Get all installed software with DisplayName, Publisher and UninstallString. The result will also include the InstallLocation and the InstallDate. To reduce the results, you can use the parameter "-Search *PRODUCTNAME*".
                                  
     .EXAMPLE
     .\Get-InstalledSoftware.ps1

@@ -11,8 +11,7 @@
     Generate passwords with a freely definable number of characters
 
     .DESCRIPTION
-	Generate passwords with a freely definable number of characters. You can also select which chars
-	you want to use (upper case, lower case, numbers and special chars).
+	Generate passwords with a freely definable number of characters. You can also select which chars you want to use (upper case, lower case, numbers and special chars).
 
 	.EXAMPLE
 	New-RandomPassword -Length 8
