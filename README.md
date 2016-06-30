@@ -28,7 +28,7 @@ Automate all the things!
 | [New-RandomPassword](Module/LazyAdmin/New-RandomPassword.ps1) | Generate passwords with a freely definable number of characters | [:book:](Documentation/New-RandomPassword.README.md) |
 | [New-RandomPIN](Module/LazyAdmin/New-RandomPIN.ps1) | Generate a PIN with a freely definable number of numbers | [:book:](Documentation/New-RandomPIN.README.md) |
 | [Search-StringInFiles](Module/LazyAdmin/Search-StringInFiles.ps1) | Find a string in one or multiple files | [:book:](Documentation/Search-StringInFiles.README.md) |
-| [Split-IPv4Subnet](Module/LazyAdmin/Split-IPv4Subnet.ps1) | Split a subnet in multiple subnets with given subnetmasks | [book:](Documentation/Split-IPv4Subnet.README.md) |
+| [Split-IPv4Subnet](Module/LazyAdmin/Split-IPv4Subnet.ps1) | Split a subnet in multiple subnets with given subnetmasks | [:book:](Documentation/Split-IPv4Subnet.README.md) |
 | [Test-IsFileBinary](Module/LazyAdmin/Test-IsFileBinary.ps1) | Test if a file is binary | [:book:](Documentation/Test-IsFileBinary.README.md) |
 | [Update-StringInFiles](Module/LazyAdmin/Update-StringInFiles.ps1) | Replace a string in one or multiple files | [:book:](Documentation/Update-StringInFiles.README.md)
 
@@ -45,7 +45,7 @@ Automate all the things!
 | [New-RandomPassword.ps1](Scripts/New-RandomPassword.ps1) | Generate passwords with a freely definable number of characters | [:book:](Documentation/New-RandomPassword.README.md)
 | [New-RandomPIN.ps1](Scripts/New-RandomPIN.ps1) | Generate a PIN with a freely definable number of numbers | [:book:](Documentation/New-RandomPIN.README.md) |
 | [Search-StringInFiles.ps1](Scripts/Search-StringInFiles.ps1) | Find a string in one or multiple files | [:book:](Documentation/Search-StringInFiles.README.md) |
-| [Split-IPv4Subnet](Scripts/Split-IPv4Subnet.ps1) | Split a subnet in multiple subnets with given subnetmasks | [book:](Documentation/Split-IPv4Subnet.README.md) |
+| [Split-IPv4Subnet](Scripts/Split-IPv4Subnet.ps1) | Split a subnet in multiple subnets with given subnetmasks | [:book:](Documentation/Split-IPv4Subnet.README.md) |
 | [Test-IsFileBinary.ps1](Scripts/Test-IsFileBinary.ps1) | Test if a file is binary | [:book:](Documentation/Test-IsFileBinary.README.md) |
 | [Update-StringInFiles.ps1](Scripts/Update-StringInFiles.ps1) | Replace a string in one or multiple files | [:book:](Documentation/Update-StringInFiles.README.md) |
 
