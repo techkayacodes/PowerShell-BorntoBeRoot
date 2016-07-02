@@ -1,6 +1,6 @@
 # PowerShell
 
-My collection of useful modules, scripts, snippets and templates written by myself.
+My collection of useful functions, scripts, snippets and templates written by myself.
 
 ## Description
 
