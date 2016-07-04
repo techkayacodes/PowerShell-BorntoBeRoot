@@ -2,8 +2,8 @@
 
 Convert an IPv4-Address to Int64 and vise versa.
 
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Convert-IPv4Address.ps1)
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Convert-IPv4Address.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Network/Convert-IPv4Address.ps1)
+* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Network/Convert-IPv4Address.ps1)
 
 ## Description
 
