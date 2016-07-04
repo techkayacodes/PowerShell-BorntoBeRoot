@@ -4,7 +4,7 @@ My collection of useful functions, scripts, snippets and templates written by my
 
 ## Description
 
-Automate all the things! 
+Automate all the Things.
 
 ## Module
 
@@ -15,7 +15,7 @@ Automate all the things!
 3. Open up a PowerShell as an admin and set the execution policy: `Set-ExecutionPolicy RemoteSigned`
 4. Import the Module with the command `Import-Module LazyAdmin` (Maybe add this command to your PowerShell profile) 
 
-#### Available functions
+#### Available functions:
 
 | Function | Description | Help | 
 | :--- | :--- | :---: |
@@ -54,16 +54,19 @@ Automate all the things!
 ## Snippets
 
 | Snippet | Description | 
-| :--- | :--- | :---: |
-| [connect_exchange_2010_management_shell.ps1](Snippets/connect_exchange_2010_management_shell.ps1) | Connect to Exchange 2010 Management Shell in script |
-| [custom_psobject.ps1](Snippets/custom_psobject.ps1) | Create a custom PSObject |
-| [get_console_colors.ps1](Snippets/get_console_colors.ps1) | Show all available foreground and background console colors |
-| [get_sourcecode_of_a_function.ps1](Snippets/get_sourcecode_of_a_function.ps1) | Get the sourcecode of an existing function | 
-| [press_any_key_to_continue.ps1](Snippets/press_any_key_to_continue.ps1) | Wait for user interaction e.g. at the end of a script | 
-| [RegexPattern_IPv4Address.ps1](Snippets/RegexPattern_IPv4Address.ps1) | Validate an IPv4-Address like 192.168.1.0 |
-| [RegexPattern_Subnetmask.ps1](Snippets/RegexPattern_Subnetmask.ps1) | Validate an Subnetmask like 255.255.255.0 |
-| [self_elevating_script.ps1](Snippets/self_elevating_script.ps1) | Self elevate a PowerShell script/console with parameter |
-| [send_mail_message.ps1](Snippets/send_mail_message.ps1) | Send a mail message via PowerShell |
+| :--- | :--- |
+| [Custom_PSObject.ps1](Snippets/Custom_PSObject.ps1) | Create a custom PSObject |
+| [Connect-ExchangeManagementShell2010.ps1.ps1](Snippets/Connect-ExchangeManagementShell2010.ps1.ps1) | Connect to Exchange 2010 Management Shell in script |
+| [Get-ConsoleColors.ps1](Snippets/Get-ConsoleColors.ps1) | Show all available foreground and background console colors |
+| [Get_sourcecode_of_a_function.ps1](Snippets/Get_sourcecode_of_a_function.ps1) | Get the sourcecode of an existing function | 
+| [Press_any_key_to_continue.ps1](Snippets/Press_any_key_to_continue.ps1) | Wait until the user pressed a key | 
+| [Self_elevating_script.ps1](Snippets/Self_elevating_script.ps1) | Self elevate a PowerShell script/console with parameter |
+| [Send-MailMessage.ps1](Snippets/Send-MailMessage.ps1) | Send a mail message via PowerShell |
+
+| Regex | Description |
+| :--- | :--- |
+| [IPv4Address.ps1](Snippets/Regex/IPv4Address.ps1) | Validate an IPv4-Address like 192.168.1.0 |
+| [Subnetmask.ps1](Snippets/Regex/Subnetmask.ps1) | Validate an Subnetmask like 255.255.255.0 |
 
 ## Templates
 
