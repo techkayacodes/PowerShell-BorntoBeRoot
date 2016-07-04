@@ -55,8 +55,8 @@ Automate all the Things.
 
 | Snippet | Description | 
 | :--- | :--- |
-| [Custom_PSObject.ps1](Snippets/Custom_PSObject.ps1) | Create a custom PSObject |
 | [Connect-ExchangeManagementShell2010.ps1.ps1](Snippets/Connect-ExchangeManagementShell2010.ps1.ps1) | Connect to Exchange 2010 Management Shell in script |
+| [Custom_PSObject.ps1](Snippets/Custom_PSObject.ps1) | Create a custom PSObject |
 | [Get-ConsoleColors.ps1](Snippets/Get-ConsoleColors.ps1) | Show all available foreground and background console colors |
 | [Get_sourcecode_of_a_function.ps1](Snippets/Get_sourcecode_of_a_function.ps1) | Get the sourcecode of an existing function | 
 | [Press_any_key_to_continue.ps1](Snippets/Press_any_key_to_continue.ps1) | Wait until the user pressed a key | 
