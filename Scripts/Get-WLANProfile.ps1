@@ -49,7 +49,7 @@ param(
 
     [Parameter(
         Position=2,
-        HelpMessage='Excat match, when filter WLAN-Profiles by Name or SSID')]
+        HelpMessage='Exact match, when filter WLAN-Profiles by Name or SSID')]
     [Switch]$ExactMatch
 )
 

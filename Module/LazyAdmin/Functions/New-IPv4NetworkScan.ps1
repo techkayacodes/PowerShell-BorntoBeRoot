@@ -125,7 +125,7 @@ function New-IPv4NetworkScan
     )
 
     Begin{
-        Write-Verbose "Script startet at $(Get-Date)"
+        Write-Verbose "Script started at $(Get-Date)"
         
         # IEEE ->  The Public Listing For IEEE Standards Registration Authority -> CSV-File
         $IEEE_MACVendorList_WebUri = "http://standards.ieee.org/develop/regauth/oui/oui.csv"
