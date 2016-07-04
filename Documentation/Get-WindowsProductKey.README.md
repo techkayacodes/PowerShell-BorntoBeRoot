@@ -2,7 +2,7 @@
 
 Get the Windows product key and some usefull informations about the system.
 
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Get-WindowsProductKey.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Get-WindowsProductKey.ps1)
 * [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Get-WindowsProductKey.ps1)
 
 ## Description

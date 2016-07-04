@@ -2,7 +2,7 @@
 
 Convert a subnetmask to CIDR and vise versa.
 
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Convert-Subnetmask.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Convert-Subnetmask.ps1)
 * [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Convert-Subnetmask.ps1)
 
 ## Description
