@@ -2,8 +2,8 @@
 
 Split a subnet in multiple subnets with given subnetmasks.
 
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Network/Split-IPv4Subnet.ps1)
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Network/Split-IPv4Subnet.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Split-IPv4Subnet.ps1)
+* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Split-IPv4Subnet.ps1)
 
 ## Description
 
