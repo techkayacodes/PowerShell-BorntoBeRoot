@@ -1,29 +1,29 @@
 ###############################################################################################################
 # Language     :  PowerShell 4.0
-# Filename     :  New-IPv4Scan.ps1 
+# Filename     :  New-IPv4NetworkScan.ps1 
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
-# Description  :  Powerful asynchronus IPv4-Scanner
+# Description  :  Powerful asynchronus IPv4 Network Scanner
 # Repository   :  https://github.com/BornToBeRoot/PowerShell
 ###############################################################################################################
 
 <#
     .SYNOPSIS
-    Powerful asynchronus IPv4-Scanner
+    Powerful asynchronus IPv4 Network Scanner
 
     .DESCRIPTION
-    This powerful asynchronus IPv4-Scanner allows you to scan every IPv4-Range you want (172.16.1.47 to 172.16.2.5 would work). But there is also the possibility to scan an entire subnet based on an IPv4-Address withing the subnet and a the subnetmask/CIDR.
+    This powerful asynchronus IPv4 Network Scanner allows you to scan every IPv4-Range you want (172.16.1.47 to 172.16.2.5 would work). But there is also the possibility to scan an entire subnet based on an IPv4-Address withing the subnet and a the subnetmask/CIDR.
 
     The default result will contain the the IPv4-Address, Status (Up or Down) and the Hostname. Other values can be displayed via parameter (Try Get-Help for more details).
 
     .EXAMPLE
-    .\New-IPv4Scan.ps1 -StartIPv4Address 192.168.178.0 -EndIPv4Address 192.168.178.20
+    .\New-IPv4NetworkScan.ps1 -StartIPv4Address 192.168.178.0 -EndIPv4Address 192.168.178.20
 
     IPv4Address   Status Hostname
     -----------   ------ --------
     192.168.178.1 Up     fritz.box
 
     .EXAMPLE
-    .\New-IPv4Scan.ps1 -IPv4Address 192.168.178.0 -Mask 255.255.255.0 -DisableDNSResolving
+    .\New-IPv4NetworkScan.ps1 -IPv4Address 192.168.178.0 -Mask 255.255.255.0 -DisableDNSResolving
 
     IPv4Address    Status
     -----------    ------
@@ -31,7 +31,7 @@
     192.168.178.22 Up
 
     .EXAMPLE
-    .\New-IPv4Scan.ps1 -IPv4Address 192.168.178.0 -CIDR 25 -EnableMACResolving
+    .\New-IPv4NetworkScan.ps1 -IPv4Address 192.168.178.0 -CIDR 25 -EnableMACResolving
 
     IPv4Address    Status Hostname           MAC               Vendor
     -----------    ------ --------           ---               ------
@@ -39,7 +39,7 @@
     192.168.178.22 Up     XXXXX-PC.fritz.box XX-XX-XX-XX-XX-XX ASRock Incorporation
 
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/New-IPv4Scan.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/New-IPv4NetworkScan.README.md
 #>
 
 [CmdletBinding(DefaultParameterSetName='Range')]
