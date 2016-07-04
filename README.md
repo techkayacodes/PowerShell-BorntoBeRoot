@@ -51,7 +51,9 @@ Automate all the Things!
 | [Test-IsFileBinary.ps1](Scripts/Test-IsFileBinary.ps1) | Test if a file is binary | [:book:](Documentation/Test-IsFileBinary.README.md) |
 | [Update-StringInFiles.ps1](Scripts/Update-StringInFiles.ps1) | Replace a string in one or multiple files | [:book:](Documentation/Update-StringInFiles.README.md) |
 
-## Snippets
+## Snippets / Regex
+
+#### Snippets
 
 | Snippet | Description | 
 | :--- | :--- |
@@ -62,6 +64,8 @@ Automate all the Things!
 | [Press_any_key_to_continue.ps1](Snippets/Press_any_key_to_continue.ps1) | Wait until the user pressed a key | 
 | [Self_elevating_script.ps1](Snippets/Self_elevating_script.ps1) | Self elevate a PowerShell script/console with parameter |
 | [Send-MailMessage.ps1](Snippets/Send-MailMessage.ps1) | Send a mail message via PowerShell |
+
+#### Regex
 
 | Regex | Description |
 | :--- | :--- |
