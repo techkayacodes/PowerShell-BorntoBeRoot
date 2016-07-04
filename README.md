@@ -24,7 +24,7 @@ Automate all the things!
 | [Get-InstalledSoftware](Module/LazyAdmin/Functions/Get-InstalledSoftware.ps1) | Get all installed software with DisplayName, Publisher and UninstallString | [:book:](Documentation/Get-InstalledSoftware.README.md) |
 | [Get-WindowsProductKey](Module/LazyAdmin/Functions/Get-WindowsProductKey.ps1) | Get the Windows product key and some usefull informations about the system | [:book:](Documentation/Get-WindowsProductKey.README.md) |
 | [Get-WLANProfile](Module/LazyAdmin/Functions/Get-WLANProfile.ps1) | Get WLAN profiles, include password as SecureString or as plain text | [:book:](Documentation/Get-WLANProfile.README.md) |
-| [New-IPv4Subnet](Module/LazyAdmin/Functions/New-IPv4Scan.ps1) | Powerful asynchronus IPv4-Scanner to scan an IP-Range or subnet | [:book:](Documentation/New-IPv4Scan.README.md) |
+| [New-IPv4Scan](Module/LazyAdmin/Functions/New-IPv4Scan.ps1) | Powerful asynchronus IPv4-Scanner to scan an IP-Range or subnet | [:book:](Documentation/New-IPv4Scan.README.md) |
 | [New-IPv4Subnet](Module/LazyAdmin/Functions/New-IPv4Subnet.ps1) | Calculate a subnet based on an IP-Address and the subnetmask or CIDR | [:book:](Documentation/New-IPv4Subnet.README.md) |
 | [New-RandomPassword](Module/LazyAdmin/Functions/New-RandomPassword.ps1) | Generate passwords with a freely definable number of characters | [:book:](Documentation/New-RandomPassword.README.md) |
 | [New-RandomPIN](Module/LazyAdmin/Functions/New-RandomPIN.ps1) | Generate a PIN with a freely definable number of numbers | [:book:](Documentation/New-RandomPIN.README.md) |
@@ -42,12 +42,12 @@ Automate all the things!
 | [Get-InstalledSoftware.ps1](Scripts/Get-InstalledSoftware.ps1) | Get all installed software with DisplayName, Publisher and UninstallString | [:book:](Documentation/Get-InstalledSoftware.README.md) |
 | [Get-WindowsProductKey.ps1](Scripts/Get-WindowsProductKey.ps1) | Get the Windows product key and some usefull informations about the system | [:book:](Documentation/Get-WindowsProductKey.README.md) |
 | [Get-WLANProfile.ps1](Scripts/Get-WLANProfile.ps1) | Get WLAN profiles, include password as SecureString or as plain text | [:book:](Documentation/Get-WLANProfile.README.md)
-| [New-IPv4Subnet](Scripts/New-IPv4Scan.ps1) | Powerful asynchronus IPv4-Scanner to scan an IP-Range or subnet | [:book:](Documentation/New-IPv4Scan.README.md) |
-| [New-IPv4Subnet](Scripts/New-IPv4Subnet.ps1) | Calculate a subnet based on an IP-Address and the subnetmask or CIDR | [:book:](Documentation/New-IPv4Subnet.README.md) |
+| [New-IPv4Scan.ps1](Scripts/New-IPv4Scan.ps1) | Powerful asynchronus IPv4-Scanner to scan an IP-Range or subnet | [:book:](Documentation/New-IPv4Scan.README.md) |
+| [New-IPv4Subnet.ps1](Scripts/New-IPv4Subnet.ps1) | Calculate a subnet based on an IP-Address and the subnetmask or CIDR | [:book:](Documentation/New-IPv4Subnet.README.md) |
 | [New-RandomPassword.ps1](Scripts/New-RandomPassword.ps1) | Generate passwords with a freely definable number of characters | [:book:](Documentation/New-RandomPassword.README.md)
 | [New-RandomPIN.ps1](Scripts/New-RandomPIN.ps1) | Generate a PIN with a freely definable number of numbers | [:book:](Documentation/New-RandomPIN.README.md) |
 | [Search-StringInFiles.ps1](Scripts/Search-StringInFiles.ps1) | Find a string in one or multiple files | [:book:](Documentation/Search-StringInFiles.README.md) |
-| [Split-IPv4Subnet](Scripts/Split-IPv4Subnet.ps1) | Split a subnet in multiple subnets with given subnetmasks | [:book:](Documentation/Split-IPv4Subnet.README.md) |
+| [Split-IPv4Subnet.ps1](Scripts/Split-IPv4Subnet.ps1) | Split a subnet in multiple subnets with given subnetmasks | [:book:](Documentation/Split-IPv4Subnet.README.md) |
 | [Test-IsFileBinary.ps1](Scripts/Test-IsFileBinary.ps1) | Test if a file is binary | [:book:](Documentation/Test-IsFileBinary.README.md) |
 | [Update-StringInFiles.ps1](Scripts/Update-StringInFiles.ps1) | Replace a string in one or multiple files | [:book:](Documentation/Update-StringInFiles.README.md) |
 
