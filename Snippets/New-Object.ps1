@@ -1,4 +1,4 @@
-# Custom PSObject
+# Create a new object
 $Result = New-Object -TypeName PSObject
 Add-Member -InputObject $Result -MemberType NoteProperty -Name Parameter1 -Value Result1
 Add-Member -InputObject $Result -MemberType NoteProperty -Name Parameter2 -Value Result2
@@ -6,7 +6,7 @@ return $Result
 
 ###################################################################################################
 
-# Custom PSObject as Array
+# Create a new object
 $Results = @()
 
 foreach($Line in $Lines)
