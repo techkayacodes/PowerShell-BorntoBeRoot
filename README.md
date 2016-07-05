@@ -41,7 +41,7 @@ All functions - which you can see above - are available as standalone scripts [h
 
 | Snippet | Description | 
 | :--- | :--- |
-| [ConnectTo-ExchangeManagementShell2010.ps1](Snippets/ConnectTo-ExchangeManagementShell2010.ps1) | Connect to Exchange 2010 Management Shell in script |
+| [ConnectTo-Exchange2010.ps1](Snippets/ConnectTo-Exchange2010.ps1) | Connect to Exchange 2010 Management Shell in script |
 | [Get-ConsoleColors.ps1](Snippets/Get-ConsoleColors.ps1) | Show all available foreground and background console colors |
 | [New-Object.ps1](Snippets/New-Object.ps1) | Create a new object with custom properties|
 | [Press_any_key_to_continue.ps1](Snippets/Press_any_key_to_continue.ps1) | Wait until the user pressed a key | 
