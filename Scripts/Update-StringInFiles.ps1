@@ -31,7 +31,7 @@
 #>
 
 [CmdletBinding()]
-Param(
+param(
 	[Parameter(
 		Position=0,
 		Mandatory=$true,
@@ -60,7 +60,7 @@ Begin{
 	function Test-IsFileBinary
 	{
 		[CmdletBinding()]
-		Param(
+		param(
 			[Parameter(
 				Position=0,
 				Mandatory=$true,
@@ -136,17 +136,17 @@ Begin{
 }
 
 Process{
-	Write-Verbose "Binary files like (*.zip, *.exe, etc...) are ignored"
+	Write-Verbose "Binary files like (*.zip, *.exe, etc...) are ignored!"
 
 	$Files = Get-ChildItem -Path $Path -Recurse | Where-Object { ($_.PSIsContainer -eq $false) -and ((Test-IsFileBinary -Path $_.FullName) -eq $false) } | Select-String -Pattern ([regex]::Escape($Search)) -CaseSensitive:$CaseSensitive | Group-Object Path 
 		
-	Write-Verbose "Files with string found: $($Files.Count)"
+	Write-Verbose "Total files with string to replace found: $($Files.Count)"
 
 	# Go through each file
 	foreach($File in $Files)
 	{
 		Write-Verbose "File:`t$($File.Name)"
-		Write-Verbose "Count:`t$($File.Count)"
+		Write-Verbose "Number of strings to replace in current file:`t$($File.Count)"
     
 		try
 		{	

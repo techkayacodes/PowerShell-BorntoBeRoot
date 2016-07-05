@@ -69,9 +69,10 @@ Process {
         }      
     }
 
-    $Result = New-Object -TypeName PSObject    
-    Add-Member -InputObject $Result -MemberType NoteProperty -Name IPv4Address -Value $IPv4Address
-    Add-Member -InputObject $Result -MemberType NoteProperty -Name Int64 -Value $Int64
+    $Result = [pscustomobject] @{    
+        IPv4Address = $IPv4Address
+        Int64 = $Int64
+    }
 
     return $Result	
 }

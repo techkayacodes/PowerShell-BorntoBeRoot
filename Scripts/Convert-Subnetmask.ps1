@@ -76,9 +76,10 @@ Process {
         }               
     }
 
-    $Result = New-Object -TypeName PSObject
-    Add-Member -InputObject $Result -MemberType NoteProperty -Name Mask -Value $Mask
-    Add-Member -InputObject $Result -MemberType NoteProperty -Name CIDR -Value $CIDR
+    $Result = [pscustomobject] @{
+        Mask = $Mask
+        CIDR = $CIDR
+    }
 
     return $Result
 }

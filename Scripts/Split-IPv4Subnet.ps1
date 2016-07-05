@@ -36,7 +36,7 @@
 #>
 
 [CmdletBinding(DefaultParameterSetName='CIDR')]
-Param(
+param(
     [Parameter(
         Position=0,
         Mandatory=$true,
@@ -125,9 +125,10 @@ Begin{
                 }               
             }
 
-            $Result = New-Object -TypeName PSObject
-            Add-Member -InputObject $Result -MemberType NoteProperty -Name Mask -Value $Mask
-            Add-Member -InputObject $Result -MemberType NoteProperty -Name CIDR -Value $CIDR
+            $Result = [pscustomobject] @{
+                Mask = $Mask
+                CIDR = $CIDR
+            }
 
             return $Result
         }
@@ -177,9 +178,10 @@ Begin{
                 }      
             }
 
-            $Result = New-Object -TypeName PSObject    
-            Add-Member -InputObject $Result -MemberType NoteProperty -Name IPv4Address -Value $IPv4Address
-            Add-Member -InputObject $Result -MemberType NoteProperty -Name Int64 -Value $Int64
+            $Result = [pscustomobject] @{    
+                IPv4Address = $IPv4Address
+                Int64 = $Int64
+            }
 
             return $Result	
         }
@@ -261,11 +263,12 @@ Begin{
             $Hosts = ($AvailableIPs - 2)
                 
             # Build custom PSObject
-            $Result = New-Object -TypeName PSObject
-            Add-Member -InputObject $Result -MemberType NoteProperty -Name NetworkID -Value $NetworkID
-            Add-Member -InputObject $Result -MemberType NoteProperty -Name Broadcast -Value $Broadcast
-            Add-Member -InPutObject $Result -MemberType NoteProperty -Name IPs -Value $AvailableIPs
-            Add-Member -InPutObject $Result -MemberType NoteProperty -Name Hosts -Value $Hosts
+            $Result = [pscustomobject] @{
+                NetworkID = $NetworkID
+            	Broadcast = $Broadcast
+            	IPs = $AvailableIPs
+            	Hosts = $Hosts
+            }
 
             return $Result
         }

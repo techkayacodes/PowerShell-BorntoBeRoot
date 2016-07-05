@@ -53,7 +53,7 @@
 #>
 
 [CmdletBinding()]
-Param(
+param(
 	[Parameter(
 		Position=0,
         ValueFromPipelineByPropertyName=$true,
@@ -80,7 +80,7 @@ Begin{
 }
 
 Process{   
-	$Results = @()	
+	[System.Collections.ArrayList]$Results = @()	
 
     foreach($ComputerName2 in $ComputerName) 
 	{              
@@ -140,16 +140,18 @@ Process{
 			} 
 		} 
 
-		$Result = New-Object -TypeName PSObject
-		Add-Member -InputObject $Result -MemberType NoteProperty -Name ComputerName -Value $ComputerName2
-        Add-Member -InputObject $Result -MemberType NoteProperty -Name Caption -Value $Wmi_Win32.Caption
-        Add-Member -InputObject $Result -MemberType NoteProperty -Name CSDVersion $Wmi_Win32.CSDVersion
-        Add-Member -InputObject $Result -MemberType NoteProperty -Name WindowsVersion $Wmi_Win32.Version
-		Add-Member -InputObject $Result -MemberType NoteProperty -Name OSArchitecture $Wmi_Win32.OSArchitecture
-		Add-Member -InputObject $Result -MemberType NoteProperty -Name BuildNumber $Wmi_Win32.BuildNumber
-		Add-Member -InputObject $Result -MemberType NoteProperty -Name SerialNumber $Wmi_Win32.SerialNumber
-		Add-Member -InputObject $Result -MemberType NoteProperty -Name ProductKey -Value $ProductKey
-		$Results += $Result       
+		$Result = [pscustomobject] @{
+			ComputerName = $ComputerName2
+			Caption = $Wmi_Win32.Caption
+			CSDVersion = $Wmi_Win32.CSDVersion
+			WindowsVersion = $Wmi_Win32.Version
+			OSArchitecture = $Wmi_Win32.OSArchitecture
+			BuildNumber = $Wmi_Win32.BuildNumber
+			SerialNumber = $Wmi_Win32.SerialNumber
+			ProductKey = $ProductKey
+		}
+
+		[void]$Results.Add($Result)       
 	}   
 
 	return $Results

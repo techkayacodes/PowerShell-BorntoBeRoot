@@ -31,7 +31,7 @@
 #>
 
 [CmdletBinding()]
-Param(
+param(
 	[Parameter(
 		Position=0,
 		Mandatory=$true,
@@ -40,7 +40,7 @@ Param(
 )
 
 Begin{
-
+	
 }
 
 Process{
