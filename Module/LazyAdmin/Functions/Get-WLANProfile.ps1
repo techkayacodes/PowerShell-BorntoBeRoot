@@ -43,7 +43,7 @@ function Get-WLANProfile
 			Position=0,
 			HelpMessage='Indicates that the password appears in plain text')]
 		[Switch]$ShowPassword,
-    
+		
 		[Parameter(
 			Position=1,
 			HelpMessage='Filter WLAN-Profiles by Name or SSID')]
@@ -55,15 +55,18 @@ function Get-WLANProfile
 		[Switch]$ExactMatch
 	)
 
-	Begin
-	{
+	Begin{
+
+	}
+
+	Process{
 		# Get all WLAN Profiles from netsh
 		$Netsh_WLANProfiles = (netsh WLAN show profiles)
 
 		# Some vars to filter netsh results
 		$IsProfile = 0
 		$WLAN_Names = @()
-		$WLAN_Profiles = @()
+		[System.Collections.ArrayList]$Results = @()
 
 		# Filter result and get the wlan profile names
 		foreach($Line in $Netsh_WLANProfiles)
@@ -72,38 +75,35 @@ function Get-WLANProfile
 			{
 				$WLAN_Names += $Line.Split(':')[1].Trim()
 			}
-    
+		
 			if($Line.StartsWith("---"))
 			{
 				$IsProfile += 1
 			}
 		}
-	}
 
-	Process
-	{
 		# Get details from every wlan profile, using the name (ssid/password/authentification/etc.)
 		foreach($WLAN_Name in $WLAN_Names)
 		{
 			$Netsh_WLANProfile = (netsh WLAN show profiles name="$WLAN_Name" key=clear)
-    
+		
 			# Counter to filter netsh result... (useful for multiple languages / split would only work for one language )
 			$InProfile = 0
 			$IsConnectivity = 0
 			$IsSecurity = 0
-	
+		
 			foreach($Line in $Netsh_WLANProfile)
 			{
 				if((($InProfile -eq 2)) -and (-not([String]::IsNullOrEmpty($Line))))
 				{			
-                
+					
 					if($IsConnectivity -eq 1) 
 					{ 
 						$WLAN_SSID = $Line.Split(':')[1].Trim()
 						$WLAN_SSID = $WLAN_SSID.Substring(1,$WLAN_SSID.Length -2)
 					}
 
-				   $IsConnectivity += 1
+				$IsConnectivity += 1
 				}
 
 				if((($InProfile -eq 3)) -and (-not([String]::IsNullOrEmpty($Line))))
@@ -116,10 +116,10 @@ function Get-WLANProfile
 					{
 						$WLAN_Password_PlainText = $Line.Split(':')[1].Trim()
 					}
-            
+				
 					$IsSecurity += 1   
 				}
-    
+		
 				if($Line.StartsWith("---"))
 				{
 					$InProfile += 1
@@ -136,37 +136,39 @@ function Get-WLANProfile
 			}
 
 			# Built the custom PSObject
-			$WLAN_Profile = New-Object -TypeName PSObject
-			Add-Member -InputObject $WLAN_Profile -MemberType NoteProperty -Name Name -Value $WLAN_Name
-			Add-Member -InputObject $WLAN_Profile -MemberType NoteProperty -Name SSID -Value $WLAN_SSID
-			Add-Member -InputObject $WLAN_Profile -MemberType NoteProperty -Name Authentication -Value $WLAN_Authentication
-			Add-Member -InputObject $WLAN_Profile -MemberType NoteProperty -Name Password -Value $WLAN_Password
+			$WLAN_Profile = [pscustomobject] @{
+				Name = $WLAN_Name
+				SSID = $WLAN_SSID
+				Authentication = $WLAN_Authentication
+				Password = $WLAN_Password
+			}
 
 			# Add the custom PSObject to the array
 			if($PSBoundParameters.ContainsKey('Search'))
 			{
 				if((($WLAN_Profile.Name -like $Search) -or ($WLAN_Profile.SSID -like $Search)) -and (-not($ExactMatch) -or ($WLAN_Profile.Name -eq $Search) -or ($WLAN_Profile.SSID -eq $Search)))
 				{
-					$WLAN_Profiles += $WLAN_Profile
+					[void]$Results.Add($WLAN_Profile)
 				} 
 			}
 			else
 			{
-				$WLAN_Profiles += $WLAN_Profile
+				[void]$Results.Add($WLAN_Profile)
 			}        
 		}
-	}
 
-	End
-	{
 		# Check if WLAN profiles where found and return them
-		if($WLAN_Profiles -ne $null)
+		if($Results -ne $null)
 		{
-			return $WLAN_Profiles
+			return $Results
 		}
 		else
 		{
 			Write-Host "No WLAN-Profiles found!" -ForegroundColor Yellow
 		}
+	}
+
+	End{
+		
 	}
 }

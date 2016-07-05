@@ -38,7 +38,7 @@
 function Split-IPv4Subnet
 {
     [CmdletBinding(DefaultParameterSetName='CIDR')]
-    Param(
+    param(
         [Parameter(
             Position=0,
             Mandatory=$true,
@@ -79,7 +79,7 @@ function Split-IPv4Subnet
     )
 
     Begin{
-    
+      
     }
 
     Process{

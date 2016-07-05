@@ -45,7 +45,7 @@
 function New-IPv4NetworkScan
 {
     [CmdletBinding(DefaultParameterSetName='Range')]
-    Param(
+    param(
         [Parameter(
             ParameterSetName='Range',
             Position=0,
@@ -305,7 +305,7 @@ function New-IPv4NetworkScan
 
         # Scriptblock --> will run in runspaces (threads)...
         [System.Management.Automation.ScriptBlock]$ScriptBlock = {
-            Param(
+            param(
                 $IPv4Address,
                 $Tries,
                 $DisableDNSResolving,

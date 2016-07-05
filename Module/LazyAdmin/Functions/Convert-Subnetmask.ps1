@@ -50,11 +50,11 @@ function Convert-Subnetmask
             Mandatory=$true,
             HelpMessage='Subnetmask like 255.255.255.0')]
         [ValidatePattern("^(254|252|248|240|224|192|128).0.0.0$|^255.(254|252|248|240|224|192|128|0).0.0$|^255.255.(254|252|248|240|224|192|128|0).0$|^255.255.255.(255|254|252|248|240|224|192|128|0)$")]
-        [IPAddress]$Mask 
+        [String]$Mask
     )
 
     Begin {
-    
+
     }
 
     Process {
@@ -75,13 +75,14 @@ function Convert-Subnetmask
                 $CIDR_Bits = ($Octets -join "").TrimEnd("0")
 
                 # Count the "1" (111111111111111111111111 --> /24)                     
-                $CIDR = $CIDR_Bits.Length      
+                $CIDR = $CIDR_Bits.Length             
             }               
         }
 
-        $Result = New-Object -TypeName PSObject
-        Add-Member -InputObject $Result -MemberType NoteProperty -Name Mask -Value $Mask
-        Add-Member -InputObject $Result -MemberType NoteProperty -Name CIDR -Value $CIDR
+        $Result = [pscustomobject] @{
+            Mask = $Mask
+            CIDR = $CIDR
+        }
 
         return $Result
     }

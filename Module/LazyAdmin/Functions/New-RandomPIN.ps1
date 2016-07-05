@@ -30,7 +30,7 @@
 function New-RandomPIN
 {
 	[CmdletBinding()]
-	Param(
+	param(
 		[Parameter(
 			Position=0,
 			HelpMessage='Length of the PIN (Default=4)')]
@@ -40,7 +40,7 @@ function New-RandomPIN
 			Position=1,
 			HelpMessage='Smallest possible number (Default=0)')]
 		[Int32]$Minimum=0,
-	
+		
 		[Parameter(
 			Position=2,
 			HelpMessage='Greatest possible number (Default=10)')]
@@ -69,7 +69,7 @@ function New-RandomPIN
 		}
 
 		$PIN = [String]::Empty
-		
+			
 		while($PIN.Length -lt $Length)
 		{
 			# Create random numbers

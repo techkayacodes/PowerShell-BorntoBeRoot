@@ -43,7 +43,7 @@
 #>
 
 [CmdletBinding(DefaultParameterSetName='Range')]
-Param(
+param(
     [Parameter(
         ParameterSetName='Range',
         Position=0,
@@ -504,7 +504,7 @@ Process{
 
     # Scriptblock --> will run in runspaces (threads)...
     [System.Management.Automation.ScriptBlock]$ScriptBlock = {
-        Param(
+        param(
 			$IPv4Address,
 			$Tries,
 			$DisableDNSResolving,

@@ -30,7 +30,7 @@
 function New-RandomPassword
 {
 	[CmdletBinding()]
-	Param(
+	param(
 		[Parameter(
 			Position=0,
 			HelpMessage='Length of the Password  (Default=8)')]
@@ -39,22 +39,22 @@ function New-RandomPassword
 		[Parameter(
 			Position=1,
 			HelpMessage='Use lower case characters (Default=$true')]
-		[switch]$LowerCase=$true,
+		[switch]$DisableLowerCase,
 
 		[Parameter(
 			Position=2,
 			HelpMessage='Use upper case characters (Default=$true)')]
-		[switch]$UpperCase=$true,
-	
+		[switch]$DisableUpperCase,
+		
 		[Parameter(
 			Position=3,
 			HelpMessage='Use upper case characters (Default=$true)')]
-		[switch]$Numbers=$true,
+		[switch]$DisableNumbers,
 
 		[Parameter(
 			Position=4,
 			HelpMessage='Use upper case characters (Default=$true)')]
-		[switch]$SpecialChars=$true,
+		[switch]$DisableSpecialChars,
 
 		[Parameter(
 			Position=5,
@@ -72,37 +72,37 @@ function New-RandomPassword
 			Write-Host "Length of the password can not be 0... Check your input!" -ForegroundColor Red
 			return
 		}
-		
+			
 		$Character_LowerCase = "abcdefghiklmnprstuvwxyz"
 		$Character_UpperCase = "ABCDEFGHKLMNPRSTUVWXYZ"
 		$Character_Numbers = "0123456789"
 		$Character_SpecialChars = "�$%&/()=?+*#[]{}-_@"
 
 		$Characters = [String]::Empty
-		
+			
 		# Built string with characters
-		if($LowerCase)
+		if($DisableLowerCase.IsPresent -eq $false)
 		{
 			$Characters += $Character_LowerCase
 		}
 
-		if($UpperCase)
+		if($DisableUpperCase.IsPresent -eq $false)
 		{
 			$Characters += $Character_UpperCase
 		}
 
-		if($Numbers)
+		if($DisableNumbers.IsPresent -eq $false)
 		{
 			$Characters += $Character_Numbers
 		}
-	
-		if($SpecialChars)
+		
+		if($DisableSpecialChars.IsPresent -eq $false)
 		{
 			$Characters += $Character_SpecialChars
 		}
-	
+		
 		$Password = [String]::Empty
-	
+		
 		if(-not([String]::IsNullOrEmpty($Characters)))
 		{		
 			# Create random password
@@ -115,7 +115,7 @@ function New-RandomPassword
 		}
 		else
 		{
-			Write-Host "Select at least 1 character set (lower chase, upper case, numbers or special chars) to create a password." -ForegroundColor Red
+			Write-Host "Select at least 1 character set (lower case, upper case, numbers or special chars) to create a password." -ForegroundColor Red
 			return
 		}
 
@@ -128,7 +128,7 @@ function New-RandomPassword
 		# Return result
 		return $Password
 	}
-	
+
 	End{
 		
 	}

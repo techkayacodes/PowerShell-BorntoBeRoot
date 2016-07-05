@@ -32,11 +32,11 @@ Search-StringInFiles [-Path] <String> [-Search] <String> [[-CaseSensitive]] [<Co
 ```powershell
 PS> Search-StringInFiles -Path "C:\Scripts\FolderWithFiles" -Search "Test01"
        
-Filename    Path                      LineNumber Matches
---------    ----                      ---------- -------
-File_01.txt E:\Temp\Files\File_01.txt          1 {Test01}
-File_02.txt E:\Temp\Files\File_02.txt          1 {TEST01}
-File_03.txt E:\Temp\Files\File_03.txt          1 {TeST01}
+Filename    Path                      LineNumber IsBinary Matches
+--------    ----                      ---------- -------- -------
+File_01.txt E:\Temp\Files\File_01.txt          1    False {Test01}
+File_02.txt E:\Temp\Files\File_02.txt          1    False {TEST01}
+File_03.txt E:\Temp\Files\File_03.txt          1    False {TeST01}
 ```
 
 ### Script
@@ -44,7 +44,7 @@ File_03.txt E:\Temp\Files\File_03.txt          1 {TeST01}
 ```powershell
 PS> .\Search-StringInFiles.ps1 -Path "C:\Scripts\FolderWithFiles" -Search "TEST01" -CaseSensitive
 
-Filename    Path                      LineNumber Matches
---------    ----                      ---------- -------
-File_02.txt E:\Temp\Files\File_02.txt          1 {TEST01}
+Filename    Path                      LineNumber IsBinary Matches
+--------    ----                      ---------- -------- -------
+File_02.txt E:\Temp\Files\File_02.txt          1    False {TEST01}
 ```

@@ -28,7 +28,7 @@
 #>
 
 [CmdletBinding()]
-Param(
+param(
 	[Parameter(
 		Position=0,
 		HelpMessage='Length of the PIN (Default=4)')]

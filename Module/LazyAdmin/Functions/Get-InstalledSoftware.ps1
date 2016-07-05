@@ -32,7 +32,7 @@
 function Get-InstalledSoftware
 {
 	[CmdletBinding()]
-	Param(
+	param(
 		[Parameter(
 			Position=0,
 			HelpMessage='Search for product name (You can use wildcards like "*ProductName*')]
@@ -45,7 +45,7 @@ function Get-InstalledSoftware
 	}
 
 	Process{
-		$Results = @()
+		[System.Collections.ArrayList]$Results = @()
 		
 		foreach($String in $Strings)
 		{
@@ -57,28 +57,32 @@ function Get-InstalledSoftware
 				{
 					if($String.DisplayName -like $Search)
 					{
-						$Result = New-Object -TypeName PSObject
-						Add-Member -InputObject $Result -MemberType NoteProperty -Name DisplayName -Value $String.DisplayName
-						Add-Member -InputObject $Result -MemberType NoteProperty -Name Publisher -Value $String.Publisher
-						Add-Member -InputObject $Result -MemberType NoteProperty -Name UninstallString -Value $String.UninstallString
-						Add-Member -InputObject $Result -MemberType NoteProperty -Name InstallLocation -Value $String.InstallLocation
-						Add-Member -InputObject $Result -MemberType NoteProperty -Name InstallDate -Value $String.InstallDate
-						$Results += $Result   
+						$Result = [pscustomobject] @{
+							DisplayName = $String.DisplayName
+							Publisher = $String.Publisher
+							UninstallString = $String.UninstallString
+							InstallLocation = $String.InstallLocation
+							InstallDate = $String.InstallDate
+						}
+
+						[void]$Results.Add($Result)   
 					}
 				}
 				else
 				{
-					$Result = New-Object -TypeName PSObject
-					Add-Member -InputObject $Result -MemberType NoteProperty -Name DisplayName -Value $String.DisplayName
-					Add-Member -InputObject $Result -MemberType NoteProperty -Name Publisher -Value $String.Publisher
-					Add-Member -InputObject $Result -MemberType NoteProperty -Name UninstallString -Value $String.UninstallString
-					Add-Member -InputObject $Result -MemberType NoteProperty -Name InstallLocation -Value $String.InstallLocation
-					Add-Member -InputObject $Result -MemberType NoteProperty -Name InstallDate -Value $String.InstallDate
-					$Results += $Result   
+					$Result = [pscustomobject] @{
+						DisplayName = $String.DisplayName
+						Publisher = $String.Publisher
+						UninstallString = $String.UninstallString
+						InstallLocation = $String.InstallLocation
+						InstallDate = $String.InstallDate
+					}
+
+					[void]$Results.Add($Result)   
 				}
 			}       
 		}
-
+		
 		return $Results	
 	}
 

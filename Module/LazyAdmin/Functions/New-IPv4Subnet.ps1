@@ -59,7 +59,7 @@ function New-IPv4Subnet
     )
 
     Begin{
-      
+   
     }
 
     Process{
@@ -67,11 +67,12 @@ function New-IPv4Subnet
         switch($PSCmdlet.ParameterSetName)
         {
             "CIDR" {                          
-                $Mask = (Convert-Subnetmask -CIDR $CIDR).Mask            
+            $Mask = (Convert-Subnetmask -CIDR $CIDR).Mask            
             }
+
             "Mask" {
-                $CIDR = (Convert-Subnetmask -Mask $Mask).CIDR          
-            }                  
+            $CIDR = (Convert-Subnetmask -Mask $Mask).CIDR          
+            }              
         }
         
         # Get CIDR Address by parsing it into an IP-Address
@@ -94,7 +95,7 @@ function New-IPv4Subnet
 
         # Convert add available IPs and parse into IPAddress
         $Broadcast = [System.Net.IPAddress]::Parse((Convert-IPv4Address -Int64 ($NetworkID_Int64 + $AvailableIPs)).IPv4Address)
-        
+
         # Change useroutput ==> (/27 = 0..31 IPs -> AvailableIPs 32)
         $AvailableIPs += 1
 
@@ -102,11 +103,12 @@ function New-IPv4Subnet
         $Hosts = ($AvailableIPs - 2)
             
         # Build custom PSObject
-        $Result = New-Object -TypeName PSObject
-        Add-Member -InputObject $Result -MemberType NoteProperty -Name NetworkID -Value $NetworkID
-        Add-Member -InputObject $Result -MemberType NoteProperty -Name Broadcast -Value $Broadcast
-        Add-Member -InPutObject $Result -MemberType NoteProperty -Name IPs -Value $AvailableIPs
-        Add-Member -InPutObject $Result -MemberType NoteProperty -Name Hosts -Value $Hosts
+        $Result = [pscustomobject] @{
+            NetworkID = $NetworkID
+            Broadcast = $Broadcast
+            IPs = $AvailableIPs
+            Hosts = $Hosts
+        }
 
         return $Result
     }
