@@ -35,7 +35,7 @@ Automate all the Things!
   
 ## Scripts
 
-All functions - which you can see above - are available as standalone scripts [here](Scripts/):
+All functions - which you can see above - are available as standalone scripts [here](Scripts/)
 
 ## Snippets 
 

@@ -176,17 +176,7 @@ function New-IPv4NetworkScan
 
                 $_.Exception.Message                        
             }        
-        }  
-
-        # Check for Update
-        if($UpdateList.IsPresent)
-        {
-            UpdateListFromIEEE
-        }
-        elseif(($EnableMACResolving.IsPresent) -and (-Not([System.IO.File]::Exists($CSV_MACVendorList_Path))))
-        {
-            Write-Host 'No CSV-File to assign vendor with MAC-Address found! Use the parameter "-UpdateList" to download the latest version from IEEE.org. This warning doesn`t affect the scanning procedure.' -ForegroundColor Yellow
-        }    
+        }       
         
         # Assign vendor to MAC
         function AssignVendorToMAC
@@ -235,6 +225,16 @@ function New-IPv4NetworkScan
     }
 
     Process{
+        # Check for vendor list update
+        if($UpdateList.IsPresent)
+        {
+            UpdateListFromIEEE
+        }
+        elseif(($EnableMACResolving.IsPresent) -and (-Not([System.IO.File]::Exists($CSV_MACVendorList_Path))))
+        {
+            Write-Host 'No CSV-File to assign vendor with MAC-Address found! Use the parameter "-UpdateList" to download the latest version from IEEE.org. This warning doesn`t affect the scanning procedure.' -ForegroundColor Yellow
+        }   
+
         # Calculate Subnet (Start and End IPv4-Address)
         if($PSCmdlet.ParameterSetName -eq 'CIDR' -or $PSCmdlet.ParameterSetName -eq 'Mask')
         {
