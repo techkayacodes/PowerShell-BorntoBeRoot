@@ -67,8 +67,8 @@ Automate all the Things!
 
 | Regex | Description |
 | :--- | :--- |
-| [IPv4Address.ps1](Snippets/Regex/IPv4Address.ps1) | Validate an IPv4-Address like 192.168.1.0 |
-| [Subnetmask.ps1](Snippets/Regex/Subnetmask.ps1) | Validate an Subnetmask like 255.255.255.0 |
+| [IPv4Address.ps1](Regex/IPv4Address.ps1) | Validate an IPv4-Address like 192.168.1.0 |
+| [Subnetmask.ps1](Regex/Subnetmask.ps1) | Validate an Subnetmask like 255.255.255.0 |
 
 ## Templates
 
