@@ -141,7 +141,7 @@ function New-IPv4NetworkScan
             try{
                 Write-Verbose "Create backup of the IEEE Standards Registration Authority list..."
                 
-                # Save file, before download a new version     
+                # Backup file, before download a new version     
                 if([System.IO.File]::Exists($CSV_MACVendorList_Path))
                 {
                     Rename-Item -Path $CSV_MACVendorList_Path -NewName $CSV_MACVendorList_BackupPath
@@ -166,7 +166,7 @@ function New-IPv4NetworkScan
                 # On error: cleanup downloaded file and restore backup
                 if([System.IO.File]::Exists($CSV_MACVendorList_Path))
                 {
-                    Remove-Item -Path $CSV_MACVendorList_Path
+                    Remove-Item -Path $CSV_MACVendorList_Path -Force
                 }
 
                 if([System.IO.File]::Exists($CSV_MACVendorList_BackupPath))
