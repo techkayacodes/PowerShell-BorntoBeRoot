@@ -178,11 +178,21 @@ function New-IPv4NetworkScan
             }        
         }  
 
+        # Check for Update
+        if($UpdateList.IsPresent)
+        {
+            UpdateListFromIEEE
+        }
+        elseif(($EnableMACResolving.IsPresent) -and (-Not([System.IO.File]::Exists($CSV_MACVendorList_Path))))
+        {
+            Write-Host 'No CSV-File to assign vendor with MAC-Address found! Use the parameter "-UpdateList" to download the latest version from IEEE.org. This warning doesn`t affect the scanning procedure.' -ForegroundColor Yellow
+        }    
+        
         # Assign vendor to MAC
         function AssignVendorToMAC
         {
             param(
-                [PSObject]$Result
+                $Result
             )
 
             Begin{
@@ -204,10 +214,18 @@ function New-IPv4NetworkScan
                     catch {}
                 }
 
-                $NewResult = New-Object -TypeName PSObject -ArgumentList $Result
-                Add-Member -InputObject $NewResult -MemberType NoteProperty -Name Vendor -Value $Vendor
-
-                return $NewResult
+                $NewResult = [pscustomobject] @{
+                    IPv4Address = $Result.IPv4Address
+                    Status = $Result.Status
+                    Hostname = $Result.Hostname
+                    MAC = $Result.MAC
+                    Vendor = $Vendor  
+                    BufferSize = $Result.BufferSize
+                    ResponseTime = $Result.ResponseTime
+                    TTL = $Result.TTL
+                }
+                
+                return $NewResult 
             }
 
             End {
@@ -217,29 +235,6 @@ function New-IPv4NetworkScan
     }
 
     Process{
-        # Check for Update
-        if($UpdateList.IsPresent)
-        {
-            UpdateListFromIEEE
-        }
-        elseif(($EnableMACResolving.IsPresent) -and (-Not([System.IO.File]::Exists($CSV_MACVendorList_Path))))
-        {
-            Write-Host 'No CSV-File to assign vendor with MAC-Address found! Use the parameter "-UpdateList" to download the latest version from IEEE.org. This warning doesn`t affect the scanning procedure.' -ForegroundColor Yellow
-        }    
-
-        # Check if it is possible to assign vendor to MAC and import CSV-File 
-        if(($EnableMACResolving.IsPresent) -and ([System.IO.File]::Exists($CSV_MACVendorList_Path)))
-        {
-            $AssignVendorToMAC = $true
-
-            # Import the CSV-File
-            $MAC_VendorList = Import-Csv -Path $CSV_MACVendorList_Path | Select-Object "Assignment", "Organization Name"
-        }
-        else 
-        {
-            $AssignVendorToMAC = $false
-        }
-
         # Calculate Subnet (Start and End IPv4-Address)
         if($PSCmdlet.ParameterSetName -eq 'CIDR' -or $PSCmdlet.ParameterSetName -eq 'Mask')
         {
@@ -274,7 +269,40 @@ function New-IPv4NetworkScan
         Write-Verbose "Scanning range from $StartIPv4Address to $EndIPv4Address ($($IPsToScan + 1) IPs)"
         Write-Verbose "Running with max $Threads threads"
         Write-Verbose "ICMP checks per IP is set to $Tries"
+
+        # Properties which are displayed in the output
+        $PropertiesToDisplay = @()
+        $PropertiesToDisplay += "IPv4Address", "Status"
+
+        if($DisableDNSResolving.IsPresent -eq $false)
+        {
+            $PropertiesToDisplay += "Hostname"
+        }
+
+        if($EnableMACResolving.IsPresent)
+        {
+            $PropertiesToDisplay += "MAC"
+        }
+
+        # Check if it is possible to assign vendor to MAC --> import CSV-File 
+        if(($EnableMACResolving.IsPresent) -and ([System.IO.File]::Exists($CSV_MACVendorList_Path)))
+        {
+            $AssignVendorToMAC = $true
+
+            $PropertiesToDisplay += "Vendor"
         
+            $MAC_VendorList = Import-Csv -Path $CSV_MACVendorList_Path | Select-Object "Assignment", "Organization Name"
+        }
+        else 
+        {
+            $AssignVendorToMAC = $false
+        }
+        
+        if($ExtendedInformations.IsPresent)
+        {
+            $PropertiesToDisplay += "BufferSize", "ResponseTime", "TTL"
+        }
+
         # Scriptblock --> will run in runspaces (threads)...
         [System.Management.Automation.ScriptBlock]$ScriptBlock = {
             Param(
@@ -285,11 +313,7 @@ function New-IPv4NetworkScan
                 $ExtendedInformations,
                 $IncludeInactive
             )
-
-            # Built custom PSObject
-            $Result = New-Object -TypeName PSObject
-            Add-Member -InputObject $Result -MemberType NoteProperty -Name IPv4Address -Value $IPv4Address
-
+    
             # +++ Send ICMP requests +++
             $Status = [String]::Empty
 
@@ -319,9 +343,7 @@ function New-IPv4NetworkScan
                     break # Exit loop, if there is an error
                 }
             }
-            
-            Add-Member -InputObject $Result -MemberType NoteProperty -Name Status -Value $Status
-
+                
             # +++ Resolve DNS +++
             $Hostname = [String]::Empty     
 
@@ -330,9 +352,7 @@ function New-IPv4NetworkScan
                 try{ 
                     $Hostname = ([System.Net.Dns]::GetHostEntry($IPv4Address).HostName)
                 } 
-                catch { } # No DNS                    
-                
-                Add-Member -InputObject $Result -MemberType NoteProperty -Name Hostname -Value $Hostname 
+                catch { } # No DNS      
             }
         
             # +++ Get MAC-Address +++
@@ -360,13 +380,13 @@ function New-IPv4NetworkScan
                     catch{ } # No MAC   
                 }   
 
-                Add-Member -InputObject $Result -MemberType NoteProperty -Name MAC -Value $MAC   
             }
 
             # +++ Get extended informations +++
             $BufferSize = [String]::Empty 
             $ResponseTime = [String]::Empty 
-            
+            $TTL = $null
+
             if($ExtendedInformations.IsPresent -and ($Status -eq "Up"))
             {
                 try{
@@ -374,15 +394,22 @@ function New-IPv4NetworkScan
                     $ResponseTime = $PingResult.RoundtripTime
                     $TTL = $PingResult.Options.Ttl
                 }
-                catch{} # Failed to get extended informations	
-
-                Add-Member -InputObject $Result -MemberType NoteProperty -Name BufferSize -Value $BufferSize
-                Add-Member -InputObject $Result -MemberType NoteProperty -Name ResponseTime -Value $ResponseTime
-                Add-Member -InputObject $Result -MemberType NoteProperty -Name TTL -Value $TTL		
+                catch{} # Failed to get extended informations
             }	
         
+            # +++ Result +++
             if($Status -eq "Up" -or $IncludeInactive.IsPresent)
             {
+                $Result = [pscustomobject] @{
+                    IPv4Address = $IPv4Address
+                    Status = $Status
+                    Hostname = $Hostname
+                    MAC = $MAC   
+                    BufferSize = $BufferSize
+                    ResponseTime = $ResponseTime
+                    TTL = $TTL
+                }
+
                 return $Result
             }      
             else 
@@ -400,7 +427,7 @@ function New-IPv4NetworkScan
 
         Write-Verbose "Setting up Jobs..."
 
-        # Set up Jobs for each IP
+        # Set up Jobs for each IP...
         for ($i = $StartIPv4Address_Int64; $i -le $EndIPv4Address_Int64; $i++) 
         { 
             # Convert IP back from Int64
@@ -430,25 +457,26 @@ function New-IPv4NetworkScan
             $Job = [System.Management.Automation.PowerShell]::Create().AddScript($ScriptBlock).AddParameters($ScriptParams)
             $Job.RunspacePool = $RunspacePool
             
-            $JobObj = New-Object PSObject -Property @{
+            $JobObj = [pscustomobject] @{
                 RunNum = $i - $StartIPv4Address_Int64
                 Pipe = $Job
                 Result = $Job.BeginInvoke()
             }
 
             # Add Job to collection
-            $Jobs.Add($JobObj) | Out-Null
+            [void]$Jobs.Add($JobObj)
         }
 
         Write-Verbose "Waiting for jobs to complete & starting to process results..."
-        
-        # Process results (that are finished), while waiting for other jobs
+
+        # Total jobs to calculate percent complete, because jobs are removed after they are processed
+        $Jobs_Total = $Jobs.Count
+
+        # Process results, while waiting for other jobs
         Do {
-            Write-Progress -Activity "Waiting for jobs to complete... ($($Threads - $($RunspacePool.GetAvailableRunspaces())) of $Threads threads running)" -Id 1 -PercentComplete (($Jobs.count - $($($Jobs | Where-Object {$_.Result.IsCompleted -eq $false}).Count)) / $Jobs.Count * 100) -Status "$(@($($Jobs | Where-Object {$_.Result.IsCompleted -eq $false})).Count) remaining..."
-
-            # Get all complete jobs
-            $Jobs_ToProcess = $Jobs | Where {$_.Result.IsCompleted -eq $true}
-
+            # Get all jobs, which are completed
+            $Jobs_ToProcess = $Jobs | Where-Object {$_.Result.IsCompleted}
+    
             # If no jobs finished yet, wait 500 ms and try again
             if($Jobs_ToProcess -eq $null)
             {
@@ -457,7 +485,20 @@ function New-IPv4NetworkScan
                 Start-Sleep -Milliseconds 500
                 continue
             }
+            
+            # Get jobs, which are not complete yet
+            $Jobs_Remaining = ($Jobs | Where-Object {$_.Result.IsCompleted -eq $false}).Count
 
+            # Catch when trying to divide through zero
+            try {            
+                $Progress_Percent = 100 - (($Jobs_Remaining / $Jobs_Total) * 100) 
+            }
+            catch {
+                $Progress_Percent = 100
+            }
+
+            Write-Progress -Activity "Waiting for jobs to complete... ($($Threads - $($RunspacePool.GetAvailableRunspaces())) of $Threads threads running)" -Id 1 -PercentComplete $Progress_Percent -Status "$Jobs_Remaining remaining..."
+        
             Write-Verbose "Processing $($Jobs_ToProcess.Count + 1) job(s)..."
 
             # Processing completed jobs
@@ -475,11 +516,11 @@ function New-IPv4NetworkScan
                 {        
                     if($AssignVendorToMAC)
                     {                   
-                        AssignVendorToMAC($Job_Result)
+                        AssignVendorToMAC -Result $Job_Result | Select-Object -Property $PropertiesToDisplay
                     }
                     else 
                     {
-                        $Job_Result
+                        $Job_Result | Select-Object -Property $PropertiesToDisplay
                     }                            
                 }
             } 
