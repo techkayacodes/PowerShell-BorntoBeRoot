@@ -192,16 +192,20 @@ function New-IPv4NetworkScan
             Process {
                 $Vendor = [String]::Empty
 
-                # Check if MAC is null or empty
+               # Check if MAC is null or empty
                 if(-not([String]::IsNullOrEmpty($Result.MAC)))
                 {
                     # Split it, so we can search the vendor (XX-XX-XX-XX-XX-XX to XX-XX-XX)
-                    $MACVendor_Search = $Job_Result.MAC.Replace("-","").Substring(0,6)
+                    $MAC_VendorSearch = $Job_Result.MAC.Replace("-","").Substring(0,6)
                     
-                    try {
-                        $Vendor = (($MAC_VendorList | Where-Object {$_.Assignment -eq $MACVendor_Search})[0])."Organization Name"
-                    }
-                    catch {}
+                    foreach($ListEntry in $MAC_VendorList)
+                    {
+                        if($ListEntry.Assignment -eq $MAC_VendorSearch)
+                        {
+                            $Vendor = $ListEntry."Organization Name"
+                            break
+                        }
+                    }                    
                 }
 
                 $NewResult = [pscustomobject] @{
