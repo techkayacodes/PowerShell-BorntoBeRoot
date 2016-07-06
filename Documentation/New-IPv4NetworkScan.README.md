@@ -1,6 +1,6 @@
 # New-IPv4NetworkScan
 
-Powerful asynchronus IPv4 Network Scanner
+Powerful asynchronus IPv4 Network Scanner.
 
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/New-IPv4NetworkScan.ps1)
 * [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/New-IPv4NetworkScan.ps1)
@@ -16,7 +16,6 @@ The default result will contain the the IPv4-Address, Status (Up or Down) and th
 To reach the best possible performance, this script uses a [RunspacePool](https://msdn.microsoft.com/en-US/library/system.management.automation.runspaces.runspacepool(v=vs.85).aspx). As you can see in the following screenshot, the individual tasks are distributed across all cpu cores:
 
 ![Screenshot](Images/New-IPv4NetworkScan_CPUusage.png?raw=true "CPU usage")
-
 
 ## Syntax
 
