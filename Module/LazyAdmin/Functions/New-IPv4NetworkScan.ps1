@@ -503,7 +503,7 @@ function New-IPv4NetworkScan
 
             Write-Progress -Activity "Waiting for jobs to complete... ($($Threads - $($RunspacePool.GetAvailableRunspaces())) of $Threads threads running)" -Id 1 -PercentComplete $Progress_Percent -Status "$Jobs_Remaining remaining..."
         
-            Write-Verbose "Processing $($Jobs_ToProcess.Count + 1) job(s)..."
+            Write-Verbose "Processing $(if($Jobs_ToProcess.Count -eq $null){"1"}else{$Jobs_ToProcess.Count}) job(s)..."
 
             # Processing completed jobs
             foreach($Job in $Jobs_ToProcess)
