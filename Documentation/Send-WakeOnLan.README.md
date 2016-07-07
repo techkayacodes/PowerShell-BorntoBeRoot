@@ -2,7 +2,7 @@
 
 Send a network message to turn on or wake up a remote computer.
 
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Send-WakeOnLan.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Send-WakeOnLan.ps1)
 * [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Send-WakeOnLan.ps1)
 
 ## Description
@@ -12,7 +12,9 @@ Send a network message (magic packet) to turn on or wake up a remote computer. T
 A magic packet for the MAC-Address `DD:F0:0F:00:10:00` looks like:
 
 ```
-255 255 255 255 255 255 221 240 15 0 16 0 221 240 15 0 16 0 221 240 15 0 16 0 221 240 15 0 16 0 221 240 15 0 16 0 221 240 15 0 16 0 221 240 15 0 16 0 221 240 15 0 16 0 221 240 15 0 16 0 221 240 15 0 16 0 221 240 15 0 16 0 221 240 15 0 16 0 221 240 15 0 16 0 221 240 15 0 16 0 221 240 15 0 16 0 221 240 15 0 16 0
+255 255 255 255 255 255 221 240 15 0 16 0 221 240 15 0 16 0 221 240 15 0 16 0 221 240 15 0 16 0 221 240
+15 0 16 0 221 240 15 0 16 0 221 240 15 0 16 0 221 240 15 0 16 0 221 240 15 0 16 0 221 240 15 0 16 0 221
+240 15 0 16 0 221 240 15 0 16 0 221 240 15 0 16 0 221 240 15 0 16 0 221 240 15 0 16 0 221 240 15 0 16 0
 ```
 
 Remote computers (-UseComputer) need WinRM enabled. To do this use `winrm quickconfig`.
