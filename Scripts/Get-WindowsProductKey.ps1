@@ -104,12 +104,12 @@ Process{
 			try {
                 if($PSBoundParameters['Credential'] -is [PSCredential])
                 {
-                    $ProductKeyValue = Invoke-Command -ScriptBlock $ScriptBlock_ProductKey -ComputerName $ComputerName2 -Credential $Credential -ErrorAction Stop 
+                    $ProductKeyValue = Invoke-Command -ScriptBlock $ScriptBlock_ProductKey -ComputerName $ComputerName2 -Credential $Credential
                     $Wmi_Win32 = Invoke-Command -ScriptBlock $ScriptBlock_Wmi -ComputerName $ComputerName2 -Credential $Credential
                 }
                 else
                 {					    
-                    $ProductKeyValue = Invoke-Command -ScriptBlock $ScriptBlock_ProductKey -ComputerName $ComputerName2 -ErrorAction Stop
+                    $ProductKeyValue = Invoke-Command -ScriptBlock $ScriptBlock_ProductKey -ComputerName $ComputerName2
                     $Wmi_Win32 = Invoke-Command -ScriptBlock $ScriptBlock_Wmi -ComputerName $ComputerName2
                 }
 			}
