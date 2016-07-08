@@ -21,6 +21,7 @@ Automate all the Things!
 | :--- | :--- | :---: |
 | [Convert-IPv4Address](Module/LazyAdmin/Functions/Convert-IPv4Address.ps1) | Convert an IPv4-Address to Int64 and vise versa | [:book:](Documentation/Convert-IPv4Address.README.md) |
 | [Convert-Subnetmask](Module/LazyAdmin/Functions/Convert-Subnetmask.ps1) | Convert a subnetmask to CIDR and vise versa | [:book:](Documentation/Convert-Subnetmask.README.md) |
+| [Get-ConsoleColors](Module/LazyAdmin/Functions/Get-ConsoleColors) | Get all available console colors | [:book:](Documentation/Get-ConsoleColors.README.md) |
 | [Get-InstalledSoftware](Module/LazyAdmin/Functions/Get-InstalledSoftware.ps1) | Get all installed software with DisplayName, Publisher and UninstallString | [:book:](Documentation/Get-InstalledSoftware.README.md) |
 | [Get-WindowsProductKey](Module/LazyAdmin/Functions/Get-WindowsProductKey.ps1) | Get the Windows product key and some usefull informations about the system | [:book:](Documentation/Get-WindowsProductKey.README.md) |
 | [Get-WLANProfile](Module/LazyAdmin/Functions/Get-WLANProfile.ps1) | Get WLAN profiles, include password as SecureString or as plain text | [:book:](Documentation/Get-WLANProfile.README.md) |
@@ -44,7 +45,6 @@ All functions - which you can see above - are available as standalone scripts [h
 | Snippet | Description | 
 | :--- | :--- |
 | [ConnectTo-Exchange2010.ps1](Snippets/ConnectTo-Exchange2010.ps1) | Connect to Exchange 2010 Management Shell in script |
-| [Get-ConsoleColors.ps1](Snippets/Get-ConsoleColors.ps1) | Show all available foreground and background console colors |
 | [New-Object.ps1](Snippets/New-Object.ps1) | Create a new object with custom properties|
 | [Press_any_key_to_continue.ps1](Snippets/Press_any_key_to_continue.ps1) | Wait until the user pressed a key | 
 | [PSCustomObject.ps1](Snippets/PSCustomObjects.ps1) | Create a new object with custom properties (faster than New-Object/Add-Member) |
