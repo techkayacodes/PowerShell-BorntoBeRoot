@@ -57,6 +57,7 @@ All functions - which you can see above - are available as standalone scripts [h
 | Regex | Description |
 | :--- | :--- |
 | [IPv4Address.ps1](Regex/IPv4Address.ps1) | Validate an IPv4-Address like 192.168.1.0 |
+| [MACAddress.ps1](Regex/MACAddress.ps1) | Validate a MAC-Address like 00:00:00:00:00:00 or 00-00-00-00-00-00 or 000000000000 |
 | [Subnetmask.ps1](Regex/Subnetmask.ps1) | Validate an Subnetmask like 255.255.255.0 |
 
 ## Templates
