@@ -64,7 +64,6 @@ Process{
     # Some vars to filter netsh results
     $IsProfile = 0
     $WLAN_Names = @()
-    [System.Collections.ArrayList]$Results = @()
 
     # Filter result and get the wlan profile names
     foreach($Line in $Netsh_WLANProfiles)
@@ -146,24 +145,14 @@ Process{
         {
             if((($WLAN_Profile.Name -like $Search) -or ($WLAN_Profile.SSID -like $Search)) -and (-not($ExactMatch) -or ($WLAN_Profile.Name -eq $Search) -or ($WLAN_Profile.SSID -eq $Search)))
             {
-                [void]$Results.Add($WLAN_Profile)
+                $WLAN_Profile
             } 
         }
         else
         {
-            [void]$Results.Add($WLAN_Profile)
+            $WLAN_Profile
         }        
-    }
-
-     # Check if WLAN profiles where found and return them
-    if($Results -ne $null)
-    {
-        return $Results
-    }
-    else
-    {
-        Write-Host "No WLAN-Profiles found!" -ForegroundColor Yellow
-    }
+    }  
 }
 
 End{
