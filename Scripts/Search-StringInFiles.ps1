@@ -143,8 +143,6 @@ Process{
 	# Files with string to find
 	$Strings = Get-ChildItem -Path $Path -Recurse | Select-String -Pattern ([regex]::Escape($Search)) -CaseSensitive:$CaseSensitive | Group-Object Path 
 	
-	[System.Collections.ArrayList]$Results = @()
-
 	# Go through each file
 	foreach($String in $Strings)
 	{		
@@ -161,11 +159,9 @@ Process{
 				Matches = $Group.Matches
 			}
 
-			[void]$Results.Add($Result)
+			$Result
 		}   
 	}
-
-	return $Results
 }
 
 End{
