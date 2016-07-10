@@ -67,11 +67,11 @@ function Get-WindowsProductKey
 	Begin{
 		$LocalAddress = @("127.0.0.1","localhost",".","$($env:COMPUTERNAME)")
 
-		[System.Management.Automation.ScriptBlock]$ScriptBlock_ProductKey = {
+		[System.Management.Automation.ScriptBlock]$Scriptblock_ProductKey = {
 			return (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").digitalproductid[0x34..0x42]
 		}
 
-		[System.Management.Automation.ScriptBlock]$ScriptBlock_Wmi = {
+		[System.Management.Automation.ScriptBlock]$Scriptblock_Wmi = {
 			return Get-WmiObject -Class Win32_OperatingSystem
 		}
 	}
@@ -87,8 +87,8 @@ function Get-WindowsProductKey
 			if($LocalAddress -contains $ComputerName2)
 			{
 				$ComputerName2 = $env:COMPUTERNAME
-				$ProductKeyValue =  Invoke-Command -ScriptBlock $ScriptBlock_ProductKey
-				$Wmi_Win32 = Invoke-Command -ScriptBlock $ScriptBlock_Wmi
+				$ProductKeyValue =  Invoke-Command -ScriptBlock $Scriptblock_ProductKey
+				$Wmi_Win32 = Invoke-Command -ScriptBlock $Scriptblock_Wmi
 			}
 			else
 			{
@@ -101,13 +101,13 @@ function Get-WindowsProductKey
 				try {
 					if($PSBoundParameters['Credential'] -is [PSCredential])
 					{
-						$ProductKeyValue = Invoke-Command -ScriptBlock $ScriptBlock_ProductKey -ComputerName $ComputerName2 -Credential $Credential
-						$Wmi_Win32 = Invoke-Command -ScriptBlock $ScriptBlock_Wmi -ComputerName $ComputerName2 -Credential $Credential
+						$ProductKeyValue = Invoke-Command -ScriptBlock $Scriptblock_ProductKey -ComputerName $ComputerName2 -Credential $Credential
+						$Wmi_Win32 = Invoke-Command -ScriptBlock $Scriptblock_Wmi -ComputerName $ComputerName2 -Credential $Credential
 					}
 					else
 					{					    
-						$ProductKeyValue = Invoke-Command -ScriptBlock $ScriptBlock_ProductKey -ComputerName $ComputerName2
-						$Wmi_Win32 = Invoke-Command -ScriptBlock $ScriptBlock_Wmi -ComputerName $ComputerName2
+						$ProductKeyValue = Invoke-Command -ScriptBlock $Scriptblock_ProductKey -ComputerName $ComputerName2
+						$Wmi_Win32 = Invoke-Command -ScriptBlock $Scriptblock_Wmi -ComputerName $ComputerName2
 					}
 				}
 				catch {
