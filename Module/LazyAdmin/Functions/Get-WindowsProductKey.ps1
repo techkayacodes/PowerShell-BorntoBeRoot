@@ -77,8 +77,6 @@ function Get-WindowsProductKey
 	}
 
 	Process{   
-		[System.Collections.ArrayList]$Results = @()	
-
 		foreach($ComputerName2 in $ComputerName) 
 		{              
 			$Chars="BCDFGHJKMPQRTVWXY2346789" 
@@ -148,10 +146,8 @@ function Get-WindowsProductKey
 				ProductKey = $ProductKey
 			}
 
-			[void]$Results.Add($Result)       
+			$Result       
 		}   
-
-		return $Results
 	}
 
 	End{

@@ -78,8 +78,6 @@ Begin{
 }
 
 Process{   
-	[System.Collections.ArrayList]$Results = @()	
-
     foreach($ComputerName2 in $ComputerName) 
 	{              
 		$Chars="BCDFGHJKMPQRTVWXY2346789" 
@@ -149,10 +147,8 @@ Process{
 			ProductKey = $ProductKey
 		}
 
-		[void]$Results.Add($Result)       
+		$Result       
 	}   
-
-	return $Results
 }
 
 End{
