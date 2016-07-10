@@ -11,7 +11,7 @@
     Get all installed software with DisplayName, Publisher and UninstallString
                  
     .DESCRIPTION         
-    Get all installed software with DisplayName, Publisher and UninstallString. The result will also include the InstallLocation and the InstallDate. To reduce the results, you can use the parameter "-Search *PRODUCTNAME*".
+    Get all installed software with DisplayName, Publisher and UninstallString from local or remote computer. The result will also include the InstallLocation and the InstallDate. To reduce the results, you can use the parameter "-Search *PRODUCTNAME*".
                                  
     .EXAMPLE
     .\Get-InstalledSoftware.ps1
@@ -24,7 +24,16 @@
 	UninstallString : "C:\Program Files (x86)\Google\Chrome\Application\51.0.2704.103\Installer\setup.exe" --uninstall --multi-install --chrome --system-level
 	InstallLocation : C:\Program Files (x86)\Google\Chrome\Application
 	InstallDate     : 20160506
+
+    .EXAMPLE
+    .\Get-InstalledSoftware.ps1 -ComputerName TEST-PC-01 -Search "*firefox*" 
 	
+    DisplayName     : Mozilla Firefox 47.0.1 (x86 de)
+    Publisher       : Mozilla
+    UninstallString : "C:\Program Files (x86)\Mozilla Firefox\uninstall\helper.exe"
+    InstallLocation : C:\Program Files (x86)\Mozilla Firefox
+    InstallDate     :
+
     .LINK
     https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Get-InstalledSoftware.README.md
 #>
@@ -32,19 +41,62 @@
 [CmdletBinding()]
 param(
     [Parameter(
-        Position=0,
+		Position=0,
+		HelpMessage='ComputerName or IPv4-Address of the remote computer')]
+	[String]$ComputerName = $env:COMPUTERNAME,
+
+    [Parameter(
+        Position=1,
         HelpMessage='Search for product name (You can use wildcards like "*ProductName*')]
-    [String]$Search
+    [String]$Search,
+
+    [Parameter(
+        Position=2,
+        HelpMessage='PSCredential to authentificate agains a remote computer')]
+    [PSCredential]$Credential
 )
 
 Begin{
-    # Location where all entrys for installed software should be stored
-    $Strings = Get-ChildItem -Path  "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall", "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall" | Get-ItemProperty | Select-Object -Property DisplayName, Publisher, UninstallString, InstallLocation, InstallDate
+    $LocalAddress = @("127.0.0.1","localhost",".","$($env:COMPUTERNAME)")
+
+    [System.Management.Automation.ScriptBlock]$Scriptblock = {
+        # Location where all entrys for installed software should be stored
+        return Get-ChildItem -Path  "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall", "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall" | Get-ItemProperty | Select-Object -Property DisplayName, Publisher, UninstallString, InstallLocation, InstallDate
+    }
 }
 
 Process{
-    [System.Collections.ArrayList]$Results = @()
+    if($LocalAddress -contains $ComputerName)
+    {
+        $ComputerName = $env:COMPUTERNAME
+        $Strings = Invoke-Command -ScriptBlock $Scriptblock -ArgumentList $Search            
+    }
+    else
+    {
+        if(-not(Test-Connection -ComputerName $ComputerName -Count 2 -Quiet))
+        {
+            Write-Host "$ComputerName is not reachable!" -ForegroundColor Red
+            continue
+        }
     
+        try {
+            if($PSBoundParameters['Credential'] -is [PSCredential])
+            {
+                $Strings = Invoke-Command -ScriptBlock $Scriptblock -ComputerName $ComputerName -ArgumentList $Search -Credential $Credential
+            }
+            else
+            {					    
+            	$Strings = Invoke-Command -ScriptBlock $Scriptblock -ComputerName $ComputerName -ArgumentList $Search
+            }
+        }
+        catch {
+            Write-Host "Error while connecting to $ComputerName`n$($_.Exception.Message)" -ForegroundColor Red
+            continue
+        }
+    }
+
+    [System.Collections.ArrayList]$Results = @()
+
     foreach($String in $Strings)
     {
         # Check for each entry if data exists
@@ -52,23 +104,23 @@ Process{
         {
             # Search (only if parameter is used)
             if($PSBoundParameters.ContainsKey('Search'))
-            {
-                if($String.DisplayName -like $Search)
+            {                    
+                if(($String.DisplayName -like $Search))
                 {
-                    $Result = [pscustomobject] @{
+                    $Software = [pscustomobject] @{
                         DisplayName = $String.DisplayName
                         Publisher = $String.Publisher
                         UninstallString = $String.UninstallString
-                    	InstallLocation = $String.InstallLocation
-                    	InstallDate = $String.InstallDate
+                        InstallLocation = $String.InstallLocation
+                        InstallDate = $String.InstallDate
                     }
 
-                    [void]$Results.Add($Result)   
-                }
+                    $Software
+                }   
             }
             else
             {
-                $Result = [pscustomobject] @{
+                $Software = [pscustomobject] @{
                     DisplayName = $String.DisplayName
                     Publisher = $String.Publisher
                     UninstallString = $String.UninstallString
@@ -76,12 +128,10 @@ Process{
                     InstallDate = $String.InstallDate
                 }
 
-                [void]$Results.Add($Result)   
+                $Software
             }
         }       
     }
-    
-    return $Results	
 }
 
 End{

@@ -7,7 +7,7 @@ Get all installed software with DisplayName, Publisher and UninstallString.
 
 ## Description
 
- Get all installed software with DisplayName, Publisher and UninstallString. The result will also include the InstallLocation and the InstallDate. To reduce the results, you can use the parameter "-Search *PRODUCTNAME*".
+ Get all installed software with DisplayName, Publisher and UninstallString from local or remote computer. The result will also include the InstallLocation and the InstallDate. To reduce the results, you can use the parameter "-Search *PRODUCTNAME*".
 
 ![Screenshot](Images/Get-InstalledSoftware.png?raw=true "Get-InstalledSoftware")
 
@@ -16,13 +16,13 @@ Get all installed software with DisplayName, Publisher and UninstallString.
 ### Function
 
 ```powershell
-Get-InstalledSoftware [[-Search] <String>] [<CommonParameters>]
+Get-InstalledSoftware [[-ComputerName] <String>] [[-Search] <String>] [[-Credential] <PSCredential>] [<CommonParameters>]
 ```
 
 ### Script
 
 ```powershell
-.\Get-InstalledSoftware.ps1 [[-Search] <String>] [<CommonParameters>]
+.\Get-InstalledSoftware.ps1 [[-ComputerName] <String>] [[-Search] <String>] [[-Credential] <PSCredential>] [<CommonParameters>]
 ```
 
 ## Example
@@ -42,7 +42,7 @@ InstallDate     : 20160506
 ### Script
 
 ```powershell
-PS> .\Get-InstalledSoftware.ps1 -Search "*visual studio*"
+PS> .\Get-InstalledSoftware.ps1 -ComputerName TEST-PC-01 -Search "*visual studio*" | Format-Table
 
 DisplayName                        UninstallString                    InstallLocation                    InstallDate
 -----------                        ---------------                    ---------------                    -----------
