@@ -55,13 +55,11 @@ function Get-WindowsProductKey
 	param(
 		[Parameter(
 			Position=0,
-			ValueFromPipelineByPropertyName=$true,
-			HelpMessage='ComputerName or IP-Address of the remote computer')]
+			HelpMessage='ComputerName or IPv4-Address of the remote computer')]
 		[String[]]$ComputerName = $env:COMPUTERNAME,
 
 		[Parameter(
 			Position=1,
-			ValueFromPipelineByPropertyName=$true,
 			HelpMessage='PSCredential to authentificate agains a remote computer')]
 		[PSCredential]$Credential
 	)
