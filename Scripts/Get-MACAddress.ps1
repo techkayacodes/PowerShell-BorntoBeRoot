@@ -11,13 +11,13 @@
     Get the MAC-Address from a remote computer
 
     .DESCRIPTION   
+    Get the MAC-Address from a remote computer. The result contain the ComputerName, IPv4-Address and the MAC-Address. The resolve of a MAC-Address only works if your computer and the remote computer are in the same subnet (Layer 2).
 
     .EXAMPLE
     .\Get-MACAddress -ComputerName TEST-PC-01
-    
-    IPv4Address    MACAddress
-    -----------    ----------
-    192.168.178.22 D0-00-00-00-00-75
+
+    .EXAMPLE
+    .\Get-MACAddress -ComputerName TEST-PC-01, TEST-PC-02
     
     .LINK
     https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Get-MACAddress.README.md
@@ -29,7 +29,7 @@ param(
         Position=0,
         Mandatory=$true,
         HelpMessage='ComputerName or IPv4-Address of the device which you want to scan')]
-    [String]$ComputerName
+    [String[]]$ComputerName
 )
 
 Begin{
@@ -37,84 +37,87 @@ Begin{
 }
 
 Process{
-    $LocalAddress = @("127.0.0.1","localhost",".")
-
-    if($LocalAddress -contains $ComputerName)
+    foreach($ComputerName2 in $ComputerName)
     {
-        $ComputerName = $env:COMPUTERNAME
-    }
+        $LocalAddress = @("127.0.0.1","localhost",".")
 
-    if(-not(Test-Connection -ComputerName $ComputerName -Count 2 -Quiet))
-    {
-        Write-Host "$ComputerName is not reachable! Maybe MAC address is not longer in ARP cache." -ForegroundColor Yellow
-    }    
-    
-    # Check if ComputerName is already an IPv4-Address, if not... try to resolve it
-    $IPv4Address = [String]::Empty
-	
-	if([bool]($ComputerName -as [IPAddress]))
-	{
-		$IPv4Address = $ComputerName
-	}
-	else
-	{
-		# Get IP from Hostname (IPv4 only)
-		try{
-			$AddressList = @(([System.Net.Dns]::GetHostEntry($ComputerName)).AddressList)
-			
-			foreach($Address in $AddressList)
-			{
-				if($Address.AddressFamily -eq "InterNetwork") 
-				{					
-					$IPv4Address = $Address.IPAddressToString 
-					break					
-				}
-			}					
-		}
-		catch{ }	# Can't get IPAddressList 					
-
-       	if([String]::IsNullOrEmpty($IPv4Address))
-		{
-			Write-Host "Could not get IPv4-Address for $ComputerName. (Try to enter an IPv4-Address instead of the Hostname)" -ForegroundColor Red
-            return
-		}		
-	}
- 
-    $MAC = [String]::Empty
-
-    $Arp_Result = (arp -a ).ToUpper()
- 
-    foreach($Line in $Arp_Result)
-    {
-        if($Line.TrimStart().StartsWith($IPv4Address))
+        # Check if ComputerName is a local address, replace it with the computername
+        if($LocalAddress -contains $ComputerName2)
         {
-            # Some regex magic
-            $MAC = [Regex]::Matches($Line,"([0-9A-F][0-9A-F]-){5}([0-9A-F][0-9A-F])").Value
+            $ComputerName2 = $env:COMPUTERNAME
         }
-    }
 
-	# If the MAC is not available in the ARP-Cache (the local machine for example)            
-    if([String]::IsNullOrEmpty($MAC))
-	{
-        try{              
-            $Nbtstat_Result = nbtstat -A $IPv4Address | Select-String "MAC"
-            $MAC = [Regex]::Matches($Nbtstat_Result, "([0-9A-F][0-9A-F]-){5}([0-9A-F][0-9A-F])").Value
-        }  
-        catch { } # No MAC   
-    }
+        # Send ICMP requests to refresh ARP-Cache
+        if(-not(Test-Connection -ComputerName $ComputerName2 -Count 2 -Quiet))
+        {
+            Write-Verbose "$ComputerName2 is not reachable via ICMP. ARP-Cache could not be refreshed!"
+        }
+        
+        # Check if ComputerName is already an IPv4-Address, if not... try to resolve it
+        $IPv4Address = [String]::Empty
+        
+        if([bool]($ComputerName2 -as [IPAddress]))
+        {
+            $IPv4Address = $ComputerName2
+        }
+        else
+        {
+            # Get IP from Hostname (IPv4 only)
+            try{
+                $AddressList = @(([System.Net.Dns]::GetHostEntry($ComputerName2)).AddressList)
+                
+                foreach($Address in $AddressList)
+                {
+                    if($Address.AddressFamily -eq "InterNetwork") 
+                    {					
+                        $IPv4Address = $Address.IPAddressToString 
+                        break					
+                    }
+                }					
+            }
+            catch{ }	# Can't get IPAddressList 					
+        }
+    
+        # Try to get MAC from IPv4-Address
+        if(-not([String]::IsNullOrEmpty($IPv4Address)))
+        {
+            $MAC = [String]::Empty
 
-    if([String]::IsNullOrEmpty($MAC))
-    {
-        Write-Host "Could not resolve MAC-Address. Please check if your computer and $ComputerName are in the same subnet and $ComputerName is reachable." -ForegroundColor Red
-        return
-    }
+            # +++ ARP-Cache +++
+            $Arp_Result = (arp -a ).ToUpper()
+        
+            foreach($Line in $Arp_Result)
+            {
+                if($Line.TrimStart().StartsWith($IPv4Address))
+                {
+                    # Some regex magic
+                    $MAC = [Regex]::Matches($Line,"([0-9A-F][0-9A-F]-){5}([0-9A-F][0-9A-F])").Value
+                }
+            }
 
-	$Result = [pscustomobject] @{
-        IPv4Address = $IPv4Address
-        MACAddress = $MAC        
-    }
+            # +++ NBTSTAT +++ (try NBTSTAT if ARP-Cache is empty)            
+            if([String]::IsNullOrEmpty($MAC))
+            {
+                try{              
+                    $Nbtstat_Result = nbtstat -A $IPv4Address | Select-String "MAC"
+                    $MAC = [Regex]::Matches($Nbtstat_Result, "([0-9A-F][0-9A-F]-){5}([0-9A-F][0-9A-F])").Value
+                }  
+                catch { } # No MAC   
+            }
+        }
+        else 
+        {
+            Write-Verbose "Could not resolve IPv4-Address for $ComputerName2. Try to enter an IPv4-Address instead of the Hostname!"   
+        }
 
-    return $Result   
+        $Result = [pscustomobject] @{
+            ComputerName = $ComputerName2
+            IPv4Address = $IPv4Address
+            MACAddress = $MAC        
+        }
+
+        $Result
+    }   
 }
 
 End{
