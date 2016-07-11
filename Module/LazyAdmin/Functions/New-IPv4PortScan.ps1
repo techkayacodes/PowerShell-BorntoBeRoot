@@ -237,11 +237,11 @@ function New-IPv4PortScan
                     }
                 }					
             }
-            catch{ }	# Can't get IPAddressList 					
+            catch{ }	# Can't resolve IPAddressList 					
 
             if([String]::IsNullOrEmpty($IPv4Address))
             {
-                Write-Host "Could not get IPv4-Address for $ComputerName. (Try to enter an IPv4-Address instead of the Hostname)" -ForegroundColor Red
+                Write-Host "Could not resolve IPv4-Address for $ComputerName. Try to enter an IPv4-Address instead of the Hostname!" -ForegroundColor Red
                 return
             }		
         }
