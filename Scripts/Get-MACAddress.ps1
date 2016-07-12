@@ -11,14 +11,23 @@
     Get the MAC-Address from a remote computer
 
     .DESCRIPTION   
-    Get the MAC-Address from a remote computer. The result contain the ComputerName, IPv4-Address and the MAC-Address. The resolve of a MAC-Address only works if your computer and the remote computer are in the same subnet (Layer 2).
+    Get the MAC-Address from a remote computer. If the MAC-Address could be resolved, the result contains the ComputerName, IPv4-Address and the MAC-Address of the system. To resolve the MAC-Address your computer need to be in the same subnet as the remote computer (Layer 2). If the result return null, try the parameter "-Verbose" to get more details.
 
     .EXAMPLE
-    .\Get-MACAddress -ComputerName TEST-PC-01
-
-    .EXAMPLE
-    .\Get-MACAddress -ComputerName TEST-PC-01, TEST-PC-02
+    .\Get-MACAddress.ps1 -ComputerName TEST-PC-01
     
+    ComputerName IPv4Address    MACAddress
+    ------------ -----------    ----------
+    TEST-PC-01   192.168.178.20 1D-00-00-00-00-F0
+
+    .EXAMPLE
+    .\Get-MACAddress.ps1 -ComputerName TEST-PC-01, TEST-PC-02
+    
+    ComputerName IPv4Address    MACAddress
+    ------------ -----------    ----------
+    TEST-PC-01   192.168.178.20 1D-00-00-00-00-F0
+    TEST-PC-02   192.168.178.21 1D-00-00-00-00-F1
+
     .LINK
     https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Get-MACAddress.README.md
 #>
@@ -95,7 +104,7 @@ Process{
                 }
             }
 
-            # +++ NBTSTAT +++ (try NBTSTAT if ARP-Cache is empty)            
+            # +++ NBTSTAT +++ (try NBTSTAT if ARP-Cache is empty)                                   
             if([String]::IsNullOrEmpty($MAC))
             {
                 try{              
@@ -103,11 +112,18 @@ Process{
                     $MAC = [Regex]::Matches($Nbtstat_Result, "([0-9A-F][0-9A-F]-){5}([0-9A-F][0-9A-F])").Value
                 }  
                 catch { } # No MAC   
+
+                if([String]::IsNullOrEmpty($MAC))
+                {
+                    Write-Verbose "Could not get MAC-Address for $ComputerName2 ($IPv4Address). Make sure that your computer is in the same subnet and $ComputerName2 is reachable."
+                    continue
+                }
             }
         }
         else 
         {
-            Write-Verbose "Could not resolve IPv4-Address for $ComputerName2. Try to enter an IPv4-Address instead of the Hostname!"   
+            Write-Verbose "Could not resolve IPv4-Address for $ComputerName2. MAC-Address resolving has been skipped. Try to enter an IPv4-Address instead of the Hostname!"
+            continue
         }
 
         $Result = [pscustomobject] @{

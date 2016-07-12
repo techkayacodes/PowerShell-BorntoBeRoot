@@ -1,0 +1,56 @@
+# Get-MACAddress
+
+Get the MAC-Address from a remote computer
+
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Get-MACAddress.ps1)
+* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Get-MACAddress.ps1)
+
+## Description
+
+Get the MAC-Address from a remote computer. If the MAC-Address could be resolved, the result contains the ComputerName, IPv4-Address and the MAC-Address of the system. To resolve the MAC-Address your computer need to be in the same subnet as the remote computer (Layer 2). If the result return null, try the parameter `-Verbose` to get more details.
+
+![Screenshot](Images/Get-MACAddress.png?raw=true)
+
+## Syntax
+
+### Function
+
+```powershell
+Get-MACAddress [-ComputerName] <String[]> [<CommonParameters>]
+```
+
+### Script
+
+```powershell
+.\Get-MACAddress.ps1 [-ComputerName] <String[]> [<CommonParameters>]
+``` 
+
+## Example
+
+### Function
+
+```powershell
+Get-MACAddress -ComputerName TEST-PC-01
+    
+ComputerName IPv4Address    MACAddress
+------------ -----------    ----------
+TEST-PC-01   192.168.178.20 1D-00-00-00-00-F0
+```
+
+### Script
+
+```powershell
+.\Get-MACAddress.ps1 -ComputerName TEST-PC-01, TEST-PC-02, TEST-PC-03, TEST-PC-04 -Verbose
+    
+VERBOSE: TEST-PC-02 is not reachable via ICMP. ARP-Cache could not be refreshed!
+VERBOSE: Could not get MAC-Address for TEST-PC-03 (192.168.178.21). Make sure that your computer is in the same subnet
+ and TEST-PC-02 is reachable.
+VERBOSE: TEST-PC-04 is not reachable via ICMP. ARP-Cache could not be refreshed!
+VERBOSE: Could not resolve IPv4-Address for TEST-PC-04. MAC-Address resolving has been skipped. Try to enter an IPv4-Address
+instead of the Hostname!
+
+ComputerName IPv4Address    MACAddress
+------------ -----------    ----------
+TEST-PC-01   192.168.178.20 1D-00-00-00-00-F0
+TEST-PC-03   192.168.178.22 1D-00-00-00-00-F1
+```
