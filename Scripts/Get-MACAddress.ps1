@@ -60,6 +60,8 @@ Process{
         if(-not(Test-Connection -ComputerName $ComputerName2 -Count 2 -Quiet))
         {
             Write-Verbose "$ComputerName2 is not reachable via ICMP. ARP-Cache could not be refreshed!"
+
+            $IsNotReachable = $true
         }
         
         # Check if ComputerName is already an IPv4-Address, if not... try to resolve it
@@ -88,10 +90,10 @@ Process{
         }
     
         # Try to get MAC from IPv4-Address
+        $MAC = [String]::Empty
+       
         if(-not([String]::IsNullOrEmpty($IPv4Address)))
         {
-            $MAC = [String]::Empty
-
             # +++ ARP-Cache +++
             $Arp_Result = (arp -a ).ToUpper()
         
@@ -115,15 +117,20 @@ Process{
 
                 if([String]::IsNullOrEmpty($MAC))
                 {
-                    Write-Verbose "Could not get MAC-Address for $ComputerName2 ($IPv4Address). Make sure that your computer is in the same subnet and $ComputerName2 is reachable."
-                    continue
+                    if($IsNotReachable)
+                    {
+                        Write-Verbose "Could not get MAC-Address for $ComputerName2 ($IPv4Address). Make sure that your computer is in the same subnet as $ComputerName2 and $ComputerName2 is reachable."
+                    }
+                    else 
+                    {
+                        Write-Verbose "Could not get MAC-Address for $ComputerName2 ($IPv4Address). Make sure that your computer is in the same subnet as $ComputerName2."
+                    }
                 }
             }
         }
         else 
         {
             Write-Verbose "Could not resolve IPv4-Address for $ComputerName2. MAC-Address resolving has been skipped. Try to enter an IPv4-Address instead of the Hostname!"
-            continue
         }
 
         $Result = [pscustomobject] @{
