@@ -132,7 +132,7 @@ Process{
         }
         else 
         {
-            Write-Host "Could not resolve IPv4-Address for ""$ComputerName2"". MAC-Address resolving has been skipped. Try to enter an IPv4-Address instead of the Hostname!" -ForegroundColor Red
+            Write-Host "Could not resolve IPv4-Address for ""$ComputerName2"". MAC-Address resolving has been skipped. (Try to enter an IPv4-Address instead of the Hostname!)" -ForegroundColor Red
 
             continue
         }
