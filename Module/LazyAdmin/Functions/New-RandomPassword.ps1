@@ -19,7 +19,7 @@
 	NX58m2B$    
 
     .EXAMPLE
-    New-RandomPassword -Length 10 -SpecialChars:$false
+    New-RandomPassword -Length 10 -DisableSpecialChars
 
 	7UZE6pyyGM
 		
