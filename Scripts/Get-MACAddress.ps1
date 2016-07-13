@@ -59,7 +59,7 @@ Process{
         # Send ICMP requests to refresh ARP-Cache
         if(-not(Test-Connection -ComputerName $ComputerName2 -Count 2 -Quiet))
         {
-            Write-Verbose "$ComputerName2 is not reachable via ICMP. ARP-Cache could not be refreshed!"
+            Write-Verbose """$ComputerName2"" is not reachable via ICMP. ARP-Cache could not be refreshed!"
 
             $IsNotReachable = $true
         }
@@ -119,11 +119,11 @@ Process{
                 {
                     if($IsNotReachable)
                     {
-                        Write-Verbose "Could not get MAC-Address for $ComputerName2 ($IPv4Address). Make sure that your computer is in the same subnet as $ComputerName2 and $ComputerName2 is reachable."
+                        Write-Host "Could not get MAC-Address for ""$ComputerName2"" ($IPv4Address). Make sure that your computer is in the same subnet as $ComputerName2 and $ComputerName2 is reachable." -ForegroundColor Red
                     }
                     else 
                     {
-                        Write-Verbose "Could not get MAC-Address for $ComputerName2 ($IPv4Address). Make sure that your computer is in the same subnet as $ComputerName2."
+                        Write-Host "Could not get MAC-Address for ""$ComputerName2"" ($IPv4Address). Make sure that your computer is in the same subnet as $ComputerName2." -ForegroundColor Red
                     }
 
                     continue
@@ -132,7 +132,7 @@ Process{
         }
         else 
         {
-            Write-Verbose "Could not resolve IPv4-Address for $ComputerName2. MAC-Address resolving has been skipped. Try to enter an IPv4-Address instead of the Hostname!"
+            Write-Host "Could not resolve IPv4-Address for ""$ComputerName2"". MAC-Address resolving has been skipped. Try to enter an IPv4-Address instead of the Hostname!" -ForegroundColor Red
 
             continue
         }
