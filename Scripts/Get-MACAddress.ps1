@@ -125,12 +125,16 @@ Process{
                     {
                         Write-Verbose "Could not get MAC-Address for $ComputerName2 ($IPv4Address). Make sure that your computer is in the same subnet as $ComputerName2."
                     }
+
+                    continue
                 }
             }
         }
         else 
         {
             Write-Verbose "Could not resolve IPv4-Address for $ComputerName2. MAC-Address resolving has been skipped. Try to enter an IPv4-Address instead of the Hostname!"
+
+            continue
         }
 
         $Result = [pscustomobject] @{
