@@ -16,13 +16,13 @@ Generate passwords with a freely definable number of characters. You can also se
 ### Function
 
 ```powershell
-New-RandomPassword.ps1 [[-Length] <Int32>] [[-LowerCase]] [[-UpperCase]] [[-Numbers]] [[-SpecialChars]] [[-CopyToClipboard]] [<CommonParameters>]
+New-RandomPassword [[-Length] <Int32>] [[-DisableLowerCase]] [[-DisableUpperCase]] [[-DisableNumbers]] [[-DisableSpecialChars]] [[-CopyToClipboard]] [<CommonParameters>]
 ```
 
 ### Script
 
 ```powershell
-.\New-RandomPassword.ps1 [[-Length] <Int32>] [[-LowerCase]] [[-UpperCase]] [[-Numbers]] [[-SpecialChars]] [[-CopyToClipboard]] [<CommonParameters>]
+.\New-RandomPassword.ps1 [[-Length] <Int32>] [[-DisableLowerCase]] [[-DisableUpperCase]] [[-DisableNumbers]] [[-DisableSpecialChars]] [[-CopyToClipboard]] [<CommonParameters>]
 ```
 
 ## Example
@@ -38,7 +38,7 @@ NX58m2B$
 ### Script
 
 ```powershell
-PS> .\New-RandomPassword.ps1 -Length 10 -SpecialChars:$false
+PS> .\New-RandomPassword.ps1 -Length 10 -DisableSpecialChars
 
 7UZE6pyyGM
 ```
