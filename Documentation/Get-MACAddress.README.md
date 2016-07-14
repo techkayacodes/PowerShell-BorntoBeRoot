@@ -30,7 +30,7 @@ Get-MACAddress [-ComputerName] <String[]> [<CommonParameters>]
 ### Function
 
 ```powershell
-Get-MACAddress -ComputerName TEST-PC-01
+PS> Get-MACAddress -ComputerName TEST-PC-01
     
 ComputerName IPv4Address    MACAddress
 ------------ -----------    ----------
@@ -40,13 +40,14 @@ TEST-PC-01   192.168.178.20 1D-00-00-00-00-F0
 ### Script
 
 ```powershell
-.\Get-MACAddress.ps1 -ComputerName TEST-PC-01, TEST-PC-02, TEST-PC-03, TEST-PC-04 -Verbose
+PS> .\Get-MACAddress.ps1 -ComputerName TEST-PC-01, TEST-PC-02, TEST-PC-03, TEST-PC-04 -Verbose
     
 VERBOSE: TEST-PC-02 is not reachable via ICMP. ARP-Cache could not be refreshed!
-VERBOSE: Could not get MAC-Address for TEST-PC-03 (192.168.178.21). Make sure that your computer is in the same subnet
+
+Could not get MAC-Address for TEST-PC-03 (192.168.178.21). Make sure that your computer is in the same subnet
  and TEST-PC-02 is reachable.
-VERBOSE: TEST-PC-04 is not reachable via ICMP. ARP-Cache could not be refreshed!
-VERBOSE: Could not resolve IPv4-Address for TEST-PC-04. MAC-Address resolving has been skipped. Try to enter an IPv4-Address
+ 
+Could not resolve IPv4-Address for TEST-PC-04. MAC-Address resolving has been skipped. Try to enter an IPv4-Address
 instead of the Hostname!
 
 ComputerName IPv4Address    MACAddress
