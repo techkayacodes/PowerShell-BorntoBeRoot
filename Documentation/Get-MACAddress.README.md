@@ -44,7 +44,7 @@ PS> .\Get-MACAddress.ps1 -ComputerName TEST-PC-01, TEST-PC-02, TEST-PC-03, TEST-
     
 VERBOSE: TEST-PC-02 is not reachable via ICMP. ARP-Cache could not be refreshed!
 
-Could not get MAC-Address for TEST-PC-03 (192.168.178.21). Make sure that your computer is in the same subnet
+Could not resolve MAC-Address for TEST-PC-03 (192.168.178.21). Make sure that your computer is in the same subnet
  and TEST-PC-02 is reachable.
  
 Could not resolve IPv4-Address for TEST-PC-04. MAC-Address resolving has been skipped. Try to enter an IPv4-Address
