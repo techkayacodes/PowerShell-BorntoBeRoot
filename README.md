@@ -49,6 +49,7 @@ All functions - which you can see above - are available as standalone scripts [h
 | [New-Object.ps1](Snippets/New-Object.ps1) | Create a new object with custom properties|
 | [Press_any_key_to_continue.ps1](Snippets/Press_any_key_to_continue.ps1) | Wait until the user pressed a key | 
 | [PSCustomObject.ps1](Snippets/PSCustomObjects.ps1) | Create a new object with custom properties (faster than New-Object/Add-Member) |
+| [Rewrite_In_Line.ps1](Snippets/Rewrite_In_Line.ps1) | Rewrite in Line (Write-Host "xx% complete") |
 | [Self_elevating_script.ps1](Snippets/Self_elevating_script.ps1) | Self elevate a PowerShell script/console with parameters |
 | [Send-MailMessage.ps1](Snippets/Send-MailMessage.ps1) | Send a mail message via PowerShell |
 | [Sourcecode_from_function.ps1](Snippets/Sourcecode_from_function.ps1) | Get the sourcecode of an existing function |
