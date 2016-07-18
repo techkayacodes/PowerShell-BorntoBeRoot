@@ -121,11 +121,11 @@ function Get-MACAddress
                     {
                         if($IsNotReachable)
                         {
-                            Write-Host "Could not get MAC-Address for ""$ComputerName2"" ($IPv4Address). Make sure that your computer is in the same subnet as $ComputerName2 and $ComputerName2 is reachable." -ForegroundColor Red
+                            Write-Host "Could not resolve MAC-Address for ""$ComputerName2"" ($IPv4Address). Make sure that your computer is in the same subnet as $ComputerName2 and $ComputerName2 is reachable." -ForegroundColor Red
                         }
                         else 
                         {
-                            Write-Host "Could not get MAC-Address for ""$ComputerName2"" ($IPv4Address). Make sure that your computer is in the same subnet as $ComputerName2." -ForegroundColor Red
+                            Write-Host "Could not resolve MAC-Address for ""$ComputerName2"" ($IPv4Address). Make sure that your computer is in the same subnet as $ComputerName2." -ForegroundColor Red
                         }
 
                         continue
