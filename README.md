@@ -19,6 +19,7 @@ Automate all the Things!
 
 | Function | Description | Help | 
 | :--- | :--- | :---: |
+| [Convert-CaesarCipher](Module/LazyAdmin/Functions/Convert-CaesarCipher.ps1) | Rotate lower and upper chars by n places (Caesar cipher) | [:book:](Documentation/Convert-CaesarCipher.README.md) |
 | [Convert-IPv4Address](Module/LazyAdmin/Functions/Convert-IPv4Address.ps1) | Convert an IPv4-Address to Int64 and vise versa | [:book:](Documentation/Convert-IPv4Address.README.md) |
 | [Convert-Subnetmask](Module/LazyAdmin/Functions/Convert-Subnetmask.ps1) | Convert a subnetmask to CIDR and vise versa | [:book:](Documentation/Convert-Subnetmask.README.md) |
 | [Get-ConsoleColors](Module/LazyAdmin/Functions/Get-ConsoleColors.ps1) | Get all available console colors | [:book:](Documentation/Get-ConsoleColors.README.md) |
