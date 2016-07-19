@@ -41,6 +41,6 @@ Optimization finished!
 Press any key to continue...
 ```
 
-## How does it works?
+## Further information
 
 * [Ngen.exe (Native Image Generator) - MSDN](https://msdn.microsoft.com/de-de/library/6t9t5wcf(v=vs.110).aspx)
