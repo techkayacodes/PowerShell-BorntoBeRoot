@@ -45,7 +45,7 @@ Rot Text
 ### Script
 
 ```powershell
-PS> Convert-CaesarCipher -Text "Aopz pz hu lujyfwalk zaypun!"
+PS> .\Convert-CaesarCipher.ps1 -Text "Aopz pz hu lujyfwalk zaypun!"
 
 Rot Text
 --- ----
