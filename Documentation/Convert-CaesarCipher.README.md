@@ -1,6 +1,6 @@
 # Convert-CaesarCipher
 
-Rotate chars by n places (Caesar cipher).
+Rotate lower and upper chars by n places (Caesar cipher).
 
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Convert-CaesarCipher.ps1)
 * [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Convert-CaesarCipher.ps1)
