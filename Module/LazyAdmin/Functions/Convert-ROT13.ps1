@@ -1,6 +1,6 @@
 ###############################################################################################################
 # Language     :  PowerShell 4.0
-# Filename     :  Convert-CaesarCipher.ps1
+# Filename     :  Convert-ROT13.ps1
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
 # Description  :  Rotate chars by n places (Caesar cipher)
 # Repository   :  https://github.com/BornToBeRoot/PowerShell
@@ -14,14 +14,14 @@
     Rotate lower and upper chars by n places (Caesar cipher). By default all 26 options are converted. You can encrypt with the parameter "-Encrypt" or decrypt (default) with the parameter "Decrypt", depens on what you need. Decryption is selected by default.
         
     .EXAMPLE
-    Convert-CaesarCipher -Text "This is an encrypted string!" -Rot 7 -Encrypt
+    Convert-ROT13 -Text "This is an encrypted string!" -Rot 7 -Encrypt
 
     Rot Text
     --- ----
       7 Aopz pz hu lujyfwalk zaypun!
 
     .EXAMPLE
-    Convert-CaesarCipher -Text "Aopz pz hu lujyfwalk zaypun!"
+    Convert-ROT13 -Text "Aopz pz hu lujyfwalk zaypun!"
 
     Rot Text
     --- ----
@@ -53,10 +53,10 @@
      26 Aopz pz hu lujyfwalk zaypun!
 
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Convert-CaesarCipher.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Convert-ROT13.README.md
 #>
 
-function Convert-CaesarCipher 
+function Convert-ROT13
 {
     [CmdletBinding(DefaultParameterSetName='Decrypt')]
     param (
@@ -82,7 +82,7 @@ function Convert-CaesarCipher
             ParameterSetName='Decrypt',
             Position=2,
             HelpMessage='Decrypt a string')]
-        [switch]$Decrypt
+        [switch]$Decrypt   
     )
 
     Begin {
@@ -225,4 +225,4 @@ function Convert-CaesarCipher
             $Result
         }
     }
-}
+}            

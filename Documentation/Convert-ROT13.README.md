@@ -1,4 +1,4 @@
-# Convert-CaesarCipher
+# Convert-ROT13
 
 Rotate lower and upper chars by n places (Caesar cipher).
 
@@ -9,25 +9,24 @@ Rotate lower and upper chars by n places (Caesar cipher).
 
 Rotate lower and upper chars by n places (Caesar cipher). By default all 26 options are converted. You can encrypt with the parameter `-Encrypt` or decrypt (default) with the parameter `-Decrypt`, depens on what you need. Decryption is selected by default.
 
-![Screenshot](Images/Convert-CaesarCipher.png?raw=true "Convert-CaesarCipher")
+![Screenshot](Images/Convert-ROT13.png?raw=true "Convert-ROT13")
 
 ## Syntax
 
 ### Function
 
-
 ```powershell
-Convert-CaesarCipher [-Text] <String> [[-Rot] <Int32[]>] [[-Decrypt]] [<CommonParameters>]
+Convert-ROT13 [-Text] <String> [[-Rot] <Int32[]>] [[-Decrypt]] [<CommonParameters>]
 
-Convert-CaesarCipher [-Text] <String> [[-Rot] <Int32[]>] [[-Encrypt]] [<CommonParameters>]
+Convert-ROT13 [-Text] <String> [[-Rot] <Int32[]>] [[-Encrypt]] [<CommonParameters>]
 ```
 
 ### Script
 
 ```powershell
-.\Convert-CaesarCipher.ps1 [-Text] <String> [[-Rot] <Int32[]>] [[-Decrypt]] [<CommonParameters>]
+.\Convert-ROT13.ps1 [-Text] <String> [[-Rot] <Int32[]>] [[-Decrypt]] [<CommonParameters>]
 
-.\Convert-CaesarCipher.ps1 [-Text] <String> [[-Rot] <Int32[]>] [[-Encrypt]] [<CommonParameters>]
+.\Convert-ROT13.ps1 [-Text] <String> [[-Rot] <Int32[]>] [[-Encrypt]] [<CommonParameters>]
 ``` 
 
 ## Example
@@ -35,7 +34,7 @@ Convert-CaesarCipher [-Text] <String> [[-Rot] <Int32[]>] [[-Encrypt]] [<CommonPa
 ### Function
 
 ```powershell
-PS> Convert-CaesarCipher -Text "This is an encrypted string!" -Rot 7 -Encrypt
+PS> Convert-ROT13 -Text "This is an encrypted string!" -Rot 7 -Encrypt
 
 Rot Text
 --- ----
@@ -45,7 +44,7 @@ Rot Text
 ### Script
 
 ```powershell
-PS> .\Convert-CaesarCipher.ps1 -Text "Aopz pz hu lujyfwalk zaypun!"
+PS> .\Convert-ROT13.ps1 -Text "Aopz pz hu lujyfwalk zaypun!"
 
 Rot Text
 --- ----
