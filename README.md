@@ -51,7 +51,7 @@ All functions - which you can see above - are available as standalone scripts [h
 
 | Snippet | Description | 
 | :--- | :--- |
-| [ConnectTo-Exchange2010.ps1](Snippets/ConnectTo-Exchange2010.ps1) | Connect to Exchange 2010 Management Shell in script |
+| [Connect-ToExchange2010.ps1](Snippets/Connect-ToExchange2010.ps1) | Connect to Exchange 2010 Management Shell in script |
 | [New-Object.ps1](Snippets/New-Object.ps1) | Create a new object with custom properties|
 | [Press_any_key_to_continue.ps1](Snippets/Press_any_key_to_continue.ps1) | Wait until the user pressed a key | 
 | [PSCustomObject.ps1](Snippets/PSCustomObjects.ps1) | Create a new object with custom properties (faster than New-Object/Add-Member) |
