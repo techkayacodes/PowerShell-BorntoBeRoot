@@ -59,7 +59,7 @@
 function Convert-ROT13
 {
     [CmdletBinding(DefaultParameterSetName='Decrypt')]
-    param (
+    param(
         [Parameter(
             Position=0,
             Mandatory=$true,
@@ -85,7 +85,7 @@ function Convert-ROT13
         [switch]$Decrypt   
     )
 
-    Begin {
+    Begin{
         [System.Collections.ArrayList]$UpperChars = @()
         [System.Collections.ArrayList]$LowerChars = @()
     
@@ -224,5 +224,9 @@ function Convert-ROT13
 
             $Result
         }
+    }
+    
+    End{
+
     }
 }            
