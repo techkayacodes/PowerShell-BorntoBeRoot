@@ -23,14 +23,10 @@
       7 [opz pz hu lujy"w{lk z{ypun(
 
     .EXAMPLE
-    Convert-ROT47 -Text '[opz pz hu lujy"w{lk z{ypun(' -Rot (1..10)
+    Convert-ROT47 -Text '[opz pz hu lujy"w{lk z{ypun(' -Rot (5..10)
 
     Rot Text
     --- ----
-      1 Znoy oy gt ktix!vzkj yzxotm'
-      2 Ymnx nx fs jshw~uyji xywnsl&
-      3 Xlmw mw er irgv}txih wxvmrk%
-      4 Wklv lv dq hqfu|swhg vwulqj$
       5 Vjku ku cp gpet{rvgf uvtkpi#
       6 Uijt jt bo fodszqufe tusjoh"
       7 This is an encrypted string!
@@ -46,7 +42,7 @@
       3 Ehlvslho= Fçvdu0Yhuvfkoÿvvhoxqj 0 Vsudfkh Ghxwvfk$
 
     .EXAMPLE
-    Convert-ROT47 -Text "Ehlvslho= Fçvdu0Yhuvfkoÿvvhoxqj 0 Vsudfkh Ghxwvfk$" -Rot (1..10) -UseAllAsciiChars
+    Convert-ROT47 -Text "Ehlvslho= Fçvdu0Yhuvfkoÿvvhoxqj 0 Vsudfkh Ghxwvfk$" -Rot (1..4) -UseAllAsciiChars
 
     Rot Text
     --- ----
@@ -54,13 +50,7 @@
       2 Cfjtqjfm; Dåtbs.Wfstdimýttfmvoh . Tqsbdif Efvutdi"
       3 Beispiel: Cäsar-Verschlüsselung - Sprache Deutsch!
       4 Adhrohdk9 Bãr`q,Udqrbgkûrrdktmf , Roq`bgd Cdtsrbg
-      5 @cgqngcj8 Aâq_p+Tcpqafjúqqcjsle + Qnp_afc Bcsrqaf▼
-      6 ?bfpmfbi7 @áp^o*Sbop`eiùppbirkd * Pmo^`eb Abrqp`e▲
-      7 >aeoleah6 ?ào]n)Rano_dhøooahqjc ) Oln]_da @aqpo_d↔
-      8 =`dnkd`g5 >ßn\m(Q`mn^cg÷nn`gpib ( Nkm\^c` ?`pon^c∟
-      9 <_cmjc_f4 =Þm[l'P_lm]bfömm_foha ' Mjl[]b_ >_onm]b←
-     10 ;^blib^e3 <ÝlZk&O^kl\aeõll^eng` & LikZ\a^ =^nml\a→
-
+      
     .LINK
     https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Convert-ROT47.README.md
 #>
