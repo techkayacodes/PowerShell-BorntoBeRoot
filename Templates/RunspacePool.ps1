@@ -151,6 +151,7 @@ Process{
             $Jobs.Remove($Job)
         
             # Check if result is null --> if not, return it
+            if($Job_Result -ne $null)
             {       
                 $Job_Result    
             }
