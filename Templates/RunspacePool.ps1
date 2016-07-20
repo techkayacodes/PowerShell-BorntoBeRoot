@@ -1,31 +1,28 @@
 ###############################################################################################################
 # Language     :  PowerShell 4.0
-# Filename     :  
+# Filename     :  RunspacePool.ps1
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
-# Description  :  
-# Repository   :  https://github.com/BornToBeRoot/
+# Description  :  Template for RunspacePool to run code async
+# Repository   :  https://github.com/BornToBeRoot/PowerShell
 ###############################################################################################################
 
 <#
     .SYNOPSIS
-    Template to create a RunspacePool to run code asynchronus
+    Template for RunspacePool to run code async 
     
     .DESCRIPTION
-      
-    If you found a bug or have some ideas to improve this script... Let me know. You find my Github profile in 
-    the links below.  
-        
+    
     .EXAMPLE
         
     .EXAMPLE
     
     .LINK
-    Github Profil:         https://github.com/BornToBeRoot
-    Github Repository:     https://github.com/BornToBeRoot/PowerShell_Scripts
+    https://github.com/BornToBeRoot/PowerShell
 #>
 
-Param(
-	# number concurrent threads --> depens on what code you are running / which hardware you are using
+[CmdletBinding()]
+param(
+    # Number of concurrent threads --> depens on what code you are running / which hardware you are using
 	[Parameter(
 		Position=0,
 		HelpMessage='Maximum number of threads at the same time (Default=100)')]
@@ -33,10 +30,14 @@ Param(
 )
 
 Begin{
-    Write-Host "This is only an example, without any output / test values..." -ForegroundColor Yellow
-}
-Process{
-	### Scriptblock (this code will run asynchron in the RunspacePool)
+    
+} 
+
+Process{    
+    Write-Verbose "Running with max $Threads threads"
+
+    # Scriptblock --> will run in runspaces (threads)...
+    ### Scriptblock (this code will run asynchron in the RunspacePool)
 	[System.Management.Automation.ScriptBlock]$ScriptBlock = {
 		Param(
 			### ScriptBlock Parameter
@@ -62,15 +63,17 @@ Process{
 		### Return result 
 		return $Result
 	}
-	
-	# Create the RunspacePool and open it
-	$RunspacePool = [System.Management.Automation.Runspaces.RunspaceFactory]::CreateRunspacePool(1, $Threads, $Host)
-	$RunspacePool.Open()
 
-	# Create array for jobs
-	$Jobs = @()
-	
-	# Setting up jobs
+    # Create RunspacePool and Jobs
+    Write-Verbose "Setting up RunspacePool..."
+   
+    $RunspacePool = [System.Management.Automation.Runspaces.RunspaceFactory]::CreateRunspacePool(1, $Threads, $Host)
+    $RunspacePool.Open()
+    [System.Collections.ArrayList]$Jobs = @()
+
+    Write-Verbose "Setting up Jobs..."
+        
+    # Setting up jobs
 	for($i = $StartRange; $i -le $EndRange; $i++)
 	{
 		# Hashtable to pass parameters
@@ -79,40 +82,89 @@ Process{
 			Parameter2 = $Parameter2
 		}
 
-		# Write-Progress...
+        # Catch when trying to divide through zero
+        try {
+            $Progress_Percent =  ($i / ($EndRange - $StartRange)) * 100 # Calulate some procent 
+        } 
+        catch { 
+            $Progress_Percent = 100 
+        }
 
-		# Create job
-		$Job = [System.Management.Automation.PowerShell]::Create().AddScript($ScriptBlock).AddParameters($ScriptParams)
+        Write-Progress -Activity "Setting up jobs..." -Id 1 -Status "Current Job: $i"  -PercentComplete ($Progress_Percent)
+        
+        # Create mew job
+        $Job = [System.Management.Automation.PowerShell]::Create().AddScript($ScriptBlock).AddParameters($ScriptParams)
         $Job.RunspacePool = $RunspacePool
-        $Jobs += New-Object PSObject -Property @{
-            RunNum = $i - $StartRange # Depens on your for-loop... it should count 0,1,2,3,...
+        
+        $JobObj = [pscustomobject] @{
+            RunNum = $i - $StartRange
             Pipe = $Job
             Result = $Job.BeginInvoke()
-        }		
-	}
+        }
 
-	# Wait until all jobs are finished
-	Do {
-		Start-Sleep -Milliseconds 500 # Maybe wait 1 or 2 seconds
+        # Add job to collection
+        [void]$Jobs.Add($JobObj)
+    }
 
-		# Write-Progress...
-	} While ($Jobs.Result.IsCompleted -contains $false)
+    Write-Verbose "Waiting for jobs to complete & starting to process results..."
 
+    # Total jobs to calculate percent complete, because jobs are removed after they are processed
+    $Jobs_Total = $Jobs.Count
 
-	# Creat array for result 
-    	$Jobs_Result = @()
+    # Process results, while waiting for other jobs
+    Do {
+        # Get all jobs, which are completed
+        $Jobs_ToProcess = $Jobs | Where-Object {$_.Result.IsCompleted}
 
-    	# Get results and fill the array
-    	foreach($Job in $Jobs)
-    	{
-        	$Jobs_Result += $Job.Pipe.EndInvoke($Job.Result)
-		$Job.Pipe.Dispose() # Release memory -> else Memory Leak (you have to close the PowerShell-Console)
-	}
+        # If no jobs finished yet, wait 500 ms and try again
+        if($Jobs_ToProcess -eq $null)
+        {
+            Write-Verbose "No jobs completed, wait 500ms..."
 
-	# Its important to close the RunspacePool
-	$RunspacePool.Close()
+            Start-Sleep -Milliseconds 500
+            continue
+        }
+        
+        # Get jobs, which are not complete yet
+        $Jobs_Remaining = ($Jobs | Where-Object {$_.Result.IsCompleted -eq $false}).Count
 
-	# Return result
-	return $Jobs_Result
+        # Catch when trying to divide through zero
+        try {            
+            $Progress_Percent = 100 - (($Jobs_Remaining / $Jobs_Total) * 100) 
+        }
+        catch {
+            $Progress_Percent = 100
+        }
+
+        Write-Progress -Activity "Waiting for jobs to complete... ($($Threads - $($RunspacePool.GetAvailableRunspaces())) of $Threads threads running)" -Id 1 -PercentComplete $Progress_Percent -Status "$Jobs_Remaining remaining..."
+    
+        Write-Verbose "Processing $(if($Jobs_ToProcess.Count -eq $null){"1"}else{$Jobs_ToProcess.Count}) job(s)..."
+
+        # Processing completed jobs
+        foreach($Job in $Jobs_ToProcess)
+        {       
+            # Get the result...     
+            $Job_Result = $Job.Pipe.EndInvoke($Job.Result)
+            $Job.Pipe.Dispose()
+
+            # Remove job from collection
+            $Jobs.Remove($Job)
+        
+            # Check if result is null --> if not, return it
+            {       
+                $Job_Result    
+            }
+        } 
+
+    } While ($Jobs.Count -gt 0)
+    
+    Write-Verbose "Closing RunspacePool and free resources..."
+
+    # Close the RunspacePool and free resources
+    $RunspacePool.Close()
+    $RunspacePool.Dispose()
 }
-End{}
+
+End{
+
+}
