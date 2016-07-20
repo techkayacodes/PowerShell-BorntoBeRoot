@@ -7,7 +7,7 @@ Rotate lower and upper chars by n places (Caesar cipher).
 
 ## Description
 
-Rotate lower and upper chars by n places (Caesar cipher). By default all 26 options are converted. You can encrypt with the parameter `-Encrypt` or decrypt (default) with the parameter `-Decrypt`, depens on what you need. Decryption is selected by default.
+Rotate lower and upper chars by n places (Caesar cipher). By default all 26 options are converted. You can encrypt with the parameter `-Encrypt` or decrypt with the parameter `-Decrypt`, depens on what you need. Decryption is selected by default.
 
 ![Screenshot](Images/Convert-ROT13.png?raw=true "Convert-ROT13")
 
