@@ -44,7 +44,7 @@
 
 function New-IPv4NetworkScan
 {
-    [CmdletBinding(DefaultParameterSetName='Range')]
+    [CmdletBinding(DefaultParameterSetName='CIDR')]
     param(
         [Parameter(
             ParameterSetName='Range',
