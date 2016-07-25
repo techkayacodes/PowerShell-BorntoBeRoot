@@ -2,7 +2,7 @@
 # Language     :  PowerShell 4.0
 # Filename     :  Get-MACAddress.ps1
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
-# Description  :  Get the MAC-Address from remote computer
+# Description  :  Get the MAC-Address from a remote computer
 # Repository   :  https://github.com/BornToBeRoot/PowerShell
 ###############################################################################################################
 
@@ -16,23 +16,23 @@
     .EXAMPLE
     Get-MACAddress -ComputerName TEST-PC-01
     
-    ComputerName IPv4Address    MACAddress
-    ------------ -----------    ----------
-    TEST-PC-01   192.168.178.20 1D-00-00-00-00-F0
+    ComputerName IPv4Address    MACAddress        Vendor
+    ------------ -----------    ----------        ------
+    TEST-PC-01   192.168.178.20 1D-00-00-00-00-F0 Cisco Systems, Inc
 
     .EXAMPLE
     Get-MACAddress -ComputerName TEST-PC-01, TEST-PC-02
     
-    ComputerName IPv4Address    MACAddress
-    ------------ -----------    ----------
-    TEST-PC-01   192.168.178.20 1D-00-00-00-00-F0
-    TEST-PC-02   192.168.178.21 1D-00-00-00-00-F1
+    ComputerName IPv4Address    MACAddress        Vendor
+    ------------ -----------    ----------        ------
+    TEST-PC-01   192.168.178.20 1D-00-00-00-00-F0 Cisco Systems, Inc
+    TEST-PC-02   192.168.178.21 1D-00-00-00-00-F1 ASUSTek COMPUTER INC.
 
     .LINK
     https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Get-MACAddress.README.md
 #>
 
-function Get-MACAddress 
+function Get-MACAddress
 {
     [CmdletBinding()]
     param(
@@ -44,10 +44,65 @@ function Get-MACAddress
     )
 
     Begin{
+        # MAC-Vendor list path
+        $CSV_MACVendorList_Path = "$PSScriptRoot\IEEE_Standards_Registration_Authority.csv"
 
+        function AssignMACToVendor{
+            param(
+                $Result
+            )
+
+            Begin{
+
+            }
+
+            Process{
+                $Vendor = [String]::Empty
+
+                if(-not([String]::IsNullOrEmpty($Result.MACAddress)))
+                {
+                    # Split it, so we can search the vendor (XX-XX-XX-XX-XX-XX to XX-XX-XX)
+                    $MAC_VendorSearch = $Result.MACAddress.Replace("-","").Substring(0,6)
+
+                    foreach($ListEntry in $MAC_VendorList)
+                    {
+                        if($ListEntry.Assignment -eq $MAC_VendorSearch)
+                        {
+                            $Vendor = $ListEntry."Organization Name"
+                            break
+                        }
+                    }                    
+                }
+                
+                $NewResult = [pscustomobject] @{
+                    ComputerName = $Result.ComputerName
+                    IPv4Address = $Result.IPv4Address
+                    MACAddress = $Result.MACAddress
+                    Vendor = $Vendor
+                }
+
+                return $NewResult
+            }
+
+            End{
+
+            }
+        }
     }
 
     Process{
+        if([System.IO.File]::Exists($CSV_MACVendorList_Path))
+        {
+            $AssignToVendor = $true
+
+            $MAC_VendorList = Import-Csv -Path $CSV_MACVendorList_Path | Select-Object "Assignment", "Organization Name"
+        }
+        else {
+            $AssignToVendor = $false
+
+            Write-Host "No CSV-File to assign vendor with MAC-Address found!" -ForegroundColor Yellow
+        }
+
         foreach($ComputerName2 in $ComputerName)
         {
             $LocalAddress = @("127.0.0.1","localhost",".")
@@ -93,7 +148,7 @@ function Get-MACAddress
         
             # Try to get MAC from IPv4-Address
             $MAC = [String]::Empty
-
+        
             if(-not([String]::IsNullOrEmpty($IPv4Address)))
             {
                 # +++ ARP-Cache +++
@@ -142,10 +197,17 @@ function Get-MACAddress
             $Result = [pscustomobject] @{
                 ComputerName = $ComputerName2
                 IPv4Address = $IPv4Address
-                MACAddress = $MAC        
+                MACAddress = $MAC
             }
 
-            $Result
+            if($AssignToVendor)
+            {
+                AssignMACToVendor -Result $Result
+            }
+            else 
+            {
+                $Result  
+            } 
         }   
     }
 
