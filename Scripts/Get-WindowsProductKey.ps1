@@ -62,7 +62,7 @@ param(
     [Parameter(
         Position=1,
         HelpMessage='PSCredential to authentificate agains a remote computer')]
-    [PSCredential]$Credential
+    [System.Management.Automation.PSCredential]$Credential
 )
 
 Begin{
@@ -98,7 +98,7 @@ Process{
             }
 
 			try {
-                if($PSBoundParameters['Credential'] -is [PSCredential])
+                if($PSBoundParameters['Credential'] -is [System.Management.Automation.PSCredential])
                 {
                     $ProductKeyValue = Invoke-Command -ScriptBlock $Scriptblock_ProductKey -ComputerName $ComputerName2 -Credential $Credential
                     $Wmi_Win32 = Invoke-Command -ScriptBlock $Scriptblock_Wmi -ComputerName $ComputerName2 -Credential $Credential

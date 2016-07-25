@@ -55,7 +55,7 @@ function Get-InstalledSoftware
 		[Parameter(
 			Position=2,
 			HelpMessage='PSCredential to authentificate agains a remote computer')]
-		[PSCredential]$Credential
+		[System.Management.Automation.PSCredential]$Credential
 	)
 
 	Begin{
@@ -82,7 +82,7 @@ function Get-InstalledSoftware
 			}
 		
 			try {
-				if($PSBoundParameters['Credential'] -is [PSCredential])
+				if($PSBoundParameters['Credential'] -is [System.Management.Automation.PSCredential])
 				{
 					$Strings = Invoke-Command -ScriptBlock $Scriptblock -ComputerName $ComputerName -ArgumentList $Search -Credential $Credential
 				}
@@ -96,8 +96,6 @@ function Get-InstalledSoftware
 				continue
 			}
 		}
-
-		[System.Collections.ArrayList]$Results = @()
 
 		foreach($String in $Strings)
 		{

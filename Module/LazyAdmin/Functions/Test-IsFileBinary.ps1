@@ -41,7 +41,9 @@ function Test-IsFileBinary
 		[String]$Path
 	)
 
-	Begin{}
+	Begin{
+		
+	}
 
 	Process{
         # Check if path is a directory
