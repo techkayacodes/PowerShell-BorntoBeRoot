@@ -32,9 +32,9 @@ Get-MACAddress [-ComputerName] <String[]> [<CommonParameters>]
 ```powershell
 PS> Get-MACAddress -ComputerName TEST-PC-01
     
-ComputerName IPv4Address    MACAddress
------------- -----------    ----------
-TEST-PC-01   192.168.178.20 1D-00-00-00-00-F0
+ComputerName IPv4Address    MACAddress        Vendor
+------------ -----------    ----------        ------
+TEST-PC-01   192.168.178.20 1D-00-00-00-00-F0 Cisco Systems, Inc
 ```
 
 ### Script
@@ -50,8 +50,9 @@ Could not resolve MAC-Address for TEST-PC-03 (192.168.178.21). Make sure that yo
 Could not resolve IPv4-Address for TEST-PC-04. MAC-Address resolving has been skipped. Try to enter an IPv4-Address
 instead of the Hostname!
 
-ComputerName IPv4Address    MACAddress
------------- -----------    ----------
-TEST-PC-01   192.168.178.20 1D-00-00-00-00-F0
-TEST-PC-03   192.168.178.22 1D-00-00-00-00-F1
+ComputerName IPv4Address    MACAddress        Vendor
+------------ -----------    ----------        ------
+TEST-PC-01   192.168.178.20 1D-00-00-00-00-F0 Cisco Systems, Inc
+TEST-PC-02   192.168.178.21 1D-00-00-00-00-F1 ASUSTek COMPUTER INC.
+
 ```
