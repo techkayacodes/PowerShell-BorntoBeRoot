@@ -60,7 +60,7 @@ function Get-WindowsProductKey
 
 		[Parameter(
 			Position=1,
-			HelpMessage='PSCredential to authentificate agains a remote computer')]
+			HelpMessage='PSCredential to authenticate agains a remote computer')]
 		[System.Management.Automation.PSCredential]$Credential
 	)
 

@@ -50,7 +50,7 @@ param(
 
     [Parameter(
         Position=3,
-        HelpMessage='PSCredential to authentificate agains a remote computer')]
+        HelpMessage='PSCredential to authenticate agains a remote computer')]
     [PSCredential]$Credential
 )
 

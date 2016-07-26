@@ -54,7 +54,7 @@ function Get-InstalledSoftware
 
 		[Parameter(
 			Position=2,
-			HelpMessage='PSCredential to authentificate agains a remote computer')]
+			HelpMessage='PSCredential to authenticate agains a remote computer')]
 		[System.Management.Automation.PSCredential]$Credential
 	)
 
