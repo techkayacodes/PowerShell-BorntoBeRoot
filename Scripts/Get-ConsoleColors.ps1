@@ -54,7 +54,7 @@ Begin{
 Process{
     $Colors = [Enum]::GetValues([ConsoleColor])
 
-    if($Preview.IsPresent)
+    if($Preview)
     {
         foreach($Color in $Colors)
         {            

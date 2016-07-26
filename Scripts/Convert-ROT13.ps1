@@ -121,7 +121,7 @@ Begin{
     }
 
     # Default mode is "Decrypt"
-    if(($Encrypt.IsPresent -eq $false -and $Decrypt.IsPresent -eq $false) -or ($Decrypt.IsPresent)) 
+    if(($Encrypt -eq $false -and $Decrypt -eq $false) -or ($Decrypt)) 
     {        
         $Mode = "Decrypt"
     }    

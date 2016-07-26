@@ -230,11 +230,11 @@ function New-IPv4NetworkScan
 
     Process{
         # Check for vendor list update
-        if($UpdateList.IsPresent)
+        if($UpdateList)
         {
             UpdateListFromIEEE
         }
-        elseif(($EnableMACResolving.IsPresent) -and (-Not([System.IO.File]::Exists($CSV_MACVendorList_Path))))
+        elseif(($EnableMACResolving) -and (-Not([System.IO.File]::Exists($CSV_MACVendorList_Path))))
         {
             Write-Host 'No CSV-File to assign vendor with MAC-Address found! Use the parameter "-UpdateList" to download the latest version from IEEE.org. This warning doesn`t affect the scanning procedure.' -ForegroundColor Yellow
         }   
@@ -278,18 +278,18 @@ function New-IPv4NetworkScan
         $PropertiesToDisplay = @()
         $PropertiesToDisplay += "IPv4Address", "Status"
 
-        if($DisableDNSResolving.IsPresent -eq $false)
+        if($DisableDNSResolving -eq $false)
         {
             $PropertiesToDisplay += "Hostname"
         }
 
-        if($EnableMACResolving.IsPresent)
+        if($EnableMACResolving)
         {
             $PropertiesToDisplay += "MAC"
         }
 
         # Check if it is possible to assign vendor to MAC --> import CSV-File 
-        if(($EnableMACResolving.IsPresent) -and ([System.IO.File]::Exists($CSV_MACVendorList_Path)))
+        if(($EnableMACResolving) -and ([System.IO.File]::Exists($CSV_MACVendorList_Path)))
         {
             $AssignVendorToMAC = $true
 
@@ -302,7 +302,7 @@ function New-IPv4NetworkScan
             $AssignVendorToMAC = $false
         }
         
-        if($ExtendedInformations.IsPresent)
+        if($ExtendedInformations)
         {
             $PropertiesToDisplay += "BufferSize", "ResponseTime", "TTL"
         }
@@ -351,7 +351,7 @@ function New-IPv4NetworkScan
             # +++ Resolve DNS +++
             $Hostname = [String]::Empty     
 
-            if((-not($DisableDNSResolving.IsPresent)) -and ($Status -eq "Up" -or $IncludeInactive.IsPresent))
+            if((-not($DisableDNSResolving)) -and ($Status -eq "Up" -or $IncludeInactive))
             {   	
                 try{ 
                     $Hostname = ([System.Net.Dns]::GetHostEntry($IPv4Address).HostName)
@@ -362,7 +362,7 @@ function New-IPv4NetworkScan
             # +++ Get MAC-Address +++
             $MAC = [String]::Empty 
 
-            if(($EnableMACResolving.IsPresent) -and ($Status -eq "Up"))
+            if(($EnableMACResolving) -and ($Status -eq "Up"))
             {
                 $Arp_Result = (arp -a ).ToUpper()
                         
@@ -391,7 +391,7 @@ function New-IPv4NetworkScan
             $ResponseTime = [String]::Empty 
             $TTL = $null
 
-            if($ExtendedInformations.IsPresent -and ($Status -eq "Up"))
+            if($ExtendedInformations -and ($Status -eq "Up"))
             {
                 try{
                     $BufferSize =  $PingResult.Buffer.Length
@@ -402,7 +402,7 @@ function New-IPv4NetworkScan
             }	
         
             # +++ Result +++
-            if($Status -eq "Up" -or $IncludeInactive.IsPresent)
+            if($Status -eq "Up" -or $IncludeInactive)
             {
                 $Result = [pscustomobject] @{
                     IPv4Address = $IPv4Address

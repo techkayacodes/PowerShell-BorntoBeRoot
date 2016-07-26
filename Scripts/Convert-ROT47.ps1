@@ -96,7 +96,7 @@ Begin{
     $EndAscii = 126
 
     # Use all ascii chars (useful for languages like german)
-    if($UseAllAsciiChars.IsPresent)
+    if($UseAllAsciiChars)
     {
         $StartAscii = 0
         $EndAscii = 255
@@ -120,7 +120,7 @@ Begin{
     }
 
     # Default mode is "Decrypt"
-    if(($Encrypt.IsPresent -eq $false -and $Decrypt.IsPresent -eq $false) -or ($Decrypt.IsPresent)) 
+    if(($Encrypt -eq $false -and $Decrypt -eq $false) -or ($Decrypt)) 
     {        
         $Mode = "Decrypt"
     }    

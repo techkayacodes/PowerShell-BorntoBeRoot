@@ -81,22 +81,22 @@ function New-RandomPassword
 		$Characters = [String]::Empty
 			
 		# Built string with characters
-		if($DisableLowerCase.IsPresent -eq $false)
+		if($DisableLowerCase -eq $false)
 		{
 			$Characters += $Character_LowerCase
 		}
 
-		if($DisableUpperCase.IsPresent -eq $false)
+		if($DisableUpperCase -eq $false)
 		{
 			$Characters += $Character_UpperCase
 		}
 
-		if($DisableNumbers.IsPresent -eq $false)
+		if($DisableNumbers -eq $false)
 		{
 			$Characters += $Character_Numbers
 		}
 		
-		if($DisableSpecialChars.IsPresent -eq $false)
+		if($DisableSpecialChars -eq $false)
 		{
 			$Characters += $Character_SpecialChars
 		}
