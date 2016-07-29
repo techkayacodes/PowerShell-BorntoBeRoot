@@ -41,6 +41,8 @@ Automate all the Things!
   
 ## Scripts
 
+All functions - which you can see above - are available as standalone scripts [here](Scripts/)
+
 | Script | Description | Help |
 | :--- | :--- | :---: |
 | [OptimizePowerShellStartup.ps1](Scripts/OptimizePowerShellStartup.ps1) | Optimize PowerShell startup by reduce JIT compile time with ngen.exe | [:book:](Documentation/OptimizePowerShellStartup.README.md) |
