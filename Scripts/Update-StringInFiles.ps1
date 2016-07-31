@@ -16,15 +16,16 @@
     Binary files (*.zip, *.exe, etc.) are not touched by this script.
 	                         
     .EXAMPLE
-    .\Update-StringInFiles.ps1 -Path E:\Temp\Files\ -Search "Test01" -ReplaceWith "Test02" -Verbose
+    .\Update-StringInFiles.ps1 -Path E:\Temp\Files\ -Search "Test1" -ReplaceWith "Test2" -Verbose
        
 	VERBOSE: Binary files like (*.zip, *.exe, etc...) are ignored
-	VERBOSE: Files with string found: 3
-	VERBOSE: File: E:\Temp\Files\File_01.txt
-	VERBOSE: Count: 1
-	VERBOSE: File: E:\Temp\Files\File_02.txt
-	VERBOSE: Count: 1
-	VERBOSE: File: E:\Temp\Files\File_03.txt
+	VERBOSE: Total files with string to replace found: 3
+	VERBOSE: Current file: E:\Temp\Files\File_01.txt
+	VERBOSE: Number of strings to replace in current file: 1
+	VERBOSE: Current file: E:\Temp\Files\File_02.txt
+	VERBOSE: Number of strings to replace in current file: 1
+	VERBOSE: Current file: E:\Temp\Files\File_03.txt
+	VERBOSE: Number of strings to replace in current file: 2
 	   
     .LINK
     https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Update-StringInFiles.README.md
@@ -145,7 +146,7 @@ Process{
 	# Go through each file
 	foreach($File in $Files)
 	{
-		Write-Verbose "File:`t$($File.Name)"
+		Write-Verbose "Current file:`t$($File.Name)"
 		Write-Verbose "Number of strings to replace in current file:`t$($File.Count)"
     
 		try
