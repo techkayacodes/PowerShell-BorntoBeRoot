@@ -152,7 +152,7 @@ function Get-MACAddress
             if(-not([String]::IsNullOrEmpty($IPv4Address)))
             {
                 # +++ ARP-Cache +++
-                $Arp_Result = (arp -a ).ToUpper()
+                $Arp_Result = (arp -a).ToUpper()
             
                 foreach($Line in $Arp_Result)
                 {
