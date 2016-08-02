@@ -60,5 +60,5 @@ MyHomeNetwork02   MyHomenetwork5G    WPA2-Personal       MyPassword987654321
 
 ## Inspired by
 
-* [PoshCode](http://poshcode.org/4520)
-* [Technet](https://blogs.technet.microsoft.com/heyscriptingguy/2015/11/23/get-wireless-network-ssid-and-password-with-powershell/)
+* [Get-WifiProfiles - PoshCode](http://poshcode.org/4520)
+* [Get Wireless Network SSID and Password - Technet](https://blogs.technet.microsoft.com/heyscriptingguy/2015/11/23/get-wireless-network-ssid-and-password-with-powershell/)
