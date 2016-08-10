@@ -60,7 +60,7 @@ Process{
 	Write-Host "Optimization finished!" -ForegroundColor Green
 
 	Write-Host "Press any key to continue..."
-	$x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+	[void]$host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 }
 
 End{
