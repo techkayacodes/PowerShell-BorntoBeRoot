@@ -69,12 +69,10 @@ Process {
         }      
     }
 
-    $Result = [pscustomobject] @{    
+    [pscustomobject] @{    
         IPv4Address = $IPv4Address
         Int64 = $Int64
     }
-
-    return $Result	
 }
 
 End {
