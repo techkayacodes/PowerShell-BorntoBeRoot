@@ -69,31 +69,30 @@ function Get-InstalledSoftware
 
 	Process{
 		if($LocalAddress -contains $ComputerName)
-		{
-			$ComputerName = $env:COMPUTERNAME
+		{			
 			$Strings = Invoke-Command -ScriptBlock $Scriptblock -ArgumentList $Search            
 		}
 		else
 		{
-			if(-not(Test-Connection -ComputerName $ComputerName -Count 2 -Quiet))
+			if(Test-Connection -ComputerName $ComputerName -Count 2 -Quiet)
 			{
-				Write-Host "$ComputerName is not reachable!" -ForegroundColor Red
-				continue
-			}
-		
-			try {
-				if($PSBoundParameters['Credential'] -is [System.Management.Automation.PSCredential])
-				{
-					$Strings = Invoke-Command -ScriptBlock $Scriptblock -ComputerName $ComputerName -ArgumentList $Search -Credential $Credential
+				try {
+					if($PSBoundParameters['Credential'] -is [System.Management.Automation.PSCredential])
+					{
+						$Strings = Invoke-Command -ScriptBlock $Scriptblock -ComputerName $ComputerName -ArgumentList $Search -Credential $Credential -ErrorAction Stop
+					}
+					else
+					{					    
+						$Strings = Invoke-Command -ScriptBlock $Scriptblock -ComputerName $ComputerName -ArgumentList $Search -ErrorAction Stop
+					}
 				}
-				else
-				{					    
-					$Strings = Invoke-Command -ScriptBlock $Scriptblock -ComputerName $ComputerName -ArgumentList $Search
+				catch {
+					throw 
 				}
 			}
-			catch {
-				Write-Host "Error while connecting to $ComputerName`n$($_.Exception.Message)" -ForegroundColor Red
-				continue
+			else 
+			{				
+				throw """$ComputerName"" is not reachable via ICMP!"
 			}
 		}
 
@@ -103,34 +102,17 @@ function Get-InstalledSoftware
 			if((-not([String]::IsNullOrEmpty($String.DisplayName))) -and (-not([String]::IsNullOrEmpty($String.UninstallString))))
 			{
 				# Search (only if parameter is used)
-				if($PSBoundParameters.ContainsKey('Search'))
-				{                    
-					if(($String.DisplayName -like $Search))
-					{
-						$Software = [pscustomobject] @{
-							DisplayName = $String.DisplayName
-							Publisher = $String.Publisher
-							UninstallString = $String.UninstallString
-							InstallLocation = $String.InstallLocation
-							InstallDate = $String.InstallDate
-						}
-
-						$Software
-					}   
-				}
-				else
-				{
-					$Software = [pscustomobject] @{
+				if((-not($PSBoundParameters.ContainsKey('Search'))) -or (($PSBoundParameters.ContainsKey('Search') -and ($String.DisplayName -like $Search))))
+				{                   
+					[pscustomobject] @{
 						DisplayName = $String.DisplayName
 						Publisher = $String.Publisher
 						UninstallString = $String.UninstallString
 						InstallLocation = $String.InstallLocation
 						InstallDate = $String.InstallDate
 					}
-
-					$Software
-				}
-			}       
+				}   
+			}
 		}
 	}
 
