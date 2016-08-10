@@ -183,12 +183,10 @@ function Convert-ROT47
                 }
             } 
         
-            $Result = [pscustomobject] @{
+            [pscustomobject] @{
                 Rot = $Rot2
                 Text = $ResultText
             }
-
-            $Result
         }
     }
 

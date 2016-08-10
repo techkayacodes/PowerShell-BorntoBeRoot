@@ -181,12 +181,10 @@ Process{
             }
         } 
     
-        $Result = [pscustomobject] @{
+        [pscustomobject] @{
             Rot = $Rot2
             Text = $ResultText
         }
-
-        $Result
     }
 }
 
