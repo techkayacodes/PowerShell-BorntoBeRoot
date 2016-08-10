@@ -54,6 +54,7 @@ Begin {
 }
 
 Process {
+
     switch($PSCmdlet.ParameterSetName)
     {
         # Convert IPv4-Address as string into Int64
@@ -68,10 +69,12 @@ Process {
         }      
     }
 
-    [pscustomobject] @{    
+    $Result = [pscustomobject] @{    
         IPv4Address = $IPv4Address
         Int64 = $Int64
-    }    	
+    }
+
+    return $Result	
 }
 
 End {
