@@ -67,11 +67,11 @@ function New-IPv4Subnet
         switch($PSCmdlet.ParameterSetName)
         {
             "CIDR" {                          
-            $Mask = (Convert-Subnetmask -CIDR $CIDR).Mask            
+                $Mask = (Convert-Subnetmask -CIDR $CIDR).Mask            
             }
 
             "Mask" {
-            $CIDR = (Convert-Subnetmask -Mask $Mask).CIDR          
+                $CIDR = (Convert-Subnetmask -Mask $Mask).CIDR          
             }              
         }
         

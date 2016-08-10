@@ -74,14 +74,12 @@ function Get-MACAddress
                     }                    
                 }
                 
-                $NewResult = [pscustomobject] @{
+                [pscustomobject] @{
                     ComputerName = $Result.ComputerName
                     IPv4Address = $Result.IPv4Address
                     MACAddress = $Result.MACAddress
                     Vendor = $Vendor
                 }
-
-                return $NewResult
             }
 
             End{
@@ -116,7 +114,7 @@ function Get-MACAddress
             # Send ICMP requests to refresh ARP-Cache
             if(-not(Test-Connection -ComputerName $ComputerName2 -Count 2 -Quiet))
             {
-                Write-Verbose """$ComputerName2"" is not reachable via ICMP. ARP-Cache could not be refreshed!"
+                Write-Verbose -Message """$ComputerName2"" is not reachable via ICMP. ARP-Cache could not be refreshed!"
 
                 $IsNotReachable = $true
             }

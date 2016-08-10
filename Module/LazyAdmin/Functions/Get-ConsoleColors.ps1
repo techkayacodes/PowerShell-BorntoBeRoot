@@ -60,25 +60,19 @@ function Get-ConsoleColors
         {
             foreach($Color in $Colors)
             {            
-                Write-Host "$Color --> " -NoNewline
-                Write-Host "Foreground" -ForegroundColor $Color -NoNewline
-                Write-Host ", " -NoNewline
-                Write-Host "Background" -BackgroundColor $Color            
+                Write-Host -Object "$Color --> " -NoNewline
+                Write-Host -Object "Foreground" -ForegroundColor $Color -NoNewline
+                Write-Host -Object ", " -NoNewline
+                Write-Host -Object "Background" -BackgroundColor $Color            
             }
         }
-    
-        [System.Collections.ArrayList]$Results = @()
 
         foreach($Color in $Colors)
         {
-            $Result = [pscustomobject] @{
+            [pscustomobject] @{
                 ConsoleColor = $Color
             }
-        
-            [void]$Results.Add($Result)
         }
-
-        return $Results        
     }
 
     End{

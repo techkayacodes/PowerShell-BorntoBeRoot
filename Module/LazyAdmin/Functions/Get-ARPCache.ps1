@@ -64,11 +64,11 @@ function Get-ARPCache
             # Detect line where interface starts
             if($line -like "*---*")
             {            
-                Write-Verbose "Interface $line"
+                Write-Verbose -Message "Interface $line"
 
                 $InterfaceIPv4 = [regex]::Matches($line, $RegexIPv4Address).Value
 
-                Write-Verbose "$InterfaceIPv4"            
+                Write-Verbose -Message "$InterfaceIPv4"            
             }
             elseif($line -match $RegexMACAddress)
             {            
@@ -88,14 +88,12 @@ function Get-ARPCache
                     }
                 }
 
-                $Result = [pscustomobject] @{
+                [pscustomobject] @{
                     Interface = $InterfaceIPv4
                     IPv4Address = $IPv4Address
                     MACAddress = $MACAddress
                     Type = $Type
                 }
-
-                $Result
             }
         }
     }

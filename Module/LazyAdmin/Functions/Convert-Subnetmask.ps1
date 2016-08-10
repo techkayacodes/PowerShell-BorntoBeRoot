@@ -79,12 +79,10 @@ function Convert-Subnetmask
             }               
         }
 
-        $Result = [pscustomobject] @{
+        [pscustomobject] @{
             Mask = $Mask
             CIDR = $CIDR
         }
-
-        return $Result
     }
 
     End {

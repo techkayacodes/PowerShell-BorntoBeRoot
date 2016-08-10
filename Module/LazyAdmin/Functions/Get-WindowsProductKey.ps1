@@ -135,7 +135,7 @@ function Get-WindowsProductKey
 				} 
 			} 
 
-			$Result = [pscustomobject] @{
+			[pscustomobject] @{
 				ComputerName = $ComputerName2
 				Caption = $Wmi_Win32.Caption
 				CSDVersion = $Wmi_Win32.CSDVersion
@@ -144,9 +144,7 @@ function Get-WindowsProductKey
 				BuildNumber = $Wmi_Win32.BuildNumber
 				SerialNumber = $Wmi_Win32.SerialNumber
 				ProductKey = $ProductKey
-			}
-
-			$Result       
+			}     
 		}   
 	}
 
