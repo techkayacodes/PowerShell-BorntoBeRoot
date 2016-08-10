@@ -3,7 +3,6 @@
 Get the Windows product key and some usefull informations about the system.
 
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Get-WindowsProductKey.ps1)
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Get-WindowsProductKey.ps1)
 
 ## Description
 
@@ -15,21 +14,11 @@ Remote computers need WinRM enabled. To do this use `winrm quickconfig`.
 
 ## Syntax 
 
-### Function
-
 ```powershell
 Get-WindowsProductKey [[-ComputerName] <String[]>] [[-Credentials] <PSCredential>] [<CommonParameters>]
 ```
 
-### Script
-
-```powershell
-.\Get-WindowsProductKey.ps1 [[-ComputerName] <String[]>] [[-Credentials] <PSCredential>] [<CommonParameters>]
-```
-
-## Example
-
-### Function
+## Example 1
 
 ```powershell
 PS> Get-WindowsProductKey
@@ -43,10 +32,10 @@ ProductID      : 00000-00000-00000-00000
 ProductKey     : XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
 ```
 
-### Script
+## Example 2
 
 ```powershell
-PS> .\Get-WindowsProductKey.ps1 -ComputerName TEST-PC-01,TEST-PC-02
+PS> Get-WindowsProductKey -ComputerName TEST-PC-01,TEST-PC-02
 
 ComputerName   : TEST-PC-01
 WindowsVersion : Microsoft Windows 10 Pro

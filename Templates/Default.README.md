@@ -13,27 +13,17 @@ Description...
 
 ## Syntax
 
-### Function
+```powershell
+
+```
+
+## Example 1
 
 ```powershell
 
 ```
 
-### Script
-
-```powershell
-
-``` 
-
-## Example
-
-### Function
-
-```powershell
-
-```
-
-### Script
+## Example 2
 
 ```powershell
 

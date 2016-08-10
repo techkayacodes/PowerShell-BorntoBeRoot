@@ -3,7 +3,6 @@
 Powerful asynchronus IPv4 Network Scanner.
 
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/New-IPv4NetworkScan.ps1)
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/New-IPv4NetworkScan.ps1)
 
 ## Description
 
@@ -19,8 +18,6 @@ To reach the best possible performance, this script uses a [RunspacePool](https:
 
 ## Syntax
 
-### Function
-
 ```powershell
 New-IPv4NetworkScan [-StartIPv4Address] <IPAddress> [-EndIPv4Address] <IPAddress> [[-Tries] <Int32>] [[-Threads] <Int32>] [[-DisableDNSResolving]] [[-EnableMACResolving]] [[-ExtendedInformations]] [[-IncludeInactive]] [[-UpdateList]] [<CommonParameters>]
 
@@ -29,27 +26,19 @@ New-IPv4NetworkScan [-IPv4Address] <IPAddress> [-Mask] <String> [[-Tries] <Int32
 New-IPv4NetworkScan [-IPv4Address] <IPAddress> [-CIDR] <Int32> [[-Tries] <Int32>] [[-Threads] <Int32>] [[-DisableDNSResolving]] [[-EnableMACResolving]] [[-ExtendedInformations]] [[-IncludeInactive]] [[-UpdateList]] [<CommonParameters>]
 ```
 
-### Script
+## Example 1
 
-```powershell
-.\New-IPv4NetworkScan.ps1 [-StartIPv4Address] <IPAddress> [-EndIPv4Address] <IPAddress> [[-Tries] <Int32>] [[-Threads] <Int32>] [[-DisableDNSResolving]] [[-EnableMACResolving]] [[-ExtendedInformations]] [[-IncludeInactive]] [[-UpdateList]] [<CommonParameters>]
-
-.\New-IPv4NetworkScan.ps1 [-IPv4Address] <IPAddress> [-Mask] <String> [[-Tries] <Int32>] [[-Threads] <Int32>] [[-DisableDNSResolving]] [[-EnableMACResolving]] [[-ExtendedInformations]] [[-IncludeInactive]] [[-UpdateList]] [<CommonParameters>]
-
-.\New-IPv4NetworkScan.ps1 [-IPv4Address] <IPAddress> [-CIDR] <Int32> [[-Tries] <Int32>] [[-Threads] <Int32>] [[-DisableDNSResolving]] [[-EnableMACResolving]] [[-ExtendedInformations]] [[-IncludeInactive]] [[-UpdateList]] [<CommonParameters>]
-``` 
-
-## Example
-
-### Function
 ```powershell
 PS> New-IPv4NetworkScan -StartIPv4Address 192.168.178.0 -EndIPv4Address 192.168.178.20
 
 IPv4Address   Status Hostname
 -----------   ------ --------
 192.168.178.1 Up     fritz.box
+```
 
+## Example 2
 
+```powershell
 PS> New-IPv4NetworkScan -IPv4Address 192.168.178.0 -Mask 255.255.255.0 -DisableDNSResolving
 
 IPv4Address    Status
@@ -58,10 +47,10 @@ IPv4Address    Status
 192.168.178.22 Up
 ```
 
-### Script
+## Example 3
 
 ```powershell
-PS> .\New-IPv4NetworkScan.ps1 -IPv4Address 192.168.178.0 -CIDR 25 -EnableMACResolving
+PS> New-IPv4NetworkScan -IPv4Address 192.168.178.0 -CIDR 25 -EnableMACResolving
 
 IPv4Address    Status Hostname           MAC               Vendor
 -----------    ------ --------           ---               ------

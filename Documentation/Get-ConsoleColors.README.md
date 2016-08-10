@@ -3,7 +3,6 @@
 Get all available console colors.
 
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Get-ConsoleColors.ps1)
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Get-ConsoleColors.ps1)
 
 ## Description
 
@@ -13,21 +12,11 @@ Get all available console colors. A preview how they look (foreground and backgr
 
 ## Syntax
 
-### Function
-
 ```powershell
 Get-ConsoleColors [[-Preview]] [<CommonParameters>]
 ```
 
-### Script
-
-```powershell
-.\Get-ConsoleColors.ps1 [[-Preview]] [<CommonParameters>]
-``` 
-
-## Example
-
-### Function
+## Example 1
 
 ```powershell
 PS> Get-ConsoleColors
@@ -52,10 +41,10 @@ ConsoleColor
        White
 ```
 
-### Script
+## Example 2
 
 ```powershell
-PS> .\Get-ConsoleColors
+PS> Get-ConsoleColors -Preview
 
 Black --> Foreground, Background
 DarkBlue --> Foreground, Background

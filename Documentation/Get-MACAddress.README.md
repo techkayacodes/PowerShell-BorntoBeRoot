@@ -3,7 +3,6 @@
 Get the MAC-Address from a remote computer
 
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Get-MACAddress.ps1)
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Get-MACAddress.ps1)
 
 ## Description
 
@@ -13,21 +12,11 @@ Get the MAC-Address from a remote computer. If the MAC-Address could be resolved
 
 ## Syntax
 
-### Function
-
 ```powershell
 Get-MACAddress [-ComputerName] <String[]> [<CommonParameters>]
 ```
 
-### Script
-
-```powershell
-.\Get-MACAddress.ps1 [-ComputerName] <String[]> [<CommonParameters>]
-``` 
-
-## Example
-
-### Function
+## Example 1
 
 ```powershell
 PS> Get-MACAddress -ComputerName TEST-PC-01
@@ -37,10 +26,10 @@ ComputerName IPv4Address    MACAddress        Vendor
 TEST-PC-01   192.168.178.20 1D-00-00-00-00-F0 Cisco Systems, Inc
 ```
 
-### Script
+## Example 2
 
 ```powershell
-PS> .\Get-MACAddress.ps1 -ComputerName TEST-PC-01, TEST-PC-02, TEST-PC-03, TEST-PC-04 -Verbose
+PS> Get-MACAddress -ComputerName TEST-PC-01, TEST-PC-02, TEST-PC-03, TEST-PC-04 -Verbose
     
 VERBOSE: TEST-PC-02 is not reachable via ICMP. ARP-Cache could not be refreshed!
 
@@ -54,5 +43,4 @@ ComputerName IPv4Address    MACAddress        Vendor
 ------------ -----------    ----------        ------
 TEST-PC-01   192.168.178.20 1D-00-00-00-00-F0 Cisco Systems, Inc
 TEST-PC-02   192.168.178.21 1D-00-00-00-00-F1 ASUSTek COMPUTER INC.
-
 ```

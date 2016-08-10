@@ -3,7 +3,6 @@
 Generate passwords with a freely definable number of characters.
 
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/New-RandomPassword.ps1)
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/New-RandomPassword.ps1)
 
 ## Description
 
@@ -13,21 +12,11 @@ Generate passwords with a freely definable number of characters. You can also se
 
 ## Syntax 
 
-### Function
-
 ```powershell
 New-RandomPassword [[-Length] <Int32>] [[-DisableLowerCase]] [[-DisableUpperCase]] [[-DisableNumbers]] [[-DisableSpecialChars]] [[-CopyToClipboard]] [<CommonParameters>]
 ```
 
-### Script
-
-```powershell
-.\New-RandomPassword.ps1 [[-Length] <Int32>] [[-DisableLowerCase]] [[-DisableUpperCase]] [[-DisableNumbers]] [[-DisableSpecialChars]] [[-CopyToClipboard]] [<CommonParameters>]
-```
-
-## Example
-
-### Function 
+## Example 1
 
 ```powershell
 PS> New-RandomPassword -Length 8
@@ -35,10 +24,10 @@ PS> New-RandomPassword -Length 8
 NX58m2B$
 ```
 
-### Script
+## Example 2
 
 ```powershell
-PS> .\New-RandomPassword.ps1 -Length 10 -DisableSpecialChars
+PS> New-RandomPassword -Length 10 -DisableSpecialChars
 
 7UZE6pyyGM
 ```

@@ -3,7 +3,6 @@
 Send a network message to turn on or wake up a remote computer.
 
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Send-WakeOnLan.ps1)
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Send-WakeOnLan.ps1)
 
 ## Description
 
@@ -23,28 +22,18 @@ Remote computers (-UseComputer) need WinRM enabled. To do this use `winrm quickc
 
 ## Syntax
 
-### Function
-
 ```powershell
 Send-WakeOnLan [-MACAddress] <String[]> [[-Port] <Int32>] [[-UseComputer] <String>] [[-Credential] <PSCredential>] [<CommonParameters>]
 ```
 
-### Script
+## Example 1
 
 ```powershell
-.\Send-WakeOnLan.ps1 [-MACAddress] <String[]> [[-Port] <Int32>] [[-UseComputer] <String>] [[-Credential] <PSCredential>] [<CommonParameters>]
-``` 
-
-## Example
-
-### Function
-
-```powershell
-Send-WakeOnLan -MACAddress 00:00:00:00:00:00
+PS> Send-WakeOnLan -MACAddress 00:00:00:00:00:00
 ```
 
-### Script
+## Example 2
 
 ```powershell
-.\Send-WakeOnLan.ps1 -MACAddress 00:00:00:00:00:00 -UseComputer TEST-PC-01
+PS> Send-WakeOnLan -MACAddress 00:00:00:00:00:00 -UseComputer TEST-PC-01
 ```

@@ -21,8 +21,6 @@ Automate all the Things!
 | :--- | :--- | :---: |
 | [Clear-ARPCache](Module/LazyAdmin/Functions/Clear-ARPCache.ps1) | Clear the ARP cache | [:book:](Documentation/Clear-ARPCache.README.md) |
 | [Convert-IPv4Address](Module/LazyAdmin/Functions/Convert-IPv4Address.ps1) | Convert an IPv4-Address to Int64 and vise versa | [:book:](Documentation/Convert-IPv4Address.README.md) |
-| [Convert-ROT13](Module/LazyAdmin/Functions/Convert-ROT13.ps1) | Rotate lower and upper chars by n places (Caesar cipher) | [:book:](Documentation/Convert-ROT13.README.md) |
-| [Convert-ROT47](Module/LazyAdmin/Functions/Convert-ROT47.ps1) | Rotate ascii chars by n places (Caesar cipher) | [:book:](Documentation/Convert-ROT47.README.md) |
 | [Convert-Subnetmask](Module/LazyAdmin/Functions/Convert-Subnetmask.ps1) | Convert a subnetmask to CIDR and vise versa | [:book:](Documentation/Convert-Subnetmask.README.md) |
 | [Get-ARPCache](Module/LazyAdmin/Functions/Get-ARPCache.ps1) | Get the ARP cache | [:book:](Documentation/Get-ARPCache.README.md) |
 | [Get-ConsoleColors](Module/LazyAdmin/Functions/Get-ConsoleColors.ps1) | Get all available console colors | [:book:](Documentation/Get-ConsoleColors.README.md) |
@@ -43,10 +41,10 @@ Automate all the Things!
   
 ## Scripts
 
-All functions - which you can see above - are available as standalone scripts [here](Scripts/)
-
 | Script | Description | Help |
 | :--- | :--- | :---: |
+| [Convert-ROT13](Scripts/Convert-ROT13.ps1) | Rotate lower and upper chars by n places (Caesar cipher) | [:book:](Documentation/Convert-ROT13.README.md) |
+| [Convert-ROT47](Scripts/Convert-ROT47.ps1) | Rotate ascii chars by n places (Caesar cipher) | [:book:](Documentation/Convert-ROT47.README.md) |
 | [OptimizePowerShellStartup.ps1](Scripts/OptimizePowerShellStartup.ps1) | Optimize PowerShell startup by reduce JIT compile time with ngen.exe | [:book:](Documentation/OptimizePowerShellStartup.README.md) |
 
 ## Snippets 

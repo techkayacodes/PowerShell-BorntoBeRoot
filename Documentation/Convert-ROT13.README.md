@@ -2,7 +2,6 @@
 
 Rotate lower and upper chars by n places (Caesar cipher).
 
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Convert-ROT13.ps1)
 * [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Convert-ROT13.ps1)
 
 ## Description
@@ -13,35 +12,23 @@ Rotate lower and upper chars by n places (Caesar cipher). By default all 26 opti
 
 ## Syntax
 
-### Function
-
-```powershell
-Convert-ROT13 [-Text] <String> [[-Rot] <Int32[]>] [[-Decrypt]] [<CommonParameters>]
-
-Convert-ROT13 [-Text] <String> [[-Rot] <Int32[]>] [[-Encrypt]] [<CommonParameters>]
-```
-
-### Script
-
 ```powershell
 .\Convert-ROT13.ps1 [-Text] <String> [[-Rot] <Int32[]>] [[-Decrypt]] [<CommonParameters>]
 
 .\Convert-ROT13.ps1 [-Text] <String> [[-Rot] <Int32[]>] [[-Encrypt]] [<CommonParameters>]
 ``` 
 
-## Example
-
-### Function
+## Example 1
 
 ```powershell
-PS> Convert-ROT13 -Text "This is an encrypted string!" -Rot 7 -Encrypt
+PS> .\Convert-ROT13.ps1 -Text "This is an encrypted string!" -Rot 7 -Encrypt
 
 Rot Text
 --- ----
   7 Aopz pz hu lujyfwalk zaypun!
 ```
 
-### Script
+## Example 2
 
 ```powershell
 PS> .\Convert-ROT13.ps1 -Text "Aopz pz hu lujyfwalk zaypun!"

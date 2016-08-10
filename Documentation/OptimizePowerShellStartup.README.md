@@ -22,8 +22,6 @@ Script requires administrative permissions.
 
 ## Example
 
-### Script
-
 ```powershell
 PS> .\OptimizePowerShellStartup.ps1
 

@@ -3,7 +3,6 @@
 Test if a file is binary.
 
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Test-IsFileBinary.ps1)
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Test-IsFileBinary.ps1)
 
 ## Description
 
@@ -15,32 +14,22 @@ I found this code snippet on Stackoverflow: https://stackoverflow.com/questions/
 
 ## Syntax
 
-### Function
-
 ```powershell
 Test-IsFileBinary [-Path] <String> [<CommonParameters>]
 ``` 
 
-### Script
+## Example 1
 
 ```powershell
-.\Test-IsFileBinary.ps1 [-Path] <String> [<CommonParameters>]
-```
-
-## Example
-
-### Function
-
-```powershell
-Test-IsFileBinary -Path "E:\Temp\Files\File_04.zip"
+PS> Test-IsFileBinary -Path "E:\Temp\Files\File_04.zip"
 
 True
 ```
 
-### Script
+## Example 2
 
 ```powershell
-Test-IsFileBinary -Path "E:\Temp\Files\File_01.txt"
+PS> Test-IsFileBinary -Path "E:\Temp\Files\File_01.txt"
 
 False
 ```

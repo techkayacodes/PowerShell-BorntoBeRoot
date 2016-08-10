@@ -2,7 +2,6 @@
 
 Rotate ascii chars by n places (Caesar cipher).
 
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Convert-ROT47.ps1)
 * [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Convert-ROT47.ps1)
 
 ## Description
@@ -15,34 +14,26 @@ Try the parameter `-UseAllAsciiChars` if you have a string with umlauts which e.
 
 ## Syntax
 
-### Function
-
-```powershell
-Convert-ROT47 [-Text] <String> [[-Rot] <Int32[]>] [[-Decrypt]] [[-UseAllAsciiChars]] [<CommonParameters>]
-
-Convert-ROT47 [-Text] <String> [[-Rot] <Int32[]>] [[-Encrypt]] [[-UseAllAsciiChars]] [<CommonParameters>]
-```
-
-### Script
-
 ```powershell
 .\Convert-ROT47.ps1 [-Text] <String> [[-Rot] <Int32[]>] [[-Decrypt]] [[-UseAllAsciiChars]] [<CommonParameters>]
 
 .\Convert-ROT47.ps1 [-Text] <String> [[-Rot] <Int32[]>] [[-Encrypt]] [[-UseAllAsciiChars]] [<CommonParameters>]
 ``` 
 
-## Example
-
-### Function
+## Example 1
 
 ```powershell
-PS> Convert-ROT47 -Text "This is an encrypted string!" -Rot 7 -Encrypt
+PS> .\Convert-ROT47.ps1 -Text "This is an encrypted string!" -Rot 7 -Encrypt
 
 Rot Text
 --- ----
   7 [opz pz hu lujy"w{lk z{ypun(
+```
 
-PS> Convert-ROT47 -Text '[opz pz hu lujy"w{lk z{ypun(' -Rot (5..10)
+## Example 2
+
+```powershell
+PS> .\Convert-ROT47.ps1 -Text '[opz pz hu lujy"w{lk z{ypun(' -Rot (5..10)
 
 Rot Text
 --- ----
@@ -54,7 +45,7 @@ Rot Text
  10 Qefp fp ^k bk`ovmqba pqofkd|
 ```
 
-### Script
+## Example 3
 
 ```powershell
 PS> .\Convert-ROT47.ps1 -Text "Beispiel: Cäsar-Verschlüsselung - Sprache Deutsch!" -Rot 3 -UseAllAsciiChars -Encrypt
@@ -62,7 +53,11 @@ PS> .\Convert-ROT47.ps1 -Text "Beispiel: Cäsar-Verschlüsselung - Sprache Deuts
 Rot Text
 --- ----
   3 Ehlvslho= Fçvdu0Yhuvfkoÿvvhoxqj 0 Vsudfkh Ghxwvfk$
+```
 
+## Example 4
+
+```powershell
 PS> .\Convert-ROT47.ps1 -Text "Ehlvslho= Fçvdu0Yhuvfkoÿvvhoxqj 0 Vsudfkh Ghxwvfk$" -Rot (1..4) -UseAllAsciiChars
 
 Rot Text

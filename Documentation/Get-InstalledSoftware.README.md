@@ -3,7 +3,6 @@
 Get all installed software with DisplayName, Publisher and UninstallString.
 
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Get-InstalledSoftware.ps1)
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Get-InstalledSoftware.ps1)
 
 ## Description
 
@@ -13,21 +12,11 @@ Get all installed software with DisplayName, Publisher and UninstallString.
 
 ## Syntax 
 
-### Function
-
 ```powershell
 Get-InstalledSoftware [[-ComputerName] <String>] [[-Search] <String>] [[-Credential] <PSCredential>] [<CommonParameters>]
 ```
 
-### Script
-
-```powershell
-.\Get-InstalledSoftware.ps1 [[-ComputerName] <String>] [[-Search] <String>] [[-Credential] <PSCredential>] [<CommonParameters>]
-```
-
-## Example
-
-### Function
+## Example 1
 
 ```powershell
 PS> Get-InstalledSoftware -Search "*chrome*"
@@ -39,10 +28,10 @@ InstallLocation : C:\Program Files (x86)\Google\Chrome\Application
 InstallDate     : 20160506
 ```
 
-### Script
+## Example 2
 
 ```powershell
-PS> .\Get-InstalledSoftware.ps1 -ComputerName TEST-PC-01 -Search "*visual studio*" | Format-Table
+PS> Get-InstalledSoftware -ComputerName TEST-PC-01 -Search "*visual studio*" | Format-Table
 
 DisplayName                        UninstallString                    InstallLocation                    InstallDate
 -----------                        ---------------                    ---------------                    -----------

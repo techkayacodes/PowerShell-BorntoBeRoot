@@ -3,7 +3,6 @@
 Get the ARP cache.
 
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Get-ARPCache.ps1)
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Get-ARPCache.ps1)
 
 ## Description
 
@@ -13,24 +12,14 @@ Get the Address Resolution Protocol (ARP) cache, which is used for resolution of
 
 ## Syntax
 
-### Function
-
 ```powershell
 Get-ARPCache [<CommonParameters>]
 ```
 
-### Script
+## Example 1
 
 ```powershell
-.\Get-ARPCache.ps1 [<CommonParameters>]
-``` 
-
-## Example
-
-### Function
-
-```powershell
-Get-ARPCache
+PS> Get-ARPCache
 
 Interface      IPv4Address     MACAddress        Type
 ---------      -----------     ----------        ----
@@ -43,10 +32,10 @@ Interface      IPv4Address     MACAddress        Type
 192.168.178.22 239.255.255.250 01-00-00-00-00-FA static
 ```
 
-### Script
+## Example 2
 
 ```powershell
-.\Get-ARPCache.ps1 | Where-Object {$_.Interface -eq "192.168.178.22"}
+PS> Get-ARPCache | Where-Object {$_.Interface -eq "192.168.178.22"}
 
 Interface      IPv4Address     MACAddress        Type
 ---------      -----------     ----------        ----

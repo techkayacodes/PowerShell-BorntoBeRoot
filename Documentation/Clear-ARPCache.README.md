@@ -3,7 +3,6 @@
 Clear the ARP cache.
 
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Clear-ARPCache.ps1)
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Clear-ARPCache.ps1)
 
 ## Description
 
@@ -13,30 +12,14 @@ Clear the Address Resolution Protocol (ARP) cache, which is used for resolution 
 
 ## Syntax
 
-### Function
-
 ```powershell
 Clear-ARPCache [<CommonParameters>]
 ```
 
-### Script
-
-```powershell
-.\Clear-ARPCache.ps1 [<CommonParameters>]
-``` 
-
 ## Example
-
-### Function
 
 ```powershell
 PS> Clear-ARPCache
-```
-
-### Script
-
-```powershell
-PS> .\Clear-ARPCache.ps1
 ```
 
 ## Further information

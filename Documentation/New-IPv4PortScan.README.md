@@ -3,7 +3,6 @@
 Powerful asynchronus IPv4 Port Scanner.
 
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/New-IPv4PortScan.ps1)
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/New-IPv4PortScan.ps1)
 
 ## Description
 
@@ -19,21 +18,11 @@ To reach the best possible performance, this script uses a [RunspacePool](https:
 
 ## Syntax
 
-### Function
-
 ```powershell
 New-IPv4PortScan [-ComputerName] <String> [[-StartPort] <Int32>] [[-EndPort] <Int32>] [[-Threads] <Int32>] [[-Force]] [[-UpdateList]] [<CommonParameters>]
 ```
 
-### Script
-
-```powershell
-.\New-IPv4PortScan.ps1 [-ComputerName] <String> [[-StartPort] <Int32>] [[-EndPort] <Int32>] [[-Threads] <Int32>] [[-Force]] [[-UpdateList]] [<CommonParameters>]
-``` 
-
-## Example
-
-### Function
+## Example 1
 
 ```powershell
 PS> New-IPv4PortScan -ComputerName fritz.box -StartPort 1 -EndPort 500
@@ -45,10 +34,10 @@ Port Protocol ServiceName ServiceDescription               Status
   80 tcp      http        World Wide Web HTTP              Open
 ```
 
-### Script
+## Example 2
 
 ```powershell
-PS> .\New-IPv4PortScan.ps1 -ComputerName TEST-PC-01 -StartPort 1 -EndPort 500
+PS> New-IPv4PortScan -ComputerName TEST-PC-01 -StartPort 1 -EndPort 500
 PS> TEST-PC-01 is not reachable!
 PS> Would you like to continue? (perhaps only ICMP is blocked) [yes|no]: yes
 

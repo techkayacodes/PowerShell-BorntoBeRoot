@@ -3,7 +3,6 @@
 Get WLAN profiles, include password as SecureString or as plain text.
 
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Get-WLANProfile.ps1)
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Get-WLANProfile.ps1)
 
 ## Description
 
@@ -17,21 +16,11 @@ _In Windows 7 there was a graphical interface in the network settings, where you
 
 ## Syntax
 
-### Function
-
 ```powershell
 Get-WLANProfile [[-ShowPassword]] [[-Search] <String>] [[-ExactMatch]] [<CommonParameters>]
 ```
 
-### Script
-
-```powershell
-.\Get-WLANProfile.ps1 [[-ShowPassword]] [[-Search] <String>] [[-ExactMatch]] [<CommonParameters>] 
-```
-
-## Example
-
-### Function
+## Example 1
 
 ```powershell
 PS> Get-WLANProfile											
@@ -42,10 +31,10 @@ MyHomeNetwork01   MyHomeNetwork      WPA2-Personal       System.Security.SecureS
 MyHomeNetwork02   MyHomenetwork5G    WPA2-Personal       System.Security.SecureString
 ```
 
-### Script
+## Example 2
 
 ```powershell
-PS> .\Get-WLANProfile.ps1  -ShowPassword -Search "MyHomeNetwork*"			
+PS> Get-WLANProfile  -ShowPassword -Search "MyHomeNetwork*"			
 
 Name              SSID               Authentification    Password
 ----              ----               ---------------     ------
