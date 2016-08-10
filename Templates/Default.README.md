@@ -1,6 +1,6 @@
 # Title
 
-Shot description...
+Short description...
 
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Functioname.ps1)
 * [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Scriptname.ps1)
