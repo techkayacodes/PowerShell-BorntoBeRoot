@@ -49,8 +49,7 @@ function Test-IsFileBinary
         # Check if path is a directory
         if((Get-Item $Path) -is [System.IO.DirectoryInfo])
         {
-            Write-Host "Checking a directory is not supported ($Path)" -ForegroundColor Yellow
-            return
+            Write-Error -Message "Checking a directory is not supported ($Path)" -Category InvalidArgument -ErrorAction Stop
         }
 
 		# Encoding variable

@@ -83,7 +83,7 @@ function Send-WakeOnLan
                     [void]$UDPClient.Send($MagicPacket, $MagicPacket.Length)    
                 }
                 catch {
-                    Write-Host "$($_.Execption.Message)" -ForegroundColor Red   
+                    Write-Error -Message "$($_.Exception.Message)" 
                 }        
             }
         }
@@ -99,8 +99,7 @@ function Send-WakeOnLan
         {
             if(-not(Test-Connection -ComputerName $UseComputer -Count 2 -Quiet))
             {
-                Write-Host "$UseComputer is not reachable!" -ForegroundColor Red
-                return
+                Write-Error -Message "$UseComputer is not reachable!" -Category ConnectionError -ErrorAction Stop
             }
 
             try {
@@ -114,7 +113,7 @@ function Send-WakeOnLan
                 }
             }   
             catch {
-                Write-Host "$($_.Execption.Message)" -ForegroundColor Red  
+                throw  
             } 
         }    
     }

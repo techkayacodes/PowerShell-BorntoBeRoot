@@ -69,14 +69,13 @@ function New-RandomPassword
 	Process{
 		if($Length -eq 0)
 		{
-			Write-Host "Length of the password can not be 0... Check your input!" -ForegroundColor Red
-			return
+			Write-Error -Message "Length of the password can not be 0... Check your input!" -Category InvalidArgument -ErrorAction Stop
 		}
 			
 		$Character_LowerCase = "abcdefghiklmnprstuvwxyz"
 		$Character_UpperCase = "ABCDEFGHKLMNPRSTUVWXYZ"
 		$Character_Numbers = "0123456789"
-		$Character_SpecialChars = "�$%&/()=?+*#[]{}-_@"
+		$Character_SpecialChars = "$%&/()=?+*#[]{}-_@"
 
 		$Characters = [String]::Empty
 			
@@ -115,8 +114,7 @@ function New-RandomPassword
 		}
 		else
 		{
-			Write-Host "Select at least 1 character set (lower case, upper case, numbers or special chars) to create a password." -ForegroundColor Red
-			return
+			Write-Error -Message "Select at least 1 character set (lower case, upper case, numbers or special chars) to create a password." -Category InvalidArgument -ErrorAction Stop
 		}
 
 		# Set to clipboard
@@ -124,9 +122,9 @@ function New-RandomPassword
 		{
 			Set-Clipboard -Value $Password
 		}
-
+		
 		# Return result
-		return $Password
+		$Password
 	}
 
 	End{
