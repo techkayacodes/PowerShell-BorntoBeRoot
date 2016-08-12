@@ -45,50 +45,8 @@ function Get-MACAddress
 
     Begin{
         # MAC-Vendor list path
-        $CSV_MACVendorList_Path = "$PSScriptRoot\IEEE_Standards_Registration_Authority.csv"
-
-        function AssignMACToVendor{
-            param(
-                $Result
-            )
-
-            Begin{
-
-            }
-
-            Process{
-                $Vendor = [String]::Empty
-
-                if(-not([String]::IsNullOrEmpty($Result.MACAddress)))
-                {
-                    # Split it, so we can search the vendor (XX-XX-XX-XX-XX-XX to XX-XX-XX)
-                    $MAC_VendorSearch = $Result.MACAddress.Replace("-","").Substring(0,6)
-
-                    foreach($ListEntry in $MAC_VendorList)
-                    {
-                        if($ListEntry.Assignment -eq $MAC_VendorSearch)
-                        {
-                            $Vendor = $ListEntry."Organization Name"
-                            break
-                        }
-                    }                    
-                }
-                
-                [pscustomobject] @{
-                    ComputerName = $Result.ComputerName
-                    IPv4Address = $Result.IPv4Address
-                    MACAddress = $Result.MACAddress
-                    Vendor = $Vendor
-                }
-            }
-
-            End{
-
-            }
-        }
-    }
-
-    Process{
+        $CSV_MACVendorList_Path = "$PSScriptRoot\IEEE_Standards_Registration_Authority.csv"        
+    
         if([System.IO.File]::Exists($CSV_MACVendorList_Path))
         {
             $AssignToVendor = $true
@@ -98,9 +56,11 @@ function Get-MACAddress
         else {
             $AssignToVendor = $false
 
-            Write-Host "No CSV-File to assign vendor with MAC-Address found!" -ForegroundColor Yellow
+            Write-Warning -Message "No CSV-File to assign vendor with MAC-Address found!"
         }
+    }
 
+    Process{
         foreach($ComputerName2 in $ComputerName)
         {
             $LocalAddress = @("127.0.0.1","localhost",".")
@@ -114,7 +74,7 @@ function Get-MACAddress
             # Send ICMP requests to refresh ARP-Cache
             if(-not(Test-Connection -ComputerName $ComputerName2 -Count 2 -Quiet))
             {
-                Write-Verbose -Message """$ComputerName2"" is not reachable via ICMP. ARP-Cache could not be refreshed!"
+                Write-Warning -Message """$ComputerName2"" is not reachable via ICMP. ARP-Cache could not be refreshed!"
 
                 $IsNotReachable = $true
             }
@@ -174,11 +134,11 @@ function Get-MACAddress
                     {
                         if($IsNotReachable)
                         {
-                            Write-Host "Could not resolve MAC-Address for ""$ComputerName2"" ($IPv4Address). Make sure that your computer is in the same subnet as $ComputerName2 and $ComputerName2 is reachable." -ForegroundColor Red
+                            Write-Error -Message "Could not resolve MAC-Address for ""$ComputerName2"" ($IPv4Address). Make sure that your computer is in the same subnet as $ComputerName2 and $ComputerName2 is reachable." -Category ConnectionError
                         }
                         else 
                         {
-                            Write-Host "Could not resolve MAC-Address for ""$ComputerName2"" ($IPv4Address). Make sure that your computer is in the same subnet as $ComputerName2." -ForegroundColor Red
+                            Write-Error -Message "Could not resolve MAC-Address for ""$ComputerName2"" ($IPv4Address). Make sure that your computer is in the same subnet as $ComputerName2." -Category ConnectionError
                         }
 
                         continue
@@ -187,24 +147,44 @@ function Get-MACAddress
             }
             else 
             {
-                Write-Host "Could not resolve IPv4-Address for ""$ComputerName2"". MAC-Address resolving has been skipped. (Try to enter an IPv4-Address instead of the Hostname!)" -ForegroundColor Red
+                Write-Error -Message "Could not resolve IPv4-Address for ""$ComputerName2"". MAC-Address resolving has been skipped. (Try to enter an IPv4-Address instead of the Hostname!)" -Category InvalidData
 
                 continue
             }
 
-            $Result = [pscustomobject] @{
-                ComputerName = $ComputerName2
-                IPv4Address = $IPv4Address
-                MACAddress = $MAC
-            }
-
             if($AssignToVendor)
             {
-                AssignMACToVendor -Result $Result
+                $Vendor = [String]::Empty
+
+                if(-not([String]::IsNullOrEmpty($MAC)))
+                {
+                    # Split it, so we can search the vendor (XX-XX-XX-XX-XX-XX to XX-XX-XX)
+                    $MAC_VendorSearch = $MAC.Replace("-","").Substring(0,6)
+
+                    foreach($ListEntry in $MAC_VendorList)
+                    {
+                        if($ListEntry.Assignment -eq $MAC_VendorSearch)
+                        {
+                            $Vendor = $ListEntry."Organization Name"
+                            break
+                        }
+                    }                    
+                }
+                
+                [pscustomobject] @{
+                    ComputerName = $ComputerName2
+                    IPv4Address = $IPv4Address
+                    MACAddress = $MAC
+                    Vendor = $Vendor
+                }
             }
             else 
             {
-                $Result  
+                [pscustomobject] @{
+                    ComputerName = $ComputerName2
+                    IPv4Address = $IPv4Address
+                    MACAddress = $MAC
+                }  
             } 
         }   
     }
