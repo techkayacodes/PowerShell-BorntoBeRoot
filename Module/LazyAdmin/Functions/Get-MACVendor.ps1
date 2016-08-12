@@ -1,19 +1,25 @@
 ###############################################################################################################
 # Language     :  PowerShell 4.0
-# Filename     :  
+# Filename     :  Get-MACVendor.ps1
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
-# Description  :  
+# Description  :  Get Vendor from a MAC-Address
 # Repository   :  https://github.com/BornToBeRoot/PowerShell
 ###############################################################################################################
 
 <#
     .SYNOPSIS
-    
+    Get Vendor from a MAC-Address
+
     .DESCRIPTION
-    
+    Get Vendor from a MAC-Address, based on the MAC-Address or the first 6 digits
+
     .EXAMPLE
-        
-    .EXAMPLE
+    Get-MACVendor -MACAddress 5C:49:79:8A:0B:77, 5C-49-79
+
+    MACAddress        Vendor
+    ----------        ------
+    5C:49:79:8A:0B:77 AVM Audiovisuelles Marketing und Computersysteme GmbH
+    5C-49-79          AVM Audiovisuelles Marketing und Computersysteme GmbH
     
     .LINK
     https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Get-MACVendor.README.md
@@ -26,7 +32,7 @@ function Get-MACVendor
         [Parameter(
             Position=0,
             Mandatory=$true,
-            HelpMessage='MAC-Address to assign with a manufaturer')]
+            HelpMessage='MAC-Address or the first 6 digits of it')]
         [ValidatePattern("^(([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})|([0-9A-Fa-f]{2}){6})|([0-9A-Fa-f]{2}[:-]){2}([0-9A-Fa-f]{2})|([0-9A-Fa-f]{2}){3}$")]
         [String[]]$MACAddress
     )
@@ -53,8 +59,7 @@ function Get-MACVendor
         {
             $Vendor = [String]::Empty
 
-            # Split it, so we can search the vendor (XX-XX-XX-XX-XX-XX to XX-XX-XX)
-            
+            # Split it, so we can search the vendor (XX-XX-XX-XX-XX-XX to XX-XX-XX)            
             $MAC_VendorSearch = $MACAddress2.Replace("-","").Replace(":","").Substring(0,6)
 
             foreach($ListEntry in $MAC_VendorList)

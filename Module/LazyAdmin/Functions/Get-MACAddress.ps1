@@ -44,20 +44,7 @@ function Get-MACAddress
     )
 
     Begin{
-        # MAC-Vendor list path
-        $CSV_MACVendorList_Path = "$PSScriptRoot\IEEE_Standards_Registration_Authority.csv"        
-    
-        if([System.IO.File]::Exists($CSV_MACVendorList_Path))
-        {
-            $AssignToVendor = $true
-
-            $MAC_VendorList = Import-Csv -Path $CSV_MACVendorList_Path | Select-Object "Assignment", "Organization Name"
-        }
-        else {
-            $AssignToVendor = $false
-
-            Write-Warning -Message "No CSV-File to assign vendor with MAC-Address found!"
-        }
+        
     }
 
     Process{
@@ -151,41 +138,15 @@ function Get-MACAddress
 
                 continue
             }
-
-            if($AssignToVendor)
-            {
-                $Vendor = [String]::Empty
-
-                if(-not([String]::IsNullOrEmpty($MAC)))
-                {
-                    # Split it, so we can search the vendor (XX-XX-XX-XX-XX-XX to XX-XX-XX)
-                    $MAC_VendorSearch = $MAC.Replace("-","").Substring(0,6)
-
-                    foreach($ListEntry in $MAC_VendorList)
-                    {
-                        if($ListEntry.Assignment -eq $MAC_VendorSearch)
-                        {
-                            $Vendor = $ListEntry."Organization Name"
-                            break
-                        }
-                    }                    
-                }
-                
-                [pscustomobject] @{
-                    ComputerName = $ComputerName2
-                    IPv4Address = $IPv4Address
-                    MACAddress = $MAC
-                    Vendor = $Vendor
-                }
+           
+            [String]$Vendor = (Get-MACVendor -MACAddress $MAC | Select-Object -First 1).Vendor 
+         
+            [pscustomobject] @{
+                ComputerName = $ComputerName2
+                IPv4Address = $IPv4Address
+                MACAddress = $MAC
+                Vendor = $Vendor
             }
-            else 
-            {
-                [pscustomobject] @{
-                    ComputerName = $ComputerName2
-                    IPv4Address = $IPv4Address
-                    MACAddress = $MAC
-                }  
-            } 
         }   
     }
 
