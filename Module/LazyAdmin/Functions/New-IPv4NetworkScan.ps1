@@ -219,7 +219,7 @@ function New-IPv4NetworkScan
                     TTL = $Result.TTL
                 }
                 
-                return $NewResult 
+                $NewResult 
             }
 
             End {
