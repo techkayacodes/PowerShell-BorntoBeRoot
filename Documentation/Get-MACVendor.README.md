@@ -16,7 +16,7 @@ Get Vendor from a MAC-Address, based on the MAC-Address or the first 6 digits.
 Get-MACVendor [-MACAddress] <String[]> [<CommonParameters>]
 ```
 
-## Example 1
+## Example
 
 ```powershell
 PS> Get-MACVendor -MACAddress 5C:49:79:8A:0B:77, 5C-49-79
