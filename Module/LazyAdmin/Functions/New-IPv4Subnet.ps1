@@ -103,14 +103,12 @@ function New-IPv4Subnet
         $Hosts = ($AvailableIPs - 2)
             
         # Build custom PSObject
-        $Result = [pscustomobject] @{
+        [pscustomobject] @{
             NetworkID = $NetworkID
             Broadcast = $Broadcast
             IPs = $AvailableIPs
             Hosts = $Hosts
         }
-
-        return $Result
     }
 
     End{

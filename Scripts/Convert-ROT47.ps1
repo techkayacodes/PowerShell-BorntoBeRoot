@@ -129,7 +129,7 @@ Begin{
         $Mode = "Encrypt"
     }
 
-    Write-Verbose "Mode is set to: $Mode"
+    Write-Verbose -Message "Mode is set to: $Mode"
 }
 
 Process{

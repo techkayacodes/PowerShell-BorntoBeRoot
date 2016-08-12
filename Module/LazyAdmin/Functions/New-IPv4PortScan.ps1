@@ -186,34 +186,39 @@ function New-IPv4PortScan
         # Validate Port-Range
         if($StartPort -gt $EndPort)
         {
-            Write-Host "Invalid Port-Range... Check your input!" -ForegroundColor Red
+            Write-Error -Message "Invalid Port-Range... Check your input!" -Category InvalidArgument 
             return
         }
 
         # Check if host is reachable
-        Write-Verbose "Test if host is reachable..."
+        Write-Verbose -Message "Test if host is reachable..."
+
         if(-not(Test-Connection -ComputerName $ComputerName -Count 2 -Quiet))
         {
-            Write-Host "$ComputerName is not reachable!" -ForegroundColor Red
+            Write-Warning -Message "$ComputerName is not reachable!"
 
             if($Force -eq $false)
             {
-                do {
-                    $Answer = Read-Host "Would you like to continue? (perhaps only ICMP is blocked) [yes|no]"
+                $Title = "Continue"
+                $Info = "Would you like to continue? (perhaps only ICMP is blocked)"
+                
+                $Options = [System.Management.Automation.Host.ChoiceDescription[]] @("&Yes", "&No")
+                [int]$Defaultchoice = 0
+                $Opt =  $host.UI.PromptForChoice($Title , $Info, $Options, $Defaultchoice)
 
-                } while("yes","y","no","n" -notcontains $Answer)
-            
-                if("no","n" -contains $Answer)
-                {
-                    return
+                switch($Opt)
+                {                    
+                    1 { 
+                        return
+                    }
                 }
             }
         }
 
         $PortsToScan = ($EndPort - $StartPort)
 
-        Write-Verbose "Scanning range from $StartPort to $EndPort ($PortsToScan Ports)"
-        Write-Verbose "Running with max $Threads threads"
+        Write-Verbose -Message "Scanning range from $StartPort to $EndPort ($PortsToScan Ports)"
+        Write-Verbose -Message "Running with max $Threads threads"
 
         # Check if ComputerName is already an IPv4-Address, if not... try to resolve it
         $IPv4Address = [String]::Empty
@@ -241,8 +246,7 @@ function New-IPv4PortScan
 
             if([String]::IsNullOrEmpty($IPv4Address))
             {
-                Write-Host "Could not resolve IPv4-Address for $ComputerName. Try to enter an IPv4-Address instead of the Hostname!" -ForegroundColor Red
-                return
+                Write-Error -Message "Could not resolve IPv4-Address for $ComputerName. Try to enter an IPv4-Address instead of the Hostname!" -Category InvalidData -ErrorAction Stop
             }		
         }
 
@@ -279,14 +283,14 @@ function New-IPv4PortScan
             return $Result
         }
 
-        Write-Verbose "Setting up RunspacePool..."
+        Write-Verbose -Message "Setting up RunspacePool..."
 
         # Create RunspacePool and Jobs
         $RunspacePool = [System.Management.Automation.Runspaces.RunspaceFactory]::CreateRunspacePool(1, $Threads, $Host)
         $RunspacePool.Open()
         [System.Collections.ArrayList]$Jobs = @()
 
-        Write-Verbose "Setting up Jobs..."
+        Write-Verbose -Message "Setting up Jobs..."
         
         #Set up job for each port...
         foreach($Port in $StartPort..$EndPort)
@@ -320,7 +324,7 @@ function New-IPv4PortScan
             [void]$Jobs.Add($JobObj)
         }
 
-        Write-Verbose "Waiting for jobs to complete & starting to process results..."
+        Write-Verbose -Message "Waiting for jobs to complete & starting to process results..."
 
         # Total jobs to calculate percent complete, because jobs are removed after they are processed
         $Jobs_Total = $Jobs.Count
@@ -333,7 +337,7 @@ function New-IPv4PortScan
             # If no jobs finished yet, wait 500 ms and try again
             if($Jobs_ToProcess -eq $null)
             {
-                Write-Verbose "No jobs completed, wait 500ms..."
+                Write-Verbose -Message "No jobs completed, wait 500ms..."
 
                 Start-Sleep -Milliseconds 500
                 continue
@@ -352,7 +356,7 @@ function New-IPv4PortScan
 
             Write-Progress -Activity "Waiting for jobs to complete... ($($Threads - $($RunspacePool.GetAvailableRunspaces())) of $Threads threads running)" -Id 1 -PercentComplete $Progress_Percent -Status "$Jobs_Remaining remaining..."
         
-            Write-Verbose "Processing $(if($Jobs_ToProcess.Count -eq $null){"1"}else{$Jobs_ToProcess.Count}) job(s)..."
+            Write-Verbose -Message "Processing $(if($Jobs_ToProcess.Count -eq $null){"1"}else{$Jobs_ToProcess.Count}) job(s)..."
 
             # Processing completed jobs
             foreach($Job in $Jobs_ToProcess)
@@ -380,13 +384,13 @@ function New-IPv4PortScan
 
         } While ($Jobs.Count -gt 0)
         
-        Write-Verbose "Closing RunspacePool and free resources..."
+        Write-Verbose -Message "Closing RunspacePool and free resources..."
 
         # Close the RunspacePool and free resources
         $RunspacePool.Close()
         $RunspacePool.Dispose()
 
-        Write-Verbose "Script finished at $(Get-Date)"
+        Write-Verbose -Message "Script finished at $(Get-Date)"
     }
 
     End{

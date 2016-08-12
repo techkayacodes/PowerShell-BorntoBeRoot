@@ -57,9 +57,9 @@ Process{
 	# Get assemblies and call ngen.exe
 	[System.AppDomain]::CurrentDomain.GetAssemblies() | foreach { ngen install $_.Location /nologo /verbose}
 
-	Write-Host "Optimization finished!" -ForegroundColor Green
+	Write-Host -Object "Optimization finished!" -ForegroundColor Green
 
-	Write-Host "Press any key to continue..."
+	Write-Host -Object "Press any key to continue..."
 	[void]$host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 }
 

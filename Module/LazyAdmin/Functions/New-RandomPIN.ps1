@@ -59,13 +59,12 @@ function New-RandomPIN
 	Process{
 		if($Length -eq 0)
 		{
-			Write-Host "Length of the PIN can not be 0... Check your input!" -ForegroundColor Red
+			Write-Error -Message "Length of the PIN can not be 0... Check your input!" -Category InvalidArgument -ErrorAction Stop
 		}
 
 		if($Minimum -gt $Maximum)
 		{
-			Write-Host "Minimum PIN-Number can not be greater than maximum PIN-Number" -ForegroundColor Red
-			return
+			Write-Error -Message "Minimum PIN-Number can not be greater than maximum PIN-Number" -Category InvalidArgument -ErrorAction Stop
 		}
 
 		$PIN = [String]::Empty
@@ -82,7 +81,7 @@ function New-RandomPIN
 		}
 
 		# Return result
-		return $PIN
+		$PIN
 	}
 
 	End{

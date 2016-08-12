@@ -70,15 +70,13 @@ function Search-StringInFiles
 			# Go through each group
 			foreach($Group in $String.Group)
 			{	
-				$Result = [pscustomobject] @{
+				[pscustomobject] @{
 					Filename = $Group.Filename
 					Path = $Group.Path
 					LineNumber = $Group.LineNumber
 					IsBinary = $IsBinary
 					Matches = $Group.Matches
 				}
-
-				$Result
 			}   
 		}
 	}
