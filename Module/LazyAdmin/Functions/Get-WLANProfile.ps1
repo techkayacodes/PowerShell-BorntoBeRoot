@@ -102,7 +102,7 @@ function Get-WLANProfile
 						$WLAN_SSID = $WLAN_SSID.Substring(1,$WLAN_SSID.Length -2)
 					}
 
-				$IsConnectivity += 1
+					$IsConnectivity += 1
 				}
 
 				if((($InProfile -eq 3)) -and (-not([String]::IsNullOrEmpty($Line))))
@@ -125,7 +125,8 @@ function Get-WLANProfile
 				}   
 			}
 
-			if($ShowPassword) # SecureString or plain text
+			# As SecureString or plain text
+			if($ShowPassword) 
 			{
 				$WLAN_Password = $WLAN_Password_PlainText
 			}

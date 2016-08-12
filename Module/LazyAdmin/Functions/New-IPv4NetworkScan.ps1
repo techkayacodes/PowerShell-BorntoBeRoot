@@ -125,7 +125,7 @@ function New-IPv4NetworkScan
     )
 
     Begin{
-        Write-Verbose "Script started at $(Get-Date)"
+        Write-Verbose -Message "Script started at $(Get-Date)"
         
         # IEEE ->  The Public Listing For IEEE Standards Registration Authority -> CSV-File
         $IEEE_MACVendorList_WebUri = "http://standards.ieee.org/develop/regauth/oui/oui.csv"
@@ -139,7 +139,7 @@ function New-IPv4NetworkScan
         {     
             # Try to download the MAC-Vendor list from IEEE
             try{
-                Write-Verbose "Create backup of the IEEE Standards Registration Authority list..."
+                Write-Verbose -Message "Create backup of the IEEE Standards Registration Authority list..."
                 
                 # Backup file, before download a new version     
                 if([System.IO.File]::Exists($CSV_MACVendorList_Path))
@@ -147,12 +147,12 @@ function New-IPv4NetworkScan
                     Rename-Item -Path $CSV_MACVendorList_Path -NewName $CSV_MACVendorList_BackupPath
                 }
 
-                Write-Verbose "Updating IEEE Standards Registration Authority from IEEE.org..."
+                Write-Verbose -Message "Updating IEEE Standards Registration Authority from IEEE.org..."
 
                 # Download csv-file from IEEE
                 Invoke-WebRequest -Uri $IEEE_MACVendorList_WebUri -OutFile $CSV_MACVendorList_Path -ErrorAction Stop
 
-                Write-Verbose "Remove backup of the IEEE Standards Registration Authority list..."
+                Write-Verbose -Message "Remove backup of the IEEE Standards Registration Authority list..."
 
                 # Remove Backup, if no error
                 if([System.IO.File]::Exists($CSV_MACVendorList_BackupPath))
@@ -161,7 +161,7 @@ function New-IPv4NetworkScan
                 }            
             }
             catch{            
-                Write-Verbose "Cleanup downloaded file and restore backup..."
+                Write-Verbose -Message "Cleanup downloaded file and restore backup..."
 
                 # On error: cleanup downloaded file and restore backup
                 if([System.IO.File]::Exists($CSV_MACVendorList_Path))
@@ -236,7 +236,7 @@ function New-IPv4NetworkScan
         }
         elseif(($EnableMACResolving) -and (-Not([System.IO.File]::Exists($CSV_MACVendorList_Path))))
         {
-            Write-Host 'No CSV-File to assign vendor with MAC-Address found! Use the parameter "-UpdateList" to download the latest version from IEEE.org. This warning doesn`t affect the scanning procedure.' -ForegroundColor Yellow
+            Write-Warning -Message 'No CSV-File to assign vendor with MAC-Address found! Use the parameter "-UpdateList" to download the latest version from IEEE.org. This warning doesn`t affect the scanning procedure.'
         }   
 
         # Calculate Subnet (Start and End IPv4-Address)
@@ -263,16 +263,11 @@ function New-IPv4NetworkScan
         # Check if range is valid
         if($StartIPv4Address_Int64 -gt $EndIPv4Address_Int64)
         {
-            Write-Host "Invalid IP-Range... Check your input!" -ForegroundColor Red
-            return
         }
 
         # Calculate IPs to scan (range)
         $IPsToScan = ($EndIPv4Address_Int64 - $StartIPv4Address_Int64)
         
-        Write-Verbose "Scanning range from $StartIPv4Address to $EndIPv4Address ($($IPsToScan + 1) IPs)"
-        Write-Verbose "Running with max $Threads threads"
-        Write-Verbose "ICMP checks per IP is set to $Tries"
 
         # Properties which are displayed in the output
         $PropertiesToDisplay = @()
@@ -422,14 +417,14 @@ function New-IPv4NetworkScan
             }
         } 
 
-        Write-Verbose "Setting up RunspacePool..."
+        Write-Verbose -Message "Setting up RunspacePool..."
 
         # Create RunspacePool and Jobs
         $RunspacePool = [System.Management.Automation.Runspaces.RunspaceFactory]::CreateRunspacePool(1, $Threads, $Host)
         $RunspacePool.Open()
         [System.Collections.ArrayList]$Jobs = @()
 
-        Write-Verbose "Setting up Jobs..."
+        Write-Verbose -Message "Setting up Jobs..."
 
         # Set up Jobs for each IP...
         for ($i = $StartIPv4Address_Int64; $i -le $EndIPv4Address_Int64; $i++) 
@@ -471,7 +466,7 @@ function New-IPv4NetworkScan
             [void]$Jobs.Add($JobObj)
         }
 
-        Write-Verbose "Waiting for jobs to complete & starting to process results..."
+        Write-Verbose -Message "Waiting for jobs to complete & starting to process results..."
 
         # Total jobs to calculate percent complete, because jobs are removed after they are processed
         $Jobs_Total = $Jobs.Count
@@ -484,7 +479,7 @@ function New-IPv4NetworkScan
             # If no jobs finished yet, wait 500 ms and try again
             if($Jobs_ToProcess -eq $null)
             {
-                Write-Verbose "No jobs completed, wait 500ms..."
+                Write-Verbose -Message "No jobs completed, wait 500ms..."
 
                 Start-Sleep -Milliseconds 500
                 continue
@@ -503,7 +498,7 @@ function New-IPv4NetworkScan
 
             Write-Progress -Activity "Waiting for jobs to complete... ($($Threads - $($RunspacePool.GetAvailableRunspaces())) of $Threads threads running)" -Id 1 -PercentComplete $Progress_Percent -Status "$Jobs_Remaining remaining..."
         
-            Write-Verbose "Processing $(if($Jobs_ToProcess.Count -eq $null){"1"}else{$Jobs_ToProcess.Count}) job(s)..."
+            Write-Verbose -Message "Processing $(if($Jobs_ToProcess.Count -eq $null){"1"}else{$Jobs_ToProcess.Count}) job(s)..."
 
             # Processing completed jobs
             foreach($Job in $Jobs_ToProcess)
@@ -531,13 +526,13 @@ function New-IPv4NetworkScan
 
         } While ($Jobs.Count -gt 0)
 
-        Write-Verbose "Closing RunspacePool and free resources..."
+        Write-Verbose -Message "Closing RunspacePool and free resources..."
 
         # Close the RunspacePool and free resources
         $RunspacePool.Close()
         $RunspacePool.Dispose()
 
-        Write-Verbose "Script finished at $(Get-Date)"
+        Write-Verbose -Message "Script finished at $(Get-Date)"
     }
 
     End{
