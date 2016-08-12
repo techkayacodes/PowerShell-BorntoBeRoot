@@ -263,11 +263,15 @@ function New-IPv4NetworkScan
         # Check if range is valid
         if($StartIPv4Address_Int64 -gt $EndIPv4Address_Int64)
         {
+            Write-Error -Message "Invalid IP-Range... Check your input!" -Category InvalidArgument -ErrorAction Stop
         }
 
         # Calculate IPs to scan (range)
         $IPsToScan = ($EndIPv4Address_Int64 - $StartIPv4Address_Int64)
         
+        Write-Verbose -Message "Scanning range from $StartIPv4Address to $EndIPv4Address ($($IPsToScan + 1) IPs)"
+        Write-Verbose -Message "Running with max $Threads threads"
+        Write-Verbose -Message "ICMP checks per IP is set to $Tries"
 
         # Properties which are displayed in the output
         $PropertiesToDisplay = @()
