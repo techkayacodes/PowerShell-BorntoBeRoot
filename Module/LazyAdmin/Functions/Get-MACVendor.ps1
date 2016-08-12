@@ -1,0 +1,78 @@
+###############################################################################################################
+# Language     :  PowerShell 4.0
+# Filename     :  
+# Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
+# Description  :  
+# Repository   :  https://github.com/BornToBeRoot/PowerShell
+###############################################################################################################
+
+<#
+    .SYNOPSIS
+    
+    .DESCRIPTION
+    
+    .EXAMPLE
+        
+    .EXAMPLE
+    
+    .LINK
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Get-MACVendor.README.md
+#>
+
+function Get-MACVendor
+    {
+    [CmdletBinding()]
+    param(
+        [Parameter(
+            Position=0,
+            Mandatory=$true,
+            HelpMessage='MAC-Address to assign with a manufaturer')]
+        [ValidatePattern("^(([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})|([0-9A-Fa-f]{2}){6})|([0-9A-Fa-f]{2}[:-]){2}([0-9A-Fa-f]{2})|([0-9A-Fa-f]{2}){3}$")]
+        [String[]]$MACAddress
+    )
+
+    Begin{
+        # MAC-Vendor list path
+        $CSV_MACVendorList_Path = "$PSScriptRoot\IEEE_Standards_Registration_Authority.csv"        
+
+        if([System.IO.File]::Exists($CSV_MACVendorList_Path))
+        {
+            $AssignToVendor = $true
+
+            $MAC_VendorList = Import-Csv -Path $CSV_MACVendorList_Path | Select-Object "Assignment", "Organization Name"
+        }
+        else {
+            $AssignToVendor = $false
+
+            Write-Error -Message "No CSV-File to assign vendor with MAC-Address found!" -Category ResourceUnavailable -ErrorAction Stop
+        }
+    }
+
+    Process{
+        foreach($MACAddress2 in $MACAddress)
+        {
+            $Vendor = [String]::Empty
+
+            # Split it, so we can search the vendor (XX-XX-XX-XX-XX-XX to XX-XX-XX)
+            
+            $MAC_VendorSearch = $MACAddress2.Replace("-","").Replace(":","").Substring(0,6)
+
+            foreach($ListEntry in $MAC_VendorList)
+            {
+                if($ListEntry.Assignment -eq $MAC_VendorSearch)
+                {
+                    $Vendor = $ListEntry."Organization Name"
+                    
+                    [pscustomobject] @{
+                        MACAddress = $MACAddress2
+                        Vendor = $Vendor
+                    }
+                }
+            }                            
+        }
+    }
+
+    End{
+
+    }
+}
