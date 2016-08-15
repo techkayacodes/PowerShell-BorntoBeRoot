@@ -19,6 +19,8 @@
     https://github.com/BornToBeRoot/PowerShell
 #>
 
+#Requires -RunAsAdministrator 
+
 [CmdletBinding()]
 param(
     [Parameter(
@@ -37,7 +39,7 @@ Begin{
 }
 
 Process{
-
+    Enable-PSRemoting -Force:$Force 
 }
 
 End{
