@@ -26,7 +26,7 @@
 	InstallDate     : 20160506
 
     .EXAMPLE
-    Get-InstalledSoftware -ComputerName TEST-PC-01 -Search "*firefox*" 
+    Get-InstalledSoftware -Search "*firefox*" -ComputerName TEST-PC-01  
 	
     DisplayName     : Mozilla Firefox 47.0.1 (x86 de)
     Publisher       : Mozilla
@@ -44,13 +44,13 @@ function Get-InstalledSoftware
 	param(
 		[Parameter(
 			Position=0,
-			HelpMessage='ComputerName or IPv4-Address of the remote computer')]
-		[String]$ComputerName = $env:COMPUTERNAME,
+			HelpMessage='Search for product name (You can use wildcards like "*ProductName*')]
+		[String]$Search,
 
 		[Parameter(
 			Position=1,
-			HelpMessage='Search for product name (You can use wildcards like "*ProductName*')]
-		[String]$Search,
+			HelpMessage='ComputerName or IPv4-Address of the remote computer')]
+		[String]$ComputerName = $env:COMPUTERNAME,
 
 		[Parameter(
 			Position=2,

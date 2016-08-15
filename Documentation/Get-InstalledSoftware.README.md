@@ -31,7 +31,7 @@ InstallDate     : 20160506
 ## Example 2
 
 ```powershell
-PS> Get-InstalledSoftware -ComputerName TEST-PC-01 -Search "*visual studio*" | Format-Table
+PS> Get-InstalledSoftware -Search "*visual studio*" -ComputerName TEST-PC-01 | Format-Table
 
 DisplayName                        UninstallString                    InstallLocation                    InstallDate
 -----------                        ---------------                    ---------------                    -----------
