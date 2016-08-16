@@ -67,12 +67,14 @@ function Get-WindowsProductKey
 	Begin{
 		$LocalAddress = @("127.0.0.1","localhost",".","$($env:COMPUTERNAME)")
 
-		[System.Management.Automation.ScriptBlock]$Scriptblock_ProductKey = {
-			return (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").digitalproductid[0x34..0x42]
-		}
+		[System.Management.Automation.ScriptBlock]$Scriptblock = {
+			$ProductKeyValue = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").digitalproductid[0x34..0x42]
+			$Wmi_Win32OperatingSystem = Get-WmiObject -Class Win32_OperatingSystem
 
-		[System.Management.Automation.ScriptBlock]$Scriptblock_Wmi = {
-			return Get-WmiObject -Class Win32_OperatingSystem
+			[pscustomobject] @{
+				ProductKeyValue = $ProductKeyValue
+				Wmi_Win32OperatingSystem = $Wmi_Win32OperatingSystem				
+			}
 		}
 	}
 
@@ -85,45 +87,43 @@ function Get-WindowsProductKey
 			if($LocalAddress -contains $ComputerName2)
 			{
 				$ComputerName2 = $env:COMPUTERNAME
-				$ProductKeyValue =  Invoke-Command -ScriptBlock $Scriptblock_ProductKey
-				$Wmi_Win32 = Invoke-Command -ScriptBlock $Scriptblock_Wmi
+ 
+				$Scriptblock_Result = Invoke-Command -ScriptBlock $Scriptblock
 			}
 			else
 			{
 				if(-not(Test-Connection -ComputerName $ComputerName2 -Count 2 -Quiet))
 				{
-					Write-Host "$ComputerName2 is not reachable!" -ForegroundColor Red
+					Write-Error -Message "$ComputerName2 is not reachable via ICMP!" -Category ConnectionError
 					continue
 				}
 
 				try {
 					if($PSBoundParameters['Credential'] -is [System.Management.Automation.PSCredential])
 					{
-						$ProductKeyValue = Invoke-Command -ScriptBlock $Scriptblock_ProductKey -ComputerName $ComputerName2 -Credential $Credential
-						$Wmi_Win32 = Invoke-Command -ScriptBlock $Scriptblock_Wmi -ComputerName $ComputerName2 -Credential $Credential
+						$Scriptblock_Result = Invoke-Command -ScriptBlock $Scriptblock -ComputerName $ComputerName2 -Credential $Credential -ErrorAction Stop
 					}
 					else
 					{					    
-						$ProductKeyValue = Invoke-Command -ScriptBlock $Scriptblock_ProductKey -ComputerName $ComputerName2
-						$Wmi_Win32 = Invoke-Command -ScriptBlock $Scriptblock_Wmi -ComputerName $ComputerName2
+						$Scriptblock_Result = Invoke-Command -ScriptBlock $Scriptblock -ComputerName $ComputerName2 -ErrorAction Stop
 					}
 				}
 				catch {
-					Write-Host "Error while connecting to $ComputerName2`n$($_.Exception.Message)" -ForegroundColor Red
-					continue
+					Write-Error -Message "$($_.Exception.Message)" -Category ConnectionError
+					continue	
 				}
 			}
 		
 			$ProductKey = ""
-		
+
 			for($i = 24; $i -ge 0; $i--) 
 			{ 
 				$r = 0 
 
 				for($j = 14; $j -ge 0; $j--) 
 				{ 
-					$r = ($r * 256) -bxor $ProductKeyValue[$j] 
-					$ProductKeyValue[$j] = [math]::Floor([double]($r/24)) 
+					$r = ($r * 256) -bxor $Scriptblock_Result.ProductKeyValue[$j] 
+					$Scriptblock_Result.ProductKeyValue[$j] = [math]::Floor([double]($r/24)) 
 					$r = $r % 24 
 				}
 	
@@ -137,12 +137,12 @@ function Get-WindowsProductKey
 
 			[pscustomobject] @{
 				ComputerName = $ComputerName2
-				Caption = $Wmi_Win32.Caption
-				CSDVersion = $Wmi_Win32.CSDVersion
-				WindowsVersion = $Wmi_Win32.Version
-				OSArchitecture = $Wmi_Win32.OSArchitecture
-				BuildNumber = $Wmi_Win32.BuildNumber
-				SerialNumber = $Wmi_Win32.SerialNumber
+				Caption = $Scriptblock_Result.Wmi_Win32OperatingSystem.Caption
+				CSDVersion = $Scriptblock_Result.Wmi_Win32OperatingSystem.CSDVersion
+				WindowsVersion = $Scriptblock_Result.Wmi_Win32OperatingSystem.Version
+				OSArchitecture = $Scriptblock_Result.Wmi_Win32OperatingSystem.OSArchitecture
+				BuildNumber = $Scriptblock_Result.Wmi_Win32OperatingSystem.BuildNumber
+				SerialNumber = $Scriptblock_Result.Wmi_Win32OperatingSystem.SerialNumber
 				ProductKey = $ProductKey
 			}     
 		}   
