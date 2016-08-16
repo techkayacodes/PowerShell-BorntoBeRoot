@@ -35,7 +35,7 @@ Process{
 		Break
 	}
 
-	Write-Host "Start optimization..." -ForegroundColor Yellow
+	Write-Host -Object "Start optimization..." -ForegroundColor Yellow
 
 	# Set ngen path
 	$ngen_path = Join-Path -Path $env:windir -ChildPath "Microsoft.NET"
@@ -52,7 +52,7 @@ Process{
 	# Find latest ngen.exe
 	$ngen_application_path = (Get-ChildItem -Path $ngen_path -Filter "ngen.exe" -Recurse | Where-Object {$_.Length -gt 0} | Select-Object -Last 1).Fullname
 
-	Set-Alias ngen $ngen_application_path
+	Set-Alias -Name ngen -Value $ngen_application_path
 
 	# Get assemblies and call ngen.exe
 	[System.AppDomain]::CurrentDomain.GetAssemblies() | foreach { ngen install $_.Location /nologo /verbose}
