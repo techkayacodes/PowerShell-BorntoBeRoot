@@ -13,7 +13,9 @@ Generate a PIN with a freely definable number of numbers. You can also set the s
 ## Syntax 
 
 ```powershell
-New-RandomPIN [[-Length] <Int32>] [[-Minimum] <Int32>] [[-Maximum] <Int32>] [[-CopyToClipboard]] [<CommonParameters>]
+New-RandomPIN [[-Length] <Int32>] [[-Count] <Int32>] [[-Minimum] <Int32>] [[-Maximum] <Int32>] [<CommonParameters>]
+
+New-RandomPIN [[-Length] <Int32>] [[-CopyToClipboard]] [[-Minimum] <Int32>] [[-Maximum] <Int32>] [<CommonParameters>]
 ```
 
 ## Example 1
@@ -21,13 +23,22 @@ New-RandomPIN [[-Length] <Int32>] [[-Minimum] <Int32>] [[-Maximum] <Int32>] [[-C
 ```powershell
 PS> New-RandomPIN -Length 6
 
-698577
+PIN
+---
+48762921
+
 ```
 
-## Example
+## Example 2
 
 ```powershell
-PS> New-RandomPIN -Length 8 -Minimum 4 -Maximum 8
+PS> New-RandomPIN -Length 6 -Count 5 -Minimum 4 -Maximum 8
 
-56655574
+Count PIN
+----- ---
+    1 776467
+    2 545574
+    3 446465
+    4 646464
+    5 555646
 ```

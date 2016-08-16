@@ -13,21 +13,36 @@ Generate passwords with a freely definable number of characters. You can also se
 ## Syntax 
 
 ```powershell
-New-RandomPassword [[-Length] <Int32>] [[-DisableLowerCase]] [[-DisableUpperCase]] [[-DisableNumbers]] [[-DisableSpecialChars]] [[-CopyToClipboard]] [<CommonParameters>]
+New-RandomPassword [[-Length] <Int32>] [[-Count] <Int32>] [[-DisableLowerCase]] [[-DisableUpperCase]] [[-DisableNumbers]] [[-DisableSpecialChars]] [<CommonParameters>]
+
+New-RandomPassword [[-Length] <Int32>] [[-CopyToClipboard]] [[-DisableLowerCase]] [[-DisableUpperCase]] [[-DisableNumbers]] [[-DisableSpecialChars]] [<CommonParameters>]
 ```
 
 ## Example 1
 
 ```powershell
-PS> New-RandomPassword -Length 8
+PS> New-RandomPassword -DisableSpecialChars
 
-NX58m2B$
+Password
+--------
+8uUtzddG  
 ```
 
 ## Example 2
 
 ```powershell
-PS> New-RandomPassword -Length 10 -DisableSpecialChars
+PS> New-RandomPassword -Length 6 -Count 10
 
-7UZE6pyyGM
+Count Password
+----- --------
+    1 K5G+#E
+    2 zXTpcr
+    3 1A0D-3
+    4 -eF*aR
+    5 2GY]Hc
+    6 eB-ukp
+    7 &r54*h
+    8 d%fz?=
+    9 #lcEea
+    10 4(Z$w*
 ```
