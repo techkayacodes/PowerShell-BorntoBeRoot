@@ -1,17 +1,17 @@
 ###############################################################################################################
 # Language     :  PowerShell 5.0
-# Filename     :  New-RandomPIN.ps1
+# Filename     :  Get-RandomPIN.ps1
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
-# Description  :  Generate a PIN with a freely definable number of numbers
+# Description  :  Generate PINs with freely definable number of numbers
 # Repository   :  https://github.com/BornToBeRoot/PowerShell
 ###############################################################################################################
 
 <#
     .SYNOPSIS
-    Generate a PIN with a freely definable number of numbers
+    Generate PINs with freely definable number of numbers
 
     .DESCRIPTION
-	Generate a PIN with a freely definable number of numbers. You can also set the smallest and greatest possible number. 
+	Generate PINs with freely definable number of numbers. You can also set the smallest and greatest possible number. 
 	
     .EXAMPLE
     Get-RandomPIN -Length 8

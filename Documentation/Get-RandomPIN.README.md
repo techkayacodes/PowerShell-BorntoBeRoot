@@ -1,12 +1,12 @@
 # Get-RandomPIN
 
-Generate a PIN with a freely definable number of numbers.
+Generate PINs with freely definable number of numbers.
 
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Get-RandomPIN.ps1)
 
 # Description
 
-Generate a PIN with a freely definable number of numbers. You can also set the smallest and greatest possible number. 
+Generate PINs with freely definable number of numbers. You can also set the smallest and greatest possible number. 
 
 ![Screenshot](Images/Get-RandomPIN.png?raw=true "Get-RandomPIN")
 
