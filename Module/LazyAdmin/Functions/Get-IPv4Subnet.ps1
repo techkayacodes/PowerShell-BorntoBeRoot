@@ -1,6 +1,6 @@
 ﻿###############################################################################################################
 # Language     :  PowerShell 4.0
-# Filename     :  New-IPv4Subnet.ps1
+# Filename     :  Get-IPv4Subnet.ps1
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
 # Description  :  Calculate a subnet based on an IP-Address and the subnetmask or CIDR
 # Repository   :  https://github.com/BornToBeRoot/PowerShell
@@ -14,24 +14,24 @@
     Calculate a subnet based on an IP-Address within the subnet and the subnetmask or CIDR. The result includes the NetworkID, Broadcast, total available IPs and usable IPs for hosts.
                 
     .EXAMPLE
-    New-IPv4Subnet -IPv4Address 192.168.24.96 -CIDR 27
+    Get-IPv4Subnet -IPv4Address 192.168.24.96 -CIDR 27
     
     NetworkID     Broadcast      IPs Hosts
     ---------     ---------      --- -----
     192.168.24.96 192.168.24.127  32    30
             
     .EXAMPLE
-    New-IPv4Subnet -IPv4Address 192.168.1.0 -Mask 255.255.255.0
+    Get-IPv4Subnet -IPv4Address 192.168.1.0 -Mask 255.255.255.0
 
     NetworkID   Broadcast     IPs Hosts
     ---------   ---------     --- -----
     192.168.1.0 192.168.1.255 256   254
 
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/New-IPv4Subnet.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Get-IPv4Subnet.README.md
 #>
 
-function New-IPv4Subnet
+function Get-IPv4Subnet
 {
     [CmdletBinding(DefaultParameterSetName='CIDR')]
     param(

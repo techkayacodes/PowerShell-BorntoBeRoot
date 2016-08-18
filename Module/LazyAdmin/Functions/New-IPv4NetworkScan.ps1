@@ -249,7 +249,7 @@ function New-IPv4NetworkScan
             }
 
             # Create new subnet
-            $Subnet = New-IPv4Subnet -IPv4Address $IPv4Address -CIDR $CIDR
+            $Subnet = Get-IPv4Subnet -IPv4Address $IPv4Address -CIDR $CIDR
 
             # Assign Start and End IPv4-Address
             $StartIPv4Address = $Subnet.NetworkID

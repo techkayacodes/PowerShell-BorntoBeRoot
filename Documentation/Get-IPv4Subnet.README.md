@@ -1,28 +1,28 @@
-# New-IPv4Subnet
+# Get-IPv4Subnet
 
 Calculate a subnet based on an IP-Address and the subnetmask or CIDR.
 
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/New-IPv4Subnet.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Get-IPv4Subnet.ps1)
 
 ## Description
 
 Calculate a subnet based on an IP-Address within the subnet and the subnetmask or CIDR. 
 The result includes the NetworkID, Broadcast, total available IPs and usable IPs for hosts.
 
-![Screenshot](Images/New-IPv4Subnet.png?raw=true "New-IPv4Subnet")
+![Screenshot](Images/Get-IPv4Subnet.png?raw=true "Get-IPv4Subnet")
 
 ## Syntax
 
 ```powershell
-New-IPv4Subnet [[-IPv4Address] <IPAddress>] [[-CIDR] <Int32>] [<CommonParameters>]
+Get-IPv4Subnet [[-IPv4Address] <IPAddress>] [[-CIDR] <Int32>] [<CommonParameters>]
 
-New-IPv4Subnet [[-IPv4Address] <IPAddress>] [[-Mask] <IPAddress>] [<CommonParameters>]
+Get-IPv4Subnet [[-IPv4Address] <IPAddress>] [[-Mask] <IPAddress>] [<CommonParameters>]
 ```
 
 ## Example 1
 
 ```powershell
-PS> New-IPv4Subnet -IPv4Address 192.168.24.96 -CIDR 27
+PS> Get-IPv4Subnet -IPv4Address 192.168.24.96 -CIDR 27
 
 NetworkID     Broadcast      IPs Hosts
 ---------     ---------      --- -----
@@ -32,7 +32,7 @@ NetworkID     Broadcast      IPs Hosts
 ## Example 2
 
 ```powershell
-PS> New-IPv4Subnet -IPv4Address 192.168.1.0 -Mask 255.255.255.0
+PS> Get-IPv4Subnet -IPv4Address 192.168.1.0 -Mask 255.255.255.0
 
 NetworkID   Broadcast     IPs Hosts
 ---------   ---------     --- -----

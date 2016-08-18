@@ -95,7 +95,7 @@ function Split-IPv4Subnet
         }
 
         # Calculate the current Subnet
-        $Subnet = New-IPv4Subnet -IPv4Address $IPv4Address -CIDR $CIDR
+        $Subnet = Get-IPv4Subnet -IPv4Address $IPv4Address -CIDR $CIDR
         
         # Get new  HostBits based on SubnetBits (CIDR) // Hostbits (32 - /24 = 8 -> 00000000000000000000000011111111)
         $NewHostBits = ('1' * (32 - $NewCIDR)).PadLeft(32, "0")
@@ -109,7 +109,7 @@ function Split-IPv4Subnet
         # Build new subnets, and return them
         for($i = 0; $i -lt $Subnet.IPs;$i += $NewAvailableIPs)
         {
-            New-IPv4Subnet -IPv4Address (Convert-IPv4Address -Int64 ($NetworkID_Int64 + $i)).IPv4Address -CIDR $NewCIDR
+            Get-IPv4Subnet -IPv4Address (Convert-IPv4Address -Int64 ($NetworkID_Int64 + $i)).IPv4Address -CIDR $NewCIDR
         }
     }
 
