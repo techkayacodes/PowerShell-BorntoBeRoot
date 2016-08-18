@@ -14,28 +14,28 @@
 	Generate a PIN with a freely definable number of numbers. You can also set the smallest and greatest possible number. 
 	
     .EXAMPLE
-    New-RandomPIN -Length 6
+    Get-RandomPIN -Length 8
 
 	PIN
 	---
-	48762921
+	18176072
 
 	.EXAMPLE
-	New-RandomPIN -Length 6 -Count 5 -Minimum 4 -Maximum 8
+	Get-RandomPIN -Length 6 -Count 5 -Minimum 4 -Maximum 8
 
 	Count PIN
 	----- ---
-    	1 776467
-    	2 545574
-    	3 446465
-    	4 646464
-    	5 555646
+		1 767756
+		2 755655
+		3 447667
+		4 577646
+		5 644665
 	
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/New-RandomPIN.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Get-RandomPIN.README.md
 #>
 
-function New-RandomPIN
+function Get-RandomPIN
 {
 	[CmdletBinding(DefaultParameterSetName='NoClipboard')]
 	param(
@@ -63,8 +63,8 @@ function New-RandomPIN
 		
 		[Parameter(
 			Position=3,
-			HelpMessage='Greatest possible number (Default=10)')]
-		[Int32]$Maximum=10		
+			HelpMessage='Greatest possible number (Default=9)')]
+		[Int32]$Maximum=9		
 	)
 
 	Begin{
