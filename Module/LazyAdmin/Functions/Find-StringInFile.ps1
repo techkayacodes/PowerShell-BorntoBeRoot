@@ -1,6 +1,6 @@
 ###############################################################################################################
 # Language     :  PowerShell 4.0
-# Filename     :  Search-StringInFiles.ps1
+# Filename     :  Find-StringInFile.ps1
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
 # Description  :  Find a string in multiple files
 # Repository   :  https://github.com/BornToBeRoot/PowerShell
@@ -14,7 +14,7 @@
     Find a string in one or multiple files. The search is performed recursively from the start folder.
                                  
     .EXAMPLE
-    Search-StringInFiles -Path "C:\Scripts\FolderWithFiles" -Search "Test01"
+    Find-StringInFile -Path "C:\Scripts\FolderWithFiles" -Search "Test01"
        
 	Filename    Path                      LineNumber IsBinary Matches
 	--------    ----                      ---------- -------- -------
@@ -23,17 +23,17 @@
 	File_03.txt E:\Temp\Files\File_03.txt          1    False {TeST01}
 
 	.EXAMPLE  
-	Search-StringInFiles -Path "C:\Scripts\FolderWithFiles" -Search "TEST01" -CaseSensitive
+	Find-StringInFile -Path "C:\Scripts\FolderWithFiles" -Search "TEST01" -CaseSensitive
 
 	Filename    Path                      LineNumber IsBinary Matches
 	--------    ----                      ---------- -------- -------
 	File_02.txt E:\Temp\Files\File_02.txt          1    False {TEST01}
 	
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Search-StringInFiles.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Find-StringInFile.README.md
 #>
 
-function Search-StringInFiles
+function Find-StringInFile
 {
 	[CmdletBinding()]
 	param(

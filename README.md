@@ -22,6 +22,7 @@ Automate all the Things!
 | [Clear-ARPCache](Module/LazyAdmin/Functions/Clear-ARPCache.ps1) | Clear the ARP cache | [:book:](Documentation/Clear-ARPCache.README.md) |
 | [Convert-IPv4Address](Module/LazyAdmin/Functions/Convert-IPv4Address.ps1) | Convert an IPv4-Address to Int64 and vise versa | [:book:](Documentation/Convert-IPv4Address.README.md) |
 | [Convert-Subnetmask](Module/LazyAdmin/Functions/Convert-Subnetmask.ps1) | Convert a subnetmask to CIDR and vise versa | [:book:](Documentation/Convert-Subnetmask.README.md) |
+| [Find-StringInFile](Module/LazyAdmin/Functions/Find-StringInFile.ps1) | Find a string in one or multiple files | [:book:](Documentation/Find-StringInFile.README.md) |
 | [Get-ARPCache](Module/LazyAdmin/Functions/Get-ARPCache.ps1) | Get the ARP cache | [:book:](Documentation/Get-ARPCache.README.md) |
 | [Get-ConsoleColors](Module/LazyAdmin/Functions/Get-ConsoleColors.ps1) | Get all available console colors | [:book:](Documentation/Get-ConsoleColors.README.md) |
 | [Get-InstalledSoftware](Module/LazyAdmin/Functions/Get-InstalledSoftware.ps1) | Get all installed software with DisplayName, Publisher and UninstallString | [:book:](Documentation/Get-InstalledSoftware.README.md) |
@@ -34,7 +35,6 @@ Automate all the Things!
 | [Get-WLANProfile](Module/LazyAdmin/Functions/Get-WLANProfile.ps1) | Get WLAN profiles, include password as SecureString or as plain text | [:book:](Documentation/Get-WLANProfile.README.md) |
 | [Invoke-IPv4NetworkScan](Module/LazyAdmin/Functions/Invoke-IPv4NetworkScan.ps1) | Powerful asynchronus IPv4 Network Scanner to scan an IP-Range or subnet | [:book:](Documentation/Invoke-IPv4NetworkScan.README.md) |
 | [Invoke-IPv4PortScan](Module/LazyAdmin/Functions/Invoke-IPv4PortScan.ps1) | Powerful asynchronus IPv4 Port Scanner to scan a TCP Port-Range | [:book:](Documentation/Invoke-IPv4PortScan.README.md) |
-| [Search-StringInFiles](Module/LazyAdmin/Functions/Search-StringInFiles.ps1) | Find a string in one or multiple files | [:book:](Documentation/Search-StringInFiles.README.md) |
 | [Send-WakeOnLan](Module/LazyAdmin/Functions/Send-WakeOnLan.ps1) | Send a network message to turn on or wake up a remote computer | [:book:](Documentation/Send-WakeOnLan.README.md) | 
 | [Split-IPv4Subnet](Module/LazyAdmin/Functions/Split-IPv4Subnet.ps1) | Split a subnet in multiple subnets with given subnetmasks | [:book:](Documentation/Split-IPv4Subnet.README.md) |
 | [Test-IsFileBinary](Module/LazyAdmin/Functions/Test-IsFileBinary.ps1) | Test if a file is binary | [:book:](Documentation/Test-IsFileBinary.README.md) |
