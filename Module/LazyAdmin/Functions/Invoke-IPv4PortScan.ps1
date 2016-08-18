@@ -1,6 +1,6 @@
 ###############################################################################################################
 # Language     :  PowerShell 4.0
-# Filename     :  New-IPv4PortScan.ps1 
+# Filename     :  Invoke-IPv4PortScan.ps1 
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
 # Description  :  Powerful asynchronus IPv4 Port Scanner
 # Repository   :  https://github.com/BornToBeRoot/PowerShell
@@ -16,7 +16,7 @@
     The result will contain the Port number, Protocol, Service name, Description and the Status.
     
     .EXAMPLE
-    New-IPv4PortScan -ComputerName fritz.box -EndPort 500
+    Invoke-IPv4PortScan -ComputerName fritz.box -EndPort 500
 
     Port Protocol ServiceName  ServiceDescription               Status
     ---- -------- -----------  ------------------               ------
@@ -25,10 +25,10 @@
       80 tcp      http         World Wide Web HTTP              open
     
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/New-IPv4PortScan.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Invoke-IPv4PortScan.README.md
 #>
 
-function New-IPv4PortScan 
+function Invoke-IPv4PortScan 
 {
     [CmdletBinding()]
     param(
@@ -67,7 +67,7 @@ function New-IPv4PortScan
     )
 
     Begin{
-        Write-Verbose "Script started at $(Get-Date)"
+        Write-Verbose -Message "Script started at $(Get-Date)"
 
         # IANA --> Service Name and Transport Protocol Port Number Registry -> xml-file
         $IANA_PortList_WebUri = "https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xml"
@@ -80,7 +80,7 @@ function New-IPv4PortScan
         function UpdateListFromIANA
         {
             try{
-                Write-Verbose "Create backup of the IANA Service Name and Transport Protocol Port Number Registry..."
+                Write-Verbose -Message "Create backup of the IANA Service Name and Transport Protocol Port Number Registry..."
 
                 # Backup file, before donload a new version
                 if([System.IO.File]::Exists($XML_PortList_Path))
@@ -88,7 +88,7 @@ function New-IPv4PortScan
                     Rename-Item -Path $XML_PortList_Path -NewName $XML_PortList_BackupPath
                 }
 
-                Write-Verbose "Updating Service Name and Transport Protocol Port Number Registry from IANA.org..."
+                Write-Verbose -Message "Updating Service Name and Transport Protocol Port Number Registry from IANA.org..."
 
                 # Download xml-file from IANA and save it
                 [xml]$New_XML_PortList = Invoke-WebRequest -Uri $IANA_PortList_WebUri -ErrorAction Stop
@@ -102,7 +102,7 @@ function New-IPv4PortScan
                 }
             }
             catch{
-                Write-Verbose "Cleanup downloaded file and restore backup..."
+                Write-Verbose -Message "Cleanup downloaded file and restore backup..."
 
                 # On error: cleanup downloaded file and restore backup
                 if([System.IO.File]::Exists($XML_PortList_Path))
@@ -144,15 +144,13 @@ function New-IPv4PortScan
                     }
                 }
                     
-                $NewResult = [pscustomobject] @{
+                [pscustomobject] @{
                     Port = $Result.Port
                     Protocol = $Result.Protocol
                     ServiceName = $Service
                     ServiceDescription = $Description
                     Status = $Result.Status
                 }
-
-                return $NewResult
             }  
 
             End{
@@ -168,7 +166,7 @@ function New-IPv4PortScan
         }
         elseif(-Not([System.IO.File]::Exists($XML_PortList_Path)))
         {
-            Write-Host 'No xml-file to assign service with port found! Use the parameter "-UpdateList" to download the latest version from IANA.org. This warning doesn`t affect the scanning procedure.' -ForegroundColor Yellow
+            Write-Warning -Message "No xml-file to assign service with port found! Use the parameter ""-UpdateList"" to download the latest version from IANA.org. This warning doesn`t affect the scanning procedure."
         }
 
         # Check if it is possible to assign service with port --> import xml-file
@@ -186,13 +184,11 @@ function New-IPv4PortScan
         # Validate Port-Range
         if($StartPort -gt $EndPort)
         {
-            Write-Error -Message "Invalid Port-Range... Check your input!" -Category InvalidArgument 
-            return
+            Write-Error -Message "Invalid Port-Range... Check your input!" -Category InvalidArgument -ErrorAction Stop
         }
 
         # Check if host is reachable
         Write-Verbose -Message "Test if host is reachable..."
-
         if(-not(Test-Connection -ComputerName $ComputerName -Count 2 -Quiet))
         {
             Write-Warning -Message "$ComputerName is not reachable!"
@@ -242,17 +238,17 @@ function New-IPv4PortScan
                     }
                 }					
             }
-            catch{ }	# Can't resolve IPAddressList 					
+            catch{ }	# Can't get IPAddressList 					
 
             if([String]::IsNullOrEmpty($IPv4Address))
             {
-                Write-Error -Message "Could not resolve IPv4-Address for $ComputerName. Try to enter an IPv4-Address instead of the Hostname!" -Category InvalidData -ErrorAction Stop
+                Write-Error -Message "Could not get IPv4-Address for $ComputerName. (Try to enter an IPv4-Address instead of the Hostname)" -Category InvalidData -ErrorAction Stop
             }		
         }
 
         # Scriptblock --> will run in runspaces (threads)...
         [System.Management.Automation.ScriptBlock]$ScriptBlock = {
-            param(
+            Param(
                 $IPv4Address,
                 $Port
             )
@@ -274,13 +270,14 @@ function New-IPv4PortScan
                 $Status = "Closed"
             }   
 
-            $Result = [pscustomobject] @{
-                Port = $Port
-                Protocol = "tcp"
-                Status = $Status
+            if($Status -eq "Open")
+            {
+                [pscustomobject] @{
+                    Port = $Port
+                    Protocol = "tcp"
+                    Status = $Status
+                }
             }
-
-            return $Result
         }
 
         Write-Verbose -Message "Setting up RunspacePool..."
@@ -335,7 +332,7 @@ function New-IPv4PortScan
             $Jobs_ToProcess = $Jobs | Where-Object {$_.Result.IsCompleted}
     
             # If no jobs finished yet, wait 500 ms and try again
-            if($Jobs_ToProcess -eq $null)
+            if($null -eq $Jobs_ToProcess)
             {
                 Write-Verbose -Message "No jobs completed, wait 500ms..."
 
@@ -356,7 +353,7 @@ function New-IPv4PortScan
 
             Write-Progress -Activity "Waiting for jobs to complete... ($($Threads - $($RunspacePool.GetAvailableRunspaces())) of $Threads threads running)" -Id 1 -PercentComplete $Progress_Percent -Status "$Jobs_Remaining remaining..."
         
-            Write-Verbose -Message "Processing $(if($Jobs_ToProcess.Count -eq $null){"1"}else{$Jobs_ToProcess.Count}) job(s)..."
+            Write-Verbose -Message "Processing $(if($null -eq $Jobs_ToProcess.Count){"1"}else{$Jobs_ToProcess.Count}) job(s)..."
 
             # Processing completed jobs
             foreach($Job in $Jobs_ToProcess)
@@ -369,7 +366,7 @@ function New-IPv4PortScan
                 $Jobs.Remove($Job)
             
                 # Check if result is null --> if not, return it
-                if($Job_Result -ne $null -and $Job_Result.Status -eq "Open")
+                if($Job_Result.Status)
                 {        
                     if($AssignServiceWithPort)
                     {
