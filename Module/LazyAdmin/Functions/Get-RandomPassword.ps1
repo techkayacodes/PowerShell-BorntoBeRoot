@@ -1,6 +1,6 @@
 ###############################################################################################################
 # Language     :  PowerShell 4.0
-# Filename     :  New-RandomPassword.ps1
+# Filename     :  Get-RandomPassword.ps1
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
 # Description  :  Generate passwords with a freely definable number of characters
 # Repository   :  https://github.com/BornToBeRoot/PowerShell
@@ -14,33 +14,33 @@
 	Generate passwords with a freely definable number of characters. You can also select which chars you want to use (upper case, lower case, numbers and special chars).
 
 	.EXAMPLE
-	New-RandomPassword -DisableSpecialChars
+	Get-RandomPassword -DisableSpecialChars
 
 	Password
 	--------
-	8uUtzddG   
+	Rzxy48Nu   
 
     .EXAMPLE
-    New-RandomPassword -Length 6 -Count 10
+    Get-RandomPassword -Length 6 -Count 10
 
 	Count Password
 	----- --------
-		1 K5G+#E
-		2 zXTpcr
-		3 1A0D-3
-		4 -eF*aR
-		5 2GY]Hc
-		6 eB-ukp
-		7 &r54*h
-		8 d%fz?=
-		9 #lcEea
-		10 4(Z$w*
+		1 xxy&x9
+		2 $sX9nr
+		3 0(@60w
+		4 aCNlaP
+		5 eY$MLi
+		6 R?V0U6
+		7 -C9mSu
+		8 -Beat*
+		9 h_DaVc
+	10 u+H}%]
 		
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/New-RandomPassword.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Get-RandomPassword.README.md
 #>
 
-function New-RandomPassword
+function Get-RandomPassword
 {
 	[CmdletBinding(DefaultParameterSetName='NoClipboard')]
 	param(

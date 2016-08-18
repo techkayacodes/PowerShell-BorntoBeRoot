@@ -27,13 +27,13 @@ Automate all the Things!
 | [Get-InstalledSoftware](Module/LazyAdmin/Functions/Get-InstalledSoftware.ps1) | Get all installed software with DisplayName, Publisher and UninstallString | [:book:](Documentation/Get-InstalledSoftware.README.md) |
 | [Get-MACAddress](Module/LazyAdmin/Functions/Get-MACAddress.ps1) | Get the MAC-Address from a remote computer | [:book:](Documentation/Get-MACAddress.README.md) |
 | [Get-MACVendor](Module/LazyAdmin/Functions/Get-MACVendor.ps1) | Get Vendor from a MAC-Address | [:book:](Documentation/Get-MACVendor.README.md) |
+| [Get-RandomPassword](Module/LazyAdmin/Functions/Get-RandomPassword.ps1) | Generate passwords with a freely definable number of characters | [:book:](Documentation/Get-RandomPassword.README.md) |
+| [Get-RandomPIN](Module/LazyAdmin/Functions/Get-RandomPIN.ps1) | Generate PINs with freely definable number of numbers | [:book:](Documentation/Get-RandomPIN.README.md) |
 | [Get-WindowsProductKey](Module/LazyAdmin/Functions/Get-WindowsProductKey.ps1) | Get the Windows product key and some usefull informations about the system | [:book:](Documentation/Get-WindowsProductKey.README.md) |
 | [Get-WLANProfile](Module/LazyAdmin/Functions/Get-WLANProfile.ps1) | Get WLAN profiles, include password as SecureString or as plain text | [:book:](Documentation/Get-WLANProfile.README.md) |
 | [New-IPv4NetworkScan](Module/LazyAdmin/Functions/New-IPv4NetworkScan.ps1) | Powerful asynchronus IPv4 Network Scanner to scan an IP-Range or subnet | [:book:](Documentation/New-IPv4NetworkScan.README.md) |
 | [New-IPv4PortScan](Module/LazyAdmin/Functions/New-IPv4PortScan.ps1) | Powerful asynchronus IPv4 Port Scanner to scan a TCP Port-Range | [:book:](Documentation/New-IPv4PortScan.README.md) |
 | [New-IPv4Subnet](Module/LazyAdmin/Functions/New-IPv4Subnet.ps1) | Calculate a subnet based on an IP-Address and the subnetmask or CIDR | [:book:](Documentation/New-IPv4Subnet.README.md) |
-| [New-RandomPassword](Module/LazyAdmin/Functions/New-RandomPassword.ps1) | Generate passwords with a freely definable number of characters | [:book:](Documentation/New-RandomPassword.README.md) |
-| [New-RandomPIN](Module/LazyAdmin/Functions/New-RandomPIN.ps1) | Generate a PIN with a freely definable number of numbers | [:book:](Documentation/New-RandomPIN.README.md) |
 | [Search-StringInFiles](Module/LazyAdmin/Functions/Search-StringInFiles.ps1) | Find a string in one or multiple files | [:book:](Documentation/Search-StringInFiles.README.md) |
 | [Send-WakeOnLan](Module/LazyAdmin/Functions/Send-WakeOnLan.ps1) | Send a network message to turn on or wake up a remote computer | [:book:](Documentation/Send-WakeOnLan.README.md) | 
 | [Split-IPv4Subnet](Module/LazyAdmin/Functions/Split-IPv4Subnet.ps1) | Split a subnet in multiple subnets with given subnetmasks | [:book:](Documentation/Split-IPv4Subnet.README.md) |
