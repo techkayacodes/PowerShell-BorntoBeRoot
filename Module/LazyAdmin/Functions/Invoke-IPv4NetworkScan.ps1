@@ -1,6 +1,6 @@
 ###############################################################################################################
 # Language     :  PowerShell 4.0
-# Filename     :  New-IPv4NetworkScan.ps1 
+# Filename     :  Invoke-IPv4NetworkScan.ps1 
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
 # Description  :  Powerful asynchronus IPv4 Network Scanner
 # Repository   :  https://github.com/BornToBeRoot/PowerShell
@@ -16,14 +16,14 @@
     The default result will contain the the IPv4-Address, Status (Up or Down) and the Hostname. Other values can be displayed via parameter.
 
     .EXAMPLE
-    New-IPv4NetworkScan -StartIPv4Address 192.168.178.0 -EndIPv4Address 192.168.178.20
+    Invoke-IPv4NetworkScan -StartIPv4Address 192.168.178.0 -EndIPv4Address 192.168.178.20
 
     IPv4Address   Status Hostname
     -----------   ------ --------
     192.168.178.1 Up     fritz.box
 
     .EXAMPLE
-    New-IPv4NetworkScan -IPv4Address 192.168.178.0 -Mask 255.255.255.0 -DisableDNSResolving
+    Invoke-IPv4NetworkScan -IPv4Address 192.168.178.0 -Mask 255.255.255.0 -DisableDNSResolving
 
     IPv4Address    Status
     -----------    ------
@@ -31,7 +31,7 @@
     192.168.178.22 Up
 
     .EXAMPLE
-    New-IPv4NetworkScan -IPv4Address 192.168.178.0 -CIDR 25 -EnableMACResolving
+    Invoke-IPv4NetworkScan -IPv4Address 192.168.178.0 -CIDR 25 -EnableMACResolving
 
     IPv4Address    Status Hostname           MAC               Vendor
     -----------    ------ --------           ---               ------
@@ -39,13 +39,13 @@
     192.168.178.22 Up     XXXXX-PC.fritz.box XX-XX-XX-XX-XX-XX ASRock Incorporation
 
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/New-IPv4NetworkScan.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Invoke-IPv4NetworkScan.README.md
 #>
 
-function New-IPv4NetworkScan
+function Invoke-IPv4NetworkScan
 {
     [CmdletBinding(DefaultParameterSetName='CIDR')]
-    param(
+    Param(
         [Parameter(
             ParameterSetName='Range',
             Position=0,
@@ -176,8 +176,8 @@ function New-IPv4NetworkScan
 
                 $_.Exception.Message                        
             }        
-        }       
-        
+        }  
+
         # Assign vendor to MAC
         function AssignVendorToMAC
         {
@@ -192,7 +192,7 @@ function New-IPv4NetworkScan
             Process {
                 $Vendor = [String]::Empty
 
-               # Check if MAC is null or empty
+                # Check if MAC is null or empty
                 if(-not([String]::IsNullOrEmpty($Result.MAC)))
                 {
                     # Split it, so we can search the vendor (XX-XX-XX-XX-XX-XX to XX-XX-XX)
@@ -208,7 +208,7 @@ function New-IPv4NetworkScan
                     }                    
                 }
 
-                $NewResult = [pscustomobject] @{
+                [pscustomobject] @{
                     IPv4Address = $Result.IPv4Address
                     Status = $Result.Status
                     Hostname = $Result.Hostname
@@ -218,8 +218,6 @@ function New-IPv4NetworkScan
                     ResponseTime = $Result.ResponseTime
                     TTL = $Result.TTL
                 }
-                
-                $NewResult 
             }
 
             End {
@@ -236,9 +234,9 @@ function New-IPv4NetworkScan
         }
         elseif(($EnableMACResolving) -and (-Not([System.IO.File]::Exists($CSV_MACVendorList_Path))))
         {
-            Write-Warning -Message 'No CSV-File to assign vendor with MAC-Address found! Use the parameter "-UpdateList" to download the latest version from IEEE.org. This warning doesn`t affect the scanning procedure.'
+            Write-Warning -Message "No CSV-File to assign vendor with MAC-Address found! Use the parameter ""-UpdateList"" to download the latest version from IEEE.org. This warning doesn`t affect the scanning procedure."
         }   
-
+        
         # Calculate Subnet (Start and End IPv4-Address)
         if($PSCmdlet.ParameterSetName -eq 'CIDR' -or $PSCmdlet.ParameterSetName -eq 'Mask')
         {
@@ -308,7 +306,7 @@ function New-IPv4NetworkScan
 
         # Scriptblock --> will run in runspaces (threads)...
         [System.Management.Automation.ScriptBlock]$ScriptBlock = {
-            param(
+            Param(
                 $IPv4Address,
                 $Tries,
                 $DisableDNSResolving,
@@ -361,7 +359,7 @@ function New-IPv4NetworkScan
             # +++ Get MAC-Address +++
             $MAC = [String]::Empty 
 
-            if(($EnableMACResolving) -and ($Status -eq "Up"))
+            if(($EnableMACResolving) -and (($Status -eq "Up") -or ($IncludeInactive)))
             {
                 $Arp_Result = (arp -a ).ToUpper()
                         
@@ -397,13 +395,14 @@ function New-IPv4NetworkScan
                     $ResponseTime = $PingResult.RoundtripTime
                     $TTL = $PingResult.Options.Ttl
                 }
-                catch{} # Failed to get extended informations
+                catch{ } # Failed to get extended informations
             }	
         
             # +++ Result +++
-            if($Status -eq "Up" -or $IncludeInactive)
+            
+            if(($Status -eq "Up") -or ($IncludeInactive))
             {
-                $Result = [pscustomobject] @{
+                [pscustomobject] @{
                     IPv4Address = $IPv4Address
                     Status = $Status
                     Hostname = $Hostname
@@ -412,12 +411,10 @@ function New-IPv4NetworkScan
                     ResponseTime = $ResponseTime
                     TTL = $TTL
                 }
-
-                return $Result
-            }      
-            else 
+            }
+            else
             {
-                return $null
+                $null
             }
         } 
 
@@ -466,7 +463,7 @@ function New-IPv4NetworkScan
                 Result = $Job.BeginInvoke()
             }
 
-            # Add Job to collection
+            # Add job to collection
             [void]$Jobs.Add($JobObj)
         }
 
@@ -481,7 +478,7 @@ function New-IPv4NetworkScan
             $Jobs_ToProcess = $Jobs | Where-Object {$_.Result.IsCompleted}
     
             # If no jobs finished yet, wait 500 ms and try again
-            if($Jobs_ToProcess -eq $null)
+            if($null -eq $Jobs_ToProcess)
             {
                 Write-Verbose -Message "No jobs completed, wait 500ms..."
 
@@ -502,7 +499,7 @@ function New-IPv4NetworkScan
 
             Write-Progress -Activity "Waiting for jobs to complete... ($($Threads - $($RunspacePool.GetAvailableRunspaces())) of $Threads threads running)" -Id 1 -PercentComplete $Progress_Percent -Status "$Jobs_Remaining remaining..."
         
-            Write-Verbose -Message "Processing $(if($Jobs_ToProcess.Count -eq $null){"1"}else{$Jobs_ToProcess.Count}) job(s)..."
+            Write-Verbose -Message "Processing $(if($null -eq $Jobs_ToProcess.Count){"1"}else{$Jobs_ToProcess.Count}) job(s)..."
 
             # Processing completed jobs
             foreach($Job in $Jobs_ToProcess)
@@ -514,8 +511,8 @@ function New-IPv4NetworkScan
                 # Remove job from collection
                 $Jobs.Remove($Job)
             
-                # Check if result is null --> if not, return it
-                if($Job_Result -ne $null)
+                # Check if result contains status
+                if($Job_Result.Status)
                 {        
                     if($AssignVendorToMAC)
                     {                   
