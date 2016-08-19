@@ -33,6 +33,7 @@
 function Test-IsFileBinary
 {
 	[CmdletBinding()]
+	[OutputType('System.Boolean')]
 	Param(
 		[Parameter(
 			Position=0,
