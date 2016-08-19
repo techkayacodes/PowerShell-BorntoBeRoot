@@ -43,10 +43,7 @@ function Get-ConsoleColor
 {
     [CmdletBinding()]
     param(
-        [Parameter(
-            Position=0,
-            HelpMessage='Show a preview of all available console colors (foreground & background)')]
-        [switch]$Preview
+        
     )
 
     Begin{
@@ -55,17 +52,6 @@ function Get-ConsoleColor
 
     Process{
         $Colors = [Enum]::GetValues([ConsoleColor])
-
-        if($Preview)
-        {
-            foreach($Color in $Colors)
-            {            
-                Write-Host -Object "$Color --> " -NoNewline
-                Write-Host -Object "Foreground" -ForegroundColor $Color -NoNewline
-                Write-Host -Object ", " -NoNewline
-                Write-Host -Object "Background" -BackgroundColor $Color            
-            }
-        }
 
         foreach($Color in $Colors)
         {
