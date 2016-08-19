@@ -52,8 +52,10 @@ function Send-WakeOnLan
 
         [Parameter(
             Position=3,
-            HelpMessage='PSCredential to authenticate agains a remote computer')]
-        [PSCredential]$Credential
+            HelpMessage='Credentials to authenticate agains a remote computer')]
+        [System.Management.Automation.PSCredential]
+        [System.Management.Automation.CredentialAttribute()]
+        $Credential
     )
 
     Begin{
@@ -71,7 +73,7 @@ function Send-WakeOnLan
             {
                 # Convert MAC-Address to bytes
                 $MACAddr = $MAC.Replace(':','').Replace('-','')
-                $MACAddrBytes = 0,2,4,6,8,10 | foreach { [System.Convert]::ToByte($MACAddr.Substring($_,2),16) }
+                $MACAddrBytes = 0,2,4,6,8,10 | ForEach-Object { [System.Convert]::ToByte($MACAddr.Substring($_,2),16) }
 
                 # MagicPacket --> six bytes of 0xff and the MAC-Address 16 times
                 $MagicPacket = (,[byte]255 * 6) + ($MACAddrBytes * 16)
@@ -83,7 +85,7 @@ function Send-WakeOnLan
                     [void]$UDPClient.Send($MagicPacket, $MagicPacket.Length)    
                 }
                 catch {
-                    Write-Error -Message "$($_.Exception.Message)" 
+                    Write-Error -Message "$($_.Exception.Message)" -Category ConnectionError
                 }        
             }
         }
