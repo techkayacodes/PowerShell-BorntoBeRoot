@@ -34,7 +34,7 @@
 		7 -C9mSu
 		8 -Beat*
 		9 h_DaVc
-	10 u+H}%]
+		10 u+H}%]
 		
     .LINK
     https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Get-RandomPassword.README.md

@@ -43,14 +43,10 @@ function Get-MACVendor
 
         if([System.IO.File]::Exists($CSV_MACVendorList_Path))
         {
-            $AssignToVendor = $true
-
             $MAC_VendorList = Import-Csv -Path $CSV_MACVendorList_Path | Select-Object "Assignment", "Organization Name"
         }
         else {
-            $AssignToVendor = $false
-
-            Write-Error -Message "No CSV-File to assign vendor with MAC-Address found!" -Category ResourceUnavailable -ErrorAction Stop
+            throw [System.IO.FileNotFoundException] "No CSV-File to assign vendor with MAC-Address found!"
         }
     }
 
