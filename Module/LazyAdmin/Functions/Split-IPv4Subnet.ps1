@@ -91,7 +91,7 @@ function Split-IPv4Subnet
         
         if($CIDR -ge $NewCIDR)
         {
-            Write-Error -Message "Subnet (/$CIDR) can't be greater or equal than new subnet (/$NewCIDR)" -Category InvalidArgument -ErrorAction Stop
+            throw "Subnet (/$CIDR) can't be greater or equal than new subnet (/$NewCIDR)"
         }
 
         # Calculate the current Subnet
