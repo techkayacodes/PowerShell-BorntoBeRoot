@@ -8,9 +8,9 @@ $Opt =  $host.UI.PromptForChoice($Title , $Info, $Options, $Defaultchoice)
 switch($Opt)
 {
 	0 { 
-		Write-Host "Yes" -ForegroundColor Green
+		Write-Verbose -Message "Yes"
 	}
 	1 { 
-		Write-Host "No" -ForegroundColor Green
+		Write-Verbose -Message "No" 
 	}
 }
