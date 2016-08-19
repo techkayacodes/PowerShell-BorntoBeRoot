@@ -53,6 +53,7 @@ Automate all the Things!
 | Snippet | Description | 
 | :--- | :--- |
 | [ConnectToExchange2010.ps1](Snippets/ConnectToExchange2010.ps1) | Connect to Exchange 2010 Management Shell in script |
+| [CredentialParameter.ps1](Snippets/CredentialParameter.ps1) | Parameter to pass credentials into a function/script |
 | [New-Object.ps1](Snippets/New-Object.ps1) | Create a new PSObject with custom properties |
 | [PressAnyKeyToContinue.ps1](Snippets/PressAnyKeyToContinue.ps1) | Wait until the user pressed a key | 
 | [PromptForChoice.ps1](Snippets/PromptForChoice.ps1) | Prompt for choice |
@@ -60,7 +61,6 @@ Automate all the Things!
 | [RewriteInLine.ps1](Snippets/RewriteInLine.ps1) | Rewrite in Line (Write-Host "xx% complete") |
 | [SelfElevatingScript.ps1](Snippets/SelfElevatingScript.ps1) | Self elevate a PowerShell script/console with parameters |
 | [Send-MailMessage.ps1](Snippets/Send-MailMessage.ps1) | Send a mail message via PowerShell |
-| [SourcecodeFromFunction.ps1](Snippets/SourcecodeFromFunction.ps1) | Get the sourcecode of an existing function |
 
 ## Regex
 
