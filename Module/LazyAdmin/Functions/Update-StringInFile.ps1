@@ -1,6 +1,6 @@
 ###############################################################################################################
 # Language     :  PowerShell 4.0
-# Filename     :  Update-StringInFiles.ps1
+# Filename     :  Update-StringInFile.ps1
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
 # Description  :  Replace a string in multiple files
 # Repository   :  https://github.com/BornToBeRoot/PowerShell
@@ -16,7 +16,7 @@
     Binary files (*.zip, *.exe, etc.) are not touched by this script.
 	                         
     .EXAMPLE
-    Update-StringInFiles -Path E:\Temp\Files\ -Search "Test1" -ReplaceWith "Test2" -Verbose
+    Update-StringInFile -Path E:\Temp\Files\ -Find "Test1" -ReplaceWith "Test2" -Verbose
        
 	VERBOSE: Binary files like (*.zip, *.exe, etc...) are ignored
 	VERBOSE: Total files with string to replace found: 3
@@ -28,29 +28,29 @@
 	VERBOSE: Number of strings to replace in current file: 2
 	   
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Update-StringInFiles.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Update-StringInFile.README.md
 #>
 
-function Update-StringInFiles
+function Update-StringInFile
 {
-	[CmdletBinding()]
+	[CmdletBinding(SupportsShouldProcess=$true)]
 	Param(
 		[Parameter(
 			Position=0,
-			Mandatory=$true,
-			HelpMessage="String to find")]
-		[String]$Search,
-	
+			HelpMessage="Folder where the files are stored (will search recursive)")]
+		[String]$Path = (Get-Location),
+
 		[Parameter(
 			Position=1,
 			Mandatory=$true,
+			HelpMessage="String to find")]
+		[String]$Find,
+	
+		[Parameter(
+			Position=2,
+			Mandatory=$true,
 			HelpMessage="String to replace")]
 		[String]$ReplaceWith,
-
-        [Parameter(
-			Position=2,
-			HelpMessage="Folder where the files are stored (will search recursive)")]
-		[String]$Path = (Get-Location),
 
 		[Parameter(
 			Position=3,
@@ -77,19 +77,22 @@ function Update-StringInFiles
     
 			try
 			{	
-				# Replace string
-				if($CaseSensitive)
+				if($PSCmdlet.ShouldProcess())
 				{
-					(Get-Content -Path $File.Name) -creplace [regex]::Escape($Search), $ReplaceWith | Set-Content -Path $File.Name -Force
-				}
-				else
-				{
-					(Get-Content -Path $File.Name) -replace [regex]::Escape($Search), $ReplaceWith | Set-Content -Path $File.Name -Force
+					# Replace string
+					if($CaseSensitive)
+					{
+						(Get-Content -Path $File.Name) -creplace [regex]::Escape($Search), $ReplaceWith | Set-Content -Path $File.Name -Force
+					}
+					else
+					{
+						(Get-Content -Path $File.Name) -replace [regex]::Escape($Search), $ReplaceWith | Set-Content -Path $File.Name -Force
+					}
 				}
 			}
 			catch
 			{
-				Write-Host -Message "$($_.Exception.Message)" -ForegroundColor Red
+				Write-Error -Message "$($_.Exception.Message)" -Category InvalidData
 			}
 		}
 	}

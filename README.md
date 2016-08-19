@@ -38,7 +38,7 @@ Automate all the Things!
 | [Send-WakeOnLan](Module/LazyAdmin/Functions/Send-WakeOnLan.ps1) | Send a network message to turn on or wake up a remote computer | [:book:](Documentation/Send-WakeOnLan.README.md) | 
 | [Split-IPv4Subnet](Module/LazyAdmin/Functions/Split-IPv4Subnet.ps1) | Split a subnet in multiple subnets with given subnetmasks | [:book:](Documentation/Split-IPv4Subnet.README.md) |
 | [Test-IsFileBinary](Module/LazyAdmin/Functions/Test-IsFileBinary.ps1) | Test if a file is binary | [:book:](Documentation/Test-IsFileBinary.README.md) |
-| [Update-StringInFiles](Module/LazyAdmin/Functions/Update-StringInFiles.ps1) | Replace a string in one or multiple files | [:book:](Documentation/Update-StringInFiles.README.md)
+| [Update-StringInFile](Module/LazyAdmin/Functions/Update-StringInFile.ps1) | Replace a string in one or multiple files | [:book:](Documentation/Update-StringInFile.README.md)
   
 ## Scripts
 

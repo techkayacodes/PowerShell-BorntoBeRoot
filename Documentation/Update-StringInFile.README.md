@@ -1,27 +1,27 @@
-# Update-StringInFiles
+# Update-StringInFile
 
 Replace a string in one or multiple files.
 
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Update-StringInFiles.ps1)
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Update-StringInFiles.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Update-StringInFile.ps1)
+* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Update-StringInFile.ps1)
 
 ## Description
 
  Replace a string in one or multiple files.
  Binary files (*.zip, *.exe, etc.) are not touched by this script. 
 
-![Screenshot](Images/Update-StringInFiles.png?raw=true "Update-StringInFiles")
+![Screenshot](Images/Update-StringInFile.png?raw=true "Update-StringInFile")
 
 ## Syntax
 
 ```powershell
-Update-StringInFiles [-Path] <String> [-Search] <String> [-ReplaceWith] <String> [[-CaseSensitive]] [<CommonParameters>]
+Update-StringInFile [-Path] <String> [-Find] <String> [-ReplaceWith] <String> [[-CaseSensitive]] [<CommonParameters>]
 ```
 
 ## Example 1
 
 ```powershell
-PS> Update-StringInFiles -Path E:\Temp\Files\ -Search "Test1" -ReplaceWith "Test2" -Verbose
+PS> Update-StringInFile -Path E:\Temp\Files\ -Find "Test1" -ReplaceWith "Test2" -Verbose
        
 VERBOSE: Binary files like (*.zip, *.exe, etc...) are ignored
 VERBOSE: Total files with string to replace found: 3
@@ -36,7 +36,7 @@ VERBOSE: Number of strings to replace in current file: 2
 ## Example 2
 
 ```powershell
-PS> Update-StringInFiles -Path E:\Temp\Files\ -Search "Test1" -ReplaceWith "Test2" -Verbose
+PS> Update-StringInFile -Path E:\Temp\Files\ -Find "Test1" -ReplaceWith "Test2" -Verbose
        
 VERBOSE: Binary files like (*.zip, *.exe, etc...) are ignored
 VERBOSE: Total files with string to replace found: 3
