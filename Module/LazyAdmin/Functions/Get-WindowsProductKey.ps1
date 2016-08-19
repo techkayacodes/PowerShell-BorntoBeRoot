@@ -60,8 +60,10 @@ function Get-WindowsProductKey
 
 		[Parameter(
 			Position=1,
-			HelpMessage='PSCredential to authenticate agains a remote computer')]
-		[System.Management.Automation.PSCredential]$Credential
+			HelpMessage='Credentials to authenticate agains a remote computer')]
+		[System.Management.Automation.PSCredential]
+		[System.Management.Automation.CredentialAttribute()]
+		$Credential
 	)
 
 	Begin{
@@ -69,7 +71,7 @@ function Get-WindowsProductKey
 
 		[System.Management.Automation.ScriptBlock]$Scriptblock = {
 			$ProductKeyValue = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").digitalproductid[0x34..0x42]
-			$Wmi_Win32OperatingSystem = Get-WmiObject -Class Win32_OperatingSystem
+			$Wmi_Win32OperatingSystem = Get-CimInstance -ClassName Win32_OperatingSystem | Select-Object Caption, CSDVersion, Version, OSArchitecture, BuildNumber, SerialNumber
 
 			[pscustomobject] @{
 				ProductKeyValue = $ProductKeyValue
