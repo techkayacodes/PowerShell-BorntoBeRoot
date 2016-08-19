@@ -1,6 +1,6 @@
 ﻿###############################################################################################################
 # Language     :  PowerShell 4.0
-# Filename     :  Get-ConsoleColors.ps1
+# Filename     :  Get-ConsoleColor.ps1
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
 # Description  :  Get all available console colors
 # Repository   :  https://github.com/BornToBeRoot/PowerShell
@@ -14,7 +14,7 @@
     Get all available console colors. A preview how they look (foreground and background) can be displayed with the parameter "-Preview".
 
     .EXAMPLE
-    Get-ConsoleColors
+    Get-ConsoleColor
 
     ConsoleColor
     ------------
@@ -36,10 +36,10 @@
            White
 
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Get-ConsoleColors.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Get-ConsoleColor.README.md
 #>
 
-function Get-ConsoleColors
+function Get-ConsoleColor
 {
     [CmdletBinding()]
     param(

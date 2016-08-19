@@ -24,7 +24,7 @@ Automate all the Things!
 | [Convert-Subnetmask](Module/LazyAdmin/Functions/Convert-Subnetmask.ps1) | Convert a subnetmask to CIDR and vise versa | [:book:](Documentation/Convert-Subnetmask.README.md) |
 | [Find-StringInFile](Module/LazyAdmin/Functions/Find-StringInFile.ps1) | Find a string in one or multiple files | [:book:](Documentation/Find-StringInFile.README.md) |
 | [Get-ARPCache](Module/LazyAdmin/Functions/Get-ARPCache.ps1) | Get the ARP cache | [:book:](Documentation/Get-ARPCache.README.md) |
-| [Get-ConsoleColors](Module/LazyAdmin/Functions/Get-ConsoleColors.ps1) | Get all available console colors | [:book:](Documentation/Get-ConsoleColors.README.md) |
+| [Get-ConsoleColor](Module/LazyAdmin/Functions/Get-ConsoleColor.ps1) | Get all available console colors | [:book:](Documentation/Get-ConsoleColor.README.md) |
 | [Get-InstalledSoftware](Module/LazyAdmin/Functions/Get-InstalledSoftware.ps1) | Get all installed software with DisplayName, Publisher and UninstallString | [:book:](Documentation/Get-InstalledSoftware.README.md) |
 | [Get-IPv4Subnet](Module/LazyAdmin/Functions/Get-IPv4Subnet.ps1) | Calculate a subnet based on an IP-Address and the subnetmask or CIDR | [:book:](Documentation/Get-IPv4Subnet.README.md) |
 | [Get-MACAddress](Module/LazyAdmin/Functions/Get-MACAddress.ps1) | Get the MAC-Address from a remote computer | [:book:](Documentation/Get-MACAddress.README.md) |
