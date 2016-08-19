@@ -16,7 +16,7 @@
     Binary files (*.zip, *.exe, etc.) are not touched by this script.
 	                         
     .EXAMPLE
-    Update-StringInFile -Path E:\Temp\Files\ -Find "Test1" -ReplaceWith "Test2" -Verbose
+    Update-StringInFile -Path E:\Temp\Files\ -Find "Test1" -Replace "Test2" -Verbose
        
 	VERBOSE: Binary files like (*.zip, *.exe, etc...) are ignored
 	VERBOSE: Total files with string to replace found: 3
@@ -50,7 +50,7 @@ function Update-StringInFile
 			Position=2,
 			Mandatory=$true,
 			HelpMessage="String to replace")]
-		[String]$ReplaceWith,
+		[String]$Replace,
 
 		[Parameter(
 			Position=3,
@@ -65,7 +65,7 @@ function Update-StringInFile
 	Process{
 		Write-Verbose -Message "Binary files like (*.zip, *.exe, etc...) are ignored"
 
-		$Files = Get-ChildItem -Path $Path -Recurse | Where-Object { ($_.PSIsContainer -eq $false) -and ((Test-IsFileBinary -Path $_.FullName) -eq $false) } | Select-String -Pattern ([regex]::Escape($Search)) -CaseSensitive:$CaseSensitive | Group-Object Path 
+		$Files = Get-ChildItem -Path $Path -Recurse | Where-Object { ($_.PSIsContainer -eq $false) -and ((Test-IsFileBinary -Path $_.FullName) -eq $false) } | Select-String -Pattern ([regex]::Escape($Find)) -CaseSensitive:$CaseSensitive | Group-Object Path 
 		
 		Write-Verbose -Message "Total files with string to replace found: $($Files.Count)"
 
@@ -75,24 +75,24 @@ function Update-StringInFile
 			Write-Verbose -Message "File:`t$($File.Name)"
 			Write-Verbose -Message "Number of strings to replace in current file:`t$($File.Count)"
     
-			try
-			{	
-				if($PSCmdlet.ShouldProcess())
-				{
+			if($PSCmdlet.ShouldProcess($File.Name))
+			{
+				try
+				{	
 					# Replace string
 					if($CaseSensitive)
 					{
-						(Get-Content -Path $File.Name) -creplace [regex]::Escape($Search), $ReplaceWith | Set-Content -Path $File.Name -Force
+						(Get-Content -Path $File.Name) -creplace [regex]::Escape($Find), $Replace | Set-Content -Path $File.Name -Force
 					}
 					else
 					{
-						(Get-Content -Path $File.Name) -replace [regex]::Escape($Search), $ReplaceWith | Set-Content -Path $File.Name -Force
+						(Get-Content -Path $File.Name) -replace [regex]::Escape($Find), $Replace | Set-Content -Path $File.Name -Force
 					}
 				}
-			}
-			catch
-			{
-				Write-Error -Message "$($_.Exception.Message)" -Category InvalidData
+				catch
+				{
+					Write-Error -Message "$($_.Exception.Message)" -Category InvalidData
+				}
 			}
 		}
 	}

@@ -15,28 +15,13 @@ Replace a string in one or multiple files.
 ## Syntax
 
 ```powershell
-Update-StringInFile [-Path] <String> [-Find] <String> [-ReplaceWith] <String> [[-CaseSensitive]] [<CommonParameters>]
+Update-StringInFile [-Path] <String> [-Find] <String> [-Replace] <String> [[-CaseSensitive]] [<CommonParameters>]
 ```
 
 ## Example 1
 
 ```powershell
-PS> Update-StringInFile -Path E:\Temp\Files\ -Find "Test1" -ReplaceWith "Test2" -Verbose
-       
-VERBOSE: Binary files like (*.zip, *.exe, etc...) are ignored
-VERBOSE: Total files with string to replace found: 3
-VERBOSE: Current file: E:\Temp\Files\File_01.txt
-VERBOSE: Number of strings to replace in current file: 1
-VERBOSE: Current file: E:\Temp\Files\File_02.txt
-VERBOSE: Number of strings to replace in current file: 1
-VERBOSE: Current file: E:\Temp\Files\File_03.txt
-VERBOSE: Number of strings to replace in current file: 2
-```
-
-## Example 2
-
-```powershell
-PS> Update-StringInFile -Path E:\Temp\Files\ -Find "Test1" -ReplaceWith "Test2" -Verbose
+PS> Update-StringInFile -Path E:\Temp\Files\ -Find "Test1" -Replace "Test2" -Verbose
        
 VERBOSE: Binary files like (*.zip, *.exe, etc...) are ignored
 VERBOSE: Total files with string to replace found: 3
