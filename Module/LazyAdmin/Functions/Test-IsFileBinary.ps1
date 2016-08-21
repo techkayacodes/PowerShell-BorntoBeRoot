@@ -17,12 +17,12 @@
 	https://stackoverflow.com/questions/1077634/powershell-search-script-that-ignores-binary-files
                                  
     .EXAMPLE
-    Test-IsFileBinary -Path "E:\Temp\Files\File_01.txt"
+    Test-IsFileBinary -FilePath "E:\Temp\Files\File_01.txt"
        
 	False
 	
 	.EXAMPLE
-	Test-IsFileBinary -Path "E:\Temp\Files\File_04.zip"
+	Test-IsFileBinary -FilePath "E:\Temp\Files\File_04.zip"
        
 	True
 
@@ -39,7 +39,7 @@ function Test-IsFileBinary
 			Position=0,
 			Mandatory=$true,
 			HelpMessage="Path to file which should be checked")]
-		[String]$Path
+		[String]$FilePath
 	)
 
 	Begin{
@@ -48,46 +48,53 @@ function Test-IsFileBinary
 
 	Process{
         # Check if path is a directory
-        if((Get-Item $Path) -is [System.IO.DirectoryInfo])
+        if((Get-Item $FilePath) -is [System.IO.DirectoryInfo])
         {
-            Write-Error -Message "Checking a directory is not supported ($Path)" -Category InvalidArgument -ErrorAction Stop
+            throw "Checking a directory ($FilePath) is not supported!"
         }
 
 		# Encoding variable
-		$encoding = ""
+		$Encoding = [String]::Empty
 
-		# Get the first 1024 bytes from the file
-		$byteArray = Get-Content -Path $Path -Encoding Byte -TotalCount 1024
+        # Get the first 1024 bytes from the file
+        $ByteCount = 1024
+        		
+		$ByteArray = Get-Content -Path $FilePath -Encoding Byte -TotalCount $ByteCount
 
-		if(("{0:X}{1:X}{2:X}" -f $byteArray) -eq "EFBBBF")
+        if($ByteArray.Count -ge $ByteCount)
+        {
+            Write-Verbose -Message "Could only read $($ByteArray.Count)/$ByteCount Bytes. File "
+        }
+      
+        if(($ByteArray.Count -ge 4) -and (("{0:X}{1:X}{2:X}{3:X}" -f $ByteArray) -eq "FFFE0000"))
 		{
-			# Test for UTF-8 BOM
-			$encoding = "UTF-8"
+			Write-Verbose -Message "UTF-32 detected!"
+			$Encoding = "UTF-32"
 		}
-		elseif(("{0:X}{1:X}" -f $byteArray) -eq "FFFE")
+		elseif(($ByteArray.Count -ge 4) -and (("{0:X}{1:X}{2:X}{3:X}" -f $ByteArray) -eq "0000FEFF"))
 		{
-			# Test for the UTF-16
-			$encoding = "UTF-16"
+			Write-Verbose -Message "UTF-32 BE detected!"
+			$Encoding = "UTF-32 BE"
 		}
-		elseif(("{0:X}{1:X}" -f $byteArray) -eq "FEFF")
+        elseif(($ByteArray.Count -ge 3) -and (("{0:X}{1:X}{2:X}" -f $ByteArray) -eq "EFBBBF"))
 		{
-			# Test for the UTF-16 Big Endian
-			$encoding = "UTF-16 BE"
+			Write-Verbose -Message "UTF-8 detected!"
+			$Encoding = "UTF-8"
 		}
-		elseif(("{0:X}{1:X}{2:X}{3:X}" -f $byteArray) -eq "FFFE0000")
+		elseif(($ByteArray.Count -ge 2) -and (("{0:X}{1:X}" -f $ByteArray) -eq "FFFE"))
 		{
-			# Test for the UTF-32
-			$encoding = "UTF-32"
+			Write-Verbose -Message "UTF-16 detected!"
+			$Encoding = "UTF-16"
 		}
-		elseif(("{0:X}{1:X}{2:X}{3:X}" -f $byteArray) -eq "0000FEFF")
+		elseif(($ByteArray.Count -ge 2) -and (("{0:X}{1:X}" -f $ByteArray) -eq "FEFF"))
 		{
-			# Test for the UTF-32 Big Endian
-			$encoding = "UTF-32 BE"
+            Write-Verbose "UTF-16 BE detected!"
+			$Encoding = "UTF-16 BE"
 		}
 
-		if($encoding)
+		if(-not([String]::IsNullOrEmpty($Encoding)))
 		{
-			# File is text encoded
+            Write-Verbose -Message "File is text encoded!"
 			return $false
 		}
 
@@ -99,13 +106,11 @@ function Test-IsFileBinary
 
 		if($byteArray -contains 0 )
 		{
-			# Test for binary
+			Write-Verbose -Message "File is a binary!"
 			return $true
 		}
 
-		# This should be ASCII encoded 
-		$encoding = "ASCII"
-
+        Write-Verbose -Message "File should be ASCII encoded!"
 		return $false
 	}
 

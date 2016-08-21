@@ -10,18 +10,16 @@ Test if a file is binary like .exe or .zip.
 
 ![Screenshot](Images/Test-IsFileBinary.png?raw=true "Test-IsFileBinary")
 
-I found this code snippet on Stackoverflow: https://stackoverflow.com/questions/1077634/powershell-search-script-that-ignores-binary-files
-
 ## Syntax
 
 ```powershell
-Test-IsFileBinary [-Path] <String> [<CommonParameters>]
+Test-IsFileBinary [-FilePath] <String> [<CommonParameters>]
 ``` 
 
 ## Example 1
 
 ```powershell
-PS> Test-IsFileBinary -Path "E:\Temp\Files\File_04.zip"
+PS> Test-IsFileBinary -FilePath "E:\Temp\Files\File_04.zip"
 
 True
 ```
@@ -29,7 +27,12 @@ True
 ## Example 2
 
 ```powershell
-PS> Test-IsFileBinary -Path "E:\Temp\Files\File_01.txt"
+PS> Test-IsFileBinary -FilePath "E:\Temp\Files\File_01.txt"
 
 False
 ```
+
+## Further information
+
+* [How to identify the file content as ascii or binary - Stackoverflow](https://stackoverflow.com/questions/277521/how-to-identify-the-file-content-as-ascii-or-binary/277568#277568)
+* [Search script that ignores binary files - Stackoverflow](https://stackoverflow.com/questions/1077634/powershell-search-script-that-ignores-binary-files/1080976#1080976)
