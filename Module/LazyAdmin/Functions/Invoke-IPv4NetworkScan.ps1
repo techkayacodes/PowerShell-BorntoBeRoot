@@ -292,7 +292,7 @@ function Invoke-IPv4NetworkScan
 
             $PropertiesToDisplay += "Vendor"
         
-            $MAC_VendorList = Import-Csv -Path $CSV_MACVendorList_Path | Select-Object "Assignment", "Organization Name"
+            $MAC_VendorList = Import-Csv -Path $CSV_MACVendorList_Path | Select-Object -Property "Assignment", "Organization Name"
         }
         else 
         {
@@ -475,7 +475,7 @@ function Invoke-IPv4NetworkScan
         # Process results, while waiting for other jobs
         Do {
             # Get all jobs, which are completed
-            $Jobs_ToProcess = $Jobs | Where-Object {$_.Result.IsCompleted}
+            $Jobs_ToProcess = $Jobs | Where-Object -FilterScript {$_.Result.IsCompleted}
     
             # If no jobs finished yet, wait 500 ms and try again
             if($null -eq $Jobs_ToProcess)
@@ -487,7 +487,7 @@ function Invoke-IPv4NetworkScan
             }
             
             # Get jobs, which are not complete yet
-            $Jobs_Remaining = ($Jobs | Where-Object {$_.Result.IsCompleted -eq $false}).Count
+            $Jobs_Remaining = ($Jobs | Where-Object -FilterScript {$_.Result.IsCompleted -eq $false}).Count
 
             # Catch when trying to divide through zero
             try {            

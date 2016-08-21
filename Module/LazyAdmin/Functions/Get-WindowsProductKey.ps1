@@ -70,8 +70,8 @@ function Get-WindowsProductKey
 		$LocalAddress = @("127.0.0.1","localhost",".","$($env:COMPUTERNAME)")
 
 		[System.Management.Automation.ScriptBlock]$Scriptblock = {
-			$ProductKeyValue = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").digitalproductid[0x34..0x42]
-			$Wmi_Win32OperatingSystem = Get-CimInstance -ClassName Win32_OperatingSystem | Select-Object Caption, CSDVersion, Version, OSArchitecture, BuildNumber, SerialNumber
+			$ProductKeyValue = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").digitalproductid[0x34..0x42]
+			$Wmi_Win32OperatingSystem = Get-CimInstance -ClassName Win32_OperatingSystem | Select-Object -Property Caption, CSDVersion, Version, OSArchitecture, BuildNumber, SerialNumber
 
 			[pscustomobject] @{
 				ProductKeyValue = $ProductKeyValue

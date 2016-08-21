@@ -60,7 +60,7 @@ function Find-StringInFile
 
 	Process{
 		# Files with string to find
-		$Strings = Get-ChildItem -Path $Path -Recurse | Select-String -Pattern ([regex]::Escape($Search)) -CaseSensitive:$CaseSensitive | Group-Object Path 
+		$Strings = Get-ChildItem -Path $Path -Recurse | Select-String -Pattern ([regex]::Escape($Search)) -CaseSensitive:$CaseSensitive | Group-Object -Property Path 
 		
 		# Go through each file
 		foreach($String in $Strings)
