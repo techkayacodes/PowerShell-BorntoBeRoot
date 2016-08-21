@@ -27,6 +27,7 @@ Automate all the Things!
 | [Get-ConsoleColor](Module/LazyAdmin/Functions/Get-ConsoleColor.ps1) | Get all available console colors | [:book:](Documentation/Get-ConsoleColor.README.md) |
 | [Get-InstalledSoftware](Module/LazyAdmin/Functions/Get-InstalledSoftware.ps1) | Get all installed software with DisplayName, Publisher and UninstallString | [:book:](Documentation/Get-InstalledSoftware.README.md) |
 | [Get-IPv4Subnet](Module/LazyAdmin/Functions/Get-IPv4Subnet.ps1) | Calculate a subnet based on an IP-Address and the subnetmask or CIDR | [:book:](Documentation/Get-IPv4Subnet.README.md) |
+| [Get-LastBootTime](Module/LazyAdmin/Functions/Get-LastBootTime) | Get the time when a computer is booted | [:book:](Documentation/Get-LastBootTime.README.md) |
 | [Get-MACAddress](Module/LazyAdmin/Functions/Get-MACAddress.ps1) | Get the MAC-Address from a remote computer | [:book:](Documentation/Get-MACAddress.README.md) |
 | [Get-MACVendor](Module/LazyAdmin/Functions/Get-MACVendor.ps1) | Get Vendor from a MAC-Address | [:book:](Documentation/Get-MACVendor.README.md) |
 | [Get-RandomPassword](Module/LazyAdmin/Functions/Get-RandomPassword.ps1) | Generate passwords with a freely definable number of characters | [:book:](Documentation/Get-RandomPassword.README.md) |
