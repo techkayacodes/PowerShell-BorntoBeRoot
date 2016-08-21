@@ -8,7 +8,7 @@ Get all available console colors.
 
 Get all available console colors.
 
-![Screenshot](Images/Get-ConsoleColor.png?raw=true)
+![Screenshot](Images/Get-ConsoleColor.png?raw=true "Get-ConsoleColor")
 
 ## Syntax
 

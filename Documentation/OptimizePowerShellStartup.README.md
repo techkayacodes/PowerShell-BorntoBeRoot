@@ -10,7 +10,7 @@ Optimize PowerShell startup by reduce JIT compile time with `ngen.exe`.
 
 Script requires administrative permissions.
 
-![Screenshot](Images/OptimizePowerShellStartup.png?raw=true)
+![Screenshot](Images/OptimizePowerShellStartup.png?raw=true "Optimize PowerShell Startup")
 
 ## Syntax
 

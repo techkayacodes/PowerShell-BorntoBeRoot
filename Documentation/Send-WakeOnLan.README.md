@@ -18,7 +18,7 @@ A magic packet for the MAC-Address `DD:F0:0F:00:10:00` looks like:
 
 Remote computers (-UseComputer) need WinRM enabled. To do this use `winrm quickconfig`.
 
-![Screenshot](Images/Send-WakeOnLan.png?raw=true)
+![Screenshot](Images/Send-WakeOnLan.png?raw=true "Send-WakeOnLan")
 
 ## Syntax
 

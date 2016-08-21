@@ -8,7 +8,7 @@ Get Vendor from a MAC-Address.
 
 Get Vendor from a MAC-Address, based on the MAC-Address or the first 6 digits.
 
-![Screenshot](Images/Get-MACVendor.png?raw=true)
+![Screenshot](Images/Get-MACVendor.png?raw=true "Get-MACVendor")
 
 ## Syntax
 

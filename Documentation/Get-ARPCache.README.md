@@ -8,7 +8,7 @@ Get the ARP cache.
 
 Get the Address Resolution Protocol (ARP) cache, which is used for resolution of internet layer addresses into link layer addresses.
 
-![Screenshot](Images/Get-ARPCache.png?raw=true)
+![Screenshot](Images/Get-ARPCache.png?raw=true "Get-ARPCache")
 
 ## Syntax
 

@@ -8,7 +8,7 @@ Clear the ARP cache.
 
 Clear the Address Resolution Protocol (ARP) cache, which is used for resolution of internet layer addresses into link layer addresses.
 
-![Screenshot](Images/Clear-ARPCache.png?raw=true)
+![Screenshot](Images/Clear-ARPCache.png?raw=true "Clear-ARPCache")
 
 ## Syntax
 

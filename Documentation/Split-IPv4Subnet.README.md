@@ -8,7 +8,7 @@ Split a subnet in multiple subnets with given subnetmasks.
 
 Split a subnet in multiple subnets with given subnetmasks. Each new subnet contains NetworkID, Broadcast, total available IPs and usable IPs for hosts. 
 
-![Screenshot](Images/Split-IPv4Subnet.png?raw=true)
+![Screenshot](Images/Split-IPv4Subnet.png?raw=true "Split-IPv4Subnet")
 
 ## Syntax
 

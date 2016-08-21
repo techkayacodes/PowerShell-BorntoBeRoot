@@ -8,7 +8,7 @@ Get the MAC-Address from a remote computer
 
 Get the MAC-Address from a remote computer. If the MAC-Address could be resolved, the result contains the ComputerName, IPv4-Address and the MAC-Address of the system. Otherwise it returns null. To resolve the MAC-Address your computer need to be in the same subnet as the remote computer (Layer 2). If the result return null, try the parameter `-Verbose` to get more details.
 
-![Screenshot](Images/Get-MACAddress.png?raw=true)
+![Screenshot](Images/Get-MACAddress.png?raw=true "Get-MACAddress")
 
 ## Syntax
 
