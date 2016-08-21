@@ -46,7 +46,7 @@
 	ProductKey     : XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
 
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Get-WindowsProductKey.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Function/Get-WindowsProductKey.README.md
 #>
 
 function Get-WindowsProductKey

@@ -53,7 +53,7 @@
      26 Aopz pz hu lujyfwalk zaypun!
 
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Convert-ROT13.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Script/Convert-ROT13.README.md
 #>
 
 [CmdletBinding(DefaultParameterSetName='Decrypt')]

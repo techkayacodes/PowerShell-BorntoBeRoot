@@ -28,7 +28,7 @@
     255.255.0.0   16
     
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Convert-Subnetmask.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Function/Convert-Subnetmask.README.md
    
 #>
 

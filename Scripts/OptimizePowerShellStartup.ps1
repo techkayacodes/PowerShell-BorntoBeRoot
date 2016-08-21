@@ -19,7 +19,7 @@
     OptimizePowerShellStartup.ps1
     
     .LINK
-  	https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/OptimizePowerShellStartup.README.md
+  	https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Script/OptimizePowerShellStartup.README.md
 #>
 
 Begin{

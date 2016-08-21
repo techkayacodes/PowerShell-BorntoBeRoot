@@ -32,7 +32,7 @@
 	MyHomeNetwork02   MyHomenetwork5G    WPA2-Personal       MyPassword987654321   
 	   
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Get-WLANProfile.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Function/Get-WLANProfile.README.md
 #>
 
 function Get-WLANProfile

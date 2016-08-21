@@ -25,7 +25,7 @@
       80 tcp      http         World Wide Web HTTP              open
     
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Invoke-IPv4PortScan.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Function/Invoke-IPv4PortScan.README.md
 #>
 
 function Invoke-IPv4PortScan 

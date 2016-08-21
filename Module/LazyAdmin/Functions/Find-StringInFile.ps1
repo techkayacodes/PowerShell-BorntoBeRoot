@@ -30,7 +30,7 @@
 	File_02.txt E:\Temp\Files\File_02.txt          1    False {TEST01}
 	
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Find-StringInFile.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Function/Find-StringInFile.README.md
 #>
 
 function Find-StringInFile

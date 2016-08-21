@@ -25,7 +25,7 @@
     Send-WakeOnLan -MACAddress 00:00:00:00:00:00 -UseComputer TEST-PC-01
 
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Send-WakeOnLan.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Function/Send-WakeOnLan.README.md
 #>
 
 function Send-WakeOnLan

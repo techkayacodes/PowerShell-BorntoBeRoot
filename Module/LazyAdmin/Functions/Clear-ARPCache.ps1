@@ -17,7 +17,7 @@
     Clear-ARPCache
     
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Clear-ARPCache.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Function/Clear-ARPCache.README.md
 #>
 
 function Clear-ARPCache

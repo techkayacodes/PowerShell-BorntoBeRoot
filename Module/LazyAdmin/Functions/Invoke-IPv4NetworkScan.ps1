@@ -39,7 +39,7 @@
     192.168.178.22 Up     XXXXX-PC.fritz.box XX-XX-XX-XX-XX-XX ASRock Incorporation
 
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Invoke-IPv4NetworkScan.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Function/Invoke-IPv4NetworkScan.README.md
 #>
 
 function Invoke-IPv4NetworkScan

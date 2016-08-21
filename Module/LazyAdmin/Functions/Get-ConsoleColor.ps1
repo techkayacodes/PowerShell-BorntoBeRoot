@@ -36,7 +36,7 @@
            White
 
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Get-ConsoleColor.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Function/Get-ConsoleColor.README.md
 #>
 
 function Get-ConsoleColor

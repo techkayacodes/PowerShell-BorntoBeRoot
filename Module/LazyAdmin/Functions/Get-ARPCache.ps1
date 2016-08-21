@@ -37,7 +37,7 @@
     192.168.178.22 239.255.255.250 01-00-00-00-00-FA static
     
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Get-ARPCache.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Function/Get-ARPCache.README.md
 #>
 
 function Get-ARPCache

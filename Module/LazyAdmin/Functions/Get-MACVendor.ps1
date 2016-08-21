@@ -22,7 +22,7 @@
     5C-49-79          AVM Audiovisuelles Marketing und Computersysteme GmbH
     
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Get-MACVendor.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Function/Get-MACVendor.README.md
 #>
 
 function Get-MACVendor

@@ -21,7 +21,7 @@
     Windows7x64  8/21/2016 3:25:29 PM
     
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Get-LastBootTime.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Function/Get-LastBootTime.README.md
 #>
 
 function Get-LastBootTime

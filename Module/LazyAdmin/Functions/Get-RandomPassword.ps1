@@ -37,7 +37,7 @@
 		10 u+H}%]
 		
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Get-RandomPassword.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Function/Get-RandomPassword.README.md
 #>
 
 function Get-RandomPassword

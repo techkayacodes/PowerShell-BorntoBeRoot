@@ -52,7 +52,7 @@
       4 Adhrohdk9 Bãr`q,Udqrbgkûrrdktmf , Roq`bgd Cdtsrbg
       
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Convert-ROT47.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Script/Convert-ROT47.README.md
 #>
 
 [CmdletBinding(DefaultParameterSetName='Decrypt')]

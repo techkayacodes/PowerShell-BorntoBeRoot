@@ -28,7 +28,7 @@
     172.16.100.100 2886755428
 
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Convert-IPv4Address.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Function/Convert-IPv4Address.README.md
 #>
 
 function Convert-IPv4Address

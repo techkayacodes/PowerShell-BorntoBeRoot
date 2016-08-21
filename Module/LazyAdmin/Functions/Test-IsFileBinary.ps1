@@ -27,7 +27,7 @@
 	True
 
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Test-IsFileBinary.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Function/Test-IsFileBinary.README.md
 #>
 
 function Test-IsFileBinary

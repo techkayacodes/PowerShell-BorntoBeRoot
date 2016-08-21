@@ -28,7 +28,7 @@
     192.168.1.0 192.168.1.255 256   254
 
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Get-IPv4Subnet.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Function/Get-IPv4Subnet.README.md
 #>
 
 function Get-IPv4Subnet

@@ -35,7 +35,7 @@
     InstallDate     :
 
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Get-InstalledSoftware.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Function/Get-InstalledSoftware.README.md
 #>
 
 function Get-InstalledSoftware

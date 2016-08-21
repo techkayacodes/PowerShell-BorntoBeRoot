@@ -29,7 +29,7 @@
     TEST-PC-02   192.168.178.21 1D-00-00-00-00-F1 ASUSTek COMPUTER INC.
 
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Get-MACAddress.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Function/Get-MACAddress.README.md
 #>
 
 function Get-MACAddress

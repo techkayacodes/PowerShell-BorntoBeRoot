@@ -32,7 +32,7 @@
     192.168.0.128 192.168.0.255 128   126
     
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Split-IPv4Subnet.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Function/Split-IPv4Subnet.README.md
 #>
 
 function Split-IPv4Subnet

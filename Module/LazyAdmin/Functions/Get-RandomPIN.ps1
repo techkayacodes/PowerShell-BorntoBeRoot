@@ -32,7 +32,7 @@
 		5 644665
 	
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Get-RandomPIN.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Function/Get-RandomPIN.README.md
 #>
 
 function Get-RandomPIN

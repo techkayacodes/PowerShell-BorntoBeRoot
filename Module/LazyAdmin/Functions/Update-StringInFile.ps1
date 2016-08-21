@@ -28,7 +28,7 @@
 	VERBOSE: Number of strings to replace in current file: 2
 	   
     .LINK
-    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Update-StringInFile.README.md
+    https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Function/Update-StringInFile.README.md
 #>
 
 function Update-StringInFile
