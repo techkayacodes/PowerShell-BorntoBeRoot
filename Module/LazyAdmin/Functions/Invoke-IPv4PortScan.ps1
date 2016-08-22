@@ -184,7 +184,7 @@ function Invoke-IPv4PortScan
         # Validate Port-Range
         if($StartPort -gt $EndPort)
         {
-            Write-Error -Message "Invalid Port-Range... Check your input!" -Category InvalidArgument -ErrorAction Stop
+            throw "Invalid Port-Range... Check your input!"
         }
 
         # Check if host is reachable
@@ -199,8 +199,8 @@ function Invoke-IPv4PortScan
                 $Info = "Would you like to continue? (perhaps only ICMP is blocked)"
                 
                 $Options = [System.Management.Automation.Host.ChoiceDescription[]] @("&Yes", "&No")
-                [int]$Defaultchoice = 0
-                $Opt =  $host.UI.PromptForChoice($Title , $Info, $Options, $Defaultchoice)
+                [int]$DefaultChoice = 0
+                $Opt =  $host.UI.PromptForChoice($Title , $Info, $Options, $DefaultChoice)
 
                 switch($Opt)
                 {                    
@@ -242,7 +242,7 @@ function Invoke-IPv4PortScan
 
             if([String]::IsNullOrEmpty($IPv4Address))
             {
-                Write-Error -Message "Could not get IPv4-Address for $ComputerName. (Try to enter an IPv4-Address instead of the Hostname)" -Category InvalidData -ErrorAction Stop
+               throw "Could not get IPv4-Address for $ComputerName. (Try to enter an IPv4-Address instead of the Hostname)"
             }		
         }
 
@@ -305,7 +305,7 @@ function Invoke-IPv4PortScan
                 $Progress_Percent = 100 
             }
 
-            Write-Progress -Activity "Setting up jobs..." -Id 1 -Status "Current Port: $Port"  -PercentComplete ($Progress_Percent)
+            Write-Progress -Activity "Setting up jobs..." -Id 1 -Status "Current Port: $Port" -PercentComplete ($Progress_Percent)
             
             # Create mew job
             $Job = [System.Management.Automation.PowerShell]::Create().AddScript($ScriptBlock).AddParameters($ScriptParams)
