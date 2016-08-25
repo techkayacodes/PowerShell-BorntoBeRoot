@@ -234,7 +234,7 @@ function Invoke-IPv4NetworkScan
         }
         elseif(($EnableMACResolving) -and (-Not([System.IO.File]::Exists($CSV_MACVendorList_Path))))
         {
-            Write-Warning -Message "No CSV-File to assign vendor with MAC-Address found! Use the parameter ""-UpdateList"" to download the latest version from IEEE.org. This warning doesn`t affect the scanning procedure."
+            Write-Warning -Message "No CSV-File to assign vendor with MAC-Address found! Use the parameter ""-UpdateList"" to download the latest version from IEEE.org. This warning does not affect the scanning procedure."
         }   
         
         # Calculate Subnet (Start and End IPv4-Address)
