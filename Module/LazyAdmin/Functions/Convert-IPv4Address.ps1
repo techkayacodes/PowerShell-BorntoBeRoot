@@ -40,7 +40,16 @@ function Convert-IPv4Address
             Position=0,
             Mandatory=$true,
             HelpMessage='IPv4-Address as string like "192.168.1.1"')]
-        [ValidatePattern("^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$")]
+        [ValidateScript({
+            if($_ -match "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$")
+            {
+                return $true
+            }
+            else 
+            {
+                throw "Enter a valid IPv4-Address (like 192.168.1.1)!"    
+            }
+        })]
         [String]$IPv4Address,
 
         [Parameter(
