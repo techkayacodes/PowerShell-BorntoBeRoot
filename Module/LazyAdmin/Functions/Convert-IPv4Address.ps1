@@ -33,24 +33,14 @@
 
 function Convert-IPv4Address
 {
-    [CmdletBinding(DefaultParameterSetName='String')]
+    [CmdletBinding(DefaultParameterSetName='IPv4Address')]
     param(
         [Parameter(
-            ParameterSetName='String',
+            ParameterSetName='IPv4Address',
             Position=0,
             Mandatory=$true,
             HelpMessage='IPv4-Address as string like "192.168.1.1"')]
-        [ValidateScript({
-            if($_ -match "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$")
-            {
-                return $true
-            }
-            else 
-            {
-                throw "Enter a valid IPv4-Address (like 192.168.1.1)!"    
-            }
-        })]
-        [String]$IPv4Address,
+        [IPAddress]$IPv4Address,
 
         [Parameter(
                 ParameterSetName='Int64',
@@ -68,8 +58,8 @@ function Convert-IPv4Address
         switch($PSCmdlet.ParameterSetName)
         {
             # Convert IPv4-Address as string into Int64
-            "String" {
-                $Octets = $IPv4Address.split(".") 
+            "IPv4Address" {
+                $Octets = $IPv4Address.ToString().Split(".")
                 $Int64 = [long]([long]$Octets[0]*16777216 + [long]$Octets[1]*65536 + [long]$Octets[2]*256 + [long]$Octets[3]) 
             }
     
