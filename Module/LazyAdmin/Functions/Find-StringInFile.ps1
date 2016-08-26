@@ -46,6 +46,16 @@ function Find-StringInFile
 		[Parameter(
 			Position=1,
 			HelpMessage="Folder where the files are stored (search is recursive)")]
+		[ValidateScript({
+			if(Test-Path -Path $_)
+			{
+				return $true
+			}
+			else 
+			{
+				throw "Enter a valid path!"	
+			}
+		})]
 		[String]$Path = (Get-Location),
 		
 		[Parameter(
@@ -65,7 +75,7 @@ function Find-StringInFile
 		# Go through each file
 		foreach($String in $Strings)
 		{		
-			$IsBinary = Test-IsFileBinary -Path $String.Name
+			$IsBinary = Test-IsFileBinary -FilePath $String.Name
 
 			# Go through each group
 			foreach($Group in $String.Group)
