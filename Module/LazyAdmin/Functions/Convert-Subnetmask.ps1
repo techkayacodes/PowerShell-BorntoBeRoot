@@ -49,7 +49,16 @@ function Convert-Subnetmask
             Position=0,
             Mandatory=$true,
             HelpMessage='Subnetmask like 255.255.255.0')]
-        [ValidatePattern("^(254|252|248|240|224|192|128).0.0.0$|^255.(254|252|248|240|224|192|128|0).0.0$|^255.255.(254|252|248|240|224|192|128|0).0$|^255.255.255.(255|254|252|248|240|224|192|128|0)$")]
+        [ValidateScript({
+            if($_ -match "^(254|252|248|240|224|192|128).0.0.0$|^255.(254|252|248|240|224|192|128|0).0.0$|^255.255.(254|252|248|240|224|192|128|0).0$|^255.255.255.(255|254|252|248|240|224|192|128|0)$")
+            {
+                return $true
+            }
+            else 
+            {
+                throw "Enter a valid subnetmask (like 255.255.255.0)!"    
+            }
+        })]
         [String]$Mask
     )
 
@@ -66,7 +75,7 @@ function Convert-Subnetmask
                 
                 # Split into groups of 8 bits, convert to Ints, join up into a string
                 $Octets = $CIDR_Bits -split '(.{8})' -ne ''
-                $Mask = ($Octets | ForEach-Object { [Convert]::ToInt32($_, 2) }) -join '.'
+                $Mask = ($Octets | ForEach-Object -Process {[Convert]::ToInt32($_, 2) }) -join '.'
             }
 
             "Mask" {
