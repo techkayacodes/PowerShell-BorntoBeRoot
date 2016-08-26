@@ -22,6 +22,7 @@ Automate all the Things!
 | [Clear-ARPCache](Module/LazyAdmin/Functions/Clear-ARPCache.ps1) | Clear the ARP cache | [:book:](Documentation/Function/Clear-ARPCache.README.md) |
 | [Convert-IPv4Address](Module/LazyAdmin/Functions/Convert-IPv4Address.ps1) | Convert an IPv4-Address to Int64 and vise versa | [:book:](Documentation/Function/Convert-IPv4Address.README.md) |
 | [Convert-Subnetmask](Module/LazyAdmin/Functions/Convert-Subnetmask.ps1) | Convert a subnetmask to CIDR and vise versa | [:book:](Documentation/Function/Convert-Subnetmask.README.md) |
+| [ConvertTo-Base64](Module/LazyAdmin/Functions/ConvertTo-Base64.ps1) | Convert a text (command) to an Base64 encoded string | [:book:](Documentation/Function/ConvertTo-Base64.README.md) |
 | [Find-StringInFile](Module/LazyAdmin/Functions/Find-StringInFile.ps1) | Find a string in one or multiple files | [:book:](Documentation/Function/Find-StringInFile.README.md) |
 | [Get-ARPCache](Module/LazyAdmin/Functions/Get-ARPCache.ps1) | Get the ARP cache | [:book:](Documentation/Function/Get-ARPCache.README.md) |
 | [Get-ConsoleColor](Module/LazyAdmin/Functions/Get-ConsoleColor.ps1) | Get all available console colors | [:book:](Documentation/Function/Get-ConsoleColor.README.md) |
