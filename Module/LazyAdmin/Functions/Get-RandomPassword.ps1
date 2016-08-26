@@ -47,12 +47,32 @@ function Get-RandomPassword
 		[Parameter(
 			Position=0,
 			HelpMessage='Length of the Password  (Default=8)')]
+		[ValidateScript({
+			if($_ -eq 0)
+			{
+				throw "Length of the password can not be 0!"
+			}
+			else 
+			{
+				return $true	
+			}
+		})]
 		[Int32]$Length=8,
 
 		[Parameter(
 			ParameterSetName='NoClipboard',
 			Position=1,
 			HelpMessage='Number of Passwords to be generated (Default=1)')]
+		[ValidateScript({
+			if($_ -eq 0)
+			{
+				throw "Number of Passwords to be generated can not be 0"
+			}
+			else 
+			{
+				return $true
+			}
+		})]
 		[Int32]$Count=1,
 
 		[Parameter(
@@ -79,6 +99,16 @@ function Get-RandomPassword
 		[Parameter(
 			Position=5,
 			HelpMessage='Use upper case characters (Default=$true)')]
+		[ValidateScript({
+			if($DisableLowerCase -and $DisableUpperCase -and $DisableNumbers -and $_)
+			{
+				throw "Select at least 1 character set (lower case, upper case, numbers or special chars) to create a password."
+			}
+			else 
+			{
+				return $true
+			}
+		})]
 		[switch]$DisableSpecialChars
 	)
 
@@ -87,16 +117,6 @@ function Get-RandomPassword
 	}
 
 	Process{
-		if($Length -eq 0)
-		{
-			Write-Error -Message "Length of the password can not be 0... Check your input!" -Category InvalidArgument -ErrorAction Stop
-		}
-
-		if($Count -eq 0)
-		{
-			Write-Error -Message "Number of Passwords to be generated can not be 0... Check your input!" -Category InvalidArgument -ErrorAction Stop
-		}
-			
 		$Character_LowerCase = "abcdefghiklmnprstuvwxyz"
 		$Character_UpperCase = "ABCDEFGHKLMNPRSTUVWXYZ"
 		$Character_Numbers = "0123456789"
@@ -125,11 +145,6 @@ function Get-RandomPassword
 			$Characters += $Character_SpecialChars
 		}
 		
-		if([String]::IsNullOrEmpty($Characters))
-		{
-			Write-Error -Message "Select at least 1 character set (lower case, upper case, numbers or special chars) to create a password." -Category InvalidArgument -ErrorAction Stop
-		}
-
 		for($i = 1; $i -ne $Count + 1; $i++)
 		{
 			$Password = [String]::Empty
@@ -162,7 +177,6 @@ function Get-RandomPassword
 					Password = $Password
 				}	
 			}
-				
 		}
 	}
 

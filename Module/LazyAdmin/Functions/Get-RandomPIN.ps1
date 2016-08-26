@@ -42,12 +42,32 @@ function Get-RandomPIN
 		[Parameter(
 			Position=0,
 			HelpMessage='Length of the PIN (Default=4)')]
+		[ValidateScript({
+			if($_ -eq 0)
+			{
+				throw "Length of the PIN can not be 0!"
+			}
+			else 
+			{
+				return $true	
+			}
+		})]
 		[Int32]$Length=4,
 
 		[Parameter(
 			ParameterSetName='NoClipboard',
 			Position=1,
 			HelpMessage='Number of PINs to be generated (Default=1)')]
+		[ValidateScript({
+			if($_ -eq 0)
+			{
+				throw "Number of PINs to be generated can not be 0"
+			}
+			else 
+			{
+				return $true
+			}
+		})]
 		[Int32]$Count=1,
 
 		[Parameter(
@@ -64,6 +84,12 @@ function Get-RandomPIN
 		[Parameter(
 			Position=3,
 			HelpMessage='Greatest possible number (Default=9)')]
+		[ValidateScript({
+			if($_ -lt $Minimum)
+			{
+				throw "Minimum can not be greater than maximum!"
+			}
+		})]
 		[Int32]$Maximum=9		
 	)
 
@@ -72,21 +98,6 @@ function Get-RandomPIN
 	}
 
 	Process{
-		if($Length -eq 0)
-		{
-			Write-Error -Message "Length of the PIN can not be 0... Check your input!" -Category InvalidArgument -ErrorAction Stop
-		}
-
-		if($Count -eq 0)
-		{
-			Write-Error -Message "Number of PINs to be generated can not be 0... Check your input!" -Category InvalidArgument -ErrorAction Stop
-		}
-
-		if($Minimum -gt $Maximum)
-		{
-			Write-Error -Message "Minimum PIN-Number can not be greater than maximum PIN-Number" -Category InvalidArgument -ErrorAction Stop
-		}
-
 		for($i = 1; $i -ne $Count + 1; $i++)
 		{ 
 			$PIN = [String]::Empty

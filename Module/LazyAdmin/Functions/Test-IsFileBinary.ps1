@@ -39,6 +39,16 @@ function Test-IsFileBinary
 			Position=0,
 			Mandatory=$true,
 			HelpMessage="Path to file which should be checked")]
+		[ValidateScript({
+			if(Test-Path -Path $_ -PathType Leaf)
+			{
+				return $true
+			}
+			else 
+			{
+				throw "Enter a valid file path!"	
+			}
+		})]
 		[String]$FilePath
 	)
 
@@ -47,12 +57,6 @@ function Test-IsFileBinary
 	}
 
 	Process{
-        # Check if path is a directory
-        if((Get-Item $FilePath) -is [System.IO.DirectoryInfo])
-        {
-            throw "Checking a directory ($FilePath) is not supported!"
-        }
-
 		# Encoding variable
 		$Encoding = [String]::Empty
 

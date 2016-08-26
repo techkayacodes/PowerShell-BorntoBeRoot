@@ -85,7 +85,16 @@ function Invoke-IPv4NetworkScan
             Position=1,
             Mandatory=$true,
             Helpmessage='Subnetmask like 255.255.255.0')]
-        [ValidatePattern("^(254|252|248|240|224|192|128).0.0.0$|^255.(254|252|248|240|224|192|128|0).0.0$|^255.255.(254|252|248|240|224|192|128|0).0$|^255.255.255.(254|252|248|240|224|192|128|0)$")]
+        [ValidateScript({
+            if($_ -match "^(254|252|248|240|224|192|128).0.0.0$|^255.(254|252|248|240|224|192|128|0).0.0$|^255.255.(254|252|248|240|224|192|128|0).0$|^255.255.255.(254|252|248|240|224|192|128|0)$")
+            {
+                return $true
+            }
+            else
+            {
+                throw "Enter a valid subnetmask (like 255.255.255.0)!"
+            }
+        })]
         [String]$Mask,
 
         [Parameter(
@@ -142,7 +151,7 @@ function Invoke-IPv4NetworkScan
                 Write-Verbose -Message "Create backup of the IEEE Standards Registration Authority list..."
                 
                 # Backup file, before download a new version     
-                if([System.IO.File]::Exists($CSV_MACVendorList_Path))
+                if(Test-Path -Path $CSV_MACVendorList_Path -PathType Leaf)
                 {
                     Rename-Item -Path $CSV_MACVendorList_Path -NewName $CSV_MACVendorList_BackupPath
                 }
@@ -155,7 +164,7 @@ function Invoke-IPv4NetworkScan
                 Write-Verbose -Message "Remove backup of the IEEE Standards Registration Authority list..."
 
                 # Remove Backup, if no error
-                if([System.IO.File]::Exists($CSV_MACVendorList_BackupPath))
+                if(Test-Path -Path $CSV_MACVendorList_BackupPath -PathType Leaf)
                 {
                     Remove-Item -Path $CSV_MACVendorList_BackupPath
                 }            
@@ -164,12 +173,12 @@ function Invoke-IPv4NetworkScan
                 Write-Verbose -Message "Cleanup downloaded file and restore backup..."
 
                 # On error: cleanup downloaded file and restore backup
-                if([System.IO.File]::Exists($CSV_MACVendorList_Path))
+                if(Test-Path -Path $CSV_MACVendorList_Path)
                 {
                     Remove-Item -Path $CSV_MACVendorList_Path -Force
                 }
 
-                if([System.IO.File]::Exists($CSV_MACVendorList_BackupPath))
+                if(Test-Path -Path $CSV_MACVendorList_BackupPath -PathType Leaf)
                 {
                     Rename-Item -Path $CSV_MACVendorList_BackupPath -NewName $CSV_MACVendorList_Path
                 }
@@ -227,12 +236,14 @@ function Invoke-IPv4NetworkScan
     }
 
     Process{
+        $CSV_MACVendorList_Available = Test-Path -Path $CSV_MACVendorList_Path -PathType Leaf
+
         # Check for vendor list update
         if($UpdateList)
         {
             UpdateListFromIEEE
         }
-        elseif(($EnableMACResolving) -and (-Not([System.IO.File]::Exists($CSV_MACVendorList_Path))))
+        elseif(($EnableMACResolving) -and ($CSV_MACVendorList_Available -eq $false))
         {
             Write-Warning -Message "No CSV-File to assign vendor with MAC-Address found! Use the parameter ""-UpdateList"" to download the latest version from IEEE.org. This warning does not affect the scanning procedure."
         }   
@@ -286,7 +297,7 @@ function Invoke-IPv4NetworkScan
         }
 
         # Check if it is possible to assign vendor to MAC --> import CSV-File 
-        if(($EnableMACResolving) -and ([System.IO.File]::Exists($CSV_MACVendorList_Path)))
+        if($EnableMACResolving -and $CSV_MACVendorList_Available)
         {
             $AssignVendorToMAC = $true
 

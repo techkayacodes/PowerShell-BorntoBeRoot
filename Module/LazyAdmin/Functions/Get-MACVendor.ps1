@@ -26,14 +26,23 @@
 #>
 
 function Get-MACVendor
-    {
+{
     [CmdletBinding()]
     param(
         [Parameter(
             Position=0,
             Mandatory=$true,
             HelpMessage='MAC-Address or the first 6 digits of it')]
-        [ValidatePattern("^(([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})|([0-9A-Fa-f]{2}){6})|([0-9A-Fa-f]{2}[:-]){2}([0-9A-Fa-f]{2})|([0-9A-Fa-f]{2}){3}$")]
+        [ValidateScript({
+                if($EnteredMAC -match "^(([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})|([0-9A-Fa-f]{2}){6})|([0-9A-Fa-f]{2}[:-]){2}([0-9A-Fa-f]{2})|([0-9A-Fa-f]{2}){3}$")
+                {
+                    return $true
+                }
+                else 
+                {
+                    throw "Enter a valid MAC-Address (like 00:00:00:00:00:00)!"    
+                }
+        })]
         [String[]]$MACAddress
     )
 

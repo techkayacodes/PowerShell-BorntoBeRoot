@@ -38,6 +38,16 @@ function Update-StringInFile
 		[Parameter(
 			Position=0,
 			HelpMessage="Folder where the files are stored (will search recursive)")]
+		[ValidateScript({
+			if(Test-Path -Path $_)
+			{
+				return $true
+			}
+			else 
+			{
+				throw "Enter a valid path!"	
+			}
+		})]
 		[String]$Path = (Get-Location),
 
 		[Parameter(

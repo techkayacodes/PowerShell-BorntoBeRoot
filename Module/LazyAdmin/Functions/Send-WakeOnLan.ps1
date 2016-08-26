@@ -36,7 +36,16 @@ function Send-WakeOnLan
             Position=0,
             Mandatory=$true,
             HelpMessage='MAC-Address of the remote computer which you want to wake up')]
-        [ValidatePattern("^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})|([0-9A-Fa-f]{2}){6}$")]
+        [ValidateScript({
+            if($_ -match "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})|([0-9A-Fa-f]{2}){6}$")
+            {
+                return $true
+            }
+            else 
+            {
+                throw "Enter a valid MAC-Address (like 00:00:00:00:00:00)!" 
+            }
+        })]
         [String[]]$MACAddress,
 
         [Parameter(
