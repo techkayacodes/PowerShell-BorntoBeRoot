@@ -78,7 +78,10 @@ function ConvertTo-Base64
         }
 
         try{
+            # Convert plain text to bytes
             $BytesToConvert = [Text.Encoding]::Unicode.GetBytes($TextToConvert)
+
+            # Convert Bytes to Base64
             $EncodedText = [Convert]::ToBase64String($BytesToConvert)
         }
         catch{
