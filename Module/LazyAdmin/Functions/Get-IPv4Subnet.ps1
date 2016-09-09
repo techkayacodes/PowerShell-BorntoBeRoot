@@ -102,6 +102,9 @@ function Get-IPv4Subnet
         # Convert Network Address to Int64
         $NetworkID_Int64 = (Convert-IPv4Address -IPv4Address $NetworkID.ToString()).Int64
 
+        # Convert add 1 IP and parse into IPAddress
+        $FirstIP = [System.Net.IPAddress]::Parse((Convert-IPv4Address -Int64 ($NetworkID_Int64 + 1)).IPv4Address)
+
         # Convert add available IPs and parse into IPAddress
         $Broadcast = [System.Net.IPAddress]::Parse((Convert-IPv4Address -Int64 ($NetworkID_Int64 + $AvailableIPs)).IPv4Address)
 
@@ -114,6 +117,7 @@ function Get-IPv4Subnet
         # Build custom PSObject
         [pscustomobject] @{
             NetworkID = $NetworkID
+            FirstIP = $FirstIP
             Broadcast = $Broadcast
             IPs = $AvailableIPs
             Hosts = $Hosts
