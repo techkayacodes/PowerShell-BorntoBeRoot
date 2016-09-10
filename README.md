@@ -57,6 +57,7 @@ Automate all the Things!
 | :--- | :--- |
 | [ConnectToExchange2010.ps1](Snippets/ConnectToExchange2010.ps1) | Connect to Exchange 2010 Management Shell in script |
 | [CredentialParameter.ps1](Snippets/CredentialParameter.ps1) | Parameter to pass credentials into a function/script |
+| [DefaultDisplayPropertySet.ps1](Snippets/DefaultDisplayPropertySet.ps1) | Set the default properties of an object |
 | [New-Object.ps1](Snippets/New-Object.ps1) | Create a new PSObject with custom properties |
 | [PressAnyKeyToContinue.ps1](Snippets/PressAnyKeyToContinue.ps1) | Wait until the user pressed a key | 
 | [PromptForChoice.ps1](Snippets/PromptForChoice.ps1) | Prompt for choice |
