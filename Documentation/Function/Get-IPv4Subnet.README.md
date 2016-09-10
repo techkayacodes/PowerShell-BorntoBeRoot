@@ -32,9 +32,12 @@ NetworkID     Broadcast      IPs Hosts
 ## Example 2
 
 ```powershell
-PS> Get-IPv4Subnet -IPv4Address 192.168.1.0 -Mask 255.255.255.0
+PS> Get-IPv4Subnet -IPv4Address 192.168.1.0 -Mask 255.255.255.0 | Select-Object -Property *
 
-NetworkID   Broadcast     IPs Hosts
----------   ---------     --- -----
-192.168.1.0 192.168.1.255 256   254
+NetworkID : 192.168.1.0
+FirstIP   : 192.168.1.1
+LastIP    : 192.168.1.254
+Broadcast : 192.168.1.255
+IPs       : 256
+Hosts     : 254
 ```

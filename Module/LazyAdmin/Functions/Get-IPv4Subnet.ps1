@@ -21,11 +21,14 @@
     192.168.24.96 192.168.24.127  32    30
             
     .EXAMPLE
-    Get-IPv4Subnet -IPv4Address 192.168.1.0 -Mask 255.255.255.0
+    Get-IPv4Subnet -IPv4Address 192.168.1.0 -Mask 255.255.255.0 | Select-Object -Property *
 
-    NetworkID   Broadcast     IPs Hosts
-    ---------   ---------     --- -----
-    192.168.1.0 192.168.1.255 256   254
+    NetworkID : 192.168.1.0
+    FirstIP   : 192.168.1.1
+    LastIP    : 192.168.1.254
+    Broadcast : 192.168.1.255
+    IPs       : 256
+    Hosts     : 254
 
     .LINK
     https://github.com/BornToBeRoot/PowerShell/blob/master/Documentation/Function/Get-IPv4Subnet.README.md
@@ -102,8 +105,11 @@ function Get-IPv4Subnet
         # Convert Network Address to Int64
         $NetworkID_Int64 = (Convert-IPv4Address -IPv4Address $NetworkID.ToString()).Int64
 
-        # Convert add 1 IP and parse into IPAddress
+        # Calculate the first Host IPv4 Address by add 1 to the Network ID
         $FirstIP = [System.Net.IPAddress]::Parse((Convert-IPv4Address -Int64 ($NetworkID_Int64 + 1)).IPv4Address)
+
+        # Calculate the last Host IPv4 Address by subtract 1 from the Broadcast Address
+        $LastIP = [System.Net.IPAddress]::Parse((Convert-IPv4Address -Int64 ($NetworkID_Int64 + ($AvailableIPs - 1))).IPv4Address)
 
         # Convert add available IPs and parse into IPAddress
         $Broadcast = [System.Net.IPAddress]::Parse((Convert-IPv4Address -Int64 ($NetworkID_Int64 + $AvailableIPs)).IPv4Address)
@@ -115,13 +121,28 @@ function Get-IPv4Subnet
         $Hosts = ($AvailableIPs - 2)
             
         # Build custom PSObject
-        [pscustomobject] @{
+        $Result = [pscustomobject] @{
             NetworkID = $NetworkID
             FirstIP = $FirstIP
+            LastIP = $LastIP
             Broadcast = $Broadcast
             IPs = $AvailableIPs
             Hosts = $Hosts
         }
+
+        # Set the default properties
+        $Result.PSObject.TypeNames.Insert(0,'Number.Information')
+
+        $DefaultDisplaySet = 'NetworkID', 'Broadcast', 'IPs', 'Hosts'
+
+        $DefaultDisplayPropertySet = New-Object System.Management.Automation.PSPropertySet(‘DefaultDisplayPropertySet’,[string[]]$DefaultDisplaySet)
+
+        $PSStandardMembers = [System.Management.Automation.PSMemberInfo[]]@($DefaultDisplayPropertySet)
+
+        $Result | Add-Member MemberSet PSStandardMembers $PSStandardMembers
+        
+        # Return the object to the pipeline
+        $Result
     }
 
     End{
