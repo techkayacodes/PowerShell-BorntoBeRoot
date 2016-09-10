@@ -12,7 +12,7 @@
 RootModule = 'LazyAdmin.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.3.9'
+ModuleVersion = '1.4.0'
 
 # ID used to uniquely identify this module
 GUID = '0fd69aa8-65f1-4476-a5fa-bf3853c22f47'
