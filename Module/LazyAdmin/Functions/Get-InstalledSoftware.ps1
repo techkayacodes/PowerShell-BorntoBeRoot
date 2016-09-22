@@ -63,7 +63,7 @@ function Get-InstalledSoftware
 	Begin{
 		$LocalAddress = @("127.0.0.1","localhost",".","$($env:COMPUTERNAME)")
 
-		[System.Management.Automation.ScriptBlock]$Scriptblock = {
+		[System.Management.Automation.ScriptBlock]$ScriptBlock = {
 			# Location where all entrys for installed software should be stored
 			return Get-ChildItem -Path  "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall", "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall" | Get-ItemProperty | Select-Object -Property DisplayName, Publisher, UninstallString, InstallLocation, InstallDate
 		}
@@ -72,7 +72,7 @@ function Get-InstalledSoftware
 	Process{
 		if($LocalAddress -contains $ComputerName)
 		{			
-			$Strings = Invoke-Command -ScriptBlock $Scriptblock -ArgumentList $Search            
+			$Strings = Invoke-Command -ScriptBlock $ScriptBlock -ArgumentList $Search            
 		}
 		else
 		{
@@ -81,11 +81,11 @@ function Get-InstalledSoftware
 				try {
 					if($PSBoundParameters.ContainsKey('Credential'))
 					{
-						$Strings = Invoke-Command -ScriptBlock $Scriptblock -ComputerName $ComputerName -ArgumentList $Search -Credential $Credential -ErrorAction Stop
+						$Strings = Invoke-Command -ScriptBlock $ScriptBlock -ComputerName $ComputerName -ArgumentList $Search -Credential $Credential -ErrorAction Stop
 					}
 					else
 					{					    
-						$Strings = Invoke-Command -ScriptBlock $Scriptblock -ComputerName $ComputerName -ArgumentList $Search -ErrorAction Stop
+						$Strings = Invoke-Command -ScriptBlock $ScriptBlock -ComputerName $ComputerName -ArgumentList $Search -ErrorAction Stop
 					}
 				}
 				catch {
