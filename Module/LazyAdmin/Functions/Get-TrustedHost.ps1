@@ -2,16 +2,16 @@
 # Language     :  PowerShell 4.0
 # Filename     :  Get-TrustedHost.ps1
 # Autor        :  BornToBeRoot (https://github.com/BornToBeRoot)
-# Description  :  Get WSMan trusted hosts (WinRM)
+# Description  :  Get trusted hosts (WinRM)
 # Repository   :  https://github.com/BornToBeRoot/PowerShell
 ###############################################################################################################
 
 <#
     .SYNOPSIS
-    Get WSMan trusted hosts (WinRM)
+    Get trusted hosts (WinRM)
 
     .DESCRIPTION
-    Get WSMan trusted hosts (WinRM).
+    Get trusted hosts (WinRM).
 
     .EXAMPLE
     Get-TrustedHost
@@ -37,8 +37,15 @@ function Get-TrustedHost
     }
 
     Process{
-        $TrustedHost_Value = (Get-Item -Path WSMan:\localhost\Client\TrustedHosts).Value
-        
+        $TrustedHost_Path = "WSMan:\localhost\Client\TrustedHosts"
+
+        try{
+            [String]$TrustedHost_Value = (Get-Item -Path $TrustedHost_Path).Value
+        }
+        catch{
+            throw
+        }
+
         if([String]::IsNullOrEmpty($TrustedHost_Value))
         {            
             return

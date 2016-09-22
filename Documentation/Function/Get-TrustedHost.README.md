@@ -1,12 +1,12 @@
 # Get-TrustedHost
 
-Get WSMan trusted hosts (WinRM).
+Get trusted hosts (WinRM).
 
 * [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Get-TrustedHost.ps1)
 
 ## Description
 
-Get WSMan trusted hosts (WinRM).
+Get trusted hosts (WinRM).
 
 ![Screenshot](Images/Get-TrustedHost.png?raw=true)
 
