@@ -19,6 +19,7 @@ Automate all the Things!
 
 | Function | Description | Help | 
 | :--- | :--- | :---: |
+| [Add-TrustedHost](Module/LazyAdmin/Functions/Add-TrustedHost.ps1) | Add a trusted host (WinRM) | [:book:](Documentation/Function/Add-TrustedHost.README.md) |
 | [Clear-ARPCache](Module/LazyAdmin/Functions/Clear-ARPCache.ps1) | Clear the ARP cache | [:book:](Documentation/Function/Clear-ARPCache.README.md) |
 | [Convert-IPv4Address](Module/LazyAdmin/Functions/Convert-IPv4Address.ps1) | Convert an IPv4-Address to Int64 and vise versa | [:book:](Documentation/Function/Convert-IPv4Address.README.md) |
 | [Convert-Subnetmask](Module/LazyAdmin/Functions/Convert-Subnetmask.ps1) | Convert a subnetmask to CIDR and vise versa | [:book:](Documentation/Function/Convert-Subnetmask.README.md) |
@@ -34,7 +35,7 @@ Automate all the Things!
 | [Get-MACVendor](Module/LazyAdmin/Functions/Get-MACVendor.ps1) | Get Vendor from a MAC-Address | [:book:](Documentation/Function/Get-MACVendor.README.md) |
 | [Get-RandomPassword](Module/LazyAdmin/Functions/Get-RandomPassword.ps1) | Generate passwords with a freely definable number of characters | [:book:](Documentation/Function/Get-RandomPassword.README.md) |
 | [Get-RandomPIN](Module/LazyAdmin/Functions/Get-RandomPIN.ps1) | Generate PINs with freely definable number of numbers | [:book:](Documentation/Function/Get-RandomPIN.README.md) |
-| [Get-TrustedHost](Module/LazyAdmin/Functions/Get-TrustedHost.ps1) | Get WSMan trusted hosts (WinRM) | [:book:](Documentation/Function/Get-TrustedHost.README.md) |
+| [Get-TrustedHost](Module/LazyAdmin/Functions/Get-TrustedHost.ps1) | Get trusted hosts (WinRM) | [:book:](Documentation/Function/Get-TrustedHost.README.md) |
 | [Get-WindowsProductKey](Module/LazyAdmin/Functions/Get-WindowsProductKey.ps1) | Get the Windows product key and some usefull informations about the system | [:book:](Documentation/Function/Get-WindowsProductKey.README.md) |
 | [Get-WLANProfile](Module/LazyAdmin/Functions/Get-WLANProfile.ps1) | Get WLAN profiles, include password as SecureString or as plain text | [:book:](Documentation/Function/Get-WLANProfile.README.md) |
 | [Invoke-IPv4NetworkScan](Module/LazyAdmin/Functions/Invoke-IPv4NetworkScan.ps1) | Powerful asynchronus IPv4 Network Scanner to scan an IP-Range or subnet | [:book:](Documentation/Function/Invoke-IPv4NetworkScan.README.md) |
