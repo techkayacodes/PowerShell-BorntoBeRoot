@@ -135,7 +135,7 @@ function Get-IPv4Subnet
 
         $DefaultDisplaySet = 'NetworkID', 'Broadcast', 'IPs', 'Hosts'
 
-        $DefaultDisplayPropertySet = New-Object System.Management.Automation.PSPropertySet(‘DefaultDisplayPropertySet’,[string[]]$DefaultDisplaySet)
+        $DefaultDisplayPropertySet = New-Object System.Management.Automation.PSPropertySet('DefaultDisplayPropertySet',[string[]]$DefaultDisplaySet)
 
         $PSStandardMembers = [System.Management.Automation.PSMemberInfo[]]@($DefaultDisplayPropertySet)
 
