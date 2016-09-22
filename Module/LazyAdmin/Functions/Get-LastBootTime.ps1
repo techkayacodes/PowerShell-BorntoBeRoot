@@ -44,7 +44,7 @@ function Get-LastBootTime
     Begin{
         $LocalAddress = @("127.0.0.1","localhost",".","$($env:COMPUTERNAME)")
 
-		[System.Management.Automation.ScriptBlock]$Scriptblock = {
+		[System.Management.Automation.ScriptBlock]$ScriptBlock = {
              $LastBootTime = (Get-CimInstance -ClassName Win32_OperatingSystem | Select-Object -Property LastBootUpTime).LastBootUpTime
              
              return [DateTime]$LastBootTime 
@@ -54,22 +54,22 @@ function Get-LastBootTime
     Process{
         foreach($ComputerName2 in $ComputerName)
         {
-            if($LocalAddress -contains $ComputerName)
+            if($LocalAddress -contains $ComputerName2)
             {			
-                $LastBootTime = Invoke-Command -ScriptBlock $Scriptblock -ArgumentList $Search            
+                $LastBootTime = Invoke-Command -ScriptBlock $ScriptBlock
             }
             else
             {
-                if(Test-Connection -ComputerName $ComputerName -Count 2 -Quiet)
+                if(Test-Connection -ComputerName $ComputerName2 -Count 2 -Quiet)
                 {
                     try {
                         if($PSBoundParameters.ContainsKey('Credential'))
                         {
-                            $LastBootTime = Invoke-Command -ScriptBlock $Scriptblock -ComputerName $ComputerName -ArgumentList $Search -Credential $Credential -ErrorAction Stop
+                            $LastBootTime = Invoke-Command -ScriptBlock $ScriptBlock -ComputerName $ComputerName2 -Credential $Credential -ErrorAction Stop
                         }
                         else
                         {					    
-                            $LastBootTime = Invoke-Command -ScriptBlock $Scriptblock -ComputerName $ComputerName -ArgumentList $Search -ErrorAction Stop
+                            $LastBootTime = Invoke-Command -ScriptBlock $ScriptBlock -ComputerName $ComputerName2 -ErrorAction Stop
                         }
                     }
                     catch {
@@ -80,12 +80,11 @@ function Get-LastBootTime
                 }
                 else 
                 {				
-                    Write-Error -Message """$ComputerName"" is not reachable via ICMP!" -Category ConnectionError
+                    Write-Error -Message """$ComputerName2"" is not reachable via ICMP!" -Category ConnectionError
 
                     continue
                 }
             }
-
 
             [pscustomobject] @{
                 ComputerName = $ComputerName2
