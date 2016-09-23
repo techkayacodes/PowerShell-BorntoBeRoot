@@ -61,7 +61,7 @@ function Find-StringInFile
 		[Parameter(
 			Position=2,
 			HelpMessage="String must be case sensitive (Default=false)")]
-		[switch]$CaseSensitive=$false
+		[switch]$CaseSensitive
 	)
 
 	Begin{
