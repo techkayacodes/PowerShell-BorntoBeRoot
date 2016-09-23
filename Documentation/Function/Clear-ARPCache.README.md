@@ -10,6 +10,8 @@ Clear the Address Resolution Protocol (ARP) cache, which is used for resolution 
 
 ![Screenshot](Images/Clear-ARPCache.png?raw=true "Clear-ARPCache")
 
+**Administrative rights are required to execute this command!**
+
 ## Syntax
 
 ```powershell

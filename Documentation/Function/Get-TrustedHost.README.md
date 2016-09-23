@@ -8,7 +8,7 @@ Get trusted hosts (WinRM).
 
 Get trusted hosts (WinRM).
 
-![Screenshot](Images/Get-TrustedHost.png?raw=true)
+![Screenshot](Images/Get-TrustedHost.png?raw=true "Get-TrustedHost")
 
 ## Syntax
 

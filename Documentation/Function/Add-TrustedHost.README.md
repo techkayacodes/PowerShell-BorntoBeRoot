@@ -8,7 +8,9 @@ Add a trusted host (WinRM).
 
 Add one or mulitple trusted host(s) (WinRM).
 
-![Screenshot](Images/Add-TrustedHost.png?raw=true)
+![Screenshot](Images/Add-TrustedHost.png?raw=true "Add-TrustedHost")
+
+**Administrative rights are required to execute this command!**
 
 ## Syntax
 
