@@ -44,9 +44,12 @@ function Add-TrustedHost
 
     Process{
         $TrustedHost_Path = "WSMan:\localhost\Client\TrustedHosts"
+        [System.Collections.ArrayList]$TrustedHosts = @()
 
         try{
             [String]$TrustedHost_Value = (Get-Item -Path $TrustedHost_Path).Value
+            $TrustedHost_Value = (Get-Item -Path $TrustedHost_Path).Value
+            $TrustedHost_ValueOrg = $TrustedHost_Value
 
             if(-not([String]::IsNullOrEmpty($TrustedHost_Value)))
             {
@@ -61,15 +64,12 @@ function Add-TrustedHost
                     continue
                 }
 
-                if(-not([String]::IsNullOrEmpty($TrustedHost_Value)))
-                {
-                    $TrustedHost_Value += ","
-                }
+                [void]$TrustedHosts.Add($TrustedHost2)
 
-                $TrustedHost_Value += $TrustedHost2
+                $TrustedHost_Value = $TrustedHosts -join ","
             }
 
-            if($PSCmdlet.ShouldProcess($TrustedHost_Path))
+            if(($TrustedHost_Value -ne $TrustedHost_ValueOrg) -and ($PSCmdlet.ShouldProcess($TrustedHost_Path)))
             {
                 Set-Item -Path $TrustedHost_Path -Value $TrustedHost_Value -Force
             }    
