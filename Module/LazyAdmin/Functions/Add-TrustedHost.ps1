@@ -38,7 +38,7 @@ function Add-TrustedHost
     Begin{
         if(-not([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator"))
         {
-            throw "Administrator rights are required to add a trusted host! Restart your PowerShell-Console as Administrator."
+            throw "Administrator rights are required to add a trusted host!"
         }
     }
 
