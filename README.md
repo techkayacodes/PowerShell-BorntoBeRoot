@@ -40,6 +40,7 @@ Automate all the Things!
 | [Get-WLANProfile](Module/LazyAdmin/Functions/Get-WLANProfile.ps1) | Get WLAN profiles, include password as SecureString or as plain text | [:book:](Documentation/Function/Get-WLANProfile.README.md) |
 | [Invoke-IPv4NetworkScan](Module/LazyAdmin/Functions/Invoke-IPv4NetworkScan.ps1) | Powerful asynchronus IPv4 Network Scanner to scan an IP-Range or subnet | [:book:](Documentation/Function/Invoke-IPv4NetworkScan.README.md) |
 | [Invoke-IPv4PortScan](Module/LazyAdmin/Functions/Invoke-IPv4PortScan.ps1) | Powerful asynchronus IPv4 Port Scanner to scan a TCP Port-Range | [:book:](Documentation/Function/Invoke-IPv4PortScan.README.md) |
+| [Remove-TrustedHost](Module/LazyAdmin/Functions/Remove-TrustedHost.ps1) | Remove a trusted host (WinRM) | [:book:](Documentation/Function/Remove-TrustedHost.README.md) |
 | [Send-WakeOnLan](Module/LazyAdmin/Functions/Send-WakeOnLan.ps1) | Send a network message to turn on or wake up a remote computer | [:book:](Documentation/Function/Send-WakeOnLan.README.md) | 
 | [Split-IPv4Subnet](Module/LazyAdmin/Functions/Split-IPv4Subnet.ps1) | Split a subnet in multiple subnets with given subnetmasks | [:book:](Documentation/Function/Split-IPv4Subnet.README.md) |
 | [Test-IsFileBinary](Module/LazyAdmin/Functions/Test-IsFileBinary.ps1) | Test if a file is binary | [:book:](Documentation/Function/Test-IsFileBinary.README.md) |
