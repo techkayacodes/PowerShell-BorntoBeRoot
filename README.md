@@ -19,8 +19,8 @@ Automate all the Things!
 
 | Function | Category | Description | Help | 
 | :--- | :--- | :--- | :---: |
-| [Clear-ARPCache](Module/LazyAdmin/Functions/ARPCache/Clear-ARPCache.ps1) | [ARP Cache](Modules/LazyAdmin/Functions/ARPCache) | Clear the ARP cache | [:book:](Documentation/Function/Clear-ARPCache.README.md) |
-| [Get-ARPCache](Module/LazyAdmin/Functions/ARPCache/Get-ARPCache.ps1) | [ARP Cache](Modules/LazyAdmin/Functions/ARPCache) | Get the ARP cache | [:book:](Documentation/Function/Get-ARPCache.README.md) |
+| [Clear-ARPCache](Module/LazyAdmin/Functions/ARPCache/Clear-ARPCache.ps1) | [ARP Cache](Module/LazyAdmin/Functions/ARPCache) | Clear the ARP cache | [:book:](Documentation/Function/Clear-ARPCache.README.md) |
+| [Get-ARPCache](Module/LazyAdmin/Functions/ARPCache/Get-ARPCache.ps1) | [ARP Cache](Module/LazyAdmin/Functions/ARPCache) | Get the ARP cache | [:book:](Documentation/Function/Get-ARPCache.README.md) |
 | [ConvertFrom-Base64](Module/LazyAdmin/Functions/Base64Converter/ConvertFrom-Base64.ps1) | [Base64 Converter](Module/LazyAdmin/Functions/Base64Converter) | Convert a Base64 encoded string to a plain text string | [:book:](Documentation/Function/ConvertFrom-Base64.README.md) |
 | [ConvertTo-Base64](Module/LazyAdmin/Functions/Base64Converter/ConvertTo-Base64.ps1) | [Base64 Converter](Module/LazyAdmin/Functions/Base64Converter) | Convert a text (command) to an Base64 encoded string | [:book:](Documentation/Function/ConvertTo-Base64.README.md) |
 | [Find-StringInFile](Module/LazyAdmin/Functions/File/Find-StringInFile.ps1) | [File](Module/LazyAdmin/Functions/File) | Find a string in one or multiple files | [:book:](Documentation/Function/Find-StringInFile.README.md) |
