@@ -2,7 +2,7 @@
 
 Send a network message to turn on or wake up a remote computer.
 
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Send-WakeOnLan.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Network/Send-WakeOnLan.ps1)
 
 ## Description
 

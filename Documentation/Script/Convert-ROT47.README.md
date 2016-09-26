@@ -2,7 +2,7 @@
 
 Rotate ascii chars by n places (Caesar cipher).
 
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Convert-ROT47.ps1)
+* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Encryption/Convert-ROT47.ps1)
 
 ## Description
 

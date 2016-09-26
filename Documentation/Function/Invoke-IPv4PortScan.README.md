@@ -2,7 +2,7 @@
 
 Powerful asynchronus IPv4 Port Scanner.
 
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Invoke-IPv4PortScan.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Network/Invoke-IPv4PortScan.ps1)
 
 ## Description
 

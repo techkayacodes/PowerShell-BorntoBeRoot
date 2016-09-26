@@ -2,7 +2,7 @@
 
 Add a trusted host (WinRM).
 
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Add-TrustedHost.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/TrustedHost/Add-TrustedHost.ps1)
 
 ## Description
 

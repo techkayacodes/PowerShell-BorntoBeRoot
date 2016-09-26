@@ -2,7 +2,7 @@
 
 Get trusted hosts (WinRM).
 
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Get-TrustedHost.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/TrustedHost/Get-TrustedHost.ps1)
 
 ## Description
 

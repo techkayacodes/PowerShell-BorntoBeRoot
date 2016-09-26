@@ -48,7 +48,7 @@ function Get-MACVendor
 
     Begin{
         # MAC-Vendor list path
-        $CSV_MACVendorList_Path = "$PSScriptRoot\IEEE_Standards_Registration_Authority.csv"        
+        $CSV_MACVendorList_Path = "$PSScriptRoot\Resources\IEEE_Standards_Registration_Authority.csv"        
 
         if([System.IO.File]::Exists($CSV_MACVendorList_Path))
         {

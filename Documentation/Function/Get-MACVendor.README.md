@@ -2,7 +2,7 @@
 
 Get Vendor from a MAC-Address.
 
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Get-MACVendor.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Network/Get-MACVendor.ps1)
 
 ## Description
 

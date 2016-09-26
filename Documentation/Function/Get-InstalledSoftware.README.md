@@ -2,7 +2,7 @@
 
 Get all installed software with DisplayName, Publisher and UninstallString.
 
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Get-InstalledSoftware.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Software/Get-InstalledSoftware.ps1)
 
 ## Description
 

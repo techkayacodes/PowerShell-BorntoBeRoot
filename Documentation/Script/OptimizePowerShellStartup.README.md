@@ -2,7 +2,7 @@
 
 Optimize PowerShell startup by reduce JIT compile time with `ngen.exe`.
 
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/OptimizePowerShellStartup.ps1)
+* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Other/OptimizePowerShellStartup.ps1)
 
 ## Description
 

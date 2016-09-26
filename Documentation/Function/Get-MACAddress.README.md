@@ -2,7 +2,7 @@
 
 Get the MAC-Address from a remote computer
 
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Get-MACAddress.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Network/Get-MACAddress.ps1)
 
 ## Description
 

@@ -2,7 +2,7 @@
 
 Remove a trusted host (WinRM).
 
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Remove-TrustedHost.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/TrustedHost/Remove-TrustedHost.ps1)
 
 ## Description
 

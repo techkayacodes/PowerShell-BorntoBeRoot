@@ -2,7 +2,7 @@
 
 Find a string in one or multiple files.
 
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Find-StringInFile.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/File/Find-StringInFile.ps1)
 
 # Description
 

@@ -2,8 +2,7 @@
 
 Replace a string in one or multiple files.
 
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Update-StringInFile.ps1)
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Update-StringInFile.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/File/Update-StringInFile.ps1)
 
 ## Description
 

@@ -2,7 +2,7 @@
 
 Get all available console colors.
 
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Get-ConsoleColor.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Other/Get-ConsoleColor.ps1)
 
 ## Description
 

@@ -2,7 +2,7 @@
 
 Clear the ARP cache.
 
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Clear-ARPCache.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/ARPCache/Clear-ARPCache.ps1)
 
 ## Description
 

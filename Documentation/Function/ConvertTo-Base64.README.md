@@ -2,7 +2,7 @@
 
 Convert a text (command) to an Base64 encoded string.
 
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/ConvertTo-Base64.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Baase64Converter/ConvertTo-Base64.ps1)
 
 ## Description
 

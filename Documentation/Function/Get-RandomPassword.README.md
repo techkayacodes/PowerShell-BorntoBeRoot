@@ -2,7 +2,7 @@
 
 Generate passwords with a freely definable number of characters.
 
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Get-RandomPassword.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Other/Get-RandomPassword.ps1)
 
 ## Description
 

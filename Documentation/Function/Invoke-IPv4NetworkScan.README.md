@@ -2,7 +2,7 @@
 
 Powerful asynchronus IPv4 Network Scanner.
 
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Invoke-IPv4NetworkScan.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Network/Invoke-IPv4NetworkScan.ps1)
 
 ## Description
 

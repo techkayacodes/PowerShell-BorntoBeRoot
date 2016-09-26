@@ -2,7 +2,7 @@
 
 Get the time when a computer is booted. 
 
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Get-LastBootTime.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Windows/Get-LastBootTime.ps1)
 
 ## Description
 

@@ -2,7 +2,7 @@
 
 Get the ARP cache.
 
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Get-ARPCache.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/ARPCache/Get-ARPCache.ps1)
 
 ## Description
 

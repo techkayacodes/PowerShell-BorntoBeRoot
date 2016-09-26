@@ -2,7 +2,7 @@
 
 Get WLAN profiles, include password as SecureString or as plain text.
 
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Get-WLANProfile.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/WLAN/Get-WLANProfile.ps1)
 
 ## Description
 
