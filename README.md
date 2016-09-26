@@ -42,6 +42,7 @@ Automate all the Things!
 | [Invoke-IPv4PortScan](Module/LazyAdmin/Functions/Invoke-IPv4PortScan.ps1) | Powerful asynchronus IPv4 Port Scanner to scan a TCP Port-Range | [:book:](Documentation/Function/Invoke-IPv4PortScan.README.md) |
 | [Remove-TrustedHost](Module/LazyAdmin/Functions/Remove-TrustedHost.ps1) | Remove a trusted host (WinRM) | [:book:](Documentation/Function/Remove-TrustedHost.README.md) |
 | [Send-WakeOnLan](Module/LazyAdmin/Functions/Send-WakeOnLan.ps1) | Send a network message to turn on or wake up a remote computer | [:book:](Documentation/Function/Send-WakeOnLan.README.md) | 
+| [Set-TrustedHost](Module/LazyAdmin/Functions/Set-TrustedHost.ps1) | Set a trusted host (WinRM) | [:book:](Documentation/Function/Set-TrustedHost.README.md) |
 | [Split-IPv4Subnet](Module/LazyAdmin/Functions/Split-IPv4Subnet.ps1) | Split a subnet in multiple subnets with given subnetmasks | [:book:](Documentation/Function/Split-IPv4Subnet.README.md) |
 | [Test-IsFileBinary](Module/LazyAdmin/Functions/Test-IsFileBinary.ps1) | Test if a file is binary | [:book:](Documentation/Function/Test-IsFileBinary.README.md) |
 | [Update-StringInFile](Module/LazyAdmin/Functions/Update-StringInFile.ps1) | Replace a string in one or multiple files | [:book:](Documentation/Function/Update-StringInFile.README.md)
