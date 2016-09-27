@@ -2,7 +2,7 @@
 
 Rotate lower and upper chars by n places (Caesar cipher).
 
-* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Encryption/Convert-ROT13.ps1)
+* [view script](https://github.com/BornToBeRoot/PowerShell/blob/master/Scripts/Convert-ROT13.ps1)
 
 ## Description
 
