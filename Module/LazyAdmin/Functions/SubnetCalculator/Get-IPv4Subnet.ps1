@@ -131,7 +131,7 @@ function Get-IPv4Subnet
         }
 
         # Set the default properties
-        $Result.PSObject.TypeNames.Insert(0,'Number.Information')
+        $Result.PSObject.TypeNames.Insert(0,'Subnet.Information')
 
         $DefaultDisplaySet = 'NetworkID', 'Broadcast', 'IPs', 'Hosts'
 
