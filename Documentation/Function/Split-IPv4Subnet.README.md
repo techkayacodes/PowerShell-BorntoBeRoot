@@ -2,7 +2,7 @@
 
 Split a subnet in multiple subnets with given subnetmasks.
 
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/SubnetCalculator/Split-IPv4Subnet.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Network/Split-IPv4Subnet.ps1)
 
 ## Description
 

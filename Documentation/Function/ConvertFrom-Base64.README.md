@@ -2,7 +2,7 @@
 
 Convert a Base64 encoded string to a plain text string.
 
-* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Converter/ConvertFrom-Base64.ps1)
+* [view function](https://github.com/BornToBeRoot/PowerShell/blob/master/Module/LazyAdmin/Functions/Security/ConvertFrom-Base64.ps1)
 
 ## Description
 
