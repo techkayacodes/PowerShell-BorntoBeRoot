@@ -117,3 +117,4 @@ Automate all the Things!
 | [Default.ps1](Templates/Default.ps1) | Default template for new scripts |
 | [Default.README.md](Templates/Default.README.md) | Default template for documentation on GitHub |
 | [RunspacePool.ps1](Templates/RunspacePool.ps1) | RunspacePool template - run code asynchron (faster than PSJobs) |
+| [ScheduledTask_Logging.ps1](/Templates/ScheduledTask_Logging.ps1) | Template to run a script as scheduled task with logging | 
