@@ -17,7 +17,7 @@ Automate all the Things!
 
 #### Available functions:
 
-> [File](Module/LazyAdmin/Functions/File)
+**Folder: [File](Module/LazyAdmin/Functions/File)**
 
 | Function | Description | Help |
 | :--- | :--- | :---: | 
@@ -25,13 +25,13 @@ Automate all the Things!
 | [Test-IsFileBinary](Module/LazyAdmin/Functions/File/Test-IsFileBinary.ps1) | Test if a file is binary | [:book:](Documentation/Function/Test-IsFileBinary.README.md) |
 | [Update-StringInFile](Module/LazyAdmin/Functions/File/Update-StringInFile.ps1) | Replace a string in one or multiple files | [:book:](Documentation/Function/Update-StringInFile.README.md)
 
-> [Software](Module/LazyAdmin/Functions/Software)
+**Folder: [Software](Module/LazyAdmin/Functions/Software)**
 
 | Function | Description | Help | 
 | :--- | :--- | :---: |
 | [Get-InstalledSoftware](Module/LazyAdmin/Functions/Software/Get-InstalledSoftware.ps1) | Get all installed software with DisplayName, Publisher and UninstallString | [:book:](Documentation/Function/Get-InstalledSoftware.README.md) |
 
-> [Network](Module/LazyAdmin/Functions/Network)
+**Folder: [Network](Module/LazyAdmin/Functions/Network)**
 
 | Function | Description | Help |
 | :--- | :--- | :---: |
@@ -48,7 +48,7 @@ Automate all the Things!
 | [Send-WakeOnLan](Module/LazyAdmin/Functions/Network/Send-WakeOnLan.ps1) | Send a network message to turn on or wake up a remote computer | [:book:](Documentation/Function/Send-WakeOnLan.README.md) |
 | [Split-IPv4Subnet](Module/LazyAdmin/Functions/Network/Split-IPv4Subnet.ps1) | Split a subnet in multiple subnets with given subnetmasks | [:book:](Documentation/Function/Split-IPv4Subnet.README.md) |
 
-> [Security](Module/LazyAdmin/Functions/Security)
+**Folder: [Security](Module/LazyAdmin/Functions/Security)**
 
 | Function | Description | Help |
 | :--- | :--- | :---: |
@@ -57,7 +57,7 @@ Automate all the Things!
 | [Get-RandomPassword](Module/LazyAdmin/Functions/Security/Get-RandomPassword.ps1) | Generate passwords with a freely definable number of characters | [:book:](Documentation/Function/Get-RandomPassword.README.md) |
 | [Get-RandomPIN](Module/LazyAdmin/Functions/Security/Get-RandomPIN.ps1) | Generate PINs with freely definable number of numbers | [:book:](Documentation/Function/Get-RandomPIN.README.md) |
 
->  [TrustedHost](Module/LazyAdmin/Functions/TrustedHost)
+**Folder: [TrustedHost](Module/LazyAdmin/Functions/TrustedHost)**
 
 | Function | Description | Help |
 | :--- | :--- | :---: |
@@ -66,14 +66,14 @@ Automate all the Things!
 | [Remove-TrustedHost](Module/LazyAdmin/Functions/TrustedHost/Remove-TrustedHost.ps1) | Remove a trusted host (WinRM) | [:book:](Documentation/Function/Remove-TrustedHost.README.md) |
 | [Set-TrustedHost](Module/LazyAdmin/Functions/TrustedHost/Set-TrustedHost.ps1) | Set a trusted host (WinRM) | [:book:](Documentation/Function/Set-TrustedHost.README.md) |
 
-> [Windows](Module/LazyAdmin/Functions/Windows)
+**Folder: [Windows](Module/LazyAdmin/Functions/Windows)**
 
 | Function | Description | Help |
 | :--- | :--- | :---: |
 | [Get-LastBootTime](Module/LazyAdmin/Functions/Windows/Get-LastBootTime.ps1) | Get the time when a computer is booted | [:book:](Documentation/Function/Get-LastBootTime.README.md) |
 | [Get-WindowsProductKey](Module/LazyAdmin/Functions/Windows/Get-WindowsProductKey.ps1) | Get the Windows product key and some usefull informations about the system | [:book:](Documentation/Function/Get-WindowsProductKey.README.md) |
 
-> [Other](Module/LazyAdmin/Functions/Other)
+**Folder: [Other](Module/LazyAdmin/Functions/Other)**
 
 | Function | Description | Help |
 | :--- | :--- | :---: |
