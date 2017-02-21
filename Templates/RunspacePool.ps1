@@ -33,10 +33,7 @@ Begin{
     
 } 
 
-Process{    
-    Write-Verbose "Running with max $Threads threads"
-
-    # Scriptblock --> will run in runspaces (threads)...
+Process{       
     ### Scriptblock (this code will run asynchron in the RunspacePool)
 	[System.Management.Automation.ScriptBlock]$ScriptBlock = {
 		Param(
@@ -55,17 +52,17 @@ Process{
 		## asynchron
 		#######################################
 		
-		### Built custom PSObject which get returned
-		$Result = New-Object -TypeName PSObject
-		Add-Member -InputObject $Result -MemberType NoteProperty -Name Parameter1 -Value Result1
-		Add-Member -InputObject $Result -MemberType NoteProperty -Name Parameter2 -Value Result2
-
-		### Return result 
-		return $Result
+		### Built custom PSObject and return it
+		[pscustomobject] @{
+			Parameter1 = Result1
+			Parameter2 = Result2
+		}		
 	}
 
-    # Create RunspacePool and Jobs
+    # Create RunspacePool and Jobs	
     Write-Verbose "Setting up RunspacePool..."
+   
+	Write-Verbose "Running with max $Threads threads"
    
     $RunspacePool = [System.Management.Automation.Runspaces.RunspaceFactory]::CreateRunspacePool(1, $Threads, $Host)
     $RunspacePool.Open()
@@ -84,7 +81,7 @@ Process{
 
         # Catch when trying to divide through zero
         try {
-            $Progress_Percent =  ($i / ($EndRange - $StartRange)) * 100 # Calulate some procent 
+            $Progress_Percent =  ($i / ($EndRange - $StartRange)) * 100 # Calulate some percent 
         } 
         catch { 
             $Progress_Percent = 100 
