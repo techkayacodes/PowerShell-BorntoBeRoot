@@ -83,9 +83,9 @@ Automate all the Things!
 
 | Script | Description | Help |
 | :--- | :--- | :---: |
-| [Convert-ROT13](Scripts/Encryption/Convert-ROT13.ps1) | Rotate lower and upper chars by n places (Caesar cipher) | [:book:](Documentation/Script/Convert-ROT13.README.md) |
-| [Convert-ROT47](Scripts/Encryption/Convert-ROT47.ps1) | Rotate ascii chars by n places (Caesar cipher) | [:book:](Documentation/Script/Convert-ROT47.README.md) |
-| [OptimizePowerShellStartup.ps1](Scripts/Other/OptimizePowerShellStartup.ps1) | Optimize PowerShell startup by reduce JIT compile time with ngen.exe | [:book:](Documentation/Script/OptimizePowerShellStartup.README.md) |
+| [Convert-ROT13](Scripts/Convert-ROT13.ps1) | Rotate lower and upper chars by n places (Caesar cipher) | [:book:](Documentation/Script/Convert-ROT13.README.md) |
+| [Convert-ROT47](Scripts/Convert-ROT47.ps1) | Rotate ascii chars by n places (Caesar cipher) | [:book:](Documentation/Script/Convert-ROT47.README.md) |
+| [OptimizePowerShellStartup.ps1](Scripts/OptimizePowerShellStartup.ps1) | Optimize PowerShell startup by reduce JIT compile time with ngen.exe | [:book:](Documentation/Script/OptimizePowerShellStartup.README.md) |
 
 ## Snippets 
 
